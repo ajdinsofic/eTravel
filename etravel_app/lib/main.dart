@@ -1,6 +1,10 @@
+import 'package:etravel_app/providers/navigationOpenProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:etravel_app/screens/LoadinPage.dart';
+import 'package:provider/provider.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,6 +13,15 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  // runApp(
+  //   ChangeNotifierProvider(
+  //     create: (_) => AppState(),
+  //     builder: (context, child) {
+  //       return const MyApp();
+  //     },// ovdje ide tvoja root aplikacija  PROVIDERI I STATE MANAGEMENT LEKCIJA DEBELA
+  //   ),
+  // );
 
   runApp(const MyApp());
 }

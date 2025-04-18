@@ -64,13 +64,11 @@ class specijalneDestinacije extends StatelessWidget {
           child: Column(
             children:
                 destinacije.map((destinacija) {
-                  return specijalneDestinacijeKontejneri(
-                    screenHeight,
-                    screenWidth,
-                    destinacija["naziv"].toString(),
-                    destinacija["slika"].toString(),
-                    destinacija["cijena"].toString(),
-                    Map<String, String>.from(destinacija["detalji"] as Map),
+                  return SpecijalneDestinacijeKontejneri(
+                    naziv: destinacija["naziv"].toString(),
+                    slikaPath: destinacija["slika"].toString(),
+                    cijena: destinacija["cijena"].toString(),
+                    detalji: Map<String, String>.from(destinacija["detalji"] as Map),
                   );
                 }).toList(),
           ),

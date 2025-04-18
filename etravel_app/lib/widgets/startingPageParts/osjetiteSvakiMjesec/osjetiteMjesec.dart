@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 
 class osjetiteMjesec extends StatefulWidget {
   final mjeseciKolone = [
-    'Januar',
-    'Mart',
-    'Maj',
-    'Juli',
-    'Septembar',
-    'Novembar',
-    'Decembar',
+    'JANUAR',
+    'MART',
+    'MAJ',
+    'JULI',
+    'SEPTEMBAR',
+    'NOVEMBAR',
+    'DECEMBAR',
   ];
 
-  final mjeseciRedove = ['Februar', 'April', 'Juni', 'Avgust', 'Oktobar'];
+  final mjeseciRedove = ['FEBRUAR', 'APRIL', 'JUNI', 'AUGUST', 'OKTOBAR'];
 
   final sirine = [0.9, 0.769, 0.64, 0.515, 0.39, 0.27, 0.27];
-  final sirine2 = [0.363, 0.3, 0.238, 0.175, 0.1135];
+  final sirine2 = [0.363, 0.3, 0.238, 0.178, 0.1135];
 
   osjetiteMjesec({super.key});
 
@@ -68,13 +68,12 @@ class _osjetiteMjesecState extends State<osjetiteMjesec> {
                         height: screenHeight * 0.05,
                         margin: const EdgeInsets.only(top: 10),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
+                          border: Border.all(color: Colors.white, width: 2),
                         ),
                         alignment: Alignment(0, 0),
-                        padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           widget.mjeseciKolone[index],
-                          style: const TextStyle(color: Colors.white, fontFamily: 'AROneSans', fontWeight: FontWeight.bold),
+                          style: const TextStyle(color: Colors.white, fontFamily: 'AROneSans', fontWeight: FontWeight.bold, fontSize: 12),
                         ),
                       );
                     }),
@@ -90,15 +89,14 @@ class _osjetiteMjesecState extends State<osjetiteMjesec> {
                       width: screenWidth * 0.1,
                       height: screenHeight * widget.sirine2[index],
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
+                        border: Border.all(color: Colors.white, width: 2),
                       ),
                       alignment: Alignment(0, 0),
-                      padding: const EdgeInsets.only(bottom: 5),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:
                             widget.mjeseciRedove[index].split('').map((char) {
-                              bool isOktobar = widget.mjeseciRedove[index] == "Oktobar";
+                              bool isOktobar = widget.mjeseciRedove[index] == "OKTOBAR";
                               return Text(
                                 char,
                                 style: TextStyle(

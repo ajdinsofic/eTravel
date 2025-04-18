@@ -2,13 +2,9 @@ import 'package:etravel_app/widgets/startingPageParts/postaviWidthIHeight.dart';
 import 'package:flutter/material.dart';
 
 class PutujemoZajednoNaslovISearchBar extends StatefulWidget {
-  final double screenWidth;
-  final double screenHeight;
 
   const PutujemoZajednoNaslovISearchBar({
     super.key,
-    required this.screenWidth,
-    required this.screenHeight,
   });
 
   @override

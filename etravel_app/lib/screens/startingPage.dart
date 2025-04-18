@@ -23,19 +23,17 @@ class _StartingPageState extends State<StartingPage> {
     postaviWidthIHeight(context);
 
     return Scaffold(
-      appBar: SljedecaDestinacijaIMenuBar(screenWidth: screenWidth, screenHeight: screenHeight,),
+      appBar: SljedecaDestinacijaIMenuBar(),
       body: CustomScrollView(
         slivers: [
-          PutujemoZajednoNaslovISearchBar(screenWidth: screenWidth, screenHeight: screenHeight),
+          PutujemoZajednoNaslovISearchBar(),
           SliverToBoxAdapter(
             child: Container(
               margin: EdgeInsets.only(top: screenHeight * 0.08),
               child: Column(
                 children: [
-                  // Popularne destinacije widget
                   popularneDestinacije(),
                   SizedBox(height: screenHeight * 0.06),
-                  // Specijalne destinacije widget
                   specijalneDestinacije(),
                   SizedBox(height: screenHeight * 0.06),
                   osjetiteMjesec(),
