@@ -23,6 +23,7 @@ class _StartingPageState extends State<StartingPage> {
     postaviWidthIHeight(context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: SljedecaDestinacijaIMenuBar(),
       body: CustomScrollView(
         slivers: [

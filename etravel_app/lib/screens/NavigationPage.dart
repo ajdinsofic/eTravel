@@ -42,6 +42,7 @@ class _NavigationpageState extends State<NavigationPage> {
   Widget build(BuildContext context) {
     postaviWidthIHeight(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: SljedecaDestinacijaIMenuBar(),
       body: ListView(
         children: [

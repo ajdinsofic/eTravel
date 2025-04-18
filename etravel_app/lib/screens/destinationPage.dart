@@ -1,15 +1,28 @@
 import 'package:etravel_app/widgets/destinationPageParts/roomofferGenerator.dart';
+import 'package:etravel_app/widgets/destinationPageParts/travelingPlanDays.dart';
 import 'package:etravel_app/widgets/startingPageParts/SljedecaDestinacijaIMenuBar.dart';
 import 'package:etravel_app/widgets/startingPageParts/popularneDestinacijeIDodaci/parts/sliderTackeZaPopularneDestinacije.dart';
 import 'package:etravel_app/widgets/startingPageParts/postaviWidthIHeight.dart';
 import 'package:flutter/material.dart';
 
 class destinationPage extends StatefulWidget {
+  final uracunatoUCijenu = [
+    "Osigurana povratna karta avionom",
+    "5 noćenja u hotelu po izboru",
+    "Aerodromska taksa",
+    "Kompletna organizacija putovanja",
+  ];
+
+   final nijeUracunatoUCijenu = [
+    "Putnicko zdravstveno osiguranje",
+    "Fakultativni obilasci",
+  ];
+
   final String naziv;
   final String cijena;
   final String brojDana;
 
-  const destinationPage({
+  destinationPage({
     super.key,
     required this.naziv,
     required this.cijena,
@@ -25,6 +38,7 @@ class _DestinationPageState extends State<destinationPage> {
   Widget build(BuildContext context) {
     postaviWidthIHeight(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: SljedecaDestinacijaIMenuBar(),
       body: SingleChildScrollView(
         child: Column(
@@ -100,7 +114,7 @@ class _DestinationPageState extends State<destinationPage> {
             ),
             SizedBox(height: screenHeight * 0.02),
             SizedBox(
-              width: screenWidth * 0.35,
+              width: screenWidth * 0.30,
               height: screenHeight * 0.05,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -112,14 +126,13 @@ class _DestinationPageState extends State<destinationPage> {
               ),
             ),
             Container(
-              width: screenWidth,
+              width: screenWidth * 0.9,
               height: screenHeight * 0.05,
-              margin: EdgeInsets.only(top: screenHeight * 0.04),
+              margin: EdgeInsets.only(top: screenHeight * 0.04, right: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/images/clock.png'),
-                  SizedBox(width: screenWidth * 0.02),
                   Text(
                     widget.brojDana,
                     style: TextStyle(
@@ -342,6 +355,134 @@ class _DestinationPageState extends State<destinationPage> {
                   slikaPath: 'assets/images/hotel2.jpg',
                 ),
               ],
+            ),
+            Container(
+              width: screenWidth,
+              height: screenHeight * 0.15,
+              alignment: Alignment.center,
+              child: Text(
+                'Plan i program putovanja',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'AROneSans',
+                  fontSize: screenWidth * 0.06,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: screenHeight * 0.4, // Adjust this as needed
+              child: PlanPutovanja(),
+            ),
+            Container(
+              width: screenWidth,
+              height: screenHeight * 0.05,
+              margin: EdgeInsets.only(top: screenHeight * 0.1 - 40),
+              color: Color(0xFF67B1E5),
+            ),
+            Container(
+              width: screenWidth,
+              height: screenHeight * 0.15,
+              alignment: Alignment.center,
+              child: Text(
+                'Šta je uračunato u cijenu',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'AROneSans',
+                  fontSize: screenWidth * 0.06,
+                ),
+              ),
+            ),
+            Column(
+              children: List.generate(widget.uracunatoUCijenu.length, (index) {
+                final stavka = widget.uracunatoUCijenu[index];
+                return Container(
+                  width: screenWidth * 0.8,
+                  height: screenHeight * 0.12,
+                  margin: EdgeInsets.only(bottom: 20),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Image.asset(
+                        width: screenWidth * 0.1 - 6,
+                        height: screenHeight * 0.1 - 50,
+                        'assets/images/check.png',
+                      ),
+                      Container(
+                        width: screenWidth - 200,
+                        child: Text(
+                          stavka,
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'AROneSans'
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+            ),
+            Container(
+              width: screenWidth,
+              height: screenHeight * 0.15,
+              alignment: Alignment.center,
+              color: Color(0xFF67B1E5),
+              child: Text(
+                'Šta nije uračunato u cijenu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'AROneSans',
+                  fontSize: screenWidth * 0.06,
+                ),
+              ),
+            ),
+            Container(
+              width: screenWidth,
+              height: screenHeight * 0.3,
+              color: Color(0xFF67B1E5),
+              child: Column(
+                children: List.generate(widget.nijeUracunatoUCijenu.length, (index) {
+                  final stavka = widget.nijeUracunatoUCijenu[index];
+                  return Container(
+                    width: screenWidth * 0.8,
+                    height: screenHeight * 0.12,
+                    margin: EdgeInsets.only(bottom: 20),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF67B1E5),
+                      border: Border.all(color: Colors.white, width: 2),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Image.asset(
+                          width: screenWidth * 0.1 - 6,
+                          height: screenHeight * 0.1 - 50,
+                          'assets/images/check.png',
+                        ),
+                        Container(
+                          width: screenWidth - 200,
+                          child: Text(
+                            stavka,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'AROneSans'
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+              ),
             ),
           ],
         ),
