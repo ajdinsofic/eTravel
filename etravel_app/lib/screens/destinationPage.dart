@@ -1,22 +1,18 @@
+import 'dart:ffi';
+
+import 'package:etravel_app/widgets/destinationPageParts/AllLists.dart';
+import 'package:etravel_app/widgets/destinationPageParts/KomentariKontejner.dart';
 import 'package:etravel_app/widgets/destinationPageParts/roomofferGenerator.dart';
 import 'package:etravel_app/widgets/destinationPageParts/travelingPlanDays.dart';
+import 'package:etravel_app/widgets/headerIFooterAplikacije/eTravelFooter.dart';
 import 'package:etravel_app/widgets/startingPageParts/SljedecaDestinacijaIMenuBar.dart';
 import 'package:etravel_app/widgets/startingPageParts/popularneDestinacijeIDodaci/parts/sliderTackeZaPopularneDestinacije.dart';
 import 'package:etravel_app/widgets/startingPageParts/postaviWidthIHeight.dart';
+import 'package:etravel_app/widgets/startingPageParts/specijalneDestinacijeIDodaci/parts/AllLists.dart';
+import 'package:etravel_app/widgets/startingPageParts/specijalneDestinacijeIDodaci/parts/specijalneDestinacijeKontejneri.dart';
 import 'package:flutter/material.dart';
 
 class destinationPage extends StatefulWidget {
-  final uracunatoUCijenu = [
-    "Osigurana povratna karta avionom",
-    "5 noćenja u hotelu po izboru",
-    "Aerodromska taksa",
-    "Kompletna organizacija putovanja",
-  ];
-
-   final nijeUracunatoUCijenu = [
-    "Putnicko zdravstveno osiguranje",
-    "Fakultativni obilasci",
-  ];
 
   final String naziv;
   final String cijena;
@@ -393,8 +389,8 @@ class _DestinationPageState extends State<destinationPage> {
               ),
             ),
             Column(
-              children: List.generate(widget.uracunatoUCijenu.length, (index) {
-                final stavka = widget.uracunatoUCijenu[index];
+              children: List.generate(uracunatoUCijenu.length, (index) {
+                final stavka = uracunatoUCijenu[index];
                 return Container(
                   width: screenWidth * 0.8,
                   height: screenHeight * 0.12,
@@ -418,7 +414,7 @@ class _DestinationPageState extends State<destinationPage> {
                           textAlign: TextAlign.right,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'AROneSans'
+                            fontFamily: 'AROneSans',
                           ),
                         ),
                       ),
@@ -431,6 +427,7 @@ class _DestinationPageState extends State<destinationPage> {
               width: screenWidth,
               height: screenHeight * 0.15,
               alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 20),
               color: Color(0xFF67B1E5),
               child: Text(
                 'Šta nije uračunato u cijenu',
@@ -447,8 +444,10 @@ class _DestinationPageState extends State<destinationPage> {
               height: screenHeight * 0.3,
               color: Color(0xFF67B1E5),
               child: Column(
-                children: List.generate(widget.nijeUracunatoUCijenu.length, (index) {
-                  final stavka = widget.nijeUracunatoUCijenu[index];
+                children: List.generate(nijeUracunatoUCijenu.length, (
+                  index,
+                ) {
+                  final stavka = nijeUracunatoUCijenu[index];
                   return Container(
                     width: screenWidth * 0.8,
                     height: screenHeight * 0.12,
@@ -462,19 +461,21 @@ class _DestinationPageState extends State<destinationPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Image.asset(
+                          stavka['slika']
+                              as String, // sada koristimo dinamičku putanju iz objekta
                           width: screenWidth * 0.1 - 6,
                           height: screenHeight * 0.1 - 50,
-                          'assets/images/check.png',
                         ),
                         Container(
                           width: screenWidth - 200,
                           child: Text(
-                            stavka,
+                            stavka['opis']
+                                as String, // sada koristimo tekst iz objekta
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'AROneSans'
+                              fontFamily: 'AROneSans',
                             ),
                           ),
                         ),
@@ -484,6 +485,69 @@ class _DestinationPageState extends State<destinationPage> {
                 }),
               ),
             ),
+            Container(
+              width: screenWidth,
+              height: screenHeight * 1.8, // Povećaj visinu da sve stane
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: screenWidth,
+                    height: screenHeight * 0.2,
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Putovanja koja bi Vam se mogla svidjeti',
+                      style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  ...destinacije.map((destinacija) {
+                    return SpecijalneDestinacijeKontejneri(
+                      naziv: destinacija["naziv"].toString(),
+                      slikaPath: destinacija["slika"].toString(),
+                      cijena: destinacija["cijena"].toString(),
+                      detalji: Map<String, String>.from(
+                        destinacija["detalji"] as Map,
+                      ),
+                    );
+                  }),
+                ],
+              ),
+            ),
+            Container(
+              width: screenWidth,
+              height: screenHeight * 1.2, // Povećaj visinu da sve stane
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: screenWidth,
+                    height: screenHeight * 0.1,
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Recenzije korisnika za ovo putovanje',
+                      style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  ...komentariNaOvoPutovanje.map((svakiKom) {
+                    return KomentariKontejner(
+                      korisnik: svakiKom["korisnik"].toString(),
+                      komentar: svakiKom["komentar"].toString(),
+                      slika: svakiKom["slika"].toString(),
+                      brojZvjezda: svakiKom["brojZvjezda"] as int,
+                    );
+                  })
+                ],
+              ),
+            ),
+            eTravelFooter()
           ],
         ),
       ),
