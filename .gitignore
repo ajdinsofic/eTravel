@@ -1,0 +1,74 @@
+# ------------------------
+# Flutter / Dart
+# ------------------------
+**/doc/api/
+**/ios/Flutter/.symlinks/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/.generated/
+*.lock
+pubspec.lock
+
+# Build i cache folderi
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.dart_tool/
+.packages
+.melos_tool/
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.podspec
+
+# Android
+android/.gradle/
+android/app/build/
+*.iml
+local.properties
+.gradle/
+.idea/
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# ------------------------
+# .NET / C#
+# ------------------------
+bin/
+obj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]og/
+[Ll]ogs/
+*.user
+*.suo
+*.cache
+*.pdb
+*.dbmdl
+*.bak
+*.swp
+*.vspscc
+*.vssscc
+*.ncb
+*.opendb
+*.tgz
+*.tar.gz
+
+# Rider / VS / JetBrains
+.idea/
+.vs/
+*.sln.iml
+
+# Paket manageri
+node_modules/
+packages/
+wwwroot/lib/
+
+# Secret fajlovi
+*.env
+appsettings.Development.json
+appsettings.Local.json
