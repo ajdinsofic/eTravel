@@ -11,6 +11,7 @@ namespace eTravelAgencija.Services.Database
         public string LastName { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? LastLoginAt { get; set; }
-        public bool isBlocked { get; set; }
+        public bool isBlocked { get; set; } = false;        
+
     }
 }

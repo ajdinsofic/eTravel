@@ -1,16 +1,41 @@
+using eCommerce.WebAPI.Filters;
 using eTravelAgencija.Services.Database;
 using eTravelAgencija.Services.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("BasicAuthentication", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "basic",
+        In = ParameterLocation.Header,
+        Description = "Basic Authorization header using the Bearer scheme."
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "BasicAuthentication" } },
+            new string[] { }
+        }
+    });
+});
+
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IOfferService, OfferService>();
 
 builder.Services.AddDbContext<eTravelAgencijaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddAuthentication("BasicAuthentication")
+    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
 builder.Services.AddIdentity<User, Role>(options =>
 {
@@ -20,8 +45,6 @@ builder.Services.AddIdentity<User, Role>(options =>
 })
     .AddEntityFrameworkStores<eTravelAgencijaDbContext>()
     .AddDefaultTokenProviders();
-
-builder.Services.AddTransient<IUserService, UserService>();
 
 var app = builder.Build();
 
@@ -45,7 +68,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();  
 app.UseAuthorization();
 
 app.MapControllers();

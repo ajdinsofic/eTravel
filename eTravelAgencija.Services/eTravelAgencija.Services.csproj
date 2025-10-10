@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\eTravelAgencija.Model\eTravelAgencija.Model.csproj"/>
+    <ProjectReference Include="..\eTravelAgencija.Model\eTravelAgencija.Model.csproj" />
   </ItemGroup>
 
 </Project>
