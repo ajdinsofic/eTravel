@@ -16,11 +16,13 @@ namespace eTravelAgencija.Services.Services
     {
         private readonly eTravelAgencijaDbContext _context;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<Role> _roleManager;
 
-        public UserService(eTravelAgencijaDbContext context, UserManager<User> userManager)
+        public UserService(eTravelAgencijaDbContext context, UserManager<User> userManager, RoleManager<Role> roleManager)
         {
             _context = context;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public async Task<List<UserResponse>> GetAsync(UserSearchObject search)
@@ -58,22 +60,21 @@ namespace eTravelAgencija.Services.Services
         {
             return new UserResponse
             {
-                Id = int.Parse(user.Id),
+                Id = user.Id,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
                 Username = user.UserName,
-                IsActive = user.EmailConfirmed,
                 CreatedAt = user.CreatedAt,
                 LastLoginAt = user.LastLoginAt,
                 PhoneNumber = user.PhoneNumber,
-                isBlocked = user.isBlocked
+                isBlocked = user.isBlocked,
             };
         }
 
-        public async Task<UserResponse> GetByIdAsync(int id)
+        public async Task<UserResponse> GetByIdAsync(string id)
         {
-            var user = await _context.Users.FindAsync(id.ToString());
+            var user = await _userManager.FindByIdAsync(id);
             if (user == null)
                 return null;
             return MapToResponse(user);
@@ -81,14 +82,14 @@ namespace eTravelAgencija.Services.Services
 
         public async Task<UserResponse> PostAsync(UserUpsertRequest user)
         {
-            
+
             if (await _context.Users.AnyAsync(u => u.Email == user.Email))
                 throw new InvalidOperationException("A user with this email already exists.");
 
             if (await _context.Users.AnyAsync(u => u.UserName == user.Username))
                 throw new InvalidOperationException("A user with this username already exists.");
 
-           
+
             var newUser = new User
             {
                 UserName = user.Username,
@@ -98,7 +99,6 @@ namespace eTravelAgencija.Services.Services
                 PhoneNumber = user.PhoneNumber,
                 isBlocked = false,
                 CreatedAt = DateTime.UtcNow,
-                EmailConfirmed = true
             };
 
             var result = await _userManager.CreateAsync(newUser, user.Password);
@@ -109,7 +109,7 @@ namespace eTravelAgencija.Services.Services
                 throw new InvalidOperationException($"User creation failed: {errors}");
             }
 
-           
+
             await _userManager.AddToRoleAsync(newUser, "Korisnik");
             return await GetUserResponseWithRolesAsync(newUser.Id);
         }
@@ -123,17 +123,17 @@ namespace eTravelAgencija.Services.Services
 
             var roles = await _userManager.GetRolesAsync(user);
 
-            
+
             if (roles.Contains("Korisnik"))
             {
                 var response = MapToResponse(user);
 
                 response.Roles = new List<RoleResponse>
-                
+
                 {
                     new RoleResponse
                     {
-                        Id = user.Id, 
+                        Id = user.Id,
                         Name = "Korisnik",
                         Description = "Osnovna korisnička rola"
                     }
@@ -141,7 +141,7 @@ namespace eTravelAgencija.Services.Services
 
                 return response;
             }
-            
+
             return MapToResponse(user);
         }
 
@@ -176,6 +176,31 @@ namespace eTravelAgencija.Services.Services
 
             await _context.SaveChangesAsync();
             return await GetUserResponseWithRolesAsync(existingUser.Id);
+        }
+        
+        public async Task<UserResponse?> AuthenticateAsync(UserLoginRequest request)
+        {
+            var user = await _userManager.FindByNameAsync(request.Username);
+            if (user == null || !await _userManager.CheckPasswordAsync(user, request.Password))
+                return null;
+
+            user.LastLoginAt = DateTime.UtcNow;
+            await _context.SaveChangesAsync();
+
+            var response = MapToResponse(user);
+            var roles = await _userManager.GetRolesAsync(user);
+            response.Roles = new List<RoleResponse>(
+                roles.Select(r => new RoleResponse
+                {
+                    Id = user.Id,
+                    Name = r,
+                    Description = r == "Korisnik" ? "Osnovna korisnička rola" :
+                                  r == "Radnik" ? "Rola radnika" :
+                                  r == "Direktor" ? "Rola direktora" : "Nepoznata rola"
+                })
+            );
+
+            return response;
         }
     }
 }

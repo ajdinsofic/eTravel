@@ -10,8 +10,9 @@ namespace eTravelAgencija.Services.Services
     public interface IUserService
     {
         Task<List<UserResponse>> GetAsync(UserSearchObject search = null);
-        Task<UserResponse> GetByIdAsync(int id);
+        Task<UserResponse> GetByIdAsync(string id);
         Task<UserResponse> PostAsync(UserUpsertRequest user);
         Task<UserResponse> PutAsync(int id, UserUpsertRequest user);
+        Task<UserResponse?> AuthenticateAsync(UserLoginRequest request);
     }
 }
