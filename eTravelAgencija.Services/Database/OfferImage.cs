@@ -1,17 +1,17 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using eTravelAgencija.Services.Database;
 
-namespace eTravelAgencija.Services.Database
+public class OfferImage
 {
+    [Key]
+    public int Id { get; set; }
 
-    public class OfferImage
-    {
-        [Key]
-        public int Id { get; set; }
-        public int OfferId { get; set; }
-        public OfferDetails OfferDetails { get; set; }
-        public string ImageUrl { get; set; }
-    }
+    [ForeignKey(nameof(OfferDetails))]
+    public int OfferId { get; set; }  // FK prema OfferDetails
 
-    
+    public OfferDetails OfferDetails { get; set; }
+
+    [Required]
+    public string ImageUrl { get; set; }
 }

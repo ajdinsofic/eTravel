@@ -1,17 +1,29 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using eTravelAgencija.Services.Database;
 
-namespace eTravelAgencija.Services.Database
+public class Offer
 {
-    public class Offer
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public decimal Price { get; set; }
-        public int DaysInTotal { get; set; }
-        public int CategoryId { get; set; }
-        public OfferCategory Category { get; set; }
-        public ICollection<DepartureDate> DepartureDates { get; set; } = new List<DepartureDate>();
-        public OfferDetails Details { get; set; }
+    [Key] // Primary key
+    public int Id { get; set; }
 
-    }
+    [Required]
+    public string Title { get; set; }
+
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal Price { get; set; }
+
+    public int DaysInTotal { get; set; }
+
+    [Required]
+    public string WayOfTravel { get; set; }
+
+    // FK prema OfferSubCategory
+    [ForeignKey(nameof(SubCategory))]
+    public int SubCategoryId { get; set; }
+    public OfferSubCategory SubCategory { get; set; }
+
+    // Navigacija 1:1 prema OfferDetails (FK je u OfferDetails)
+    public OfferDetails Details { get; set; }
 }

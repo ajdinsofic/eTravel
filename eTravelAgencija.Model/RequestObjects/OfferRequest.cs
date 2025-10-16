@@ -14,6 +14,6 @@ namespace eTravelAgencija.Model.RequestObjects
 
         public List<DateTime> DepartureDates { get; set; }
 
-        public List<
+        public ICollection<string> OfferImages { get; set; }
     }
 }

@@ -16,16 +16,14 @@ namespace eTravelAgencija.Services.Services
     {
         private readonly eTravelAgencijaDbContext _context;
         private readonly UserManager<User> _userManager;
-        private readonly RoleManager<Role> _roleManager;
 
         public UserService(eTravelAgencijaDbContext context, UserManager<User> userManager, RoleManager<Role> roleManager)
         {
             _context = context;
             _userManager = userManager;
-            _roleManager = roleManager;
         }
 
-        public async Task<List<UserResponse>> GetAsync(UserSearchObject search)
+        public async Task<PagedResult<UserResponse>> GetAsync(UserSearchObject search)
         {
 
             var query = _context.Users.AsQueryable();
@@ -52,8 +50,32 @@ namespace eTravelAgencija.Services.Services
                     u.LastName.ToLower().Contains(fts));
             }
 
+            // Ukupan broj rezultata (pre paginacije)
+            int totalCount = 0;
+            if (search.IncludeTotalCount)
+            {
+                totalCount = await query.CountAsync();
+            }
+
+            // Paging (osim ako nije RetrieveAll)
+            if (!search.RetrieveAll)
+            {
+                int skip = (search.Page ?? 0) * (search.PageSize ?? 10);
+                int take = search.PageSize ?? 10;
+
+                query = query.Skip(skip).Take(take);
+                totalCount = await query.CountAsync();
+            }
+
             var users = await query.ToListAsync();
-            return users.Select(MapToResponse).ToList();
+
+            var result = new PagedResult<UserResponse>
+            {
+                Items = users.Select(MapToResponse).ToList(),
+                TotalCount = search.IncludeTotalCount ? totalCount : 0
+            };
+
+            return result;
         }
 
         private UserResponse MapToResponse(User user)
@@ -177,7 +199,7 @@ namespace eTravelAgencija.Services.Services
             await _context.SaveChangesAsync();
             return await GetUserResponseWithRolesAsync(existingUser.Id);
         }
-        
+
         public async Task<UserResponse?> AuthenticateAsync(UserLoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.Username);

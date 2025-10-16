@@ -4,7 +4,7 @@ namespace eTravelAgencija.Model.ResponseObjects
 { 
     public class OfferPlanDayResponse
     {
-        public int DayNumber { get; set; } // Its gonna be like day 1,2,3,4 and we will add days in flutter app
+        public int DayNumber { get; set; } 
 
         public string Title { get; set; }
 
