@@ -8,17 +8,16 @@ namespace eTravelAgencija.Model.ResponseObjects
 {
     public class OfferResponse
     {
+        public int Id { get; set; }
         public string OfferName { get; set; }
 
-        public string Image { get; set; }
+        public List<string> OfferImage { get; set; }
 
         public int DaysInTotal { get; set; }
 
         public int MinimalPrice { get; set; }
 
         public string WayOfTravel { get; set; } // By buss or by plane
-
-        public List<DateTime> DepartureDates { get; set; } // Dates of going to a trip
 
     }
 }

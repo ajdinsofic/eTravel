@@ -31,6 +31,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IOfferService, OfferService>();
+builder.Services.AddTransient<IHotelService, HotelService>();
 
 builder.Services.AddDbContext<eTravelAgencijaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -56,8 +57,9 @@ using (var scope = app.Services.CreateScope())
     foreach (var role in roles)
     {
         if (!await roleManager.RoleExistsAsync(role))
-            await roleManager.CreateAsync(new Role { Name = role });
+            await roleManager.CreateAsync(new Role { Name = role, Description = $"{role} role" });
     }
+
 }
 
 if (app.Environment.IsDevelopment())
