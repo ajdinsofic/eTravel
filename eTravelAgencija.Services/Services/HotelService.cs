@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.ResponseObjects;
+using eTravelAgencija.Model.Responses;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
 using Microsoft.EntityFrameworkCore;
@@ -12,71 +14,227 @@ namespace eTravelAgencija.Services.Services
     public class HotelService : IHotelService
     {
         private readonly eTravelAgencijaDbContext _context;
+        private readonly IHotelImageService _hotelImageService;
+        private readonly IOfferHotelService _offerHotelService;
 
-        public HotelService(eTravelAgencijaDbContext context)
+        public HotelService(eTravelAgencijaDbContext context, IHotelImageService hotelImageService, IOfferHotelService offerHotelService)
         {
             _context = context;
+            _hotelImageService = hotelImageService;
+            _offerHotelService = offerHotelService;
         }
 
-        public async Task<List<HotelResponse>> GetHotel(HotelSearchObject search)
-        {
-            if (search == null)
-                throw new ArgumentNullException(nameof(search));
 
-            var query = _context.OfferHotels
-                .Include(oh => oh.Hotel)
-                    .ThenInclude(h => h.HotelImages)
-                .Include(oh => oh.Hotel)
-                    .ThenInclude(h => h.HotelRooms)
-                        .ThenInclude(hr => hr.Rooms)
-                .Where(oh => oh.OfferDetailsId == search.OfferId
-                          && oh.DepartureDate == search.DepartureDate
-                          && oh.Hotel.HotelRooms.Any(r => r.RoomId == search.RoomId))
-                .Select(oh => oh.Hotel)
-                .Distinct();
+
+        // DISKUSIJA (BITNO JE PRVO NARAVITI DA RADI ALI PITANJE ZA RAZMISLJANJE) - DA LI SMO MOGLI OVA DVA GETA ZA USER I ADMIN SPOJITI, STAVITI IM ZNACAJKU DA LI SE RADI OD USERU ILI ADMINU
+
+        public async Task<PagedResult<HotelResponse>> GetHotelsForUserBySearch(HotelUserSearchObject search)
+        {
+            var query = _context.Hotels
+                .Include(h => h.HotelRooms)
+                    .ThenInclude(hr => hr.Rooms)
+                .AsQueryable();
+
+            if (search.OfferId > 0)
+            {
+                query = query.Where(h => h.OfferHotels.Any(oh => oh.OfferDetailsId == search.OfferId));
+            }
+
+            if (search.DepartureDate != default)
+            {
+                query = query.Where(h => h.OfferHotels.Any(oh => oh.DepartureDate.Date == search.DepartureDate.Date));
+            }
+
+            if (search.RoomId > 0)
+            {
+                query = query.Where(h => h.HotelRooms.Any(r => r.Id == search.RoomId));
+            }
+
+            if (!string.IsNullOrEmpty(search.FTS))
+            {
+                var fts = search.FTS.ToLower();
+                query = query.Where(h =>
+                    h.Name.ToLower().Contains(fts) ||
+                    h.City.ToLower().Contains(fts) ||
+                    h.Country.ToLower().Contains(fts));
+            }
+
+            int totalCount = 0;
+            if (search.IncludeTotalCount)
+            {
+                totalCount = await query.CountAsync();
+            }
+
+            if (!search.RetrieveAll)
+            {
+                int skip = (search.Page ?? 0) * (search.PageSize ?? 10);
+                int take = search.PageSize ?? 10;
+                query = query.Skip(skip).Take(take);
+            }
 
             var hotels = await query.ToListAsync();
 
-            var result = hotels.Select(h => new HotelResponse
+            // 🔄 Mapiranje slika koristeći HotelImageService
+            var resultItems = new List<HotelResponse>();
+
+            foreach (var h in hotels)
             {
-                HotelId = h.Id,
-                HotelName = h.Name,
-                Stars = h.Stars,
-                MainImage = h.HotelImages.FirstOrDefault()?.ImageUrl ?? "",
+                var mainImage = await _hotelImageService.GetMainImageAsync(h.Id);
 
-                Rooms = h.HotelRooms.Select(r => new RoomResponse
+                resultItems.Add(new HotelResponse
                 {
-                    RoomType = r.Rooms.RoomType,
-                    RoomsLeft = r.RoomsLeft
-                }).ToList()
+                    HotelId = h.Id,
+                    HotelName = h.Name,
+                    Stars = h.Stars,
+                    MainImage = mainImage.ImageUrl,
+                    Room = h.HotelRooms.Select(r => new RoomResponse   // Ovdje cemo napraviti roomService i popravit ovo
+                    {
+                        RoomType = r.Rooms.RoomType,
+                        RoomsLeft = r.RoomsLeft
+                    }).FirstOrDefault()
+                });
+            }
 
-            }).ToList();
-
-            return result;
+            return new PagedResult<HotelResponse>
+            {
+                Items = resultItems,
+                TotalCount = search.IncludeTotalCount ? totalCount : 0
+            };
         }
 
-        public async Task<HotelDetailsResponse> GetHotelById(int hotelId, int offerId)
+
+        // Ovdje kada je vec kreiran hotel, moci cemo direktno da imamo opciju da vidimo pregled,
+        // brisemo i dodajemo slike itd. // ISTO TAKO PAGINACIJA
+        public async Task<PagedResult<HotelResponse>> GetHotelsForAdminByOfferId(HotelAdminSearchObject search)
         {
-            var offerHotel = await _context.OfferHotels
-                .Include(oh => oh.Hotel)
-                    .ThenInclude(h => h.HotelImages)
-                .FirstOrDefaultAsync(oh => oh.HotelId == hotelId && oh.OfferDetailsId == offerId);
+            var query = _context.Hotels
+                .Include(h => h.OfferHotels)
+                .Where(h => h.OfferHotels.Any(oh => oh.OfferDetailsId == search.OfferId))
+                .AsQueryable();
 
-            if (offerHotel == null || offerHotel.Hotel == null)
-                return null;
-
-            var hotel = offerHotel.Hotel;
-
-            var response = new HotelDetailsResponse
+            int totalCount = 0;
+            if (search.IncludeTotalCount)
             {
-                Address = hotel.Address,
-                HotelImages = hotel.HotelImages.Select(img => img.ImageUrl).ToList()
+                totalCount = await query.CountAsync();
+            }
+
+            if (!search.RetrieveAll)
+            {
+                int skip = (search.Page ?? 0) * (search.PageSize ?? 10);
+                int take = search.PageSize ?? 10;
+
+                query = query.Skip(skip).Take(take);
+            }
+
+            var hotels = await query.ToListAsync();
+
+            var resultItems = new List<HotelResponse>();
+
+            foreach (var h in hotels)
+            {
+                var mainImage = await _hotelImageService.GetMainImageAsync(h.Id); // 👈 koristi servis
+
+                resultItems.Add(new HotelResponse
+                {
+                    HotelId = h.Id,
+                    HotelName = h.Name,
+                    Stars = h.Stars,
+                    MainImage = mainImage.ImageUrl
+                });
+            }
+
+            return new PagedResult<HotelResponse>
+            {
+                Items = resultItems,
+                TotalCount = search.IncludeTotalCount ? totalCount : 0
+            };
+        }
+
+
+        // public async Task<HotelResponse> GetHotelforAdminById(int id)
+        // {
+        //     var hotel = await _context.Hotels
+        //         .Include(h => h.HotelRooms)
+        //             .ThenInclude(hr => hr.Rooms)
+        //         .FirstOrDefaultAsync(h => h.Id == id);
+
+        //     if (hotel == null)
+        //         throw new Exception("Hotel nije pronađen.");
+
+        //     var mainImage = await _hotelImageService.GetMainImageAsync(hotel.Id);
+
+        //     return new HotelResponse
+        //     {
+        //         HotelId = hotel.Id,
+        //         HotelName = hotel.Name,
+        //         Stars = hotel.Stars,
+        //         MainImage = mainImage.ImageUrl,
+        //     };
+        // }
+
+
+        // Kada se vrati da je hotel napravljen, onda omogucujemo opciju da se slike mogu dodavati
+        public async Task<HotelResponse> PostHotel(HotelUpsertRequest request)
+        {
+
+            var hotel = new Hotel
+            {
+                Name = request.Name,
+                Address = request.Address,
+                City = request.City,
+                Country = request.Country,
+                Stars = request.Stars
             };
 
-            return response;
+            _context.Hotels.Add(hotel);
+            await _context.SaveChangesAsync();
+
+            _offerHotelService.LinkHotelToOffer(hotel.Id, request.OfferId, request.DepartureDate, request.ReturnTime);
+
+            return new HotelResponse
+            {
+                HotelId = hotel.Id,
+                HotelName = hotel.Name,
+                Stars = hotel.Stars,
+            };
         }
 
-        // Dodaj mapping objekata
+        public async Task<HotelResponse> PutHotel(int id, HotelUpsertRequest request)
+        {
+            var hotel = await _context.Hotels
+                .FirstOrDefaultAsync(h => h.Id == id);
+
+            if (hotel == null)
+                throw new Exception("Hotel nije pronađen.");
+
+            hotel.Name = request.Name;
+            hotel.Address = request.Address;
+            hotel.City = request.City;
+            hotel.Country = request.Country;
+            hotel.Stars = request.Stars;
+
+            await _context.SaveChangesAsync();
+
+            _offerHotelService.PutOfferHotelDates(id, request.OfferId, request.DepartureDate, request.ReturnTime);
+
+            return new HotelResponse
+            {
+                HotelId = hotel.Id,
+                HotelName = hotel.Name,
+                Stars = hotel.Stars,
+            };
+        }
+
+        public async Task<bool> DeleteHotel(int id)
+        {
+            var hotel = await _context.Hotels.FindAsync(id);
+            if (hotel == null)
+                return false;
+
+            _context.Hotels.Remove(hotel);
+            await _context.SaveChangesAsync();
+            return true;
+        }
 
 
     }

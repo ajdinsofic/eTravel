@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace eTravelAgencija.Model.SearchObjects
 {
-    public class HotelSearchObject
+    public class HotelAdminSearchObject : BaseSearchObject
     {
         [Required]
         public int OfferId { get; set; }
-        [Required]
-        public DateTime DepartureDate { get; set; }
-        [Required]
-        public int RoomId { get; set; }
-
-
     }
 }
