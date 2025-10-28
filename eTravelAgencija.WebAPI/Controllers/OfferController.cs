@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using eTravelAgencija.Model.RequestObjects;
+using eTravelAgencija.Model.ResponseObjects;
 using eTravelAgencija.Model.Responses;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    public class OfferController : Controller
+    [ApiController]
+    public class OfferController : ControllerBase
     {
         private readonly IOfferService _offerService;
 
@@ -22,46 +19,72 @@ namespace eTravelAgencija.WebAPI.Controllers
             _offerService = offerService;
         }
 
-        [HttpGet("specijalne-ponude")]
-        public async Task<IActionResult> GetSpecialOffers([FromQuery] OfferCategoryAndSubcategoryRequest request)
+        // GET: api/Offer/admin-search
+        [HttpGet("admin-search")]
+        public async Task<ActionResult<PagedResult<OfferAdminResponse>>> GetSearchOffersForAdmin([FromQuery] OfferSearchObject search)
         {
-            var offers = await _offerService.GetSpecialOffers(request);
-
-            return Ok(offers);
+            var result = await _offerService.GetSearchOffersForAdmin(search);
+            return Ok(result);
         }
 
-        [HttpGet("praznicna-putovanja")]
-
-        public async Task<IActionResult> GetHolidayOffers(OfferCategoryAndSubcategoryRequest request)
+        // GET: api/Offer/user-search
+        [HttpGet("user-search")]
+        public async Task<ActionResult<PagedResult<OfferUserResponce>>> GetSearchOffersForUser([FromQuery] OfferSearchObject search)
         {
-            var offers = await _offerService.GetHolidayOffers(request);
-
-            return Ok(offers);
+            var result = await _offerService.GetSearchOffersForUser(search);
+            return Ok(result);
         }
 
-        [HttpGet("osjetite-svaki-mjesec")]
-
-        public async Task<IActionResult> GetFeelTheMonth(OfferCategoryAndSubcategoryRequest request)
+        // GET: api/Offer/admin-details/{id}
+        [HttpGet("admin-details/{id}")]
+        public async Task<ActionResult<OfferAdminDetailResponse>> GetOfferDetailsByIdForAdmin(int id)
         {
-            var offers = await _offerService.GetFeelTheMonth(request);
-
-            return Ok(offers);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetOfferById(int id)
-        {
-            var offer = await _offerService.GetOfferById(id);
-
-            if (offer == null)
-            {
+            var result = await _offerService.GetOfferDetailsByIdForAdmin(id);
+            if (result == null)
                 return NotFound();
-            }
 
-            return Ok(offer);
+            return Ok(result);
         }
 
+        // GET: api/Offer/user-details/{id}
+        [HttpGet("user-details/{id}")]
+        public async Task<ActionResult<OfferUserDetailResponse>> GetOfferDetailsByIdForUser(int id)
+        {
+            var result = await _offerService.GetOfferDetailsByIdForUser(id);
+            if (result == null)
+                return NotFound();
 
+            return Ok(result);
+        }
 
+        // POST: api/Offer
+        [HttpPost]
+        public async Task<ActionResult<OfferUpsertResponse>> PostOffer([FromBody] OfferRequest request)
+        {
+            var createdOffer = await _offerService.PostOffer(request);
+            return CreatedAtAction(nameof(GetOfferDetailsByIdForAdmin), new { id = createdOffer.Id }, createdOffer);
+        }
+
+        // PUT: api/Offer/{id}
+        [HttpPut("{id}")]
+        public async Task<ActionResult<OfferUpsertResponse>> PutOffer(int id, [FromBody] OfferRequest request)
+        {
+            var updatedOffer = await _offerService.PutOffer(id, request);
+            if (updatedOffer == null)
+                return NotFound();
+
+            return Ok(updatedOffer);
+        }
+
+        // DELETE: api/Offer/{id}
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteOffer(int id)
+        {
+            var deleted = await _offerService.DeleteOffer(id);
+            if (!deleted)
+                return NotFound();
+
+            return NoContent();
+        }
     }
 }

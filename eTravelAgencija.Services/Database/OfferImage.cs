@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using eTravelAgencija.Services.Database;
+using eTravelAgencija.Services.Services;
 
 public class OfferImage
 {

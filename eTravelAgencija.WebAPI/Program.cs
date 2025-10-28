@@ -1,4 +1,5 @@
 using eCommerce.WebAPI.Filters;
+using eTravelAgencija.Model.ResponseObjects;
 using eTravelAgencija.Services.Database;
 using eTravelAgencija.Services.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -29,9 +30,17 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddAutoMapper(typeof(OfferMappingProfile).Assembly);
+
+
+
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IOfferService, OfferService>();
 builder.Services.AddTransient<IHotelService, HotelService>();
+builder.Services.AddTransient<IOfferHotelService, OfferHotelService>();
+builder.Services.AddTransient<IOfferImageService, OfferImageService>();
+builder.Services.AddTransient<IHotelImageService, HotelImageService>();
+
 
 builder.Services.AddDbContext<eTravelAgencijaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

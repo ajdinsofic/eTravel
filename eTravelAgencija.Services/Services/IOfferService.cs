@@ -12,13 +12,13 @@ namespace eTravelAgencija.Services.Services
     public interface IOfferService
     {
         // Ako nije ulogovan, ako jeste onda moramo da vidimo sistem "preporuceno za vas"
-        Task<List<OfferResponse>> GetSpecialOffers(OfferCategoryAndSubcategoryRequest request);
-        Task<List<OfferResponse>> GetHolidayOffers(OfferCategoryAndSubcategoryRequest request);
-        Task<List<OfferResponse>> GetFeelTheMonth(OfferCategoryAndSubcategoryRequest request);
-        Task<OfferResponse> GetOfferById(int id);
-        Task<bool> DeleteAsync(int id);
-
-        //Task<List<OfferResponse>> GetSearchPutovanje(OfferSearchObject? search = null);
+        Task<PagedResult<OfferAdminResponse>> GetSearchOffersForAdmin(OfferSearchObject request);
+        Task<PagedResult<OfferUserResponce>> GetSearchOffersForUser(OfferSearchObject request);
+        Task<OfferAdminDetailResponse> GetOfferDetailsByIdForAdmin(int id);
+        Task<OfferUserDetailResponse> GetOfferDetailsByIdForUser(int id);
+        Task<OfferUpsertResponse> PostOffer(OfferRequest request);
+        Task<OfferUpsertResponse> PutOffer(int id, OfferRequest request);
+        Task<bool> DeleteOffer(int id);
 
     }
 }

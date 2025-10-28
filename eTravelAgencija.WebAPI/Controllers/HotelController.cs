@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
+using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.ResponseObjects;
+using eTravelAgencija.Model.Responses;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
+
     [Route("api/[controller]")]
-    public class HotelController : Controller
+    public class HotelController : ControllerBase
     {
         private readonly IHotelService _hotelService;
 
@@ -21,31 +21,42 @@ namespace eTravelAgencija.WebAPI.Controllers
             _hotelService = hotelService;
         }
 
-        [HttpGet("{hotelId}/{offerId}")]
-        public Task<HotelDetailsResponse> GetHotelById(int hotelId, int offerId)
+        [HttpGet("user")]
+        public async Task<ActionResult<PagedResult<HotelResponse>>> GetHotelsForUser([FromQuery] HotelUserSearchObject search)
         {
-            var hotel = _hotelService.GetHotelById(hotelId, offerId);
-
-            if (hotel == null)
-            {
-                return null;
-            }
-
-            return hotel;
+            var result = await _hotelService.GetHotelsForUserBySearch(search);
+            return Ok(result);
         }
 
-        [HttpGet("search")]
-
-        public Task<List<HotelResponse>> GetHotel(HotelSearchObject search)
+        [HttpGet("admin")]
+        public async Task<ActionResult<PagedResult<HotelResponse>>> GetHotelsForAdmin([FromQuery] HotelAdminSearchObject search)
         {
-            var hotels = _hotelService.GetHotel(search);
+            var result = await _hotelService.GetHotelsForAdminByOfferId(search);
+            return Ok(result);
+        }
 
-            if (hotels == null)
-            {
-                return null;
-            }
+        [HttpPost]
+        public async Task<ActionResult<HotelResponse>> CreateHotel([FromBody] HotelUpsertRequest request)
+        {
+            var created = await _hotelService.PostHotel(request);
+            return CreatedAtAction(nameof(CreateHotel), new { id = created.HotelId }, created);
+        }
 
-            return hotels;
+        [HttpPut("{id}")]
+        public async Task<ActionResult<HotelResponse>> UpdateHotel(int id, [FromBody] HotelUpsertRequest request)
+        {
+            var updated = await _hotelService.PutHotel(id, request);
+            return Ok(updated);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteHotel(int id)
+        {
+            var result = await _hotelService.DeleteHotel(id);
+            if (!result)
+                return NotFound();
+
+            return NoContent();
         }
     }
 }

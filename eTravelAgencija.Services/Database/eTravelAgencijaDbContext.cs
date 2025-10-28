@@ -47,9 +47,11 @@ public class eTravelAgencijaDbContext
         new OfferCategory { Id = 1, Name = "Praznična putovanja" },
         new OfferCategory { Id = 2, Name = "Specijalna putovanja" },
         new OfferCategory { Id = 3, Name = "Osjetite mjesec" }
-    );
+        );
 
         builder.Entity<OfferSubCategory>().HasData(
+    // Specijalna putovanja 
+    new OfferSubCategory { Id = -1, Name = "Bez podkategorije", CategoryId = 1 },
     // Praznična putovanja (CategoryId = 1)
     new OfferSubCategory { Id = 1, Name = "Božić", CategoryId = 1 },
     new OfferSubCategory { Id = 2, Name = "Bajram", CategoryId = 1 },

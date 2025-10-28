@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using eTravelAgencija.Services.Services;
 
 namespace eTravelAgencija.Services.Database
 {
@@ -15,5 +16,7 @@ namespace eTravelAgencija.Services.Database
 
         [Required]
         public string ImageUrl { get; set; }
+
+
     }
 }
