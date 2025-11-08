@@ -33,9 +33,28 @@ namespace eTravelAgencija.Services.Services
             return MapToOfferHotelResponse(entity);
         }
 
+        public async Task<OfferHotelResponse?> GetOfferHotelLinkAsync(int offerId, int hotelId)
+        {
+            var entity = await _context.OfferHotels
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.OfferDetailsId == offerId && x.HotelId == hotelId);
+
+            if (entity == null)
+                return null;
+
+            return new OfferHotelResponse
+            {
+                OfferId = entity.OfferDetailsId,
+                HotelId = entity.HotelId,
+                Departuredate = entity.DepartureDate,
+                ReturnDate = entity.ReturnDate
+            };
+        }
+
+
         public async Task<OfferHotelResponse> PutOfferHotelDates(int hotelId, int offerId, DateTime departureDate, DateTime returnDate)
         {
-            
+
             var entity = await _context.OfferHotels
                 .FirstOrDefaultAsync(x => x.HotelId == hotelId && x.OfferDetailsId == offerId);
 
@@ -44,13 +63,13 @@ namespace eTravelAgencija.Services.Services
                 throw new Exception("Veza između hotela i ponude nije pronađena.");
             }
 
-            
+
             entity.DepartureDate = departureDate;
             entity.ReturnDate = returnDate;
 
             await _context.SaveChangesAsync();
 
-            
+
             return MapToOfferHotelResponse(entity);
         }
 

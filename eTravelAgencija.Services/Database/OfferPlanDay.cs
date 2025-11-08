@@ -5,8 +5,6 @@ namespace eTravelAgencija.Services.Database
 {
     public class OfferPlanDay
     {
-        [Key]
-        public int Id { get; set; }
 
         [ForeignKey(nameof(OfferDetails))]
         public int OfferDetailsId { get; set; }

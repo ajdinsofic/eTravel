@@ -8,7 +8,7 @@ namespace eTravelAgencija.Model.RequestObjects
     public class OfferRequest
 {
     public string Title { get; set; }
-    public decimal Price { get; set; }
+    public decimal minimalPrice { get; set; }
     public int DaysInTotal { get; set; }
     public string WayOfTravel { get; set; }
     [Required]

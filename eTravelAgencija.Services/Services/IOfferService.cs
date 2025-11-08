@@ -16,6 +16,8 @@ namespace eTravelAgencija.Services.Services
         Task<PagedResult<OfferUserResponce>> GetSearchOffersForUser(OfferSearchObject request);
         Task<OfferAdminDetailResponse> GetOfferDetailsByIdForAdmin(int id);
         Task<OfferUserDetailResponse> GetOfferDetailsByIdForUser(int id);
+        Task<OfferResponse> GetOfferById(int id);
+        Task<OfferResponse> GetOfferWithDetailsById(int id);
         Task<OfferUpsertResponse> PostOffer(OfferRequest request);
         Task<OfferUpsertResponse> PutOffer(int id, OfferRequest request);
         Task<bool> DeleteOffer(int id);

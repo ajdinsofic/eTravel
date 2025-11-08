@@ -40,6 +40,9 @@ builder.Services.AddTransient<IHotelService, HotelService>();
 builder.Services.AddTransient<IOfferHotelService, OfferHotelService>();
 builder.Services.AddTransient<IOfferImageService, OfferImageService>();
 builder.Services.AddTransient<IHotelImageService, HotelImageService>();
+builder.Services.AddTransient<IHotelRoomsService, HotelRoomsService>();
+builder.Services.AddTransient<IOfferPlanDayService, OfferPlanDayService>();
+builder.Services.AddTransient<IBookingPreviewService, BookingPreviewService>();
 
 
 builder.Services.AddDbContext<eTravelAgencijaDbContext>(options =>

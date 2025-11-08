@@ -4,6 +4,7 @@ namespace eTravelAgencija.Model.ResponseObjects
 { 
     public class OfferPlanDayResponse
     {
+        public int OfferDetailsId { get; set; }
         public int DayNumber { get; set; } 
 
         public string Title { get; set; }

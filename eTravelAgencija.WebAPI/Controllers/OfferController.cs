@@ -35,6 +35,17 @@ namespace eTravelAgencija.WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<OfferAdminDetailResponse>> GetOfferById(int id)
+        {
+            var result = await _offerService.GetOfferById(id);
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
+        }
+
+
         // GET: api/Offer/admin-details/{id}
         [HttpGet("admin-details/{id}")]
         public async Task<ActionResult<OfferAdminDetailResponse>> GetOfferDetailsByIdForAdmin(int id)

@@ -17,6 +17,11 @@ public class OfferMappingProfile : Profile
             .ForMember(dest => dest.SubCategoryName, opt => opt.MapFrom(src => src.SubCategory))
             .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.SubCategory.Category));
 
+        CreateMap<OfferSubCategory, OfferSubCategoryResponse>()
+    .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
+
+        CreateMap<OfferCategory, OfferCategoryResponse>();
+
         CreateMap<OfferDetails, OfferAdminDetailResponse>()
             .ForMember(dest => dest.County, opt => opt.MapFrom(src => src.Country));
 

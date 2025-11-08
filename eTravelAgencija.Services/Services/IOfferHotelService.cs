@@ -8,6 +8,7 @@ namespace eTravelAgencija.Services.Services
 {
     public interface IOfferHotelService
     {
+        Task<OfferHotelResponse?> GetOfferHotelLinkAsync(int offerId, int hotelId);
         Task<OfferHotelResponse> LinkHotelToOffer(int hotelId, int offerId, DateTime departureDate, DateTime returnDate);
         Task<OfferHotelResponse> PutOfferHotelDates(int hotelId, int offerId, DateTime departureDate, DateTime returnDate);
     }

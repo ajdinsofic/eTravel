@@ -23,14 +23,14 @@ namespace eTravelAgencija.WebAPI.Controllers
             _imageService = imageService;
         }
 
-        [HttpGet("{referenceId}/images")]
-        public async Task<ActionResult<List<TResponse>>> GetAll(int referenceId)
+        [HttpGet("images/{referenceId}")]
+        public async Task<ActionResult<List<TResponse>>> GetAll(int referenceId, bool isMain = false)
         {
-            var images = await _imageService.GetAllImagesAsync(referenceId);
+            var images = await _imageService.GetImagesAsync(referenceId,isMain);
             return Ok(images);
         }
 
-        [HttpPost("{referenceId}/image")]
+        [HttpPost("image/{referenceId}")]
         public async Task<ActionResult<int>> Add(int referenceId, [FromBody] string imageUrl)
         {
             var id = await _imageService.AddImageAsync(referenceId, imageUrl);

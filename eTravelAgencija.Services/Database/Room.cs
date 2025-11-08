@@ -8,6 +8,9 @@ namespace eTravelAgencija.Services.Database
         public int Id { get; set; }
 
         [Required]
-        public string RoomType { get; set; }  // Ispravio sam typo iz RoomTyoe u RoomType
+        public string RoomType { get; set; }
+
+        [Required]
+        public int RoomCount { get; set; }
     }
 }

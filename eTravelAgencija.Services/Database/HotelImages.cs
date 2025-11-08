@@ -17,6 +17,8 @@ namespace eTravelAgencija.Services.Database
         [Required]
         public string ImageUrl { get; set; }
 
+        public bool IsMain { get; set; }
+
 
     }
 }

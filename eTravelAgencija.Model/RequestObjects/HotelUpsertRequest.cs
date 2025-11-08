@@ -21,9 +21,9 @@ namespace eTravelAgencija.Model.RequestObjects
 
         public int Stars { get; set; }
 
-        public DateTime DepartureDate { get; set; }
+        public DateTime DepartureDate { get; set; } // Ovdje ce morati biti konverzija u DATEONLY
 
-        public DateTime ReturnTime { get; set; }
+        public DateTime ReturnTime { get; set; } // Ovdje ce morati biti konverzija u DATEONLY
 
         //public List<string> ImageUrls { get; set; }
 

@@ -11,9 +11,6 @@ public class Offer
     [Required]
     public string Title { get; set; }
 
-    [Column(TypeName = "decimal(18,2)")]
-    public decimal Price { get; set; }
-
     public int DaysInTotal { get; set; }
 
     [Required]
