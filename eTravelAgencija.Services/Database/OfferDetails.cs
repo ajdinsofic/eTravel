@@ -19,6 +19,18 @@ namespace eTravelAgencija.Services.Database
 
         public string City { get; set; }
 
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal MinimalPrice { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal ResidenceTaxPerDay { get; set; }  // Boravišna taksa po danu
+        
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal TravelInsuranceTotal { get; set; }
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal ResidenceTotal { get; set; }
+
         public ICollection<OfferImage> OfferImages { get; set; } = new List<OfferImage>();
 
         public ICollection<OfferPlanDay> OfferPlanDays { get; set; } = new List<OfferPlanDay>();

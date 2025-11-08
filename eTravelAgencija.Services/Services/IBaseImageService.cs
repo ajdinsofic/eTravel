@@ -8,8 +8,7 @@ namespace eTravelAgencija.Services.Services
 {
     public interface IBaseImageService<TResponse>
     {
-        Task<TResponse> GetMainImageAsync(int referenceId);
-        Task<List<TResponse>> GetAllImagesAsync(int referenceId);
+        Task<List<TResponse>> GetImagesAsync(int referenceId, bool isMain);
         Task<int> AddImageAsync(int referenceId, string imageUrl);
         Task<bool> DeleteImageByIdAsync(int imageId);
     }

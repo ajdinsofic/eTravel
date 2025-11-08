@@ -10,7 +10,7 @@ namespace eTravelAgencija.Model.ResponseObjects
 
     public string MainImage { get; set; } 
     
-    public RoomResponse? Room { get; set; }
+    public HotelRoomResponse? HotelRooms { get; set; }
 }
 
     

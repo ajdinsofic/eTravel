@@ -26,57 +26,33 @@ namespace eTravelAgencija.Services.Services
             _imageUrlSelector = imageUrlSelector;
         }
 
-        public virtual async Task<TResponse> GetMainImageAsync(int referenceId)
+        public virtual async Task<List<TResponse>> GetImagesAsync(int referenceId, bool isMain = false)
         {
-            // Dinamički filter po referenceId
-            var parameter = Expression.Parameter(typeof(TEntity), "x");
-            var left = Expression.Invoke(_referenceSelector, parameter);
-            var right = Expression.Constant(referenceId);
-            var equals = Expression.Equal(left, right);
-            var lambda = Expression.Lambda<Func<TEntity, bool>>(equals, parameter);
+            var entityType = typeof(TEntity);
+            IQueryable<TEntity> query = _context.Set<TEntity>();
 
-            // Select imageUrl
-            var imageUrl = await _context.Set<TEntity>()
-                .Where(lambda)
-                .Select(x => new
-                {
-                    Id = EF.Property<int>(x, "Id"), // reflektivno dohvaća "Id" polje
-                    ImageUrl = _imageUrlSelector.Compile()(x)
-                })
-        .FirstOrDefaultAsync();
+            // 📌 Dinamički pronađi property koji pokazuje na referenceId (OfferId ili HotelId)
+            string referenceProperty = GetPropertyName(_referenceSelector);
 
-            if (imageUrl == null)
-                return null;
+            query = query.Where(x => EF.Property<int>(x, referenceProperty) == referenceId);
 
-            return new TResponse
+            // 📌 Ako se traže samo glavne slike (IsMain == true)
+            if (isMain && entityType.GetProperty("IsMain") != null)
             {
-                Id = imageUrl.Id,
-                referenceId = referenceId,
-                ImageUrl = imageUrl.ImageUrl
-            };
-        }
+                query = query.Where(x => EF.Property<bool>(x, "IsMain") == true);
+            }
 
-        public virtual async Task<List<TResponse>> GetAllImagesAsync(int referenceId)
-        {
-            // Dinamički filter
-            var parameter = Expression.Parameter(typeof(TEntity), "x");
-            var left = Expression.Invoke(_referenceSelector, parameter);
-            var right = Expression.Constant(referenceId);
-            var equals = Expression.Equal(left, right);
-            var lambda = Expression.Lambda<Func<TEntity, bool>>(equals, parameter);
-
-            // Dohvati sve slike
-            var list = await _context.Set<TEntity>()
-                .Where(lambda)
+            // 📸 Izvuci slike u response model
+            var result = await query
                 .Select(x => new TResponse
                 {
-                    Id = EF.Property<int>(x, "Id"), // dohvaća ID iz baze
+                    Id = EF.Property<int>(x, "Id"),
                     referenceId = referenceId,
                     ImageUrl = EF.Property<string>(x, GetPropertyName(_imageUrlSelector))
                 })
                 .ToListAsync();
 
-            return list;
+            return result;
         }
 
 

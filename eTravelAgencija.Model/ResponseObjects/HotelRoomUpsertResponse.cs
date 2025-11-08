@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace eTravelAgencija.Model.ResponseObjects
 {
-    public class RoomResponse
+    public class HotelRoomUpsertResponse
     {
-        public string RoomType { get; set; }  // npr. "Dvokrevetna"
+        public int HotelId { get; set; }
+        public int RoomId { get; set; }
+        public string RoomType { get; set; }
         public int RoomsLeft { get; set; }
     }
 

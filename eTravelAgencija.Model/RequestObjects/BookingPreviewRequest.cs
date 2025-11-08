@@ -4,15 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace eTravelAgencija.Model.SearchObjects
+namespace eTravelAgencija.Model.RequestObjects
 {
-    public class HotelUserSearchObject : BaseSearchObject
+    public class BookingPreviewRequest
     {
         [Required]
         public int OfferId { get; set; }
         [Required]
-        public DateTime DepartureDate { get; set; }
+        public int HotelId { get; set; }
         [Required]
         public int RoomId { get; set; }
+        [Required]
+        public decimal CalculatedPrice { get; set; }
+        public bool IncludeInsurance { get; set; } = true;
     }
 }

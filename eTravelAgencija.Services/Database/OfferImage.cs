@@ -15,4 +15,6 @@ public class OfferImage
 
     [Required]
     public string ImageUrl { get; set; }
+
+    public bool isMain { get; set; }
 }

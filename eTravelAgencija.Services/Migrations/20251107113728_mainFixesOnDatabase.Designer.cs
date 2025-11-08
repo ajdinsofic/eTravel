@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace eTravelAgencija.Services.Migrations
 {
     [DbContext(typeof(eTravelAgencijaDbContext))]
-    [Migration("20251016233319_AddDataSeedAndFixingDatabase")]
-    partial class AddDataSeedAndFixingDatabase
+    [Migration("20251107113728_mainFixesOnDatabase")]
+    partial class mainFixesOnDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -126,9 +126,6 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<int>("DaysInTotal")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("SubCategoryId")
                         .HasColumnType("integer");
 
@@ -151,7 +148,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 1,
                             DaysInTotal = 7,
-                            Price = 850m,
                             SubCategoryId = 1,
                             Title = "Putovanje u Pariz",
                             WayOfTravel = "Avion"
@@ -160,7 +156,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2,
                             DaysInTotal = 6,
-                            Price = 760m,
                             SubCategoryId = 2,
                             Title = "Putovanje u Rim",
                             WayOfTravel = "Autobus"
@@ -169,7 +164,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 3,
                             DaysInTotal = 8,
-                            Price = 920m,
                             SubCategoryId = 3,
                             Title = "Putovanje u Madrid",
                             WayOfTravel = "Avion"
@@ -178,7 +172,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 4,
                             DaysInTotal = 4,
-                            Price = 540m,
                             SubCategoryId = 4,
                             Title = "Putovanje u Beč",
                             WayOfTravel = "Autobus"
@@ -187,7 +180,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 5,
                             DaysInTotal = 9,
-                            Price = 970m,
                             SubCategoryId = 5,
                             Title = "Putovanje u Atina",
                             WayOfTravel = "Avion"
@@ -196,7 +188,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 6,
                             DaysInTotal = 6,
-                            Price = 1010m,
                             SubCategoryId = 6,
                             Title = "Putovanje u Amsterdam",
                             WayOfTravel = "Avion"
@@ -205,7 +196,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 7,
                             DaysInTotal = 7,
-                            Price = 890m,
                             SubCategoryId = 7,
                             Title = "Putovanje u Lisabon",
                             WayOfTravel = "Autobus"
@@ -214,7 +204,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 8,
                             DaysInTotal = 5,
-                            Price = 730m,
                             SubCategoryId = 8,
                             Title = "Putovanje u Berlin",
                             WayOfTravel = "Avion"
@@ -223,7 +212,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 9,
                             DaysInTotal = 6,
-                            Price = 810m,
                             SubCategoryId = 9,
                             Title = "Putovanje u Prag",
                             WayOfTravel = "Avion"
@@ -232,7 +220,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 10,
                             DaysInTotal = 10,
-                            Price = 1340m,
                             SubCategoryId = 10,
                             Title = "Putovanje u Kopenhagen",
                             WayOfTravel = "Avion"
@@ -241,7 +228,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 11,
                             DaysInTotal = 9,
-                            Price = 1230m,
                             SubCategoryId = 11,
                             Title = "Putovanje u Oslo",
                             WayOfTravel = "Avion"
@@ -250,7 +236,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 12,
                             DaysInTotal = 8,
-                            Price = 1110m,
                             SubCategoryId = 12,
                             Title = "Putovanje u Stockholm",
                             WayOfTravel = "Avion"
@@ -259,7 +244,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 13,
                             DaysInTotal = 6,
-                            Price = 990m,
                             SubCategoryId = 1,
                             Title = "Putovanje u Ženeva",
                             WayOfTravel = "Autobus"
@@ -268,7 +252,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 14,
                             DaysInTotal = 7,
-                            Price = 970m,
                             SubCategoryId = 2,
                             Title = "Putovanje u Cirih",
                             WayOfTravel = "Avion"
@@ -277,7 +260,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 15,
                             DaysInTotal = 5,
-                            Price = 700m,
                             SubCategoryId = 3,
                             Title = "Putovanje u Istanbul",
                             WayOfTravel = "Autobus"
@@ -286,7 +268,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 16,
                             DaysInTotal = 3,
-                            Price = 430m,
                             SubCategoryId = 4,
                             Title = "Putovanje u Sarajevo",
                             WayOfTravel = "Autobus"
@@ -295,7 +276,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 17,
                             DaysInTotal = 4,
-                            Price = 500m,
                             SubCategoryId = 5,
                             Title = "Putovanje u Zagreb",
                             WayOfTravel = "Autobus"
@@ -304,7 +284,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 18,
                             DaysInTotal = 4,
-                            Price = 520m,
                             SubCategoryId = 6,
                             Title = "Putovanje u Beograd",
                             WayOfTravel = "Autobus"
@@ -313,7 +292,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 19,
                             DaysInTotal = 6,
-                            Price = 840m,
                             SubCategoryId = 7,
                             Title = "Putovanje u Dubrovnik",
                             WayOfTravel = "Avion"
@@ -322,7 +300,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 20,
                             DaysInTotal = 6,
-                            Price = 790m,
                             SubCategoryId = 8,
                             Title = "Putovanje u Split",
                             WayOfTravel = "Autobus"
@@ -331,7 +308,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 21,
                             DaysInTotal = 5,
-                            Price = 680m,
                             SubCategoryId = 9,
                             Title = "Putovanje u Ljubljana",
                             WayOfTravel = "Autobus"
@@ -340,7 +316,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 22,
                             DaysInTotal = 5,
-                            Price = 620m,
                             SubCategoryId = 10,
                             Title = "Putovanje u Podgorica",
                             WayOfTravel = "Avion"
@@ -349,7 +324,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 23,
                             DaysInTotal = 5,
-                            Price = 640m,
                             SubCategoryId = 11,
                             Title = "Putovanje u Tirana",
                             WayOfTravel = "Avion"
@@ -358,7 +332,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 24,
                             DaysInTotal = 5,
-                            Price = 600m,
                             SubCategoryId = 12,
                             Title = "Putovanje u Skoplje",
                             WayOfTravel = "Autobus"
@@ -367,7 +340,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 25,
                             DaysInTotal = 6,
-                            Price = 900m,
                             SubCategoryId = 1,
                             Title = "Putovanje u Budimpešta",
                             WayOfTravel = "Avion"
@@ -376,7 +348,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 26,
                             DaysInTotal = 7,
-                            Price = 1050m,
                             SubCategoryId = 2,
                             Title = "Putovanje u Brisel",
                             WayOfTravel = "Avion"
@@ -385,7 +356,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 27,
                             DaysInTotal = 6,
-                            Price = 970m,
                             SubCategoryId = 3,
                             Title = "Putovanje u Varšava",
                             WayOfTravel = "Autobus"
@@ -394,7 +364,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 28,
                             DaysInTotal = 6,
-                            Price = 960m,
                             SubCategoryId = 4,
                             Title = "Putovanje u Krakov",
                             WayOfTravel = "Autobus"
@@ -403,7 +372,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 29,
                             DaysInTotal = 6,
-                            Price = 880m,
                             SubCategoryId = 5,
                             Title = "Putovanje u Sofija",
                             WayOfTravel = "Autobus"
@@ -412,7 +380,6 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 30,
                             DaysInTotal = 7,
-                            Price = 910m,
                             SubCategoryId = 6,
                             Title = "Putovanje u Bukurešt",
                             WayOfTravel = "Avion"
@@ -434,6 +401,9 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<int>("OfferId")
                         .HasColumnType("integer");
 
+                    b.Property<bool>("isMain")
+                        .HasColumnType("boolean");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OfferId");
@@ -445,181 +415,211 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 1,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 1
+                            OfferId = 1,
+                            isMain = true
                         },
                         new
                         {
                             Id = 2,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 2
+                            OfferId = 2,
+                            isMain = true
                         },
                         new
                         {
                             Id = 3,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 3
+                            OfferId = 3,
+                            isMain = true
                         },
                         new
                         {
                             Id = 4,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 4
+                            OfferId = 4,
+                            isMain = true
                         },
                         new
                         {
                             Id = 5,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 5
+                            OfferId = 5,
+                            isMain = true
                         },
                         new
                         {
                             Id = 6,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 6
+                            OfferId = 6,
+                            isMain = true
                         },
                         new
                         {
                             Id = 7,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 7
+                            OfferId = 7,
+                            isMain = true
                         },
                         new
                         {
                             Id = 8,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 8
+                            OfferId = 8,
+                            isMain = true
                         },
                         new
                         {
                             Id = 9,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 9
+                            OfferId = 9,
+                            isMain = true
                         },
                         new
                         {
                             Id = 10,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 10
+                            OfferId = 10,
+                            isMain = true
                         },
                         new
                         {
                             Id = 11,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 11
+                            OfferId = 11,
+                            isMain = true
                         },
                         new
                         {
                             Id = 12,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 12
+                            OfferId = 12,
+                            isMain = true
                         },
                         new
                         {
                             Id = 13,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 13
+                            OfferId = 13,
+                            isMain = true
                         },
                         new
                         {
                             Id = 14,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 14
+                            OfferId = 14,
+                            isMain = true
                         },
                         new
                         {
                             Id = 15,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 15
+                            OfferId = 15,
+                            isMain = true
                         },
                         new
                         {
                             Id = 16,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 16
+                            OfferId = 16,
+                            isMain = true
                         },
                         new
                         {
                             Id = 17,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 17
+                            OfferId = 17,
+                            isMain = true
                         },
                         new
                         {
                             Id = 18,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 18
+                            OfferId = 18,
+                            isMain = true
                         },
                         new
                         {
                             Id = 19,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 19
+                            OfferId = 19,
+                            isMain = true
                         },
                         new
                         {
                             Id = 20,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 20
+                            OfferId = 20,
+                            isMain = true
                         },
                         new
                         {
                             Id = 21,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 21
+                            OfferId = 21,
+                            isMain = true
                         },
                         new
                         {
                             Id = 22,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 22
+                            OfferId = 22,
+                            isMain = true
                         },
                         new
                         {
                             Id = 23,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 23
+                            OfferId = 23,
+                            isMain = true
                         },
                         new
                         {
                             Id = 24,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 24
+                            OfferId = 24,
+                            isMain = true
                         },
                         new
                         {
                             Id = 25,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 25
+                            OfferId = 25,
+                            isMain = true
                         },
                         new
                         {
                             Id = 26,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 26
+                            OfferId = 26,
+                            isMain = true
                         },
                         new
                         {
                             Id = 27,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 27
+                            OfferId = 27,
+                            isMain = true
                         },
                         new
                         {
                             Id = 28,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 28
+                            OfferId = 28,
+                            isMain = true
                         },
                         new
                         {
                             Id = 29,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 29
+                            OfferId = 29,
+                            isMain = true
                         },
                         new
                         {
                             Id = 30,
                             ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 30
+                            OfferId = 30,
+                            isMain = true
                         });
                 });
 
@@ -1327,6 +1327,9 @@ namespace eTravelAgencija.Services.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("boolean");
+
                     b.HasKey("Id");
 
                     b.HasIndex("HotelId");
@@ -1338,432 +1341,496 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 1,
                             HotelId = 1,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 2,
                             HotelId = 2,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 3,
                             HotelId = 3,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 4,
                             HotelId = 4,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 5,
                             HotelId = 5,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 6,
                             HotelId = 6,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 7,
                             HotelId = 7,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 8,
                             HotelId = 8,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 9,
                             HotelId = 9,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 10,
                             HotelId = 10,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 11,
                             HotelId = 11,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 12,
                             HotelId = 12,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 13,
                             HotelId = 13,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 14,
                             HotelId = 14,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 15,
                             HotelId = 15,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 16,
                             HotelId = 16,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 17,
                             HotelId = 17,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 18,
                             HotelId = 18,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 19,
                             HotelId = 19,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 20,
                             HotelId = 20,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 21,
                             HotelId = 21,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 22,
                             HotelId = 22,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 23,
                             HotelId = 23,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 24,
                             HotelId = 24,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 25,
                             HotelId = 25,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 26,
                             HotelId = 26,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 27,
                             HotelId = 27,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 28,
                             HotelId = 28,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 29,
                             HotelId = 29,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 30,
                             HotelId = 30,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 31,
                             HotelId = 31,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 32,
                             HotelId = 32,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 33,
                             HotelId = 33,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 34,
                             HotelId = 34,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 35,
                             HotelId = 35,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 36,
                             HotelId = 36,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 37,
                             HotelId = 37,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 38,
                             HotelId = 38,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 39,
                             HotelId = 39,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 40,
                             HotelId = 40,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 41,
                             HotelId = 41,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 42,
                             HotelId = 42,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 43,
                             HotelId = 43,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 44,
                             HotelId = 44,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 45,
                             HotelId = 45,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 46,
                             HotelId = 46,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 47,
                             HotelId = 47,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 48,
                             HotelId = 48,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 49,
                             HotelId = 49,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 50,
                             HotelId = 50,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 51,
                             HotelId = 51,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 52,
                             HotelId = 52,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 53,
                             HotelId = 53,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 54,
                             HotelId = 54,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 55,
                             HotelId = 55,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 56,
                             HotelId = 56,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 57,
                             HotelId = 57,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 58,
                             HotelId = 58,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 59,
                             HotelId = 59,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 60,
                             HotelId = 60,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 61,
                             HotelId = 61,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 62,
                             HotelId = 62,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 63,
                             HotelId = 63,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 64,
                             HotelId = 64,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 65,
                             HotelId = 65,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 66,
                             HotelId = 66,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 67,
                             HotelId = 67,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 68,
                             HotelId = 68,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 69,
                             HotelId = 69,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         },
                         new
                         {
                             Id = 70,
                             HotelId = 70,
-                            ImageUrl = "/images/hotels/room.jpg"
+                            ImageUrl = "/images/hotels/room.jpg",
+                            IsMain = true
                         });
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.HotelRooms", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
                     b.Property<int>("HotelId")
                         .HasColumnType("integer");
 
@@ -1773,9 +1840,7 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<int>("RoomsLeft")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("HotelId");
+                    b.HasKey("HotelId", "RoomId");
 
                     b.HasIndex("RoomId");
 
@@ -1784,56 +1849,48 @@ namespace eTravelAgencija.Services.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
                             HotelId = 1,
                             RoomId = 1,
                             RoomsLeft = 10
                         },
                         new
                         {
-                            Id = 2,
                             HotelId = 1,
                             RoomId = 2,
                             RoomsLeft = 5
                         },
                         new
                         {
-                            Id = 3,
                             HotelId = 2,
                             RoomId = 1,
                             RoomsLeft = 8
                         },
                         new
                         {
-                            Id = 4,
                             HotelId = 2,
                             RoomId = 3,
                             RoomsLeft = 4
                         },
                         new
                         {
-                            Id = 5,
                             HotelId = 3,
                             RoomId = 2,
                             RoomsLeft = 6
                         },
                         new
                         {
-                            Id = 6,
                             HotelId = 3,
                             RoomId = 3,
                             RoomsLeft = 3
                         },
                         new
                         {
-                            Id = 7,
                             HotelId = 4,
                             RoomId = 1,
                             RoomsLeft = 7
                         },
                         new
                         {
-                            Id = 8,
                             HotelId = 4,
                             RoomId = 2,
                             RoomsLeft = 2
@@ -1891,6 +1948,18 @@ namespace eTravelAgencija.Services.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<decimal>("MinimalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("ResidenceTaxPerDay")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("ResidenceTotal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TravelInsuranceTotal")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("OfferId");
 
                     b.ToTable("OfferDetails");
@@ -1901,210 +1970,330 @@ namespace eTravelAgencija.Services.Migrations
                             OfferId = 1,
                             City = "Pariz",
                             Country = "Francuska",
-                            Description = "Uživajte u opuštajućem putovanju kroz Pariz sa vrhunskim vodičima i nezaboravnim doživljajima."
+                            Description = "Uživajte u opuštajućem putovanju kroz Pariz sa vrhunskim vodičima i nezaboravnim doživljajima.",
+                            MinimalPrice = 850m,
+                            ResidenceTaxPerDay = 4.89m,
+                            ResidenceTotal = 34.23m,
+                            TravelInsuranceTotal = 48.90m
                         },
                         new
                         {
                             OfferId = 2,
                             City = "Rim",
                             Country = "Italija",
-                            Description = "Iskusite čari Rima, njegove istorijske znamenitosti i autentičnu kuhinju."
+                            Description = "Iskusite čari Rima, njegove istorijske znamenitosti i autentičnu kuhinju.",
+                            MinimalPrice = 760m,
+                            ResidenceTaxPerDay = 5.87m,
+                            ResidenceTotal = 35.22m,
+                            TravelInsuranceTotal = 48.90m
                         },
                         new
                         {
                             OfferId = 3,
                             City = "Madrid",
                             Country = "Španija",
-                            Description = "Otkrijte Madrid, grad prepun kulture, umetnosti i sjajnih pejzaža."
+                            Description = "Otkrijte Madrid, grad prepun kulture, umetnosti i sjajnih pejzaža.",
+                            MinimalPrice = 920m,
+                            ResidenceTaxPerDay = 6.85m,
+                            ResidenceTotal = 54.80m,
+                            TravelInsuranceTotal = 39.12m
                         },
                         new
                         {
                             OfferId = 4,
                             City = "Beč",
                             Country = "Austrija",
-                            Description = "Posetite Beč, grad muzike, istorije i predivne arhitekture."
+                            Description = "Posetite Beč, grad muzike, istorije i predivne arhitekture.",
+                            MinimalPrice = 540m,
+                            ResidenceTaxPerDay = 3.91m,
+                            ResidenceTotal = 15.64m,
+                            TravelInsuranceTotal = 35.20m
                         },
                         new
                         {
                             OfferId = 5,
                             City = "Atina",
                             Country = "Grčka",
-                            Description = "Istražite Atinu i uživajte u drevnoj grčkoj istoriji i prelepim plažama."
+                            Description = "Istražite Atinu i uživajte u drevnoj grčkoj istoriji i prelepim plažama.",
+                            MinimalPrice = 970m,
+                            ResidenceTaxPerDay = 3.91m,
+                            ResidenceTotal = 35.19m,
+                            TravelInsuranceTotal = 43.03m
                         },
                         new
                         {
                             OfferId = 6,
                             City = "Amsterdam",
                             Country = "Nizozemska",
-                            Description = "Amsterdam vas poziva svojim kanalima, muzejima i opuštenom atmosferom."
+                            Description = "Amsterdam vas poziva svojim kanalima, muzejima i opuštenom atmosferom.",
+                            MinimalPrice = 1010m,
+                            ResidenceTaxPerDay = 5.87m,
+                            ResidenceTotal = 35.22m,
+                            TravelInsuranceTotal = 48.90m
                         },
                         new
                         {
                             OfferId = 7,
                             City = "Lisabon",
                             Country = "Portugal",
-                            Description = "Doživite čari Lisabona, njegovu arhitekturu i ukusnu hranu."
+                            Description = "Doživite čari Lisabona, njegovu arhitekturu i ukusnu hranu.",
+                            MinimalPrice = 890m,
+                            ResidenceTaxPerDay = 3.91m,
+                            ResidenceTotal = 27.37m,
+                            TravelInsuranceTotal = 39.12m
                         },
                         new
                         {
                             OfferId = 8,
                             City = "Berlin",
                             Country = "Njemačka",
-                            Description = "Berlin, dinamični grad sa bogatom istorijom i živahnom kulturom."
+                            Description = "Berlin, dinamični grad sa bogatom istorijom i živahnom kulturom.",
+                            MinimalPrice = 730m,
+                            ResidenceTaxPerDay = 2.93m,
+                            ResidenceTotal = 14.65m,
+                            TravelInsuranceTotal = 35.20m
                         },
                         new
                         {
                             OfferId = 9,
                             City = "Prag",
                             Country = "Češka",
-                            Description = "Prag, grad bajki, mostova i nezaboravnih večeri."
+                            Description = "Prag, grad bajki, mostova i nezaboravnih večeri.",
+                            MinimalPrice = 810m,
+                            ResidenceTaxPerDay = 2.93m,
+                            ResidenceTotal = 17.58m,
+                            TravelInsuranceTotal = 33.25m
                         },
                         new
                         {
                             OfferId = 10,
                             City = "Kopenhagen",
                             Country = "Danska",
-                            Description = "Kopenhagen – skandinavska oaza sa modernim i tradicionalnim sadržajima."
+                            Description = "Kopenhagen – skandinavska oaza sa modernim i tradicionalnim sadržajima.",
+                            MinimalPrice = 1340m,
+                            ResidenceTaxPerDay = 4.89m,
+                            ResidenceTotal = 48.90m,
+                            TravelInsuranceTotal = 48.90m
                         },
                         new
                         {
                             OfferId = 11,
                             City = "Oslo",
                             Country = "Norveška",
-                            Description = "Oslo, prirodna lepota i urbani život na dohvat ruke."
+                            Description = "Oslo, prirodna lepota i urbani život na dohvat ruke.",
+                            MinimalPrice = 1230m,
+                            ResidenceTaxPerDay = 4.30m,
+                            ResidenceTotal = 38.70m,
+                            TravelInsuranceTotal = 50.85m
                         },
                         new
                         {
                             OfferId = 12,
                             City = "Stockholm",
                             Country = "Švedska",
-                            Description = "Stockholm, grad na vodi sa bogatom istorijom i prelepim pejzažima."
+                            Description = "Stockholm, grad na vodi sa bogatom istorijom i prelepim pejzažima.",
+                            MinimalPrice = 1110m,
+                            ResidenceTaxPerDay = 4.50m,
+                            ResidenceTotal = 36.00m,
+                            TravelInsuranceTotal = 48.90m
                         },
                         new
                         {
                             OfferId = 13,
                             City = "Ženeva",
                             Country = "Švicarska",
-                            Description = "Ženeva, srce švajcarskih Alpa i međunarodna prestonica."
+                            Description = "Ženeva, srce švajcarskih Alpa i međunarodna prestonica.",
+                            MinimalPrice = 990m,
+                            ResidenceTaxPerDay = 5.48m,
+                            ResidenceTotal = 32.88m,
+                            TravelInsuranceTotal = 54.76m
                         },
                         new
                         {
                             OfferId = 14,
                             City = "Cirih",
                             Country = "Švicarska",
-                            Description = "Cirih, finansijski centar i kulturni dragulj Švajcarske."
+                            Description = "Cirih, finansijski centar i kulturni dragulj Švajcarske.",
+                            MinimalPrice = 970m,
+                            ResidenceTaxPerDay = 5.48m,
+                            ResidenceTotal = 38.36m,
+                            TravelInsuranceTotal = 54.76m
                         },
                         new
                         {
                             OfferId = 15,
                             City = "Istanbul",
                             Country = "Turska",
-                            Description = "Istanbul, grad na dva kontinenta sa jedinstvenom atmosferom."
+                            Description = "Istanbul, grad na dva kontinenta sa jedinstvenom atmosferom.",
+                            MinimalPrice = 700m,
+                            ResidenceTaxPerDay = 2.35m,
+                            ResidenceTotal = 11.75m,
+                            TravelInsuranceTotal = 29.34m
                         },
                         new
                         {
                             OfferId = 16,
                             City = "Sarajevo",
                             Country = "Bosna i Hercegovina",
-                            Description = "Sarajevo, mesto susreta kultura i istorije."
+                            Description = "Sarajevo, mesto susreta kultura i istorije.",
+                            MinimalPrice = 430m,
+                            ResidenceTaxPerDay = 1.96m,
+                            ResidenceTotal = 5.88m,
+                            TravelInsuranceTotal = 23.47m
                         },
                         new
                         {
                             OfferId = 17,
                             City = "Zagreb",
                             Country = "Hrvatska",
-                            Description = "Zagreb, moderna metropola sa bogatom tradicijom."
+                            Description = "Zagreb, moderna metropola sa bogatom tradicijom.",
+                            MinimalPrice = 500m,
+                            ResidenceTaxPerDay = 2.60m,
+                            ResidenceTotal = 10.40m,
+                            TravelInsuranceTotal = 29.34m
                         },
                         new
                         {
                             OfferId = 18,
                             City = "Beograd",
                             Country = "Srbija",
-                            Description = "Beograd, grad sa živahnim noćnim životom i bogatom istorijom."
+                            Description = "Beograd, grad sa živahnim noćnim životom i bogatom istorijom.",
+                            MinimalPrice = 520m,
+                            ResidenceTaxPerDay = 2.15m,
+                            ResidenceTotal = 8.60m,
+                            TravelInsuranceTotal = 27.38m
                         },
                         new
                         {
                             OfferId = 19,
                             City = "Dubrovnik",
                             Country = "Hrvatska",
-                            Description = "Dubrovnik, biser Jadrana i mediteranske lepote."
+                            Description = "Dubrovnik, biser Jadrana i mediteranske lepote.",
+                            MinimalPrice = 840m,
+                            ResidenceTaxPerDay = 2.60m,
+                            ResidenceTotal = 15.60m,
+                            TravelInsuranceTotal = 29.34m
                         },
                         new
                         {
                             OfferId = 20,
                             City = "Split",
                             Country = "Hrvatska",
-                            Description = "Split, spoj istorije i modernog šarma uz prelepe plaže."
+                            Description = "Split, spoj istorije i modernog šarma uz prelepe plaže.",
+                            MinimalPrice = 790m,
+                            ResidenceTaxPerDay = 2.60m,
+                            ResidenceTotal = 15.60m,
+                            TravelInsuranceTotal = 29.34m
                         },
                         new
                         {
                             OfferId = 21,
                             City = "Ljubljana",
                             Country = "Slovenija",
-                            Description = "Ljubljana, zeleno srce Evrope sa opuštajućom atmosferom."
+                            Description = "Ljubljana, zeleno srce Evrope sa opuštajućom atmosferom.",
+                            MinimalPrice = 680m,
+                            ResidenceTaxPerDay = 4.89m,
+                            ResidenceTotal = 24.45m,
+                            TravelInsuranceTotal = 35.20m
                         },
                         new
                         {
                             OfferId = 22,
                             City = "Podgorica",
                             Country = "Crna Gora",
-                            Description = "Podgorica, nova evropska destinacija puna iznenađenja."
+                            Description = "Podgorica, nova evropska destinacija puna iznenađenja.",
+                            MinimalPrice = 620m,
+                            ResidenceTaxPerDay = 2.35m,
+                            ResidenceTotal = 11.75m,
+                            TravelInsuranceTotal = 25.43m
                         },
                         new
                         {
                             OfferId = 23,
                             City = "Tirana",
                             Country = "Albanija",
-                            Description = "Tirana, šarmantan grad sa bogatom kulturom i prijateljskom atmosferom."
+                            Description = "Tirana, šarmantan grad sa bogatom kulturom i prijateljskom atmosferom.",
+                            MinimalPrice = 640m,
+                            ResidenceTaxPerDay = 1.96m,
+                            ResidenceTotal = 9.80m,
+                            TravelInsuranceTotal = 23.47m
                         },
                         new
                         {
                             OfferId = 24,
                             City = "Skoplje",
                             Country = "Sjeverna Makedonija",
-                            Description = "Skoplje, spoj starog i novog u srcu Balkana."
+                            Description = "Skoplje, spoj starog i novog u srcu Balkana.",
+                            MinimalPrice = 600m,
+                            ResidenceTaxPerDay = 1.96m,
+                            ResidenceTotal = 9.80m,
+                            TravelInsuranceTotal = 23.47m
                         },
                         new
                         {
                             OfferId = 25,
                             City = "Budimpešta",
                             Country = "Mađarska",
-                            Description = "Budimpešta, grad termalnih kupališta i veličanstvene arhitekture."
+                            Description = "Budimpešta, grad termalnih kupališta i veličanstvene arhitekture.",
+                            MinimalPrice = 900m,
+                            ResidenceTaxPerDay = 3.52m,
+                            ResidenceTotal = 21.12m,
+                            TravelInsuranceTotal = 33.25m
                         },
                         new
                         {
                             OfferId = 26,
                             City = "Brisel",
                             Country = "Belgija",
-                            Description = "Brisel, prestonica Evrope sa bogatom istorijom i gastronomijom."
+                            Description = "Brisel, prestonica Evrope sa bogatom istorijom i gastronomijom.",
+                            MinimalPrice = 1050m,
+                            ResidenceTaxPerDay = 4.89m,
+                            ResidenceTotal = 34.23m,
+                            TravelInsuranceTotal = 43.03m
                         },
                         new
                         {
                             OfferId = 27,
                             City = "Varšava",
                             Country = "Poljska",
-                            Description = "Varšava, grad koji uspešno spaja istoriju i moderni duh."
+                            Description = "Varšava, grad koji uspešno spaja istoriju i moderni duh.",
+                            MinimalPrice = 970m,
+                            ResidenceTaxPerDay = 2.93m,
+                            ResidenceTotal = 17.58m,
+                            TravelInsuranceTotal = 35.20m
                         },
                         new
                         {
                             OfferId = 28,
                             City = "Krakov",
                             Country = "Poljska",
-                            Description = "Krakov, biser Poljske sa bogatom kulturnom scenom."
+                            Description = "Krakov, biser Poljske sa bogatom kulturnom scenom.",
+                            MinimalPrice = 960m,
+                            ResidenceTaxPerDay = 2.93m,
+                            ResidenceTotal = 17.58m,
+                            TravelInsuranceTotal = 35.20m
                         },
                         new
                         {
                             OfferId = 29,
                             City = "Sofija",
                             Country = "Bugarska",
-                            Description = "Sofija, srce Bugarske sa prelepim planinama i istorijom."
+                            Description = "Sofija, srce Bugarske sa prelepim planinama i istorijom.",
+                            MinimalPrice = 880m,
+                            ResidenceTaxPerDay = 2.35m,
+                            ResidenceTotal = 14.10m,
+                            TravelInsuranceTotal = 29.34m
                         },
                         new
                         {
                             OfferId = 30,
                             City = "Bukurešt",
                             Country = "Rumunija",
-                            Description = "Bukurešt, grad kontrasta i dinamične kulture."
+                            Description = "Bukurešt, grad kontrasta i dinamične kulture.",
+                            MinimalPrice = 910m,
+                            ResidenceTaxPerDay = 2.54m,
+                            ResidenceTotal = 17.78m,
+                            TravelInsuranceTotal = 29.34m
                         });
                 });
 
@@ -2122,7 +2311,7 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("OfferDetailsId", "HotelId", "DepartureDate", "ReturnDate");
+                    b.HasKey("OfferDetailsId", "HotelId");
 
                     b.HasIndex("HotelId");
 
@@ -2133,171 +2322,312 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             OfferDetailsId = 1,
                             HotelId = 1,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 1,
                             HotelId = 2,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 2,
                             HotelId = 3,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 2, 11, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 2,
                             HotelId = 4,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 2, 11, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 3,
                             HotelId = 5,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 3, 18, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 3,
                             HotelId = 6,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 3, 18, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 4,
                             HotelId = 7,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 4, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 4, 8, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 5,
                             HotelId = 8,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 5, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 5, 23, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 5,
                             HotelId = 9,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 5, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 5, 23, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 6,
                             HotelId = 10,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 6, 9, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 7,
                             HotelId = 11,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 7, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 7, 10, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 8,
                             HotelId = 12,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 8, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 8, 8, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 9,
                             HotelId = 13,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 9, 6, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 9, 13, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 10,
                             HotelId = 14,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 10, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 10, 18, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 11,
                             HotelId = 15,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 11, 3, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 11, 9, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 12,
                             HotelId = 16,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2025, 12, 14, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2025, 12, 21, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 13,
                             HotelId = 17,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2026, 1, 20, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 1, 28, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 14,
                             HotelId = 18,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2026, 2, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 2, 22, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 15,
                             HotelId = 19,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 17, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 16,
                             HotelId = 20,
-                            DepartureDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DepartureDate = new DateTime(2026, 4, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 4, 12, 0, 0, 0, 0, DateTimeKind.Utc)
                         });
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.OfferPlanDay", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("OfferDetailsId")
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("DayNumber")
+                        .HasColumnType("integer");
 
                     b.Property<string>("DayDescription")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("DayNumber")
-                        .HasColumnType("integer");
-
                     b.Property<string>("DayTitle")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("OfferDetailsId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OfferDetailsId");
+                    b.HasKey("OfferDetailsId", "DayNumber");
 
                     b.ToTable("OfferPlanDays");
+
+                    b.HasData(
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            DayNumber = 1,
+                            DayDescription = "Polazak u ranim jutarnjim satima i dolazak u Pariz. Smještaj u hotel i kraće upoznavanje sa okolinom.",
+                            DayTitle = "Dolazak u Pariz"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            DayNumber = 2,
+                            DayDescription = "Obilazak Ajfelovog tornja, Šanzelizea i Trijumfalne kapije.",
+                            DayTitle = "Obilazak centra grada"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            DayNumber = 3,
+                            DayDescription = "Posjeta muzeju Luvr i vožnja brodom po rijeci Seni.",
+                            DayTitle = "Luvr i Sjena"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            DayNumber = 4,
+                            DayDescription = "Izlet do prelijepog dvorca Versaj i uživanje u kraljevskim vrtovima.",
+                            DayTitle = "Versaj"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            DayNumber = 5,
+                            DayDescription = "Dan rezervisan za šoping, šetnju i lične aktivnosti.",
+                            DayTitle = "Slobodno vrijeme"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            DayNumber = 6,
+                            DayDescription = "Uživanje u francuskoj kuhinji i večernja šetnja Monmartrom.",
+                            DayTitle = "Kulturni doživljaji"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            DayNumber = 7,
+                            DayDescription = "Odjava iz hotela, transfer do aerodroma i povratak kući.",
+                            DayTitle = "Povratak"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak i smještaj u hotelu. Upoznavanje sa gradom i lagana večernja šetnja.",
+                            DayTitle = "Dolazak u Rim"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            DayNumber = 2,
+                            DayDescription = "Posjeta Koloseumu, Forum Romanumu i Panteonu.",
+                            DayTitle = "Antički Rim"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            DayNumber = 3,
+                            DayDescription = "Obilazak Vatikana, Sikstinske kapele i bazilike Svetog Petra.",
+                            DayTitle = "Vatikan"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            DayNumber = 4,
+                            DayDescription = "Obilazak najpoznatijih trgova i fontana Rima.",
+                            DayTitle = "Trg Navona i Fontana di Trevi"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            DayNumber = 5,
+                            DayDescription = "Dan za odmor, šoping i uživanje u italijanskoj kuhinji.",
+                            DayTitle = "Slobodno vrijeme"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            DayNumber = 6,
+                            DayDescription = "Pakovanje i odlazak prema aerodromu.",
+                            DayTitle = "Povratak"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak i smještaj u hotel. Kratko upoznavanje sa centrom grada.",
+                            DayTitle = "Dolazak u Madrid"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            DayNumber = 2,
+                            DayDescription = "Posjeta Kraljevskoj palati i trgu Plaza Mayor.",
+                            DayTitle = "Kraljevska palata"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            DayNumber = 3,
+                            DayDescription = "Posjeta najpoznatijem muzeju u Španiji – Pradu.",
+                            DayTitle = "Muzej Prado"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            DayNumber = 4,
+                            DayDescription = "Šetnja prelijepim parkom Retiro i slobodno popodne.",
+                            DayTitle = "Park Retiro"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            DayNumber = 5,
+                            DayDescription = "Fakultativni izlet u srednjovjekovni grad Toledo.",
+                            DayTitle = "Izlet u Toledo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            DayNumber = 6,
+                            DayDescription = "Uživanje u tradicionalnoj španskoj hrani i vinu.",
+                            DayTitle = "Gastronomski dan"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            DayNumber = 7,
+                            DayDescription = "Dan za individualne aktivnosti i šoping.",
+                            DayTitle = "Slobodan dan"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            DayNumber = 8,
+                            DayDescription = "Odjava iz hotela i let prema kući.",
+                            DayTitle = "Povratak"
+                        });
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.OfferSubCategory", b =>
@@ -2322,6 +2652,12 @@ namespace eTravelAgencija.Services.Migrations
                     b.ToTable("OfferSubCategories");
 
                     b.HasData(
+                        new
+                        {
+                            Id = -1,
+                            CategoryId = 2,
+                            Name = "Bez podkategorije"
+                        },
                         new
                         {
                             Id = 1,
@@ -2452,6 +2788,9 @@ namespace eTravelAgencija.Services.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("RoomCount")
+                        .HasColumnType("integer");
+
                     b.Property<string>("RoomType")
                         .IsRequired()
                         .HasColumnType("text");
@@ -2464,27 +2803,26 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 1,
+                            RoomCount = 2,
                             RoomType = "Dvokrevetna"
                         },
                         new
                         {
                             Id = 2,
+                            RoomCount = 3,
                             RoomType = "Trokrevetna"
                         },
                         new
                         {
                             Id = 3,
+                            RoomCount = 2,
                             RoomType = "Jednokrevetna"
                         },
                         new
                         {
                             Id = 4,
-                            RoomType = "Apartman"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            RoomType = "Porodična soba"
+                            RoomCount = 4,
+                            RoomType = "Cetverokrevetna"
                         });
                 });
 

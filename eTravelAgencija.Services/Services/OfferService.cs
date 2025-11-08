@@ -51,13 +51,25 @@ namespace eTravelAgencija.Services.Services
                     .Take(search.PageSize.GetValueOrDefault());
 
             var offers = await query.ToListAsync();
-
             var responses = new List<OfferAdminResponse>();
+
             foreach (var o in offers)
             {
-                var mainImage = await _offerImageService.GetMainImageAsync(o.Id);
+                // 🔹 Glavna slika
+                var mainImages = await _offerImageService.GetImagesAsync(o.Id, true);
+                var mainImageUrl = mainImages?.FirstOrDefault()?.ImageUrl;
+
+                // 🔹 Fallback — ako nema glavne slike, uzmi bilo koju
+                if (string.IsNullOrEmpty(mainImageUrl))
+                {
+                    var allImages = await _offerImageService.GetImagesAsync(o.Id, true);
+                    mainImageUrl = allImages?.FirstOrDefault()?.ImageUrl;
+                }
+
+                // 🔹 Mapiraj DTO
                 var dto = _mapper.Map<OfferAdminResponse>(o);
-                dto.MainImage = mainImage.ImageUrl;
+                dto.MainImage = mainImageUrl;
+
                 responses.Add(dto);
             }
 
@@ -68,6 +80,8 @@ namespace eTravelAgencija.Services.Services
             };
         }
 
+
+
         public async Task<PagedResult<OfferUserResponce>> GetSearchOffersForUser(OfferSearchObject search)
         {
             var query = _context.Offers
@@ -75,11 +89,11 @@ namespace eTravelAgencija.Services.Services
                     .ThenInclude(sc => sc.Category)
                 .AsQueryable();
 
+            if (search.CategoryId > 0)
+                query = query.Where(o => o.SubCategory.CategoryId == search.CategoryId);
+
             if (search.SubCategoryId > 0)
                 query = query.Where(o => o.SubCategoryId == search.SubCategoryId);
-
-            if (search.CategoryId > 0 && search.SubCategoryId == 0)
-                query = query.Where(o => o.SubCategory.CategoryId == search.CategoryId);
 
             if (!string.IsNullOrWhiteSpace(search.FTS))
                 query = query.Where(o => o.Title.ToLower().Contains(search.FTS.ToLower()));
@@ -94,19 +108,16 @@ namespace eTravelAgencija.Services.Services
                     .Take(search.PageSize.GetValueOrDefault());
 
             var offers = await query.ToListAsync();
-
-            var mainImages = await Task.WhenAll(offers.Select(async o =>
-                new { o.Id, Image = await _offerImageService.GetMainImageAsync(o.Id) }));
-
-            var imageMap = mainImages.ToDictionary(x => x.Id, x => x.Image);
-
             var responses = new List<OfferUserResponce>();
 
             foreach (var offer in offers)
             {
-                var mainImage = await _offerImageService.GetMainImageAsync(offer.Id);
+                // 👇 dohvaćamo sve slike s IsMain == true, i uzimamo prvu
+                var mainImages = await _offerImageService.GetImagesAsync(offer.Id, true);
+                var mainImageUrl = mainImages?.FirstOrDefault()?.ImageUrl; // sigurnije i elegantno
+
                 var dto = _mapper.Map<OfferUserResponce>(offer);
-                dto.MainImage = mainImage?.ImageUrl;
+                dto.MainImage = mainImageUrl;
                 responses.Add(dto);
             }
 
@@ -115,7 +126,52 @@ namespace eTravelAgencija.Services.Services
                 Items = responses,
                 TotalCount = search.IncludeTotalCount ? totalCount : 0
             };
+        }
 
+
+        public async Task<OfferResponse> GetOfferById(int id)
+        {
+            var entity = await _context.Offers
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (entity == null)
+                return null;
+
+            return new OfferResponse
+            {
+                Id = entity.Id,
+                Title = entity.Title,
+                DaysInTotal = entity.DaysInTotal,
+                WayOfTravel = entity.WayOfTravel,
+                MinimalPrice = entity.Details?.MinimalPrice ?? 0,
+                City = entity.Details?.City,
+                Country = entity.Details?.Country
+            };
+        }
+
+        public async Task<OfferResponse> GetOfferWithDetailsById(int id)
+        {
+            var entity = await _context.Offers
+                .Include(o => o.Details)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (entity == null)
+                return null;
+
+            return new OfferResponse
+            {
+                Id = entity.Id,
+                Title = entity.Title,
+                DaysInTotal = entity.DaysInTotal,
+                WayOfTravel = entity.WayOfTravel,
+                MinimalPrice = entity.Details?.MinimalPrice ?? 0,
+                City = entity.Details?.City,
+                Country = entity.Details?.Country,
+                ResidenceTaxPerDay = entity.Details?.ResidenceTaxPerDay ?? 0,
+                ResidenceTotal = entity.Details?.ResidenceTotal ?? 0,
+                TravelInsuranceTotal = entity.Details?.TravelInsuranceTotal ?? 0
+            };
         }
 
         public async Task<OfferAdminDetailResponse> GetOfferDetailsByIdForAdmin(int id)
