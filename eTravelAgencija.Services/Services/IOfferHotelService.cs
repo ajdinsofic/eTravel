@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.ResponseObjects;
+using eTravelAgencija.Model.SearchObjects;
 
 namespace eTravelAgencija.Services.Services
 {
-    public interface IOfferHotelService
+    public interface IOfferHotelService : ICRUDService<Model.model.OfferHotels, BaseSearchObject, OfferHotelUpsertRequest, OfferHotelUpsertRequest>
     {
-        Task<OfferHotelResponse?> GetOfferHotelLinkAsync(int offerId, int hotelId);
-        Task<OfferHotelResponse> LinkHotelToOffer(int hotelId, int offerId, DateTime departureDate, DateTime returnDate);
-        Task<OfferHotelResponse> PutOfferHotelDates(int hotelId, int offerId, DateTime departureDate, DateTime returnDate);
+
     }
 }

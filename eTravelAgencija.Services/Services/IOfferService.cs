@@ -9,18 +9,9 @@ using eTravelAgencija.Model.SearchObjects;
 
 namespace eTravelAgencija.Services.Services
 {
-    public interface IOfferService
+    public interface IOfferService : ICRUDService<Model.model.Offer, OfferSearchObject, OfferInsertRequest, OfferUpdateRequest>
     {
-        // Ako nije ulogovan, ako jeste onda moramo da vidimo sistem "preporuceno za vas"
-        Task<PagedResult<OfferAdminResponse>> GetSearchOffersForAdmin(OfferSearchObject request);
-        Task<PagedResult<OfferUserResponce>> GetSearchOffersForUser(OfferSearchObject request);
-        Task<OfferAdminDetailResponse> GetOfferDetailsByIdForAdmin(int id);
-        Task<OfferUserDetailResponse> GetOfferDetailsByIdForUser(int id);
-        Task<OfferResponse> GetOfferById(int id);
-        Task<OfferResponse> GetOfferWithDetailsById(int id);
-        Task<OfferUpsertResponse> PostOffer(OfferRequest request);
-        Task<OfferUpsertResponse> PutOffer(int id, OfferRequest request);
-        Task<bool> DeleteOffer(int id);
+        
 
     }
 }

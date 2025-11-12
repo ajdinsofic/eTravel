@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using eTravelAgencija.Model;
 using eTravelAgencija.Model.Requests;
 using eTravelAgencija.Model.Responses;
@@ -9,220 +13,110 @@ using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace eTravelAgencija.Services.Services
 {
-    public class UserService : IUserService
+    public class UserService : BaseCRUDService<Model.model.User, UserSearchObject, Database.User, UserUpsertRequest, UserUpsertRequest>, IUserService
     {
         private readonly eTravelAgencijaDbContext _context;
+        private readonly IConfiguration _config;
         private readonly UserManager<User> _userManager;
-
-        public UserService(eTravelAgencijaDbContext context, UserManager<User> userManager, RoleManager<Role> roleManager)
+        public UserService(eTravelAgencijaDbContext context, IMapper mapper, UserManager<User> userManager,IConfiguration config) : base(context, mapper)
         {
-            _context = context;
             _userManager = userManager;
+            _config = config;
         }
 
-        public async Task<PagedResult<UserResponse>> GetAsync(UserSearchObject search)
+        public override async Task<Model.model.User> CreateAsync(UserUpsertRequest request)
         {
+            
+            if (await _userManager.FindByEmailAsync(request.Email) is not null)
+                throw new InvalidOperationException("Korisnik sa ovom email adresom već postoji.");
 
-            var query = _context.Users.AsQueryable();
+            if (await _userManager.FindByNameAsync(request.Username) is not null)
+                throw new InvalidOperationException("Korisnik sa ovim korisničkim imenom već postoji.");
 
+            
+            var user = _mapper.Map<User>(request);
+            user.UserName = request.Username;
+            user.CreatedAt = DateTime.UtcNow;
+            user.isBlocked = false;
 
-            if (!string.IsNullOrEmpty(search.Username))
+            
+            var passwordValidator = new PasswordValidator<User>();
+            var validationResult = await passwordValidator.ValidateAsync(_userManager, user, request.Password);
+
+            if (!validationResult.Succeeded)
             {
-                query = query.Where(u => u.UserName.Contains(search.Username));
+                var errors = string.Join(", ", validationResult.Errors.Select(e => e.Description));
+                throw new InvalidOperationException($"Lozinka nije validna: {errors}");
             }
 
-
-            if (!string.IsNullOrEmpty(search.Email))
-            {
-                query = query.Where(u => u.Email.Contains(search.Email));
-            }
-
-            if (!string.IsNullOrEmpty(search.FTS))
-            {
-                string fts = search.FTS.ToLower();
-                query = query.Where(u =>
-                    u.UserName.ToLower().Contains(fts) ||
-                    u.Email.ToLower().Contains(fts) ||
-                    u.FirstName.ToLower().Contains(fts) ||
-                    u.LastName.ToLower().Contains(fts));
-            }
-
-            // Ukupan broj rezultata (pre paginacije)
-            int totalCount = 0;
-            if (search.IncludeTotalCount)
-            {
-                totalCount = await query.CountAsync();
-            }
-
-            // Paging (osim ako nije RetrieveAll)
-            if (!search.RetrieveAll)
-            {
-                int skip = (search.Page ?? 0) * (search.PageSize ?? 10);
-                int take = search.PageSize ?? 10;
-
-                query = query.Skip(skip).Take(take);
-                totalCount = await query.CountAsync();
-            }
-
-            var users = await query.ToListAsync();
-
-            var result = new PagedResult<UserResponse>
-            {
-                Items = users.Select(MapToResponse).ToList(),
-                TotalCount = search.IncludeTotalCount ? totalCount : 0
-            };
-
-            return result;
-        }
-
-        private UserResponse MapToResponse(User user)
-        {
-            return new UserResponse
-            {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                Username = user.UserName,
-                CreatedAt = user.CreatedAt,
-                LastLoginAt = user.LastLoginAt,
-                PhoneNumber = user.PhoneNumber,
-                isBlocked = user.isBlocked,
-            };
-        }
-
-        public async Task<UserResponse> GetByIdAsync(string id)
-        {
-            var user = await _userManager.FindByIdAsync(id);
-            if (user == null)
-                return null;
-            return MapToResponse(user);
-        }
-
-        public async Task<UserResponse> PostAsync(UserUpsertRequest user)
-        {
-
-            if (await _context.Users.AnyAsync(u => u.Email == user.Email))
-                throw new InvalidOperationException("A user with this email already exists.");
-
-            if (await _context.Users.AnyAsync(u => u.UserName == user.Username))
-                throw new InvalidOperationException("A user with this username already exists.");
-
-
-            var newUser = new User
-            {
-                UserName = user.Username,
-                Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                PhoneNumber = user.PhoneNumber,
-                isBlocked = false,
-                CreatedAt = DateTime.UtcNow,
-            };
-
-            var result = await _userManager.CreateAsync(newUser, user.Password);
-
+            
+            var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                throw new InvalidOperationException($"User creation failed: {errors}");
+                throw new InvalidOperationException($"Kreiranje korisnika nije uspjelo: {errors}");
             }
 
+            
+            await _userManager.AddToRoleAsync(user, "Korisnik");
 
-            await _userManager.AddToRoleAsync(newUser, "Korisnik");
-            return await GetUserResponseWithRolesAsync(newUser.Id);
-        }
+            
+            var userResponse = _mapper.Map<Model.model.User>(user);
 
-        private async Task<UserResponse> GetUserResponseWithRolesAsync(string userId)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
-
-            if (user == null)
-                throw new InvalidOperationException("User not found");
-
+            
             var roles = await _userManager.GetRolesAsync(user);
+            userResponse.Roles = roles.ToList();
 
-
-            if (roles.Contains("Korisnik"))
-            {
-                var response = MapToResponse(user);
-
-                response.Roles = new List<RoleResponse>
-
-                {
-                    new RoleResponse
-                    {
-                        Id = user.Id,
-                        Name = "Korisnik",
-                        Description = "Osnovna korisnička rola"
-                    }
-                };
-
-                return response;
-            }
-
-            return MapToResponse(user);
+            return userResponse;
         }
 
-        public async Task<UserResponse> PutAsync(int id, UserUpsertRequest user)
-        {
-            var existingUser = await _context.Users.FindAsync(id.ToString());
-            if (existingUser == null)
-                throw new InvalidOperationException("User not found");
 
-            if (existingUser.Email != user.Email && await _context.Users.AnyAsync(u => u.Email == user.Email))
-                throw new InvalidOperationException("A user with this email already exists.");
-
-            if (existingUser.UserName != user.Username && await _context.Users.AnyAsync(u => u.UserName == user.Username))
-                throw new InvalidOperationException("A user with this username already exists.");
-
-            existingUser.FirstName = user.FirstName;
-            existingUser.LastName = user.LastName;
-            existingUser.Email = user.Email;
-            existingUser.UserName = user.Username;
-            existingUser.PhoneNumber = user.PhoneNumber;
-
-            if (!string.IsNullOrEmpty(user.Password))
-            {
-                var token = await _userManager.GeneratePasswordResetTokenAsync(existingUser);
-                var passwordResult = await _userManager.ResetPasswordAsync(existingUser, token, user.Password);
-                if (!passwordResult.Succeeded)
-                {
-                    var errors = string.Join(", ", passwordResult.Errors.Select(e => e.Description));
-                    throw new InvalidOperationException($"Password update failed: {errors}");
-                }
-            }
-
-            await _context.SaveChangesAsync();
-            return await GetUserResponseWithRolesAsync(existingUser.Id);
-        }
-
-        public async Task<UserResponse?> AuthenticateAsync(UserLoginRequest request)
+        public async Task<Model.model.User?> AuthenticateAsync(UserLoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.Username);
-            if (user == null || !await _userManager.CheckPasswordAsync(user, request.Password))
+            if (user == null || user.isBlocked)
                 return null;
 
-            user.LastLoginAt = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
+            var validPassword = await _userManager.CheckPasswordAsync(user, request.Password);
+            if (!validPassword)
+                return null;
 
-            var response = MapToResponse(user);
+            return await GetUserResponseWithTokenAsync(user);
+        }
+
+        private async Task<Model.model.User> GetUserResponseWithTokenAsync(User user)
+        {
             var roles = await _userManager.GetRolesAsync(user);
-            response.Roles = new List<RoleResponse>(
-                roles.Select(r => new RoleResponse
-                {
-                    Id = user.Id,
-                    Name = r,
-                    Description = r == "Korisnik" ? "Osnovna korisnička rola" :
-                                  r == "Radnik" ? "Rola radnika" :
-                                  r == "Direktor" ? "Rola direktora" : "Nepoznata rola"
-                })
-            );
 
-            return response;
+            var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Name, user.UserName),
+            new Claim(ClaimTypes.Email, user.Email ?? "")
+        };
+
+            foreach (var role in roles)
+                claims.Add(new Claim(ClaimTypes.Role, role));
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var token = new JwtSecurityToken(
+                issuer: _config["Jwt:Issuer"],
+                audience: _config["Jwt:Issuer"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddHours(2),
+                signingCredentials: creds);
+
+            var userResponse = _mapper.Map<Model.model.User>(user);
+            userResponse.Token = new JwtSecurityTokenHandler().WriteToken(token);
+            userResponse.Roles = roles.ToList();
+
+            return userResponse;
         }
     }
 }

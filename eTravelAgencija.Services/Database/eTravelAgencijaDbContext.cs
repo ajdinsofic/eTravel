@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 public class eTravelAgencijaDbContext
-    : IdentityDbContext<User, Role, string,
-        IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>,
-        IdentityRoleClaim<string>, IdentityUserToken<string>>
+    : IdentityDbContext<User, Role, int,
+        IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>,
+        IdentityRoleClaim<int>, IdentityUserToken<int>>
 {
     public eTravelAgencijaDbContext(DbContextOptions<eTravelAgencijaDbContext> options)
         : base(options)
@@ -19,18 +19,22 @@ public class eTravelAgencijaDbContext
     public DbSet<OfferDetails> OfferDetails { get; set; }
     public DbSet<OfferImage> OfferImages { get; set; }
     public DbSet<OfferPlanDay> OfferPlanDays { get; set; }
-    public DbSet<Hotel> Hotels { get; set; }
-    public DbSet<OfferHotels> OfferHotels { get; set; }
     public DbSet<OfferCategory> OfferCategories { get; set; }
     public DbSet<OfferSubCategory> OfferSubCategories { get; set; }
+    public DbSet<Hotel> Hotels { get; set; }
+    public DbSet<OfferHotels> OfferHotels { get; set; }
     public DbSet<HotelImages> HotelImages { get; set; }
     public DbSet<HotelRooms> HotelRooms { get; set; }
     public DbSet<Rooms> Rooms { get; set; }
-    public DbSet<OfferHotels> offerHotels { get; set; }
+    public DbSet<Voucher> Vouchers { get; set; }
+    public DbSet<UserVoucher> UserVouchers { get; set; }
+    public DbSet<UserToken> UserTokens { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        var hasher = new PasswordHasher<User>();
 
         builder.Entity<UserRole>(b =>
         {
@@ -56,6 +60,104 @@ public class eTravelAgencijaDbContext
             .HasOne(hr => hr.Rooms)
             .WithMany()
             .HasForeignKey(hr => hr.RoomId);
+
+        builder.Entity<UserVoucher>()
+        .HasKey(uv => new { uv.UserId, uv.VoucherId });
+
+    builder.Entity<Role>().HasData(
+        new Role { Id = 1, Name = "Korisnik", NormalizedName = "KORISNIK", Description = "Osnovna korisnička rola" },
+        new Role { Id = 2, Name = "Radnik",   NormalizedName = "RADNIK",   Description = "Zaposleni koji upravlja ponudama i rezervacijama" },
+        new Role { Id = 3, Name = "Direktor", NormalizedName = "DIREKTOR", Description = "Administrator sistema" }
+    );
+
+    builder.Entity<User>().HasData(
+        new User
+        {
+            Id = 1,
+            UserName = "radnik",
+            NormalizedUserName = "RADNIK",
+            Email = "radnik@etravel.com",
+            NormalizedEmail = "RADNIK@ETRAVEL.COM",
+            EmailConfirmed = true,
+            FirstName = "Marko",
+            LastName = "Radnik",
+            PhoneNumber = "+38761111111",
+            isBlocked = false,
+            CreatedAt = DateTime.UtcNow,
+            PasswordHash = hasher.HashPassword(null, "Radnik123!")
+        },
+        new User
+        {
+            Id = 2,
+            UserName = "direktor",
+            NormalizedUserName = "DIREKTOR",
+            Email = "direktor@etravel.com",
+            NormalizedEmail = "DIREKTOR@ETRAVEL.COM",
+            EmailConfirmed = true,
+            FirstName = "Amir",
+            LastName = "Direktor",
+            PhoneNumber = "+38762222222",
+            isBlocked = false,
+            CreatedAt = DateTime.UtcNow,
+            PasswordHash = hasher.HashPassword(null, "Direktor123!")
+        },
+        new User
+        {
+            Id = 4,
+            UserName = "korisnik",
+            NormalizedUserName = "KORISNIK",
+            Email = "korisnik@etravel.com",
+            NormalizedEmail = "KORISNIK@ETRAVEL.COM",
+            EmailConfirmed = true,
+            FirstName = "Ajdin",
+            LastName = "Korisnik",
+            PhoneNumber = "+38763333333",
+            isBlocked = false,
+            CreatedAt = DateTime.UtcNow,
+            PasswordHash = hasher.HashPassword(null, "Korisnik123!")
+        }
+    );
+
+        // 🔹 SEED USER-ROLE VEZE
+        builder.Entity<UserRole>().HasData(
+            new UserRole { UserId = 1, RoleId = 2 }, // Radnik → Radnik
+            new UserRole { UserId = 2, RoleId = 3 }, // Direktor → Direktor
+            new UserRole { UserId = 4, RoleId = 1 }  // Korisnik → Korisnik
+        );
+    
+    
+    builder.Entity<UserToken>().HasData(
+        new UserToken
+        {
+            UserId = 4, 
+            Equity = 80
+        }
+    );
+
+
+    builder.Entity<Voucher>().HasData(
+        new Voucher
+        {
+            Id = 1,
+            VoucherCode = "WELCOME20",
+            Discount = 0.20m,
+            priceInTokens = 40
+        },
+        new Voucher
+        {
+            Id = 2,
+            VoucherCode = "SUMMER50",
+            Discount = 0.50m,
+            priceInTokens = 80
+        },
+        new Voucher
+        {
+            Id = 3,
+            VoucherCode = "VIP70",
+            Discount = 0.70m,
+            priceInTokens = 40
+        }
+    );
 
 
         builder.Entity<OfferCategory>().HasData(
@@ -199,77 +301,78 @@ public class eTravelAgencijaDbContext
         );
 
         builder.Entity<Hotel>().HasData(
-    new Hotel { Id = 1, Name = "Hotel Kovačević", Address = "Blaževićeva 404", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 2, Name = "Hotel Vuković", Address = "Potočna 520", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 3, Name = "Hotel Petrović", Address = "Milice Todorović 102", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 4, Name = "Hotel Ilić", Address = "Cara Dušana 77", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 5, Name = "Hotel Stojanović", Address = "Bulevar Kralja Petra 15", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 6, Name = "Hotel Marković", Address = "Svetog Save 88", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 7, Name = "Hotel Jovanović", Address = "Narodnog fronta 25", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 8, Name = "Hotel Nikolić", Address = "Kralja Milana 12", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 9, Name = "Hotel Milošević", Address = "Bulevar Oslobođenja 33", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 10, Name = "Hotel Ristić", Address = "Žarka Zrenjanina 8", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 11, Name = "Hotel Lukić", Address = "Kosovska 40", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 12, Name = "Hotel Savić", Address = "Cara Lazara 77", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 13, Name = "Hotel Milenković", Address = "Ulica Kralja Aleksandra 58", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 14, Name = "Hotel Janković", Address = "Makedonska 91", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 15, Name = "Hotel Pavlović", Address = "Narodnog heroja 120", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 16, Name = "Hotel Todorović", Address = "Bulevar Kralja Aleksandra 19", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 17, Name = "Hotel Božić", Address = "Njegoševa 7", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 18, Name = "Hotel Živanović", Address = "Braće Jerković 14", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 19, Name = "Hotel Miladinović", Address = "Svetozara Markovića 22", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 20, Name = "Hotel Radosavljević", Address = "Kneza Miloša 50", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 21, Name = "Hotel Ćosić", Address = "Bulevar revolucije 65", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 22, Name = "Hotel Stanković", Address = "Vojvode Stepe 33", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 23, Name = "Hotel Perić", Address = "Mileve Marić 45", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 24, Name = "Hotel Radovanović", Address = "Bulevar despota Stefana 14", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 25, Name = "Hotel Novaković", Address = "Gavrila Principa 18", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 26, Name = "Hotel Vasić", Address = "Resavska 12", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 27, Name = "Hotel Tadić", Address = "Njegoševa 90", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 28, Name = "Hotel Milović", Address = "Ulica kralja Petra 66", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 29, Name = "Hotel Rakić", Address = "Kraljice Marije 30", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 30, Name = "Hotel Jović", Address = "Terazije 55", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 31, Name = "Hotel Milić", Address = "Kneza Ljubomira 14", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 32, Name = "Hotel Đorđević", Address = "Bulevar kralja Aleksandra 11", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 33, Name = "Hotel Karanović", Address = "Cara Dušana 99", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 34, Name = "Hotel Radulović", Address = "Ulica Marije Bursać 40", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 35, Name = "Hotel Filipović", Address = "Nikole Pašića 12", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 36, Name = "Hotel Stankov", Address = "Bulevar oslobođenja 32", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 37, Name = "Hotel Sokolović", Address = "Kralja Petra 44", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 38, Name = "Hotel Popović", Address = "Ulica kralja Milana 8", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 39, Name = "Hotel Vučić", Address = "Bulevar Kralja Petra 6", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 40, Name = "Hotel Jankov", Address = "Nikole Tesle 15", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 41, Name = "Hotel Zorić", Address = "Kneza Mihaila 19", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 42, Name = "Hotel Dragić", Address = "Mileve Marić 27", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 43, Name = "Hotel Tomašević", Address = "Bulevar oslobođenja 50", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 44, Name = "Hotel Mijatović", Address = "Kralja Aleksandra 22", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 45, Name = "Hotel Filipović", Address = "Ulica Kralja Petra 31", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 46, Name = "Hotel Radović", Address = "Narodnog fronta 18", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 47, Name = "Hotel Đukić", Address = "Bulevar Kralja Petra 14", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 48, Name = "Hotel Popović", Address = "Cara Dušana 7", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 49, Name = "Hotel Marinković", Address = "Kneza Miloša 5", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 50, Name = "Hotel Kostić", Address = "Bulevar Oslobođenja 16", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 51, Name = "Hotel Milutinović", Address = "Resavska 2", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 52, Name = "Hotel Radosavljević", Address = "Narodnog heroja 38", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 53, Name = "Hotel Ilić", Address = "Ulica Vuka Karadžića 14", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 54, Name = "Hotel Novak", Address = "Bulevar Oslobođenja 50", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 55, Name = "Hotel Đorđević", Address = "Kralja Petra 66", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 56, Name = "Hotel Jović", Address = "Njegoševa 11", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 57, Name = "Hotel Stevanović", Address = "Bulevar kralja Aleksandra 88", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 58, Name = "Hotel Mandić", Address = "Ulica Kralja Petra 3", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 59, Name = "Hotel Bošnjak", Address = "Narodnog fronta 17", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 60, Name = "Hotel Radovanović", Address = "Bulevar oslobođenja 43", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 61, Name = "Hotel Pavlović", Address = "Kneza Miloša 18", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 62, Name = "Hotel Ilić", Address = "Ulica Kralja Petra 7", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 63, Name = "Hotel Živković", Address = "Bulevar Kralja Petra 40", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 64, Name = "Hotel Janković", Address = "Narodnog heroja 23", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 65, Name = "Hotel Marković", Address = "Kralja Milana 50", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 66, Name = "Hotel Savić", Address = "Ulica Kralja Petra 28", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 67, Name = "Hotel Stojanović", Address = "Bulevar oslobođenja 29", City = "N/A", Country = "N/A", Stars = 3 },
-    new Hotel { Id = 68, Name = "Hotel Milosević", Address = "Narodnog fronta 11", City = "N/A", Country = "N/A", Stars = 4 },
-    new Hotel { Id = 69, Name = "Hotel Ristić", Address = "Kneza Miloša 22", City = "N/A", Country = "N/A", Stars = 5 },
-    new Hotel { Id = 70, Name = "Hotel Ilić", Address = "Ulica Kralja Petra 1", City = "N/A", Country = "N/A", Stars = 4 }
+    new Hotel { Id = 1, Name = "Hotel Kovačević", Address = "Blaževićeva 404", Stars = 4 },
+    new Hotel { Id = 2, Name = "Hotel Vuković", Address = "Potočna 520", Stars = 3 },
+    new Hotel { Id = 3, Name = "Hotel Petrović", Address = "Milice Todorović 102", Stars = 5 },
+    new Hotel { Id = 4, Name = "Hotel Ilić", Address = "Cara Dušana 77", Stars = 4 },
+    new Hotel { Id = 5, Name = "Hotel Stojanović", Address = "Bulevar Kralja Petra 15", Stars = 4 },
+    new Hotel { Id = 6, Name = "Hotel Marković", Address = "Svetog Save 88", Stars = 3 },
+    new Hotel { Id = 7, Name = "Hotel Jovanović", Address = "Narodnog fronta 25", Stars = 5 },
+    new Hotel { Id = 8, Name = "Hotel Nikolić", Address = "Kralja Milana 12", Stars = 4 },
+    new Hotel { Id = 9, Name = "Hotel Milošević", Address = "Bulevar Oslobođenja 33", Stars = 3 },
+    new Hotel { Id = 10, Name = "Hotel Ristić", Address = "Žarka Zrenjanina 8", Stars = 4 },
+    new Hotel { Id = 11, Name = "Hotel Lukić", Address = "Kosovska 40", Stars = 3 },
+    new Hotel { Id = 12, Name = "Hotel Savić", Address = "Cara Lazara 77", Stars = 4 },
+    new Hotel { Id = 13, Name = "Hotel Milenković", Address = "Ulica Kralja Aleksandra 58", Stars = 5 },
+    new Hotel { Id = 14, Name = "Hotel Janković", Address = "Makedonska 91", Stars = 4 },
+    new Hotel { Id = 15, Name = "Hotel Pavlović", Address = "Narodnog heroja 120", Stars = 3 },
+    new Hotel { Id = 16, Name = "Hotel Todorović", Address = "Bulevar Kralja Aleksandra 19", Stars = 4 },
+    new Hotel { Id = 17, Name = "Hotel Božić", Address = "Njegoševa 7", Stars = 5 },
+    new Hotel { Id = 18, Name = "Hotel Živanović", Address = "Braće Jerković 14", Stars = 3 },
+    new Hotel { Id = 19, Name = "Hotel Miladinović", Address = "Svetozara Markovića 22", Stars = 4 },
+    new Hotel { Id = 20, Name = "Hotel Radosavljević", Address = "Kneza Miloša 50", Stars = 4 },
+    new Hotel { Id = 21, Name = "Hotel Ćosić", Address = "Bulevar revolucije 65", Stars = 3 },
+    new Hotel { Id = 22, Name = "Hotel Stanković", Address = "Vojvode Stepe 33", Stars = 4 },
+    new Hotel { Id = 23, Name = "Hotel Perić", Address = "Mileve Marić 45", Stars = 5 },
+    new Hotel { Id = 24, Name = "Hotel Radovanović", Address = "Bulevar despota Stefana 14", Stars = 4 },
+    new Hotel { Id = 25, Name = "Hotel Novaković", Address = "Gavrila Principa 18", Stars = 3 },
+    new Hotel { Id = 26, Name = "Hotel Vasić", Address = "Resavska 12", Stars = 4 },
+    new Hotel { Id = 27, Name = "Hotel Tadić", Address = "Njegoševa 90", Stars = 5 },
+    new Hotel { Id = 28, Name = "Hotel Milović", Address = "Ulica kralja Petra 66", Stars = 4 },
+    new Hotel { Id = 29, Name = "Hotel Rakić", Address = "Kraljice Marije 30", Stars = 3 },
+    new Hotel { Id = 30, Name = "Hotel Jović", Address = "Terazije 55", Stars = 4 },
+    new Hotel { Id = 31, Name = "Hotel Milić", Address = "Kneza Ljubomira 14", Stars = 3 },
+    new Hotel { Id = 32, Name = "Hotel Đorđević", Address = "Bulevar kralja Aleksandra 11", Stars = 4 },
+    new Hotel { Id = 33, Name = "Hotel Karanović", Address = "Cara Dušana 99", Stars = 5 },
+    new Hotel { Id = 34, Name = "Hotel Radulović", Address = "Ulica Marije Bursać 40", Stars = 4 },
+    new Hotel { Id = 35, Name = "Hotel Filipović", Address = "Nikole Pašića 12", Stars = 3 },
+    new Hotel { Id = 36, Name = "Hotel Stankov", Address = "Bulevar oslobođenja 32", Stars = 4 },
+    new Hotel { Id = 37, Name = "Hotel Sokolović", Address = "Kralja Petra 44", Stars = 5 },
+    new Hotel { Id = 38, Name = "Hotel Popović", Address = "Ulica kralja Milana 8", Stars = 4 },
+    new Hotel { Id = 39, Name = "Hotel Vučić", Address = "Bulevar Kralja Petra 6", Stars = 3 },
+    new Hotel { Id = 40, Name = "Hotel Jankov", Address = "Nikole Tesle 15", Stars = 4 },
+    new Hotel { Id = 41, Name = "Hotel Zorić", Address = "Kneza Mihaila 19", Stars = 5 },
+    new Hotel { Id = 42, Name = "Hotel Dragić", Address = "Mileve Marić 27", Stars = 4 },
+    new Hotel { Id = 43, Name = "Hotel Tomašević", Address = "Bulevar oslobođenja 50", Stars = 3 },
+    new Hotel { Id = 44, Name = "Hotel Mijatović", Address = "Kralja Aleksandra 22", Stars = 4 },
+    new Hotel { Id = 45, Name = "Hotel Filipović", Address = "Ulica Kralja Petra 31", Stars = 5 },
+    new Hotel { Id = 46, Name = "Hotel Radović", Address = "Narodnog fronta 18", Stars = 4 },
+    new Hotel { Id = 47, Name = "Hotel Đukić", Address = "Bulevar Kralja Petra 14", Stars = 3 },
+    new Hotel { Id = 48, Name = "Hotel Popović", Address = "Cara Dušana 7", Stars = 4 },
+    new Hotel { Id = 49, Name = "Hotel Marinković", Address = "Kneza Miloša 5", Stars = 5 },
+    new Hotel { Id = 50, Name = "Hotel Kostić", Address = "Bulevar Oslobođenja 16", Stars = 4 },
+    new Hotel { Id = 51, Name = "Hotel Milutinović", Address = "Resavska 2", Stars = 3 },
+    new Hotel { Id = 52, Name = "Hotel Radosavljević", Address = "Narodnog heroja 38", Stars = 4 },
+    new Hotel { Id = 53, Name = "Hotel Ilić", Address = "Ulica Vuka Karadžića 14", Stars = 5 },
+    new Hotel { Id = 54, Name = "Hotel Novak", Address = "Bulevar Oslobođenja 50", Stars = 4 },
+    new Hotel { Id = 55, Name = "Hotel Đorđević", Address = "Kralja Petra 66", Stars = 3 },
+    new Hotel { Id = 56, Name = "Hotel Jović", Address = "Njegoševa 11", Stars = 4 },
+    new Hotel { Id = 57, Name = "Hotel Stevanović", Address = "Bulevar kralja Aleksandra 88", Stars = 5 },
+    new Hotel { Id = 58, Name = "Hotel Mandić", Address = "Ulica Kralja Petra 3", Stars = 4 },
+    new Hotel { Id = 59, Name = "Hotel Bošnjak", Address = "Narodnog fronta 17", Stars = 3 },
+    new Hotel { Id = 60, Name = "Hotel Radovanović", Address = "Bulevar oslobođenja 43", Stars = 4 },
+    new Hotel { Id = 61, Name = "Hotel Pavlović", Address = "Kneza Miloša 18", Stars = 5 },
+    new Hotel { Id = 62, Name = "Hotel Ilić", Address = "Ulica Kralja Petra 7", Stars = 4 },
+    new Hotel { Id = 63, Name = "Hotel Živković", Address = "Bulevar Kralja Petra 40", Stars = 3 },
+    new Hotel { Id = 64, Name = "Hotel Janković", Address = "Narodnog heroja 23", Stars = 4 },
+    new Hotel { Id = 65, Name = "Hotel Marković", Address = "Kralja Milana 50", Stars = 5 },
+    new Hotel { Id = 66, Name = "Hotel Savić", Address = "Ulica Kralja Petra 28", Stars = 4 },
+    new Hotel { Id = 67, Name = "Hotel Stojanović", Address = "Bulevar oslobođenja 29", Stars = 3 },
+    new Hotel { Id = 68, Name = "Hotel Milosević", Address = "Narodnog fronta 11", Stars = 4 },
+    new Hotel { Id = 69, Name = "Hotel Ristić", Address = "Kneza Miloša 22", Stars = 5 },
+    new Hotel { Id = 70, Name = "Hotel Ilić", Address = "Ulica Kralja Petra 1", Stars = 4 }
 );
+
 
         builder.Entity<HotelImages>().HasData(
     new HotelImages { Id = 1, HotelId = 1, ImageUrl = "/images/hotels/room.jpg", IsMain = true },

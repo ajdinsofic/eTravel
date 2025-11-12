@@ -13,11 +13,9 @@ namespace eTravelAgencija.Services.Database
 
         public string Address { get; set; }
 
-        public string City { get; set; }
-
-        public string Country { get; set; }
-
         public int Stars { get; set; }
+
+        public decimal CalculatedPrice { get; set; }
 
         // Jedan hotel može imati više soba
         public ICollection<HotelRooms> HotelRooms { get; set; } = new List<HotelRooms>();

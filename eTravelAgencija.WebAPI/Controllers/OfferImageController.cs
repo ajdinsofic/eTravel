@@ -1,21 +1,31 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using eTravelAgencija.Model.ResponseObjects;
-using eTravelAgencija.Services.Services;
+// 
+using eTravelAgencija.Model.model;
+using eTravelAgencija.Model.SearchObjects;
+using eTravelAgencija.Model.RequestObjects;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using eTravelAgencija.Services.Services;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
-    public class OfferImageController : BaseImageController<OfferImage, OfferImageResponse>
+    [Authorize(Roles = "Radnik,Direktor")]
+    [ApiController]
+    [Route("api/[controller]")]
+    public class OfferImageController 
+        : BaseCRUDController<
+            OfferImage,
+            BaseSearchObject,
+            OfferImageUpsertRequest,
+            OfferImageUpsertRequest>
     {
-        public OfferImageController(IOfferImageService service)
-            : base(service)
+
+
+        public OfferImageController(
+            ILogger<BaseCRUDController<OfferImage, BaseSearchObject, OfferImageUpsertRequest, OfferImageUpsertRequest>> logger,
+            IOfferImageService offerImageService)
+            : base(logger, offerImageService)
         {
+            
         }
     }
-
 }

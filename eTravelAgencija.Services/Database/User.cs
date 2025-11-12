@@ -5,13 +5,15 @@ using Microsoft.AspNetCore.Identity;
 
 namespace eTravelAgencija.Services.Database
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<int>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? LastLoginAt { get; set; }
-        public bool isBlocked { get; set; } = false;        
+        public bool isBlocked { get; set; } = false;
+        public ICollection<UserVoucher> UserVouchers { get; set; } = new List<UserVoucher>();
+       
 
     }
 }
