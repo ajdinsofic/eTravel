@@ -7,7 +7,7 @@ namespace eTravelAgencija.Services.Database
     public class OfferDetails
     {
         [Key]
-        [ForeignKey(nameof(Offer))]  // Ova anotacija pokazuje da je OfferId i PK i FK ka Offer (jedan-na-jedan veza)
+        [ForeignKey(nameof(Offer))]  
         public int OfferId { get; set; }
 
         public Offer Offer { get; set; }
@@ -23,7 +23,7 @@ namespace eTravelAgencija.Services.Database
         public decimal MinimalPrice { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal ResidenceTaxPerDay { get; set; }  // Boravišna taksa po danu
+        public decimal ResidenceTaxPerDay { get; set; }  
         
         [Column(TypeName = "decimal(18,2)")]
         public decimal TravelInsuranceTotal { get; set; }

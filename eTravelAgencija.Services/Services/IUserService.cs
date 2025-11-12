@@ -7,12 +7,10 @@ using eTravelAgencija.Model.SearchObjects;
 
 namespace eTravelAgencija.Services.Services
 {
-    public interface IUserService
+    public interface IUserService : ICRUDService<Model.model.User, UserSearchObject, UserUpsertRequest, UserUpsertRequest>
     {
-        Task<PagedResult<UserResponse>> GetAsync(UserSearchObject search = null);
-        Task<UserResponse> GetByIdAsync(string id);
-        Task<UserResponse> PostAsync(UserUpsertRequest user);
-        Task<UserResponse> PutAsync(int id, UserUpsertRequest user);
-        Task<UserResponse?> AuthenticateAsync(UserLoginRequest request);
+        Task<Model.model.User?> AuthenticateAsync(UserLoginRequest request);
+
     }
+
 }

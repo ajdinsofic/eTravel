@@ -21,7 +21,7 @@ namespace eTravelAgencija.Services.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,9 +35,8 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("text");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -46,7 +45,7 @@ namespace eTravelAgencija.Services.Migrations
                     b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,9 +59,8 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("text");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -71,7 +69,7 @@ namespace eTravelAgencija.Services.Migrations
                     b.ToTable("AspNetUserClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("text");
@@ -82,9 +80,8 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("text");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -93,10 +90,10 @@ namespace eTravelAgencija.Services.Migrations
                     b.ToTable("AspNetUserLogins", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("text");
@@ -112,521 +109,13 @@ namespace eTravelAgencija.Services.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Offer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DaysInTotal")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("SubCategoryId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("WayOfTravel")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubCategoryId");
-
-                    b.ToTable("Offers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DaysInTotal = 7,
-                            SubCategoryId = 1,
-                            Title = "Putovanje u Pariz",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DaysInTotal = 6,
-                            SubCategoryId = 2,
-                            Title = "Putovanje u Rim",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DaysInTotal = 8,
-                            SubCategoryId = 3,
-                            Title = "Putovanje u Madrid",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DaysInTotal = 4,
-                            SubCategoryId = 4,
-                            Title = "Putovanje u Beč",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DaysInTotal = 9,
-                            SubCategoryId = 5,
-                            Title = "Putovanje u Atina",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            DaysInTotal = 6,
-                            SubCategoryId = 6,
-                            Title = "Putovanje u Amsterdam",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            DaysInTotal = 7,
-                            SubCategoryId = 7,
-                            Title = "Putovanje u Lisabon",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            DaysInTotal = 5,
-                            SubCategoryId = 8,
-                            Title = "Putovanje u Berlin",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            DaysInTotal = 6,
-                            SubCategoryId = 9,
-                            Title = "Putovanje u Prag",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            DaysInTotal = 10,
-                            SubCategoryId = 10,
-                            Title = "Putovanje u Kopenhagen",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            DaysInTotal = 9,
-                            SubCategoryId = 11,
-                            Title = "Putovanje u Oslo",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            DaysInTotal = 8,
-                            SubCategoryId = 12,
-                            Title = "Putovanje u Stockholm",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            DaysInTotal = 6,
-                            SubCategoryId = 1,
-                            Title = "Putovanje u Ženeva",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            DaysInTotal = 7,
-                            SubCategoryId = 2,
-                            Title = "Putovanje u Cirih",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            DaysInTotal = 5,
-                            SubCategoryId = 3,
-                            Title = "Putovanje u Istanbul",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            DaysInTotal = 3,
-                            SubCategoryId = 4,
-                            Title = "Putovanje u Sarajevo",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            DaysInTotal = 4,
-                            SubCategoryId = 5,
-                            Title = "Putovanje u Zagreb",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            DaysInTotal = 4,
-                            SubCategoryId = 6,
-                            Title = "Putovanje u Beograd",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            DaysInTotal = 6,
-                            SubCategoryId = 7,
-                            Title = "Putovanje u Dubrovnik",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            DaysInTotal = 6,
-                            SubCategoryId = 8,
-                            Title = "Putovanje u Split",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            DaysInTotal = 5,
-                            SubCategoryId = 9,
-                            Title = "Putovanje u Ljubljana",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            DaysInTotal = 5,
-                            SubCategoryId = 10,
-                            Title = "Putovanje u Podgorica",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            DaysInTotal = 5,
-                            SubCategoryId = 11,
-                            Title = "Putovanje u Tirana",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            DaysInTotal = 5,
-                            SubCategoryId = 12,
-                            Title = "Putovanje u Skoplje",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 25,
-                            DaysInTotal = 6,
-                            SubCategoryId = 1,
-                            Title = "Putovanje u Budimpešta",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 26,
-                            DaysInTotal = 7,
-                            SubCategoryId = 2,
-                            Title = "Putovanje u Brisel",
-                            WayOfTravel = "Avion"
-                        },
-                        new
-                        {
-                            Id = 27,
-                            DaysInTotal = 6,
-                            SubCategoryId = 3,
-                            Title = "Putovanje u Varšava",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 28,
-                            DaysInTotal = 6,
-                            SubCategoryId = 4,
-                            Title = "Putovanje u Krakov",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 29,
-                            DaysInTotal = 6,
-                            SubCategoryId = 5,
-                            Title = "Putovanje u Sofija",
-                            WayOfTravel = "Autobus"
-                        },
-                        new
-                        {
-                            Id = 30,
-                            DaysInTotal = 7,
-                            SubCategoryId = 6,
-                            Title = "Putovanje u Bukurešt",
-                            WayOfTravel = "Avion"
-                        });
-                });
-
-            modelBuilder.Entity("OfferImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("OfferId")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("isMain")
-                        .HasColumnType("boolean");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OfferId");
-
-                    b.ToTable("OfferImages");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 1,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 2,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 3,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 4,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 5,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 6,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 7,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 8,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 9,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 10,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 11,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 12,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 13,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 14,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 15,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 16,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 16,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 17,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 17,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 18,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 18,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 19,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 19,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 20,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 20,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 21,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 21,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 22,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 22,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 23,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 23,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 24,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 24,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 25,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 25,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 26,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 26,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 27,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 27,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 28,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 28,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 29,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 29,
-                            isMain = true
-                        },
-                        new
-                        {
-                            Id = 30,
-                            ImageUrl = "/images/offer/pariz.jpg",
-                            OfferId = 30,
-                            isMain = true
-                        });
-                });
-
             modelBuilder.Entity("UserRole", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("text");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -643,6 +132,32 @@ namespace eTravelAgencija.Services.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 2,
+                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 239, DateTimeKind.Utc).AddTicks(2052),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            RoleId = 3,
+                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 239, DateTimeKind.Utc).AddTicks(2057),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 239, DateTimeKind.Utc).AddTicks(2058),
+                            Description = "",
+                            IsActive = true
+                        });
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.Hotel", b =>
@@ -657,13 +172,8 @@ namespace eTravelAgencija.Services.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<decimal>("CalculatedPrice")
+                        .HasColumnType("numeric");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -681,8 +191,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 1,
                             Address = "Blaževićeva 404",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Kovačević",
                             Stars = 4
                         },
@@ -690,8 +199,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2,
                             Address = "Potočna 520",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Vuković",
                             Stars = 3
                         },
@@ -699,8 +207,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 3,
                             Address = "Milice Todorović 102",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Petrović",
                             Stars = 5
                         },
@@ -708,8 +215,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 4,
                             Address = "Cara Dušana 77",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Ilić",
                             Stars = 4
                         },
@@ -717,8 +223,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 5,
                             Address = "Bulevar Kralja Petra 15",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Stojanović",
                             Stars = 4
                         },
@@ -726,8 +231,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 6,
                             Address = "Svetog Save 88",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Marković",
                             Stars = 3
                         },
@@ -735,8 +239,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 7,
                             Address = "Narodnog fronta 25",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Jovanović",
                             Stars = 5
                         },
@@ -744,8 +247,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 8,
                             Address = "Kralja Milana 12",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Nikolić",
                             Stars = 4
                         },
@@ -753,8 +255,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 9,
                             Address = "Bulevar Oslobođenja 33",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Milošević",
                             Stars = 3
                         },
@@ -762,8 +263,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 10,
                             Address = "Žarka Zrenjanina 8",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Ristić",
                             Stars = 4
                         },
@@ -771,8 +271,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 11,
                             Address = "Kosovska 40",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Lukić",
                             Stars = 3
                         },
@@ -780,8 +279,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 12,
                             Address = "Cara Lazara 77",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Savić",
                             Stars = 4
                         },
@@ -789,8 +287,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 13,
                             Address = "Ulica Kralja Aleksandra 58",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Milenković",
                             Stars = 5
                         },
@@ -798,8 +295,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 14,
                             Address = "Makedonska 91",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Janković",
                             Stars = 4
                         },
@@ -807,8 +303,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 15,
                             Address = "Narodnog heroja 120",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Pavlović",
                             Stars = 3
                         },
@@ -816,8 +311,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 16,
                             Address = "Bulevar Kralja Aleksandra 19",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Todorović",
                             Stars = 4
                         },
@@ -825,8 +319,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 17,
                             Address = "Njegoševa 7",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Božić",
                             Stars = 5
                         },
@@ -834,8 +327,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 18,
                             Address = "Braće Jerković 14",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Živanović",
                             Stars = 3
                         },
@@ -843,8 +335,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 19,
                             Address = "Svetozara Markovića 22",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Miladinović",
                             Stars = 4
                         },
@@ -852,8 +343,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 20,
                             Address = "Kneza Miloša 50",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Radosavljević",
                             Stars = 4
                         },
@@ -861,8 +351,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 21,
                             Address = "Bulevar revolucije 65",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Ćosić",
                             Stars = 3
                         },
@@ -870,8 +359,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 22,
                             Address = "Vojvode Stepe 33",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Stanković",
                             Stars = 4
                         },
@@ -879,8 +367,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 23,
                             Address = "Mileve Marić 45",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Perić",
                             Stars = 5
                         },
@@ -888,8 +375,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 24,
                             Address = "Bulevar despota Stefana 14",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Radovanović",
                             Stars = 4
                         },
@@ -897,8 +383,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 25,
                             Address = "Gavrila Principa 18",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Novaković",
                             Stars = 3
                         },
@@ -906,8 +391,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 26,
                             Address = "Resavska 12",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Vasić",
                             Stars = 4
                         },
@@ -915,8 +399,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 27,
                             Address = "Njegoševa 90",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Tadić",
                             Stars = 5
                         },
@@ -924,8 +407,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 28,
                             Address = "Ulica kralja Petra 66",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Milović",
                             Stars = 4
                         },
@@ -933,8 +415,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 29,
                             Address = "Kraljice Marije 30",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Rakić",
                             Stars = 3
                         },
@@ -942,8 +423,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 30,
                             Address = "Terazije 55",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Jović",
                             Stars = 4
                         },
@@ -951,8 +431,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 31,
                             Address = "Kneza Ljubomira 14",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Milić",
                             Stars = 3
                         },
@@ -960,8 +439,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 32,
                             Address = "Bulevar kralja Aleksandra 11",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Đorđević",
                             Stars = 4
                         },
@@ -969,8 +447,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 33,
                             Address = "Cara Dušana 99",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Karanović",
                             Stars = 5
                         },
@@ -978,8 +455,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 34,
                             Address = "Ulica Marije Bursać 40",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Radulović",
                             Stars = 4
                         },
@@ -987,8 +463,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 35,
                             Address = "Nikole Pašića 12",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Filipović",
                             Stars = 3
                         },
@@ -996,8 +471,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 36,
                             Address = "Bulevar oslobođenja 32",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Stankov",
                             Stars = 4
                         },
@@ -1005,8 +479,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 37,
                             Address = "Kralja Petra 44",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Sokolović",
                             Stars = 5
                         },
@@ -1014,8 +487,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 38,
                             Address = "Ulica kralja Milana 8",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Popović",
                             Stars = 4
                         },
@@ -1023,8 +495,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 39,
                             Address = "Bulevar Kralja Petra 6",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Vučić",
                             Stars = 3
                         },
@@ -1032,8 +503,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 40,
                             Address = "Nikole Tesle 15",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Jankov",
                             Stars = 4
                         },
@@ -1041,8 +511,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 41,
                             Address = "Kneza Mihaila 19",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Zorić",
                             Stars = 5
                         },
@@ -1050,8 +519,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 42,
                             Address = "Mileve Marić 27",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Dragić",
                             Stars = 4
                         },
@@ -1059,8 +527,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 43,
                             Address = "Bulevar oslobođenja 50",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Tomašević",
                             Stars = 3
                         },
@@ -1068,8 +535,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 44,
                             Address = "Kralja Aleksandra 22",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Mijatović",
                             Stars = 4
                         },
@@ -1077,8 +543,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 45,
                             Address = "Ulica Kralja Petra 31",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Filipović",
                             Stars = 5
                         },
@@ -1086,8 +551,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 46,
                             Address = "Narodnog fronta 18",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Radović",
                             Stars = 4
                         },
@@ -1095,8 +559,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 47,
                             Address = "Bulevar Kralja Petra 14",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Đukić",
                             Stars = 3
                         },
@@ -1104,8 +567,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 48,
                             Address = "Cara Dušana 7",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Popović",
                             Stars = 4
                         },
@@ -1113,8 +575,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 49,
                             Address = "Kneza Miloša 5",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Marinković",
                             Stars = 5
                         },
@@ -1122,8 +583,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 50,
                             Address = "Bulevar Oslobođenja 16",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Kostić",
                             Stars = 4
                         },
@@ -1131,8 +591,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 51,
                             Address = "Resavska 2",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Milutinović",
                             Stars = 3
                         },
@@ -1140,8 +599,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 52,
                             Address = "Narodnog heroja 38",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Radosavljević",
                             Stars = 4
                         },
@@ -1149,8 +607,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 53,
                             Address = "Ulica Vuka Karadžića 14",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Ilić",
                             Stars = 5
                         },
@@ -1158,8 +615,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 54,
                             Address = "Bulevar Oslobođenja 50",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Novak",
                             Stars = 4
                         },
@@ -1167,8 +623,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 55,
                             Address = "Kralja Petra 66",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Đorđević",
                             Stars = 3
                         },
@@ -1176,8 +631,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 56,
                             Address = "Njegoševa 11",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Jović",
                             Stars = 4
                         },
@@ -1185,8 +639,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 57,
                             Address = "Bulevar kralja Aleksandra 88",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Stevanović",
                             Stars = 5
                         },
@@ -1194,8 +647,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 58,
                             Address = "Ulica Kralja Petra 3",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Mandić",
                             Stars = 4
                         },
@@ -1203,8 +655,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 59,
                             Address = "Narodnog fronta 17",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Bošnjak",
                             Stars = 3
                         },
@@ -1212,8 +663,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 60,
                             Address = "Bulevar oslobođenja 43",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Radovanović",
                             Stars = 4
                         },
@@ -1221,8 +671,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 61,
                             Address = "Kneza Miloša 18",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Pavlović",
                             Stars = 5
                         },
@@ -1230,8 +679,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 62,
                             Address = "Ulica Kralja Petra 7",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Ilić",
                             Stars = 4
                         },
@@ -1239,8 +687,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 63,
                             Address = "Bulevar Kralja Petra 40",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Živković",
                             Stars = 3
                         },
@@ -1248,8 +695,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 64,
                             Address = "Narodnog heroja 23",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Janković",
                             Stars = 4
                         },
@@ -1257,8 +703,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 65,
                             Address = "Kralja Milana 50",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Marković",
                             Stars = 5
                         },
@@ -1266,8 +711,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 66,
                             Address = "Ulica Kralja Petra 28",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Savić",
                             Stars = 4
                         },
@@ -1275,8 +719,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 67,
                             Address = "Bulevar oslobođenja 29",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Stojanović",
                             Stars = 3
                         },
@@ -1284,8 +727,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 68,
                             Address = "Narodnog fronta 11",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Milosević",
                             Stars = 4
                         },
@@ -1293,8 +735,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 69,
                             Address = "Kneza Miloša 22",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Ristić",
                             Stars = 5
                         },
@@ -1302,8 +743,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 70,
                             Address = "Ulica Kralja Petra 1",
-                            City = "N/A",
-                            Country = "N/A",
+                            CalculatedPrice = 0m,
                             Name = "Hotel Ilić",
                             Stars = 4
                         });
@@ -1894,6 +1334,277 @@ namespace eTravelAgencija.Services.Migrations
                         });
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Offer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DaysInTotal")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SubCategoryId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("WayOfTravel")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.ToTable("Offers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DaysInTotal = 7,
+                            SubCategoryId = 1,
+                            Title = "Putovanje u Pariz",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DaysInTotal = 6,
+                            SubCategoryId = 2,
+                            Title = "Putovanje u Rim",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DaysInTotal = 8,
+                            SubCategoryId = 3,
+                            Title = "Putovanje u Madrid",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DaysInTotal = 4,
+                            SubCategoryId = 4,
+                            Title = "Putovanje u Beč",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DaysInTotal = 9,
+                            SubCategoryId = 5,
+                            Title = "Putovanje u Atina",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DaysInTotal = 6,
+                            SubCategoryId = 6,
+                            Title = "Putovanje u Amsterdam",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DaysInTotal = 7,
+                            SubCategoryId = 7,
+                            Title = "Putovanje u Lisabon",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DaysInTotal = 5,
+                            SubCategoryId = 8,
+                            Title = "Putovanje u Berlin",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DaysInTotal = 6,
+                            SubCategoryId = 9,
+                            Title = "Putovanje u Prag",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            DaysInTotal = 10,
+                            SubCategoryId = 10,
+                            Title = "Putovanje u Kopenhagen",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            DaysInTotal = 9,
+                            SubCategoryId = 11,
+                            Title = "Putovanje u Oslo",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            DaysInTotal = 8,
+                            SubCategoryId = 12,
+                            Title = "Putovanje u Stockholm",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            DaysInTotal = 6,
+                            SubCategoryId = 1,
+                            Title = "Putovanje u Ženeva",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            DaysInTotal = 7,
+                            SubCategoryId = 2,
+                            Title = "Putovanje u Cirih",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            DaysInTotal = 5,
+                            SubCategoryId = 3,
+                            Title = "Putovanje u Istanbul",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            DaysInTotal = 3,
+                            SubCategoryId = 4,
+                            Title = "Putovanje u Sarajevo",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            DaysInTotal = 4,
+                            SubCategoryId = 5,
+                            Title = "Putovanje u Zagreb",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            DaysInTotal = 4,
+                            SubCategoryId = 6,
+                            Title = "Putovanje u Beograd",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            DaysInTotal = 6,
+                            SubCategoryId = 7,
+                            Title = "Putovanje u Dubrovnik",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            DaysInTotal = 6,
+                            SubCategoryId = 8,
+                            Title = "Putovanje u Split",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            DaysInTotal = 5,
+                            SubCategoryId = 9,
+                            Title = "Putovanje u Ljubljana",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            DaysInTotal = 5,
+                            SubCategoryId = 10,
+                            Title = "Putovanje u Podgorica",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            DaysInTotal = 5,
+                            SubCategoryId = 11,
+                            Title = "Putovanje u Tirana",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            DaysInTotal = 5,
+                            SubCategoryId = 12,
+                            Title = "Putovanje u Skoplje",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            DaysInTotal = 6,
+                            SubCategoryId = 1,
+                            Title = "Putovanje u Budimpešta",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            DaysInTotal = 7,
+                            SubCategoryId = 2,
+                            Title = "Putovanje u Brisel",
+                            WayOfTravel = "Avion"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            DaysInTotal = 6,
+                            SubCategoryId = 3,
+                            Title = "Putovanje u Varšava",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            DaysInTotal = 6,
+                            SubCategoryId = 4,
+                            Title = "Putovanje u Krakov",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            DaysInTotal = 6,
+                            SubCategoryId = 5,
+                            Title = "Putovanje u Sofija",
+                            WayOfTravel = "Autobus"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            DaysInTotal = 7,
+                            SubCategoryId = 6,
+                            Title = "Putovanje u Bukurešt",
+                            WayOfTravel = "Avion"
+                        });
+                });
+
             modelBuilder.Entity("eTravelAgencija.Services.Database.OfferCategory", b =>
                 {
                     b.Property<int>("Id")
@@ -2457,6 +2168,243 @@ namespace eTravelAgencija.Services.Migrations
                         });
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.OfferImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("OfferId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("isMain")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.ToTable("OfferImages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 1,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 2,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 3,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 4,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 5,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 6,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 7,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 8,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 9,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 10,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 11,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 12,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 13,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 14,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 15,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 16,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 17,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 18,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 19,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 20,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 21,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 22,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 22,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 23,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 24,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 25,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 26,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 26,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 27,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 28,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 29,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 29,
+                            isMain = true
+                        },
+                        new
+                        {
+                            Id = 30,
+                            ImageUrl = "/images/offer/pariz.jpg",
+                            OfferId = 30,
+                            isMain = true
+                        });
+                });
+
             modelBuilder.Entity("eTravelAgencija.Services.Database.OfferPlanDay", b =>
                 {
                     b.Property<int>("OfferDetailsId")
@@ -2749,8 +2697,11 @@ namespace eTravelAgencija.Services.Migrations
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.Role", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -2775,6 +2726,29 @@ namespace eTravelAgencija.Services.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Osnovna korisnička rola",
+                            Name = "Korisnik",
+                            NormalizedName = "KORISNIK"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Zaposleni koji upravlja ponudama i rezervacijama",
+                            Name = "Radnik",
+                            NormalizedName = "RADNIK"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Administrator sistema",
+                            Name = "Direktor",
+                            NormalizedName = "DIREKTOR"
+                        });
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.Rooms", b =>
@@ -2825,8 +2799,11 @@ namespace eTravelAgencija.Services.Migrations
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
@@ -2902,9 +2879,152 @@ namespace eTravelAgencija.Services.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "66934109-5660-4cb8-b315-109434a8be30",
+                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 43, DateTimeKind.Utc).AddTicks(6382),
+                            Email = "radnik@etravel.com",
+                            EmailConfirmed = true,
+                            FirstName = "Marko",
+                            LastName = "Radnik",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "RADNIK@ETRAVEL.COM",
+                            NormalizedUserName = "RADNIK",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBvrvFkwZ0017Kww2BdxnhnIrvoFBNH6yVjA4XwN1RReZt8jaxm6ZwI0s8iMORRO7Q==",
+                            PhoneNumber = "+38761111111",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "radnik",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "fd5c2982-9aa0-4030-be2e-09883e2eca9a",
+                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 106, DateTimeKind.Utc).AddTicks(125),
+                            Email = "direktor@etravel.com",
+                            EmailConfirmed = true,
+                            FirstName = "Amir",
+                            LastName = "Direktor",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "DIREKTOR@ETRAVEL.COM",
+                            NormalizedUserName = "DIREKTOR",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKQGBktmmXagHlcMBER8Sao0nWrQxrj+l+PogKjufA6nANj+7YFMj6rrcj18IZS/ew==",
+                            PhoneNumber = "+38762222222",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "direktor",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "091553bb-be51-4086-a11a-c1532cf26be4",
+                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 173, DateTimeKind.Utc).AddTicks(9183),
+                            Email = "korisnik@etravel.com",
+                            EmailConfirmed = true,
+                            FirstName = "Ajdin",
+                            LastName = "Korisnik",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "KORISNIK@ETRAVEL.COM",
+                            NormalizedUserName = "KORISNIK",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJJaAoMlQqaF6KCuggGxmE3xdwbjhe92lQPO3rdyhGfiC95CsX2T0pUsfH0KrURfAQ==",
+                            PhoneNumber = "+38763333333",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "korisnik",
+                            isBlocked = false
+                        });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("eTravelAgencija.Services.Database.UserToken", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Equity")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("UserTokens");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 4,
+                            Equity = 80
+                        });
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.UserVoucher", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VoucherId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserId", "VoucherId");
+
+                    b.HasIndex("VoucherId");
+
+                    b.ToTable("UserVouchers");
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Voucher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("VoucherCode")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("priceInTokens")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vouchers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Discount = 0.20m,
+                            VoucherCode = "WELCOME20",
+                            priceInTokens = 40
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Discount = 0.50m,
+                            VoucherCode = "SUMMER50",
+                            priceInTokens = 80
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Discount = 0.70m,
+                            VoucherCode = "VIP70",
+                            priceInTokens = 40
+                        });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("eTravelAgencija.Services.Database.Role", null)
                         .WithMany()
@@ -2913,7 +3033,7 @@ namespace eTravelAgencija.Services.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.HasOne("eTravelAgencija.Services.Database.User", null)
                         .WithMany()
@@ -2922,7 +3042,7 @@ namespace eTravelAgencija.Services.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.HasOne("eTravelAgencija.Services.Database.User", null)
                         .WithMany()
@@ -2931,35 +3051,13 @@ namespace eTravelAgencija.Services.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
                     b.HasOne("eTravelAgencija.Services.Database.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Offer", b =>
-                {
-                    b.HasOne("eTravelAgencija.Services.Database.OfferSubCategory", "SubCategory")
-                        .WithMany("Offers")
-                        .HasForeignKey("SubCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("SubCategory");
-                });
-
-            modelBuilder.Entity("OfferImage", b =>
-                {
-                    b.HasOne("eTravelAgencija.Services.Database.OfferDetails", "OfferDetails")
-                        .WithMany("OfferImages")
-                        .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("OfferDetails");
                 });
 
             modelBuilder.Entity("UserRole", b =>
@@ -3007,9 +3105,20 @@ namespace eTravelAgencija.Services.Migrations
                     b.Navigation("Rooms");
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Offer", b =>
+                {
+                    b.HasOne("eTravelAgencija.Services.Database.OfferSubCategory", "SubCategory")
+                        .WithMany("Offers")
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SubCategory");
+                });
+
             modelBuilder.Entity("eTravelAgencija.Services.Database.OfferDetails", b =>
                 {
-                    b.HasOne("Offer", "Offer")
+                    b.HasOne("eTravelAgencija.Services.Database.Offer", "Offer")
                         .WithOne("Details")
                         .HasForeignKey("eTravelAgencija.Services.Database.OfferDetails", "OfferId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3037,6 +3146,17 @@ namespace eTravelAgencija.Services.Migrations
                     b.Navigation("OfferDetails");
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.OfferImage", b =>
+                {
+                    b.HasOne("eTravelAgencija.Services.Database.OfferDetails", "OfferDetails")
+                        .WithMany("OfferImages")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OfferDetails");
+                });
+
             modelBuilder.Entity("eTravelAgencija.Services.Database.OfferPlanDay", b =>
                 {
                     b.HasOne("eTravelAgencija.Services.Database.OfferDetails", "OfferDetails")
@@ -3059,10 +3179,34 @@ namespace eTravelAgencija.Services.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("Offer", b =>
+            modelBuilder.Entity("eTravelAgencija.Services.Database.UserToken", b =>
                 {
-                    b.Navigation("Details")
+                    b.HasOne("eTravelAgencija.Services.Database.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.UserVoucher", b =>
+                {
+                    b.HasOne("eTravelAgencija.Services.Database.User", "User")
+                        .WithMany("UserVouchers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eTravelAgencija.Services.Database.Voucher", "Voucher")
+                        .WithMany("UserVouchers")
+                        .HasForeignKey("VoucherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("Voucher");
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.Hotel", b =>
@@ -3072,6 +3216,12 @@ namespace eTravelAgencija.Services.Migrations
                     b.Navigation("HotelRooms");
 
                     b.Navigation("OfferHotels");
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Offer", b =>
+                {
+                    b.Navigation("Details")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.OfferCategory", b =>
@@ -3091,6 +3241,16 @@ namespace eTravelAgencija.Services.Migrations
             modelBuilder.Entity("eTravelAgencija.Services.Database.OfferSubCategory", b =>
                 {
                     b.Navigation("Offers");
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.User", b =>
+                {
+                    b.Navigation("UserVouchers");
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Voucher", b =>
+                {
+                    b.Navigation("UserVouchers");
                 });
 #pragma warning restore 612, 618
         }

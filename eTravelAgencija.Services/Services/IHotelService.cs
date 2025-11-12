@@ -10,15 +10,8 @@ using eTravelAgencija.Services.Database;
 
 namespace eTravelAgencija.Services.Services
 {
-    public interface IHotelService
+    public interface IHotelService : ICRUDService<Model.model.Hotel, HotelSearchObject, HotelUpsertRequest, HotelUpsertRequest>
     {
-        // Prepraviti slobodno HotelUserSearchObject jer HotelAdminSearchObject ima samo offerId pa tu mozemo stavit samo offerId
-        Task<PagedResult<HotelResponse>> GetHotelsForUserBySearch(HotelUserSearchObject search); // Lista hotela kada korisnik izabere ponudu i datum i tip sobe pa mu tamo izbaci koje hotele 
-        Task<PagedResult<HotelResponse>> GetHotelsForAdminByOfferId(HotelAdminSearchObject search); // Lista hotela u admin panelu sa paginacijom i filterima
-        // Task<HotelResponse> GetHotelforAdminById(int id); // Na listi hotela u adminu kada se klikne na jedan hotel; 
-        Task<HotelResponse> GetHotelByIdAsync(int hotelId);
-        Task<HotelResponse> PostHotel(HotelUpsertRequest request); // Dodavanje na adminu, kada se klikne na zeljeni hotel
-        Task<bool> DeleteHotel(int id); // Uklanjanje hotela
-        Task<HotelResponse> PutHotel(int id, HotelUpsertRequest request); // Izmjena hotela
+
     }
 }

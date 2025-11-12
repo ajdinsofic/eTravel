@@ -1,245 +1,101 @@
+using System.Threading.Tasks;
 using AutoMapper;
 using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.ResponseObjects;
-using eTravelAgencija.Model.Responses;
-using eTravelAgencija.Model.SearchObjects;
-using eTravelAgencija.Services.Database;
-using Microsoft.EntityFrameworkCore;
-using System;
+using eTravelAgencija.Services.Services;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Threading.Tasks;
+using System;
+using eTravelAgencija.Services.Database;
+using eTravelAgencija.Model;
+using eTravelAgencija.Model.SearchObjects;
+using System.Security.Cryptography.X509Certificates;
 
-namespace eTravelAgencija.Services.Services
+namespace eTravelAgencija.Services.Database
 {
-    public class OfferService : IOfferService
+    public class OfferService : BaseCRUDService<Model.model.Offer, OfferSearchObject, Database.Offer, OfferInsertRequest, OfferUpdateRequest>, IOfferService
     {
-        private readonly eTravelAgencijaDbContext _context;
-        private readonly IOfferImageService _offerImageService;
-        private readonly IMapper _mapper;
-
-        public OfferService(
-            eTravelAgencijaDbContext context,
-            IOfferImageService offerImageService,
-            IMapper mapper)
+        public OfferService(eTravelAgencijaDbContext context, IMapper mapper) : base(context, mapper)
         {
-            _context = context;
-            _offerImageService = offerImageService;
-            _mapper = mapper;
         }
 
-        public async Task<PagedResult<OfferAdminResponse>> GetSearchOffersForAdmin(OfferSearchObject search)
+        public override IQueryable<Offer> ApplyFilter(IQueryable<Offer> query, OfferSearchObject search)
         {
-            var query = _context.Offers.AsQueryable();
-
-            if (search.SubCategoryId > 0)
-                query = query.Where(o => o.SubCategoryId == search.SubCategoryId);
-
-            if (search.CategoryId > 0)
-                query = query.Where(o => o.SubCategory.CategoryId == search.CategoryId);
-
-            if (!string.IsNullOrWhiteSpace(search.FTS))
-                query = query.Where(o => o.Title.ToLower().Contains(search.FTS.ToLower()));
-
-            int totalCount = 0;
-            if (!search.RetrieveAll && search.IncludeTotalCount)
-                totalCount = await query.CountAsync();
-
-            if (!search.RetrieveAll)
-                query = query
-                    .Skip(search.Page.GetValueOrDefault() * search.PageSize.GetValueOrDefault())
-                    .Take(search.PageSize.GetValueOrDefault());
-
-            var offers = await query.ToListAsync();
-            var responses = new List<OfferAdminResponse>();
-
-            foreach (var o in offers)
+            if (search.SubCategoryId == -1 || search.SubCategoryId > 0)
             {
-                // 🔹 Glavna slika
-                var mainImages = await _offerImageService.GetImagesAsync(o.Id, true);
-                var mainImageUrl = mainImages?.FirstOrDefault()?.ImageUrl;
-
-                // 🔹 Fallback — ako nema glavne slike, uzmi bilo koju
-                if (string.IsNullOrEmpty(mainImageUrl))
-                {
-                    var allImages = await _offerImageService.GetImagesAsync(o.Id, true);
-                    mainImageUrl = allImages?.FirstOrDefault()?.ImageUrl;
-                }
-
-                // 🔹 Mapiraj DTO
-                var dto = _mapper.Map<OfferAdminResponse>(o);
-                dto.MainImage = mainImageUrl;
-
-                responses.Add(dto);
+                query = query.Where(o => o.SubCategoryId == search.SubCategoryId);
             }
 
-            return new PagedResult<OfferAdminResponse>
-            {
-                Items = responses,
-                TotalCount = search.IncludeTotalCount ? totalCount : 0
-            };
+            return base.ApplyFilter(query, search);
         }
 
-
-
-        public async Task<PagedResult<OfferUserResponce>> GetSearchOffersForUser(OfferSearchObject search)
+        public override IQueryable<Offer> AddInclude(IQueryable<Offer> query, OfferSearchObject search)
         {
-            var query = _context.Offers
-                .Include(o => o.SubCategory)
-                    .ThenInclude(sc => sc.Category)
-                .AsQueryable();
+            query = query.Include(o => o.Details);
 
-            if (search.CategoryId > 0)
-                query = query.Where(o => o.SubCategory.CategoryId == search.CategoryId);
-
-            if (search.SubCategoryId > 0)
-                query = query.Where(o => o.SubCategoryId == search.SubCategoryId);
-
-            if (!string.IsNullOrWhiteSpace(search.FTS))
-                query = query.Where(o => o.Title.ToLower().Contains(search.FTS.ToLower()));
-
-            int totalCount = 0;
-            if (!search.RetrieveAll && search.IncludeTotalCount)
-                totalCount = await query.CountAsync();
-
-            if (!search.RetrieveAll)
-                query = query
-                    .Skip(search.Page.GetValueOrDefault() * search.PageSize.GetValueOrDefault())
-                    .Take(search.PageSize.GetValueOrDefault());
-
-            var offers = await query.ToListAsync();
-            var responses = new List<OfferUserResponce>();
-
-            foreach (var offer in offers)
+            if (search.isMainImage)
             {
-                // 👇 dohvaćamo sve slike s IsMain == true, i uzimamo prvu
-                var mainImages = await _offerImageService.GetImagesAsync(offer.Id, true);
-                var mainImageUrl = mainImages?.FirstOrDefault()?.ImageUrl; // sigurnije i elegantno
-
-                var dto = _mapper.Map<OfferUserResponce>(offer);
-                dto.MainImage = mainImageUrl;
-                responses.Add(dto);
+                query = query
+                    .Include(o => o.Details)
+                        .ThenInclude(d => d.OfferImages.Where(img => img.isMain));
+            }
+            else
+            {
+                query = query
+                    .Include(o => o.Details)
+                        .ThenInclude(d => d.OfferImages);
             }
 
-            return new PagedResult<OfferUserResponce>
+            if (search.isOfferHotels)
+                query = query.Include(o => o.Details.OfferHotels);
+
+
+            if (search.isOfferPlanDays)
+                query = query.Include(o => o.Details.OfferPlanDays);
+
+            return base.AddInclude(query, search);
+            
+        }
+
+
+        public override async Task BeforeInsertAsync(Database.Offer entity, OfferInsertRequest request)
+        {
+
+            var details = new OfferDetails
             {
-                Items = responses,
-                TotalCount = search.IncludeTotalCount ? totalCount : 0
+                MinimalPrice = request.MinimalPrice,
+                ResidenceTotal = request.ResidenceTotal,
+                TravelInsuranceTotal = request.TravelInsuranceTotal,
+                ResidenceTaxPerDay = request.ResidenceTotal / request.DaysInTotal,
+                City = request.City,
+                Country = request.Country,
+                Description = request.Description,
             };
+
+            entity.Details = details;
+
+            await base.BeforeInsertAsync(entity, request);
         }
 
-
-        public async Task<OfferResponse> GetOfferById(int id)
+        public override async Task BeforeUpdateAsync(Database.Offer entity, OfferUpdateRequest request)
         {
-            var entity = await _context.Offers
-                .FirstOrDefaultAsync(o => o.Id == id);
+            await _context.Entry(entity)
+            .Reference(o => o.Details)
+            .LoadAsync();
 
-            if (entity == null)
-                return null;
-
-            return new OfferResponse
+            if (entity.Details != null)
             {
-                Id = entity.Id,
-                Title = entity.Title,
-                DaysInTotal = entity.DaysInTotal,
-                WayOfTravel = entity.WayOfTravel,
-                MinimalPrice = entity.Details?.MinimalPrice ?? 0,
-                City = entity.Details?.City,
-                Country = entity.Details?.Country
-            };
+                entity.Details.MinimalPrice = request.MinimalPrice;
+                entity.Details.ResidenceTotal = request.ResidenceTotal;
+                entity.Details.TravelInsuranceTotal = request.TravelInsuranceTotal;
+                entity.Details.City = request.City;
+                entity.Details.Country = request.Country;
+                entity.Details.Description = request.Description;
+            }
+
+            await base.BeforeUpdateAsync(entity, request);
         }
 
-        public async Task<OfferResponse> GetOfferWithDetailsById(int id)
-        {
-            var entity = await _context.Offers
-                .Include(o => o.Details)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(o => o.Id == id);
-
-            if (entity == null)
-                return null;
-
-            return new OfferResponse
-            {
-                Id = entity.Id,
-                Title = entity.Title,
-                DaysInTotal = entity.DaysInTotal,
-                WayOfTravel = entity.WayOfTravel,
-                MinimalPrice = entity.Details?.MinimalPrice ?? 0,
-                City = entity.Details?.City,
-                Country = entity.Details?.Country,
-                ResidenceTaxPerDay = entity.Details?.ResidenceTaxPerDay ?? 0,
-                ResidenceTotal = entity.Details?.ResidenceTotal ?? 0,
-                TravelInsuranceTotal = entity.Details?.TravelInsuranceTotal ?? 0
-            };
-        }
-
-        public async Task<OfferAdminDetailResponse> GetOfferDetailsByIdForAdmin(int id)
-        {
-            var offer = await _context.Offers
-                .Include(o => o.Details)
-                .FirstOrDefaultAsync(o => o.Id == id);
-
-            if (offer == null || offer.Details == null)
-                throw new Exception("Ponuda nije pronađena ili nema detalje.");
-
-            return _mapper.Map<OfferAdminDetailResponse>(offer.Details);
-        }
-
-        public async Task<OfferUserDetailResponse> GetOfferDetailsByIdForUser(int id)
-        {
-            var offer = await _context.Offers
-                .Include(o => o.Details)
-                .FirstOrDefaultAsync(o => o.Id == id);
-
-            if (offer == null || offer.Details == null)
-                throw new Exception("Ponuda nije pronađena ili nema detalje.");
-
-            return _mapper.Map<OfferUserDetailResponse>(offer.Details);
-        }
-
-        public async Task<OfferUpsertResponse> PostOffer(OfferRequest request)
-        {
-            var offer = _mapper.Map<Offer>(request);
-
-            _context.Offers.Add(offer);
-            await _context.SaveChangesAsync();
-
-            return _mapper.Map<OfferUpsertResponse>(offer);
-        }
-
-        public async Task<OfferUpsertResponse> PutOffer(int id, OfferRequest request)
-        {
-            var offer = await _context.Offers
-                .Include(o => o.Details)
-                .FirstOrDefaultAsync(o => o.Id == id);
-
-            if (offer == null)
-                throw new Exception("Ponuda nije pronađena.");
-
-            _mapper.Map(request, offer);
-
-            // Mapiranje detalja posebno
-            offer.Details.Description = request.Description;
-            offer.Details.Country = request.Country;
-            offer.Details.City = request.City;
-
-            await _context.SaveChangesAsync();
-
-            return _mapper.Map<OfferUpsertResponse>(offer);
-        }
-
-        public async Task<bool> DeleteOffer(int id)
-        {
-            var offer = await _context.Offers.FirstOrDefaultAsync(o => o.Id == id);
-
-            if (offer == null)
-                return false;
-
-            _context.Offers.Remove(offer);
-            await _context.SaveChangesAsync();
-
-            return true;
-        }
     }
 }

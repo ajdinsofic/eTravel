@@ -1,22 +1,25 @@
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using eTravelAgencija.Model.ResponseObjects;
+using AutoMapper;
+using eTravelAgencija.Model;
+using eTravelAgencija.Model.RequestObjects;
+using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTravelAgencija.Services.Services
 {
-    public class HotelImageService : BaseImageService<HotelImages, HotelImageResponse>, IHotelImageService
+    public class HotelImageService : BaseCRUDService<
+    Model.model.HotelImages, BaseSearchObject, Database.HotelImages, HotelImageUpsertRequest, HotelImageUpsertRequest>, IHotelImageService
     {
-        public HotelImageService(eTravelAgencijaDbContext context)
-            : base(
-                context,
-                x => x.HotelId,
-                x => x.ImageUrl)
+        public HotelImageService(eTravelAgencijaDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
+
     }
 
 
