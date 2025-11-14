@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using eTravelAgencija.Model.Requests;
+using eTravelAgencija.Services.Interfaces;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+
     public class UserController 
         : BaseCRUDController<User, UserSearchObject, UserUpsertRequest, UserUpsertRequest>
     {

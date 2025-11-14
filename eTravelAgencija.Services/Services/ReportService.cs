@@ -1,0 +1,119 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using eTravelAgencija.Model.ResponseObject;
+using eTravelAgencija.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
+namespace eTravelAgencija.Services.Services
+{
+    public class ReportService : IReportService
+    {
+        private readonly eTravelAgencijaDbContext _context;
+        public ReportService(eTravelAgencijaDbContext context)
+        {
+            _context = context;
+        }
+
+        private int CalculateAge(DateTime dateOfBirth)
+        {
+            var today = DateTime.UtcNow.Date;
+        
+            int age = today.Year - dateOfBirth.Year;
+        
+            if (dateOfBirth.Date > today.AddYears(-age))
+                age--;
+        
+            return age;
+        }
+
+
+        private string GetAgeGroup(int age)
+        {
+            if (age >= 18 && age <= 24) return "18-24";
+            if (age >= 25 && age <= 34) return "25-34";
+            if (age >= 35 && age <= 44) return "35-44";
+            if (age >= 45 && age <= 60) return "45-60";
+            return "60+";
+        }
+
+
+        public async Task<AgeRegistrationReportResponse> GetAgeReport(string range)
+        {
+            DateTime now = DateTime.UtcNow;
+            DateTime from;
+
+            switch (range)
+            {
+                case "dan":
+                    from = now.Date;
+                    break;
+
+                case "sedmica":
+                    from = now.AddDays(-7);
+                    break;
+
+                case "mjesec":
+                    from = now.AddMonths(-1);
+                    break;
+
+                default:
+                    throw new Exception("Nevažeći interval (dan, sedmica, mjesec).");
+            }
+
+            var users = await _context.Users
+                .Where(u => u.CreatedAt >= from)
+                .ToListAsync();
+
+            int total = users.Count;
+
+            var groups = users
+                .GroupBy(u => GetAgeGroup(CalculateAge(u.DateBirth)))
+                .Select(g => new AgeGroupStatsResponse
+                {
+                    AgeGroup = g.Key,
+                    Count = g.Count(),
+                    Percentage = total == 0 ? 0 : Math.Round(((decimal)g.Count() / total) * 100, 2)
+                })
+                .ToList();
+
+            return new AgeRegistrationReportResponse
+            {
+                TotalRegistrations = total,
+                AgeGroups = groups
+            };
+        }
+
+        public async Task<List<DestinationStatsResponse>> GetTopDestinations()
+        {
+            int currentYear = DateTime.UtcNow.Year;
+        
+            var reservations = await _context.Reservations
+                .Include(r => r.OfferDetails).ThenInclude(r => r.Offer)
+                .Where(r => r.CreatedAt.Year == currentYear && r.IsActive == false)
+                .ToListAsync();
+        
+            int total = reservations.Count;
+        
+            var grouped = reservations
+                .GroupBy(r => r.OfferDetails.Offer.Title)   
+                .Select(g => new DestinationStatsResponse
+                {
+                    DestinationName = g.Key,
+                    Count = g.Count(),
+                    Percentage = total == 0 ? 0 :
+                        Math.Round(((decimal)g.Count() / total) * 100, 2)
+                })
+                .OrderByDescending(g => g.Count)
+                .Take(5)
+                .ToList();
+        
+            return grouped;
+        }
+
+
+
+
+    }
+}

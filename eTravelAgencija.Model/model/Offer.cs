@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using eTravelAgencija.Model.ResponseObjects;
 
 namespace eTravelAgencija.Model.model
 {
@@ -13,6 +12,7 @@ namespace eTravelAgencija.Model.model
         public int DaysInTotal { get; set; }
         public string WayOfTravel { get; set; }
         public int SubCategoryId { get; set; }
+        public OfferSubCategory SubCategory { get; set;}
         public string Description { get; set; }
         public string Country { get; set; }
         public string City { get; set; }

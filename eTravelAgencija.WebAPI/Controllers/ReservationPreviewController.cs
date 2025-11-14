@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using eTravelAgencija.Services.Services;
 using eTravelAgencija.Model.RequestObjects;
+using eTravelAgencija.Services.Interfaces;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+
     public class ReservationPreviewController : ControllerBase
     {
         private readonly IResevationPreviewService _reservationPreviewService;
@@ -34,6 +34,14 @@ namespace eTravelAgencija.WebAPI.Controllers
             {
                 return BadRequest(new { message = ex.Message });
             }
+        }
+
+        [Authorize(Roles = "Korisnik")]
+        [HttpGet("check-rate-payment")]
+        public async Task<bool> CheckRatePayment(int HotelId)
+        {
+            var check = await _reservationPreviewService.ApprovingRatePayment(HotelId);
+            return check;
         }
     }
 }

@@ -10,6 +10,8 @@ using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
 using Microsoft.EntityFrameworkCore;
+using eTravelAgencija.Services.Interfaces;
+
 
 namespace eTravelAgencija.Services.Services
 {

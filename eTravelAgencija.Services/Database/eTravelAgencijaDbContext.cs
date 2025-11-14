@@ -29,6 +29,9 @@ public class eTravelAgencijaDbContext
     public DbSet<Voucher> Vouchers { get; set; }
     public DbSet<UserVoucher> UserVouchers { get; set; }
     public DbSet<UserToken> UserTokens { get; set; }
+    public DbSet<Reservation> Reservations { get; set;}
+    public DbSet<Payment> Payments { get; set; }
+    public DbSet<Comment> Comments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -64,11 +67,42 @@ public class eTravelAgencijaDbContext
         builder.Entity<UserVoucher>()
         .HasKey(uv => new { uv.UserId, uv.VoucherId });
 
+        builder.Entity<Payment>()
+        .HasKey(p => new { p.ReservationId, p.RateId });
+
     builder.Entity<Role>().HasData(
         new Role { Id = 1, Name = "Korisnik", NormalizedName = "KORISNIK", Description = "Osnovna korisnička rola" },
         new Role { Id = 2, Name = "Radnik",   NormalizedName = "RADNIK",   Description = "Zaposleni koji upravlja ponudama i rezervacijama" },
         new Role { Id = 3, Name = "Direktor", NormalizedName = "DIREKTOR", Description = "Administrator sistema" }
     );
+
+    builder.Entity<Rate>().HasData(
+    new Rate
+    {
+        Id = 1,
+        Name = "Prva rata",
+        OrderNumber = 1
+    },
+    new Rate
+    {
+        Id = 2,
+        Name = "Druga rata",
+        OrderNumber = 2
+    },
+    new Rate
+    {
+        Id = 3,
+        Name = "Treća rata",
+        OrderNumber = 3
+    },
+    new Rate
+    {
+        Id = 4,
+        Name = "Puni iznos",
+        OrderNumber = 0
+    }
+);
+
 
     builder.Entity<User>().HasData(
         new User
@@ -79,6 +113,7 @@ public class eTravelAgencijaDbContext
             Email = "radnik@etravel.com",
             NormalizedEmail = "RADNIK@ETRAVEL.COM",
             EmailConfirmed = true,
+            MainImage = "test",
             FirstName = "Marko",
             LastName = "Radnik",
             PhoneNumber = "+38761111111",
@@ -93,6 +128,7 @@ public class eTravelAgencijaDbContext
             NormalizedUserName = "DIREKTOR",
             Email = "direktor@etravel.com",
             NormalizedEmail = "DIREKTOR@ETRAVEL.COM",
+            MainImage = "test",
             EmailConfirmed = true,
             FirstName = "Amir",
             LastName = "Direktor",
@@ -108,6 +144,7 @@ public class eTravelAgencijaDbContext
             NormalizedUserName = "KORISNIK",
             Email = "korisnik@etravel.com",
             NormalizedEmail = "KORISNIK@ETRAVEL.COM",
+            MainImage = "test",
             EmailConfirmed = true,
             FirstName = "Ajdin",
             LastName = "Korisnik",

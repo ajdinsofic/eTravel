@@ -7,6 +7,7 @@ using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Model.Responses;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using eTravelAgencija.Services.Interfaces;
 
 namespace eTravelAgencija.Services.Services
 {
@@ -35,6 +36,15 @@ namespace eTravelAgencija.Services.Services
             await BeforeInsertAsync(entity, request);
             _context.Set<TEntity>().Add(entity);
             await _context.SaveChangesAsync();
+
+            return _mapper.Map<TResponse>(entity);
+        }
+
+        public virtual async Task<TResponse?> GetByCompositeKeysAsync(params object[] keyValues)
+        {
+            var entity = await _context.Set<TEntity>().FindAsync(keyValues);
+            if (entity == null)
+                return null;
 
             return _mapper.Map<TResponse>(entity);
         }

@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace eTravelAgencija.Model.RequestObjects
 {
-    public class OfferPlanDayUpsertRequest
+    public class OfferPlanDayUpdateRequest
     {
-        public int OfferDetailsId { get; set; }
-        public int DayNumber { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
     }

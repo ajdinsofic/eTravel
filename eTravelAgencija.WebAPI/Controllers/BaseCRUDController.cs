@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Services;
+using eTravelAgencija.Services.Interfaces;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
@@ -26,8 +27,7 @@ namespace eTravelAgencija.WebAPI.Controllers
             _logger = logger;
         }
 
-        // 🟢 CREATE
-        [Authorize]
+        [Authorize(Roles = "Direktor,Radnik")]
         [HttpPost]
         public virtual async Task<ActionResult<TResponse>> Create([FromBody] TInsert insert)
         {
@@ -38,8 +38,7 @@ namespace eTravelAgencija.WebAPI.Controllers
             return Ok(entity);
         }
 
-        // 🟡 UPDATE
-        [Authorize]
+        [Authorize(Roles = "Direktor,Radnik")]
         [HttpPut("{id}")]
         public virtual async Task<ActionResult<TResponse>> Update(int id, [FromBody] TUpdate update)
         {
@@ -53,7 +52,6 @@ namespace eTravelAgencija.WebAPI.Controllers
             return Ok(updated);
         }
 
-        // 🔴 DELETE
         [Authorize(Roles = "Direktor,Radnik")]
         [HttpDelete("{id}")]
         public virtual async Task<IActionResult> Delete(int id)

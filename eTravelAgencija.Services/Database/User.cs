@@ -9,7 +9,9 @@ namespace eTravelAgencija.Services.Database
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public DateTime DateBirth {get; set;}
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public string MainImage {get; set;} 
         public DateTime? LastLoginAt { get; set; }
         public bool isBlocked { get; set; } = false;
         public ICollection<UserVoucher> UserVouchers { get; set; } = new List<UserVoucher>();

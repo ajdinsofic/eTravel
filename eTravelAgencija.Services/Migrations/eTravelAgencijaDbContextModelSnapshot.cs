@@ -138,7 +138,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 1,
                             RoleId = 2,
-                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 239, DateTimeKind.Utc).AddTicks(2052),
+                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 770, DateTimeKind.Utc).AddTicks(7978),
                             Description = "",
                             IsActive = true
                         },
@@ -146,7 +146,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 2,
                             RoleId = 3,
-                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 239, DateTimeKind.Utc).AddTicks(2057),
+                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 770, DateTimeKind.Utc).AddTicks(7985),
                             Description = "",
                             IsActive = true
                         },
@@ -154,10 +154,40 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 4,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 239, DateTimeKind.Utc).AddTicks(2058),
+                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 770, DateTimeKind.Utc).AddTicks(7986),
                             Description = "",
                             IsActive = true
                         });
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("comment")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("offerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("starRate")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("offerId");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.Hotel", b =>
@@ -2695,6 +2725,144 @@ namespace eTravelAgencija.Services.Migrations
                         });
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Payment", b =>
+                {
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RateId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("IsConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("PaymentDeadline")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ReservationId", "RateId");
+
+                    b.HasIndex("RateId");
+
+                    b.ToTable("Payments");
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Rate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("OrderNumber")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Rate");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Prva rata",
+                            OrderNumber = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Druga rata",
+                            OrderNumber = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Treća rata",
+                            OrderNumber = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Puni iznos",
+                            OrderNumber = 0
+                        });
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Reservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("HotelId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("IncludeInsurance")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("OfferDetailsOfferId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("OfferId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("PriceLeftToPay")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("addedNeeds")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("isFirstRatePaid")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("isFullPaid")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId");
+
+                    b.HasIndex("OfferDetailsOfferId");
+
+                    b.HasIndex("RoomId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Reservations");
+                });
+
             modelBuilder.Entity("eTravelAgencija.Services.Database.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -2815,6 +2983,9 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<DateTime>("DateBirth")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
@@ -2838,6 +3009,10 @@ namespace eTravelAgencija.Services.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("MainImage")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -2885,16 +3060,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "66934109-5660-4cb8-b315-109434a8be30",
-                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 43, DateTimeKind.Utc).AddTicks(6382),
+                            ConcurrencyStamp = "71817fce-8561-4b17-827e-8cc8bec40001",
+                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 538, DateTimeKind.Utc).AddTicks(8598),
+                            DateBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "radnik@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Marko",
                             LastName = "Radnik",
                             LockoutEnabled = false,
+                            MainImage = "test",
                             NormalizedEmail = "RADNIK@ETRAVEL.COM",
                             NormalizedUserName = "RADNIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBvrvFkwZ0017Kww2BdxnhnIrvoFBNH6yVjA4XwN1RReZt8jaxm6ZwI0s8iMORRO7Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECqKHITOjeJ63a2sNJlC81Nagiw+TVjcMHGESo+H8pBryFkStaQaSQ2ZG/Hh0EX0+Q==",
                             PhoneNumber = "+38761111111",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -2905,16 +3082,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fd5c2982-9aa0-4030-be2e-09883e2eca9a",
-                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 106, DateTimeKind.Utc).AddTicks(125),
+                            ConcurrencyStamp = "7e736f3e-5619-4c56-887b-7aaa2b2a64e6",
+                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 629, DateTimeKind.Utc).AddTicks(8550),
+                            DateBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "direktor@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Amir",
                             LastName = "Direktor",
                             LockoutEnabled = false,
+                            MainImage = "test",
                             NormalizedEmail = "DIREKTOR@ETRAVEL.COM",
                             NormalizedUserName = "DIREKTOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKQGBktmmXagHlcMBER8Sao0nWrQxrj+l+PogKjufA6nANj+7YFMj6rrcj18IZS/ew==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPu6DV94Fs3jRxI6LNHA1TG7oO1ma/FqRLVemSVhQtlAjNBSaeozf3CX8lTEVmyUgg==",
                             PhoneNumber = "+38762222222",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -2925,16 +3104,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "091553bb-be51-4086-a11a-c1532cf26be4",
-                            CreatedAt = new DateTime(2025, 11, 12, 13, 57, 22, 173, DateTimeKind.Utc).AddTicks(9183),
+                            ConcurrencyStamp = "f45fc511-cf18-44f0-a081-7da18966aefb",
+                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 696, DateTimeKind.Utc).AddTicks(7459),
+                            DateBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "korisnik@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Ajdin",
                             LastName = "Korisnik",
                             LockoutEnabled = false,
+                            MainImage = "test",
                             NormalizedEmail = "KORISNIK@ETRAVEL.COM",
                             NormalizedUserName = "KORISNIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJJaAoMlQqaF6KCuggGxmE3xdwbjhe92lQPO3rdyhGfiC95CsX2T0pUsfH0KrURfAQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOjxHSLOYTREaAwD1JLewVnGz9Ed2sSI4sOyax2SWhDC1OVWpxmyAZ6qy/SZJYqQgQ==",
                             PhoneNumber = "+38763333333",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3075,6 +3256,25 @@ namespace eTravelAgencija.Services.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Comment", b =>
+                {
+                    b.HasOne("eTravelAgencija.Services.Database.Offer", "offer")
+                        .WithMany()
+                        .HasForeignKey("offerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eTravelAgencija.Services.Database.User", "user")
+                        .WithMany()
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("offer");
+
+                    b.Navigation("user");
+                });
+
             modelBuilder.Entity("eTravelAgencija.Services.Database.HotelImages", b =>
                 {
                     b.HasOne("eTravelAgencija.Services.Database.Hotel", "Hotel")
@@ -3179,6 +3379,60 @@ namespace eTravelAgencija.Services.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Payment", b =>
+                {
+                    b.HasOne("eTravelAgencija.Services.Database.Rate", "Rate")
+                        .WithMany()
+                        .HasForeignKey("RateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eTravelAgencija.Services.Database.Reservation", "Reservation")
+                        .WithMany("Payments")
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Rate");
+
+                    b.Navigation("Reservation");
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Reservation", b =>
+                {
+                    b.HasOne("eTravelAgencija.Services.Database.Hotel", "Hotel")
+                        .WithMany()
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eTravelAgencija.Services.Database.OfferDetails", "OfferDetails")
+                        .WithMany()
+                        .HasForeignKey("OfferDetailsOfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eTravelAgencija.Services.Database.Rooms", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eTravelAgencija.Services.Database.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+
+                    b.Navigation("OfferDetails");
+
+                    b.Navigation("Room");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("eTravelAgencija.Services.Database.UserToken", b =>
                 {
                     b.HasOne("eTravelAgencija.Services.Database.User", "User")
@@ -3241,6 +3495,11 @@ namespace eTravelAgencija.Services.Migrations
             modelBuilder.Entity("eTravelAgencija.Services.Database.OfferSubCategory", b =>
                 {
                     b.Navigation("Offers");
+                });
+
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Reservation", b =>
+                {
+                    b.Navigation("Payments");
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.User", b =>

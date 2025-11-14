@@ -6,6 +6,7 @@ using AutoMapper;
 using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
+using eTravelAgencija.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTravelAgencija.Services.Services
@@ -15,8 +16,6 @@ namespace eTravelAgencija.Services.Services
         public VoucherService(eTravelAgencijaDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
-
-
 
         public override IQueryable<Voucher> ApplyFilter(IQueryable<Voucher> query, VoucherSearchObject search)
         {
@@ -41,13 +40,6 @@ namespace eTravelAgencija.Services.Services
             if (voucher == null)
                 throw new Exception("Vaučer nije pronađen.");
 
-            // Nece imati mogucnost jer cemo imati sistem koji ce gledati da
-            // li ima vec taj vaucer, ako ima onda ga necemo dodavati
-            // bool alreadyUnlocked = await _context.UserVouchers
-            //     .AnyAsync(uv => uv.UserId == search.UserId && uv.VoucherId == search.VoucherId);
-
-
-            // 🔹 Uslov: ima dovoljno tokena da otključa voucher
             if (search.NumberOfTokens >= voucher.priceInTokens)
             {
 

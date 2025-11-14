@@ -60,18 +60,11 @@ namespace eTravelAgencija.Services.Services
         public virtual async Task<TResponse?> GetByIdAsync(int id)
         {
             var entity = await _context.Set<TEntity>().FindAsync(id);
+            entity = await SetDetails(entity);
             if (entity == null)
                 return null;
 
             return MapToResponse(entity);
-        }
-        public virtual async Task<TResponse?> GetByCompositeKeysAsync(params object[] keyValues)
-        {
-            var entity = await _context.Set<TEntity>().FindAsync(keyValues);
-            if (entity == null)
-                return null;
-
-            return _mapper.Map<TResponse>(entity);
         }
 
         public virtual IQueryable<TEntity> ApplyFilter(IQueryable<TEntity> query, TSearch search)
@@ -92,6 +85,11 @@ namespace eTravelAgencija.Services.Services
         public virtual Task<IEnumerable<TEntity>> AfterGetAsync(IEnumerable<TEntity> entities, TSearch? search = null)
         {
             return Task.FromResult(entities);
+        }
+
+        public virtual Task<TEntity> SetDetails(TEntity entity)
+        {
+            return Task.FromResult(entity);
         }
 
         protected virtual TResponse MapToResponse(TEntity entity)

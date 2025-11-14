@@ -5,6 +5,7 @@ using AutoMapper;
 using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
+using eTravelAgencija.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTravelAgencija.Services.Services

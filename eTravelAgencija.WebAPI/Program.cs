@@ -1,5 +1,4 @@
 using eTravelAgencija.WebAPI.Authentication;
-using eTravelAgencija.Model.ResponseObjects;
 using eTravelAgencija.Services.Database;
 using eTravelAgencija.Services.Mapping;
 using eTravelAgencija.Services.Services;
@@ -11,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using eTravelAgencija.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,7 +66,10 @@ builder.Services.AddTransient<IHotelRoomsService, HotelRoomsService>();
 builder.Services.AddTransient<IOfferPlanDayService, OfferPlanDayService>();
 builder.Services.AddTransient<IVoucherService, VoucherService>();
 builder.Services.AddTransient<IResevationPreviewService, ReservationPreviewService>();
-//builder.Services.AddTransient<IBookingPreviewService, BookingPreviewService>();
+builder.Services.AddTransient<IReservationService, ReservationService>();
+builder.Services.AddTransient<IPaymentService, PaymentService>();
+builder.Services.AddTransient<ICommentService, CommentService>();
+
 
 
 builder.Services.AddDbContext<eTravelAgencijaDbContext>(options =>
