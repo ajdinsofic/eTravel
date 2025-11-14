@@ -5,12 +5,11 @@ using eTravelAgencija.Model.RequestObjects;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using eTravelAgencija.Services.Services;
+using eTravelAgencija.Services.Interfaces;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
-    [Authorize(Roles = "Radnik,Direktor")]
-    [ApiController]
-    [Route("api/[controller]")]
+
     public class OfferImageController 
         : BaseCRUDController<
             OfferImage,

@@ -4,6 +4,8 @@ using eTravelAgencija.Model.model;
 using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Services.Database;
 using Microsoft.EntityFrameworkCore;
+using eTravelAgencija.Services.Interfaces;
+using System.Linq;
 
 namespace eTravelAgencija.Services.Services
 {
@@ -50,11 +52,11 @@ namespace eTravelAgencija.Services.Services
                 if (!userHasVoucher)
                     throw new Exception("Nevažeći kod — ovaj vaučer nije povezan s vašim računom.");
 
-                // Primijeni popust
+                
                 total -= total * voucher.Discount;
             }
 
-            // 🔹 4. Generiši rezultat
+            
             var preview = new ReservationPreview
             {
                 UserId = request.UserId,
@@ -74,5 +76,28 @@ namespace eTravelAgencija.Services.Services
 
             return preview;
         }
+
+        public async Task<bool> ApprovingRatePayment(int hotelId)
+        {
+            var hotel = await _context.Hotels
+                .Include(h => h.OfferHotels)
+                .FirstOrDefaultAsync(h => h.Id == hotelId);
+        
+            if (hotel == null)
+                throw new Exception("Hotel nije pronađen.");
+        
+            var departure = hotel.OfferHotels.FirstOrDefault()?.DepartureDate;
+        
+            if (departure == null)
+                throw new Exception("Datum polaska nije postavljen za ovaj hotel.");
+        
+            var today = DateTime.UtcNow.Date;
+        
+            
+            int monthsDifference = ((departure.Value.Year - today.Year) * 12) + departure.Value.Month - today.Month;
+        
+            return monthsDifference >= 2;
+        }
+
     }
 }

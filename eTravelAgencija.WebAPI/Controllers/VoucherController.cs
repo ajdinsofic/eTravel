@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.SearchObjects;
+using eTravelAgencija.Services.Interfaces;
 using eTravelAgencija.Services.Services;
 
 namespace eTravelAgencija.WebAPI.Controllers

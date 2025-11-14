@@ -1,6 +1,5 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using eTravelAgencija.Model.ResponseObjects;
 
 namespace eTravelAgencija.Model.model
 { 

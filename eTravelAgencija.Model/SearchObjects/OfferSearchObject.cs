@@ -11,6 +11,7 @@ namespace eTravelAgencija.Model.SearchObjects
         public bool isMainImage { get; set; } = false;
         public bool isOfferHotels { get; set; } = false;
         public bool isOfferPlanDays { get; set; } = false;
+        public string? FTS { get; set; }
 
     }
 }

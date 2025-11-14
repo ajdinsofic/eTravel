@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Model.Responses;
 using eTravelAgencija.Services.Services;
+using eTravelAgencija.Services.Interfaces;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
@@ -24,7 +25,7 @@ namespace eTravelAgencija.WebAPI.Controllers
         }
 
         // 🟢 GET — svi podaci (paged)
-        [Authorize]
+        [Authorize(Roles = "Korisnik,Direktor,Radnik")]
         [HttpGet]
         public virtual async Task<ActionResult<PagedResult<TResponse>>> Get([FromQuery] TSearch? search = null)
         {
@@ -43,7 +44,7 @@ namespace eTravelAgencija.WebAPI.Controllers
         }
 
         // 🟡 GET — po ID
-        [Authorize]
+        [Authorize(Roles = "Korisnik,Direktor,Radnik")]
         [HttpGet("{id}")]
         public virtual async Task<ActionResult<TResponse>> GetById(int id)
         {

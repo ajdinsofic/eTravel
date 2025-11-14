@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using eTravelAgencija.Model.RequestObjects;
-using eTravelAgencija.Model.ResponseObjects;
 using eTravelAgencija.Services.Services;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +10,7 @@ using eTravelAgencija.Services.Database;
 using eTravelAgencija.Model;
 using eTravelAgencija.Model.SearchObjects;
 using System.Security.Cryptography.X509Certificates;
+using eTravelAgencija.Services.Interfaces;
 
 namespace eTravelAgencija.Services.Database
 {
@@ -25,6 +25,11 @@ namespace eTravelAgencija.Services.Database
             if (search.SubCategoryId == -1 || search.SubCategoryId > 0)
             {
                 query = query.Where(o => o.SubCategoryId == search.SubCategoryId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(search.FTS))
+            {
+                query = query.Where(o => o.Title.ToLower().Contains(search.FTS.ToLower()));
             }
 
             return base.ApplyFilter(query, search);
@@ -58,7 +63,16 @@ namespace eTravelAgencija.Services.Database
             
         }
 
-
+        public override async Task<Offer> SetDetails(Offer entity)
+        {
+            if (entity == null)
+                return null;
+        
+            return await _context.Offers
+                .Include(u => u.Details)
+                .FirstOrDefaultAsync(u => u.Id == entity.Id);
+        }
+  
         public override async Task BeforeInsertAsync(Database.Offer entity, OfferInsertRequest request)
         {
 

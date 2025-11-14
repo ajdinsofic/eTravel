@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 namespace eTravelAgencija.Services.Database
 {
@@ -24,6 +25,7 @@ namespace eTravelAgencija.Services.Database
 
         [Required]
         public string PaymentMethod { get; set; } 
+        public DateTime PaymentDeadline { get; set; }
 
         public bool IsConfirmed { get; set; } = false;
     }
