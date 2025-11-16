@@ -30,6 +30,20 @@ namespace eTravelAgencija.Services.Services
             _config = config;
         }
 
+        public override IQueryable<User> AddInclude(IQueryable<User> query, UserSearchObject? search = null)
+        {
+            if(search?.hasWorkAplication == true)
+            {
+               query = query.Include(u => u.workApplications).Where(u => u.UserRoles.Any(ur => ur.RoleId == 1));   
+            }
+            if (search?.onlyWorkers == true)
+            {
+                query = query.Include(u => u.UserRoles).Where(u => u.UserRoles.Any(ur => ur.RoleId == 2));
+
+            }
+            return base.AddInclude(query, search);
+        }
+
         public override async Task<Model.model.User> CreateAsync(UserUpsertRequest request)
         {
             

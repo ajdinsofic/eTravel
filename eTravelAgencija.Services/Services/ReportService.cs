@@ -19,12 +19,12 @@ namespace eTravelAgencija.Services.Services
         private int CalculateAge(DateTime dateOfBirth)
         {
             var today = DateTime.UtcNow.Date;
-        
+
             int age = today.Year - dateOfBirth.Year;
-        
+
             if (dateOfBirth.Date > today.AddYears(-age))
                 age--;
-        
+
             return age;
         }
 
@@ -41,30 +41,49 @@ namespace eTravelAgencija.Services.Services
 
         public async Task<AgeRegistrationReportResponse> GetAgeReport(string range)
         {
-            DateTime now = DateTime.UtcNow;
-            DateTime from;
+            DateTime now = DateTime.UtcNow.Date; 
+            DateTime fromDate;
+            DateTime toDate = now; 
 
             switch (range)
             {
                 case "dan":
-                    from = now.Date;
+                    fromDate = now;  
                     break;
 
                 case "sedmica":
-                    from = now.AddDays(-7);
+                    int dayOfWeek = (int)now.DayOfWeek;
+                    if (dayOfWeek == 0) dayOfWeek = 7; 
+
+                    fromDate = now.AddDays(-(dayOfWeek - 1));
                     break;
 
                 case "mjesec":
-                    from = now.AddMonths(-1);
+                    fromDate = now.AddMonths(-1);
                     break;
 
                 default:
                     throw new Exception("Nevažeći interval (dan, sedmica, mjesec).");
             }
 
-            var users = await _context.Users
-                .Where(u => u.CreatedAt >= from)
-                .ToListAsync();
+            var usersQuery = _context.Users
+                .Include(u => u.UserRoles)            
+                .Where(u => u.UserRoles.Any(ur => ur.RoleId == 1))
+                .AsQueryable();
+
+
+            if (range == "mjesec")
+            {
+                usersQuery = usersQuery
+                    .Where(u => u.CreatedAt.Year == now.Year && u.CreatedAt.Month == now.Month);
+            }
+            else
+            {
+                usersQuery = usersQuery
+                    .Where(u => u.CreatedAt.Date >= fromDate && u.CreatedAt.Date <= toDate);
+            }
+
+            var users = await usersQuery.ToListAsync();
 
             int total = users.Count;
 
@@ -74,7 +93,8 @@ namespace eTravelAgencija.Services.Services
                 {
                     AgeGroup = g.Key,
                     Count = g.Count(),
-                    Percentage = total == 0 ? 0 : Math.Round(((decimal)g.Count() / total) * 100, 2)
+                    Percentage = total == 0 ? 0 :
+                        Math.Round(((decimal)g.Count() / total) * 100, 2)
                 })
                 .ToList();
 
@@ -85,19 +105,22 @@ namespace eTravelAgencija.Services.Services
             };
         }
 
+
         public async Task<List<DestinationStatsResponse>> GetTopDestinations()
         {
             int currentYear = DateTime.UtcNow.Year;
-        
+
             var reservations = await _context.Reservations
-                .Include(r => r.OfferDetails).ThenInclude(r => r.Offer)
-                .Where(r => r.CreatedAt.Year == currentYear && r.IsActive == false)
-                .ToListAsync();
-        
+               .Include(r => r.OfferDetails).ThenInclude(r => r.Offer)
+               .Where(r => r.CreatedAt.Year == currentYear && r.IsActive == false)
+               .Where(r => r.User.UserRoles.Any(ur => ur.RoleId == 1)) 
+               .ToListAsync();
+
+
             int total = reservations.Count;
-        
+
             var grouped = reservations
-                .GroupBy(r => r.OfferDetails.Offer.Title)   
+                .GroupBy(r => r.OfferDetails.Offer.Title)
                 .Select(g => new DestinationStatsResponse
                 {
                     DestinationName = g.Key,
@@ -108,12 +131,8 @@ namespace eTravelAgencija.Services.Services
                 .OrderByDescending(g => g.Count)
                 .Take(5)
                 .ToList();
-        
+
             return grouped;
         }
-
-
-
-
     }
 }

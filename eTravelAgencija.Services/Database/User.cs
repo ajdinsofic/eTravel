@@ -15,6 +15,8 @@ namespace eTravelAgencija.Services.Database
         public DateTime? LastLoginAt { get; set; }
         public bool isBlocked { get; set; } = false;
         public ICollection<UserVoucher> UserVouchers { get; set; } = new List<UserVoucher>();
+        public ICollection<UserRole> UserRoles {get; set;} = new List<UserRole>();
+        public ICollection<WorkApplication> workApplications {get; set;} = new List<WorkApplication>();
        
 
     }

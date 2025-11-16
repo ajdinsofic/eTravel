@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using eTravelAgencija.Services.Database;
 using Microsoft.AspNetCore.Identity;
@@ -29,9 +30,10 @@ public class eTravelAgencijaDbContext
     public DbSet<Voucher> Vouchers { get; set; }
     public DbSet<UserVoucher> UserVouchers { get; set; }
     public DbSet<UserToken> UserTokens { get; set; }
-    public DbSet<Reservation> Reservations { get; set;}
+    public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Comment> Comments { get; set; }
+    public DbSet<WorkApplication> WorkApplications{ get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -39,9 +41,23 @@ public class eTravelAgencijaDbContext
 
         var hasher = new PasswordHasher<User>();
 
-        builder.Entity<UserRole>(b =>
+        builder.Entity<UserRole>(ur =>
         {
-            b.HasKey(ur => new { ur.UserId, ur.RoleId });
+            ur.ToTable("AspNetUserRoles");
+        
+            ur.HasKey(x => new { x.UserId, x.RoleId });
+        
+            ur.HasOne<User>()
+                .WithMany(u => u.UserRoles)
+                .HasForeignKey(x => x.UserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+        
+            ur.HasOne<Role>()
+                .WithMany(r => r.UserRoles)
+                .HasForeignKey(x => x.RoleId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         builder.Entity<OfferHotels>()
@@ -70,131 +86,187 @@ public class eTravelAgencijaDbContext
         builder.Entity<Payment>()
         .HasKey(p => new { p.ReservationId, p.RateId });
 
-    builder.Entity<Role>().HasData(
-        new Role { Id = 1, Name = "Korisnik", NormalizedName = "KORISNIK", Description = "Osnovna korisnička rola" },
-        new Role { Id = 2, Name = "Radnik",   NormalizedName = "RADNIK",   Description = "Zaposleni koji upravlja ponudama i rezervacijama" },
-        new Role { Id = 3, Name = "Direktor", NormalizedName = "DIREKTOR", Description = "Administrator sistema" }
+        builder.Entity<Role>().HasData(
+            new Role { Id = 1, Name = "Korisnik", NormalizedName = "KORISNIK", Description = "Osnovna korisnička rola" },
+            new Role { Id = 2, Name = "Radnik", NormalizedName = "RADNIK", Description = "Zaposleni koji upravlja ponudama i rezervacijama" },
+            new Role { Id = 3, Name = "Direktor", NormalizedName = "DIREKTOR", Description = "Administrator sistema" }
+        );
+
+        builder.Entity<Rate>().HasData(
+        new Rate
+        {
+            Id = 1,
+            Name = "Prva rata",
+            OrderNumber = 1
+        },
+        new Rate
+        {
+            Id = 2,
+            Name = "Druga rata",
+            OrderNumber = 2
+        },
+        new Rate
+        {
+            Id = 3,
+            Name = "Treća rata",
+            OrderNumber = 3
+        },
+        new Rate
+        {
+            Id = 4,
+            Name = "Puni iznos",
+            OrderNumber = 0
+        }
     );
 
-    builder.Entity<Rate>().HasData(
-    new Rate
+
+        builder.Entity<User>().HasData(
+    new User
     {
         Id = 1,
-        Name = "Prva rata",
-        OrderNumber = 1
+        UserName = "radnik",
+        NormalizedUserName = "RADNIK",
+        Email = "radnik@etravel.com",
+        NormalizedEmail = "RADNIK@ETRAVEL.COM",
+        EmailConfirmed = true,
+        FirstName = "Marko",
+        LastName = "Radnik",
+        PhoneNumber = "+38761111111",
+        isBlocked = false,
+        DateBirth = new DateTime(1990, 5, 10, 0, 0, 0, DateTimeKind.Utc),
+        MainImage = "test",
+        CreatedAt = DateTime.UtcNow,
+        PasswordHash = hasher.HashPassword(null, "Radnik123!")
     },
-    new Rate
+    new User
     {
         Id = 2,
-        Name = "Druga rata",
-        OrderNumber = 2
+        UserName = "direktor",
+        NormalizedUserName = "DIREKTOR",
+        Email = "direktor@etravel.com",
+        NormalizedEmail = "DIREKTOR@ETRAVEL.COM",
+        EmailConfirmed = true,
+        FirstName = "Amir",
+        LastName = "Direktor",
+        PhoneNumber = "+38762222222",
+        isBlocked = false,
+        DateBirth = new DateTime(1985, 3, 20, 0, 0, 0, DateTimeKind.Utc),
+        MainImage = "test",
+        CreatedAt = DateTime.UtcNow,
+        PasswordHash = hasher.HashPassword(null, "Direktor123!")
     },
-    new Rate
-    {
-        Id = 3,
-        Name = "Treća rata",
-        OrderNumber = 3
-    },
-    new Rate
+    new User
     {
         Id = 4,
-        Name = "Puni iznos",
-        OrderNumber = 0
+        UserName = "korisnik",
+        NormalizedUserName = "KORISNIK",
+        Email = "korisnik@etravel.com",
+        NormalizedEmail = "KORISNIK@ETRAVEL.COM",
+        EmailConfirmed = true,
+        FirstName = "Ajdin",
+        LastName = "Korisnik",
+        PhoneNumber = "+38763333333",
+        isBlocked = false,
+        DateBirth = new DateTime(2002, 11, 5, 0, 0, 0, DateTimeKind.Utc),
+        MainImage = "test",
+        CreatedAt = DateTime.UtcNow,
+        PasswordHash = hasher.HashPassword(null, "Korisnik123!")
     }
 );
 
+        // --------------------
+        // Generate 40 fake users
+        // --------------------
 
-    builder.Entity<User>().HasData(
-        new User
+        var fakeUsers = new List<User>();
+        var fakeUserRoles = new List<UserRole>();
+
+        var rand = new Random();
+        int nextUserId = 10;
+
+        for (int u = 0; u < 40; u++)
         {
-            Id = 1,
-            UserName = "radnik",
-            NormalizedUserName = "RADNIK",
-            Email = "radnik@etravel.com",
-            NormalizedEmail = "RADNIK@ETRAVEL.COM",
-            EmailConfirmed = true,
-            MainImage = "test",
-            FirstName = "Marko",
-            LastName = "Radnik",
-            PhoneNumber = "+38761111111",
-            isBlocked = false,
-            CreatedAt = DateTime.UtcNow,
-            PasswordHash = hasher.HashPassword(null, "Radnik123!")
-        },
-        new User
-        {
-            Id = 2,
-            UserName = "direktor",
-            NormalizedUserName = "DIREKTOR",
-            Email = "direktor@etravel.com",
-            NormalizedEmail = "DIREKTOR@ETRAVEL.COM",
-            MainImage = "test",
-            EmailConfirmed = true,
-            FirstName = "Amir",
-            LastName = "Direktor",
-            PhoneNumber = "+38762222222",
-            isBlocked = false,
-            CreatedAt = DateTime.UtcNow,
-            PasswordHash = hasher.HashPassword(null, "Direktor123!")
-        },
-        new User
-        {
-            Id = 4,
-            UserName = "korisnik",
-            NormalizedUserName = "KORISNIK",
-            Email = "korisnik@etravel.com",
-            NormalizedEmail = "KORISNIK@ETRAVEL.COM",
-            MainImage = "test",
-            EmailConfirmed = true,
-            FirstName = "Ajdin",
-            LastName = "Korisnik",
-            PhoneNumber = "+38763333333",
-            isBlocked = false,
-            CreatedAt = DateTime.UtcNow,
-            PasswordHash = hasher.HashPassword(null, "Korisnik123!")
+            int id = nextUserId++;
+
+            var dob = new DateTime(
+                rand.Next(1960, 2008),
+                rand.Next(1, 13),
+                rand.Next(1, 28),
+                0, 0, 0,
+                DateTimeKind.Utc
+            );
+
+            var created = DateTime.SpecifyKind(
+                DateTime.UtcNow.AddDays(-rand.Next(1, 300)),
+                DateTimeKind.Utc
+            );
+
+            fakeUsers.Add(new User
+            {
+                Id = id,
+                UserName = $"user{id}",
+                NormalizedUserName = $"USER{id}",
+                Email = $"user{id}@mail.com",
+                NormalizedEmail = $"USER{id}@MAIL.COM",
+                EmailConfirmed = true,
+                FirstName = $"User{id}",
+                LastName = "Test",
+                PhoneNumber = $"+3876{rand.Next(1000000, 9999999)}",
+                isBlocked = false,
+                DateBirth = dob,
+                MainImage = "test",
+                CreatedAt = created,
+                PasswordHash = hasher.HashPassword(null, $"User{id}123!")
+            });
+
+            fakeUserRoles.Add(new UserRole
+            {
+                UserId = id,
+                RoleId = 1  // Korisnik
+            });
         }
-    );
 
-        // 🔹 SEED USER-ROLE VEZE
-        builder.Entity<UserRole>().HasData(
-            new UserRole { UserId = 1, RoleId = 2 }, // Radnik → Radnik
-            new UserRole { UserId = 2, RoleId = 3 }, // Direktor → Direktor
-            new UserRole { UserId = 4, RoleId = 1 }  // Korisnik → Korisnik
+        builder.Entity<User>().HasData(fakeUsers);
+        fakeUserRoles.Add(new UserRole { UserId = 1, RoleId = 2 });
+        fakeUserRoles.Add(new UserRole { UserId = 2, RoleId = 3 });
+        fakeUserRoles.Add(new UserRole { UserId = 4, RoleId = 1 });
+
+        builder.Entity<UserRole>().HasData(fakeUserRoles);
+
+
+
+        builder.Entity<UserToken>().HasData(
+            new UserToken
+            {
+                UserId = 4,
+                Equity = 80
+            }
         );
-    
-    
-    builder.Entity<UserToken>().HasData(
-        new UserToken
-        {
-            UserId = 4, 
-            Equity = 80
-        }
-    );
 
 
-    builder.Entity<Voucher>().HasData(
-        new Voucher
-        {
-            Id = 1,
-            VoucherCode = "WELCOME20",
-            Discount = 0.20m,
-            priceInTokens = 40
-        },
-        new Voucher
-        {
-            Id = 2,
-            VoucherCode = "SUMMER50",
-            Discount = 0.50m,
-            priceInTokens = 80
-        },
-        new Voucher
-        {
-            Id = 3,
-            VoucherCode = "VIP70",
-            Discount = 0.70m,
-            priceInTokens = 40
-        }
-    );
+        builder.Entity<Voucher>().HasData(
+            new Voucher
+            {
+                Id = 1,
+                VoucherCode = "WELCOME20",
+                Discount = 0.20m,
+                priceInTokens = 40
+            },
+            new Voucher
+            {
+                Id = 2,
+                VoucherCode = "SUMMER50",
+                Discount = 0.50m,
+                priceInTokens = 80
+            },
+            new Voucher
+            {
+                Id = 3,
+                VoucherCode = "VIP70",
+                Discount = 0.70m,
+                priceInTokens = 40
+            }
+        );
 
 
         builder.Entity<OfferCategory>().HasData(
@@ -262,36 +334,36 @@ public class eTravelAgencijaDbContext
 
         // OFFER DETAILS SEED DATA (with MinimalPrice)
         builder.Entity<OfferDetails>().HasData(
-    new OfferDetails { OfferId = 1,  MinimalPrice = 850m,  Description = "Uživajte u opuštajućem putovanju kroz Pariz sa vrhunskim vodičima i nezaboravnim doživljajima.", City = "Pariz", Country = "Francuska",             ResidenceTaxPerDay = 4.89m, ResidenceTotal = 34.23m, TravelInsuranceTotal = 48.90m },
-    new OfferDetails { OfferId = 2,  MinimalPrice = 760m,  Description = "Iskusite čari Rima, njegove istorijske znamenitosti i autentičnu kuhinju.",                       City = "Rim",   Country = "Italija",              ResidenceTaxPerDay = 5.87m, ResidenceTotal = 35.22m, TravelInsuranceTotal = 48.90m },
-    new OfferDetails { OfferId = 3,  MinimalPrice = 920m,  Description = "Otkrijte Madrid, grad prepun kulture, umetnosti i sjajnih pejzaža.",                              City = "Madrid",Country = "Španija",             ResidenceTaxPerDay = 6.85m, ResidenceTotal = 54.80m, TravelInsuranceTotal = 39.12m },
-    new OfferDetails { OfferId = 4,  MinimalPrice = 540m,  Description = "Posetite Beč, grad muzike, istorije i predivne arhitekture.",                                    City = "Beč",  Country = "Austrija",              ResidenceTaxPerDay = 3.91m, ResidenceTotal = 15.64m, TravelInsuranceTotal = 35.20m },
-    new OfferDetails { OfferId = 5,  MinimalPrice = 970m,  Description = "Istražite Atinu i uživajte u drevnoj grčkoj istoriji i prelepim plažama.",                       City = "Atina", Country = "Grčka",                ResidenceTaxPerDay = 3.91m, ResidenceTotal = 35.19m, TravelInsuranceTotal = 43.03m },
-    new OfferDetails { OfferId = 6,  MinimalPrice = 1010m, Description = "Amsterdam vas poziva svojim kanalima, muzejima i opuštenom atmosferom.",                          City = "Amsterdam", Country = "Nizozemska",      ResidenceTaxPerDay = 5.87m, ResidenceTotal = 35.22m, TravelInsuranceTotal = 48.90m },
-    new OfferDetails { OfferId = 7,  MinimalPrice = 890m,  Description = "Doživite čari Lisabona, njegovu arhitekturu i ukusnu hranu.",                                    City = "Lisabon", Country = "Portugal",          ResidenceTaxPerDay = 3.91m, ResidenceTotal = 27.37m, TravelInsuranceTotal = 39.12m },
-    new OfferDetails { OfferId = 8,  MinimalPrice = 730m,  Description = "Berlin, dinamični grad sa bogatom istorijom i živahnom kulturom.",                               City = "Berlin", Country = "Njemačka",           ResidenceTaxPerDay = 2.93m, ResidenceTotal = 14.65m, TravelInsuranceTotal = 35.20m },
-    new OfferDetails { OfferId = 9,  MinimalPrice = 810m,  Description = "Prag, grad bajki, mostova i nezaboravnih večeri.",                                               City = "Prag", Country = "Češka",                ResidenceTaxPerDay = 2.93m, ResidenceTotal = 17.58m, TravelInsuranceTotal = 33.25m },
-    new OfferDetails { OfferId = 10, MinimalPrice = 1340m, Description = "Kopenhagen – skandinavska oaza sa modernim i tradicionalnim sadržajima.",                        City = "Kopenhagen", Country = "Danska",         ResidenceTaxPerDay = 4.89m, ResidenceTotal = 48.90m, TravelInsuranceTotal = 48.90m },
-    new OfferDetails { OfferId = 11, MinimalPrice = 1230m, Description = "Oslo, prirodna lepota i urbani život na dohvat ruke.",                                            City = "Oslo", Country = "Norveška",             ResidenceTaxPerDay = 4.30m, ResidenceTotal = 38.70m, TravelInsuranceTotal = 50.85m },
-    new OfferDetails { OfferId = 12, MinimalPrice = 1110m, Description = "Stockholm, grad na vodi sa bogatom istorijom i prelepim pejzažima.",                              City = "Stockholm", Country = "Švedska",         ResidenceTaxPerDay = 4.50m, ResidenceTotal = 36.00m, TravelInsuranceTotal = 48.90m },
-    new OfferDetails { OfferId = 13, MinimalPrice = 990m,  Description = "Ženeva, srce švajcarskih Alpa i međunarodna prestonica.",                                        City = "Ženeva", Country = "Švicarska",          ResidenceTaxPerDay = 5.48m, ResidenceTotal = 32.88m, TravelInsuranceTotal = 54.76m },
-    new OfferDetails { OfferId = 14, MinimalPrice = 970m,  Description = "Cirih, finansijski centar i kulturni dragulj Švajcarske.",                                       City = "Cirih", Country = "Švicarska",           ResidenceTaxPerDay = 5.48m, ResidenceTotal = 38.36m, TravelInsuranceTotal = 54.76m },
-    new OfferDetails { OfferId = 15, MinimalPrice = 700m,  Description = "Istanbul, grad na dva kontinenta sa jedinstvenom atmosferom.",                                   City = "Istanbul", Country = "Turska",           ResidenceTaxPerDay = 2.35m, ResidenceTotal = 11.75m, TravelInsuranceTotal = 29.34m },
-    new OfferDetails { OfferId = 16, MinimalPrice = 430m,  Description = "Sarajevo, mesto susreta kultura i istorije.",                                                    City = "Sarajevo", Country = "Bosna i Hercegovina", ResidenceTaxPerDay = 1.96m, ResidenceTotal = 5.88m, TravelInsuranceTotal = 23.47m },
-    new OfferDetails { OfferId = 17, MinimalPrice = 500m,  Description = "Zagreb, moderna metropola sa bogatom tradicijom.",                                               City = "Zagreb", Country = "Hrvatska",           ResidenceTaxPerDay = 2.60m, ResidenceTotal = 10.40m, TravelInsuranceTotal = 29.34m },
-    new OfferDetails { OfferId = 18, MinimalPrice = 520m,  Description = "Beograd, grad sa živahnim noćnim životom i bogatom istorijom.",                                  City = "Beograd", Country = "Srbija",            ResidenceTaxPerDay = 2.15m, ResidenceTotal = 8.60m,  TravelInsuranceTotal = 27.38m },
-    new OfferDetails { OfferId = 19, MinimalPrice = 840m,  Description = "Dubrovnik, biser Jadrana i mediteranske lepote.",                                                City = "Dubrovnik", Country = "Hrvatska",        ResidenceTaxPerDay = 2.60m, ResidenceTotal = 15.60m, TravelInsuranceTotal = 29.34m },
-    new OfferDetails { OfferId = 20, MinimalPrice = 790m,  Description = "Split, spoj istorije i modernog šarma uz prelepe plaže.",                                        City = "Split", Country = "Hrvatska",            ResidenceTaxPerDay = 2.60m, ResidenceTotal = 15.60m, TravelInsuranceTotal = 29.34m },
-    new OfferDetails { OfferId = 21, MinimalPrice = 680m,  Description = "Ljubljana, zeleno srce Evrope sa opuštajućom atmosferom.",                                       City = "Ljubljana", Country = "Slovenija",       ResidenceTaxPerDay = 4.89m, ResidenceTotal = 24.45m, TravelInsuranceTotal = 35.20m },
-    new OfferDetails { OfferId = 22, MinimalPrice = 620m,  Description = "Podgorica, nova evropska destinacija puna iznenađenja.",                                         City = "Podgorica", Country = "Crna Gora",       ResidenceTaxPerDay = 2.35m, ResidenceTotal = 11.75m, TravelInsuranceTotal = 25.43m },
-    new OfferDetails { OfferId = 23, MinimalPrice = 640m,  Description = "Tirana, šarmantan grad sa bogatom kulturom i prijateljskom atmosferom.",                         City = "Tirana", Country = "Albanija",           ResidenceTaxPerDay = 1.96m, ResidenceTotal = 9.80m,  TravelInsuranceTotal = 23.47m },
-    new OfferDetails { OfferId = 24, MinimalPrice = 600m,  Description = "Skoplje, spoj starog i novog u srcu Balkana.",                                                   City = "Skoplje", Country = "Sjeverna Makedonija", ResidenceTaxPerDay = 1.96m, ResidenceTotal = 9.80m, TravelInsuranceTotal = 23.47m },
-    new OfferDetails { OfferId = 25, MinimalPrice = 900m,  Description = "Budimpešta, grad termalnih kupališta i veličanstvene arhitekture.",                              City = "Budimpešta", Country = "Mađarska",       ResidenceTaxPerDay = 3.52m, ResidenceTotal = 21.12m, TravelInsuranceTotal = 33.25m },
-    new OfferDetails { OfferId = 26, MinimalPrice = 1050m, Description = "Brisel, prestonica Evrope sa bogatom istorijom i gastronomijom.",                                City = "Brisel", Country = "Belgija",            ResidenceTaxPerDay = 4.89m, ResidenceTotal = 34.23m, TravelInsuranceTotal = 43.03m },
-    new OfferDetails { OfferId = 27, MinimalPrice = 970m,  Description = "Varšava, grad koji uspešno spaja istoriju i moderni duh.",                                       City = "Varšava", Country = "Poljska",           ResidenceTaxPerDay = 2.93m, ResidenceTotal = 17.58m, TravelInsuranceTotal = 35.20m },
-    new OfferDetails { OfferId = 28, MinimalPrice = 960m,  Description = "Krakov, biser Poljske sa bogatom kulturnom scenom.",                                             City = "Krakov", Country = "Poljska",            ResidenceTaxPerDay = 2.93m, ResidenceTotal = 17.58m, TravelInsuranceTotal = 35.20m },
-    new OfferDetails { OfferId = 29, MinimalPrice = 880m,  Description = "Sofija, srce Bugarske sa prelepim planinama i istorijom.",                                       City = "Sofija", Country = "Bugarska",           ResidenceTaxPerDay = 2.35m, ResidenceTotal = 14.10m, TravelInsuranceTotal = 29.34m },
-    new OfferDetails { OfferId = 30, MinimalPrice = 910m,  Description = "Bukurešt, grad kontrasta i dinamične kulture.",                                                  City = "Bukurešt", Country = "Rumunija",         ResidenceTaxPerDay = 2.54m, ResidenceTotal = 17.78m, TravelInsuranceTotal = 29.34m }
+    new OfferDetails { OfferId = 1, MinimalPrice = 850m, Description = "Uživajte u opuštajućem putovanju kroz Pariz sa vrhunskim vodičima i nezaboravnim doživljajima.", City = "Pariz", Country = "Francuska", ResidenceTaxPerDay = 4.89m, ResidenceTotal = 34.23m, TravelInsuranceTotal = 48.90m },
+    new OfferDetails { OfferId = 2, MinimalPrice = 760m, Description = "Iskusite čari Rima, njegove istorijske znamenitosti i autentičnu kuhinju.", City = "Rim", Country = "Italija", ResidenceTaxPerDay = 5.87m, ResidenceTotal = 35.22m, TravelInsuranceTotal = 48.90m },
+    new OfferDetails { OfferId = 3, MinimalPrice = 920m, Description = "Otkrijte Madrid, grad prepun kulture, umetnosti i sjajnih pejzaža.", City = "Madrid", Country = "Španija", ResidenceTaxPerDay = 6.85m, ResidenceTotal = 54.80m, TravelInsuranceTotal = 39.12m },
+    new OfferDetails { OfferId = 4, MinimalPrice = 540m, Description = "Posetite Beč, grad muzike, istorije i predivne arhitekture.", City = "Beč", Country = "Austrija", ResidenceTaxPerDay = 3.91m, ResidenceTotal = 15.64m, TravelInsuranceTotal = 35.20m },
+    new OfferDetails { OfferId = 5, MinimalPrice = 970m, Description = "Istražite Atinu i uživajte u drevnoj grčkoj istoriji i prelepim plažama.", City = "Atina", Country = "Grčka", ResidenceTaxPerDay = 3.91m, ResidenceTotal = 35.19m, TravelInsuranceTotal = 43.03m },
+    new OfferDetails { OfferId = 6, MinimalPrice = 1010m, Description = "Amsterdam vas poziva svojim kanalima, muzejima i opuštenom atmosferom.", City = "Amsterdam", Country = "Nizozemska", ResidenceTaxPerDay = 5.87m, ResidenceTotal = 35.22m, TravelInsuranceTotal = 48.90m },
+    new OfferDetails { OfferId = 7, MinimalPrice = 890m, Description = "Doživite čari Lisabona, njegovu arhitekturu i ukusnu hranu.", City = "Lisabon", Country = "Portugal", ResidenceTaxPerDay = 3.91m, ResidenceTotal = 27.37m, TravelInsuranceTotal = 39.12m },
+    new OfferDetails { OfferId = 8, MinimalPrice = 730m, Description = "Berlin, dinamični grad sa bogatom istorijom i živahnom kulturom.", City = "Berlin", Country = "Njemačka", ResidenceTaxPerDay = 2.93m, ResidenceTotal = 14.65m, TravelInsuranceTotal = 35.20m },
+    new OfferDetails { OfferId = 9, MinimalPrice = 810m, Description = "Prag, grad bajki, mostova i nezaboravnih večeri.", City = "Prag", Country = "Češka", ResidenceTaxPerDay = 2.93m, ResidenceTotal = 17.58m, TravelInsuranceTotal = 33.25m },
+    new OfferDetails { OfferId = 10, MinimalPrice = 1340m, Description = "Kopenhagen – skandinavska oaza sa modernim i tradicionalnim sadržajima.", City = "Kopenhagen", Country = "Danska", ResidenceTaxPerDay = 4.89m, ResidenceTotal = 48.90m, TravelInsuranceTotal = 48.90m },
+    new OfferDetails { OfferId = 11, MinimalPrice = 1230m, Description = "Oslo, prirodna lepota i urbani život na dohvat ruke.", City = "Oslo", Country = "Norveška", ResidenceTaxPerDay = 4.30m, ResidenceTotal = 38.70m, TravelInsuranceTotal = 50.85m },
+    new OfferDetails { OfferId = 12, MinimalPrice = 1110m, Description = "Stockholm, grad na vodi sa bogatom istorijom i prelepim pejzažima.", City = "Stockholm", Country = "Švedska", ResidenceTaxPerDay = 4.50m, ResidenceTotal = 36.00m, TravelInsuranceTotal = 48.90m },
+    new OfferDetails { OfferId = 13, MinimalPrice = 990m, Description = "Ženeva, srce švajcarskih Alpa i međunarodna prestonica.", City = "Ženeva", Country = "Švicarska", ResidenceTaxPerDay = 5.48m, ResidenceTotal = 32.88m, TravelInsuranceTotal = 54.76m },
+    new OfferDetails { OfferId = 14, MinimalPrice = 970m, Description = "Cirih, finansijski centar i kulturni dragulj Švajcarske.", City = "Cirih", Country = "Švicarska", ResidenceTaxPerDay = 5.48m, ResidenceTotal = 38.36m, TravelInsuranceTotal = 54.76m },
+    new OfferDetails { OfferId = 15, MinimalPrice = 700m, Description = "Istanbul, grad na dva kontinenta sa jedinstvenom atmosferom.", City = "Istanbul", Country = "Turska", ResidenceTaxPerDay = 2.35m, ResidenceTotal = 11.75m, TravelInsuranceTotal = 29.34m },
+    new OfferDetails { OfferId = 16, MinimalPrice = 430m, Description = "Sarajevo, mesto susreta kultura i istorije.", City = "Sarajevo", Country = "Bosna i Hercegovina", ResidenceTaxPerDay = 1.96m, ResidenceTotal = 5.88m, TravelInsuranceTotal = 23.47m },
+    new OfferDetails { OfferId = 17, MinimalPrice = 500m, Description = "Zagreb, moderna metropola sa bogatom tradicijom.", City = "Zagreb", Country = "Hrvatska", ResidenceTaxPerDay = 2.60m, ResidenceTotal = 10.40m, TravelInsuranceTotal = 29.34m },
+    new OfferDetails { OfferId = 18, MinimalPrice = 520m, Description = "Beograd, grad sa živahnim noćnim životom i bogatom istorijom.", City = "Beograd", Country = "Srbija", ResidenceTaxPerDay = 2.15m, ResidenceTotal = 8.60m, TravelInsuranceTotal = 27.38m },
+    new OfferDetails { OfferId = 19, MinimalPrice = 840m, Description = "Dubrovnik, biser Jadrana i mediteranske lepote.", City = "Dubrovnik", Country = "Hrvatska", ResidenceTaxPerDay = 2.60m, ResidenceTotal = 15.60m, TravelInsuranceTotal = 29.34m },
+    new OfferDetails { OfferId = 20, MinimalPrice = 790m, Description = "Split, spoj istorije i modernog šarma uz prelepe plaže.", City = "Split", Country = "Hrvatska", ResidenceTaxPerDay = 2.60m, ResidenceTotal = 15.60m, TravelInsuranceTotal = 29.34m },
+    new OfferDetails { OfferId = 21, MinimalPrice = 680m, Description = "Ljubljana, zeleno srce Evrope sa opuštajućom atmosferom.", City = "Ljubljana", Country = "Slovenija", ResidenceTaxPerDay = 4.89m, ResidenceTotal = 24.45m, TravelInsuranceTotal = 35.20m },
+    new OfferDetails { OfferId = 22, MinimalPrice = 620m, Description = "Podgorica, nova evropska destinacija puna iznenađenja.", City = "Podgorica", Country = "Crna Gora", ResidenceTaxPerDay = 2.35m, ResidenceTotal = 11.75m, TravelInsuranceTotal = 25.43m },
+    new OfferDetails { OfferId = 23, MinimalPrice = 640m, Description = "Tirana, šarmantan grad sa bogatom kulturom i prijateljskom atmosferom.", City = "Tirana", Country = "Albanija", ResidenceTaxPerDay = 1.96m, ResidenceTotal = 9.80m, TravelInsuranceTotal = 23.47m },
+    new OfferDetails { OfferId = 24, MinimalPrice = 600m, Description = "Skoplje, spoj starog i novog u srcu Balkana.", City = "Skoplje", Country = "Sjeverna Makedonija", ResidenceTaxPerDay = 1.96m, ResidenceTotal = 9.80m, TravelInsuranceTotal = 23.47m },
+    new OfferDetails { OfferId = 25, MinimalPrice = 900m, Description = "Budimpešta, grad termalnih kupališta i veličanstvene arhitekture.", City = "Budimpešta", Country = "Mađarska", ResidenceTaxPerDay = 3.52m, ResidenceTotal = 21.12m, TravelInsuranceTotal = 33.25m },
+    new OfferDetails { OfferId = 26, MinimalPrice = 1050m, Description = "Brisel, prestonica Evrope sa bogatom istorijom i gastronomijom.", City = "Brisel", Country = "Belgija", ResidenceTaxPerDay = 4.89m, ResidenceTotal = 34.23m, TravelInsuranceTotal = 43.03m },
+    new OfferDetails { OfferId = 27, MinimalPrice = 970m, Description = "Varšava, grad koji uspešno spaja istoriju i moderni duh.", City = "Varšava", Country = "Poljska", ResidenceTaxPerDay = 2.93m, ResidenceTotal = 17.58m, TravelInsuranceTotal = 35.20m },
+    new OfferDetails { OfferId = 28, MinimalPrice = 960m, Description = "Krakov, biser Poljske sa bogatom kulturnom scenom.", City = "Krakov", Country = "Poljska", ResidenceTaxPerDay = 2.93m, ResidenceTotal = 17.58m, TravelInsuranceTotal = 35.20m },
+    new OfferDetails { OfferId = 29, MinimalPrice = 880m, Description = "Sofija, srce Bugarske sa prelepim planinama i istorijom.", City = "Sofija", Country = "Bugarska", ResidenceTaxPerDay = 2.35m, ResidenceTotal = 14.10m, TravelInsuranceTotal = 29.34m },
+    new OfferDetails { OfferId = 30, MinimalPrice = 910m, Description = "Bukurešt, grad kontrasta i dinamične kulture.", City = "Bukurešt", Country = "Rumunija", ResidenceTaxPerDay = 2.54m, ResidenceTotal = 17.78m, TravelInsuranceTotal = 29.34m }
 );
 
 
