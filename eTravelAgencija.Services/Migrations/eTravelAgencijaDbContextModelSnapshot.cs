@@ -136,9 +136,329 @@ namespace eTravelAgencija.Services.Migrations
                     b.HasData(
                         new
                         {
+                            UserId = 10,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 15, 757, DateTimeKind.Utc).AddTicks(9142),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 11,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 15, 821, DateTimeKind.Utc).AddTicks(631),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 12,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 15, 892, DateTimeKind.Utc).AddTicks(936),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 13,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 15, 976, DateTimeKind.Utc).AddTicks(8546),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 14,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 45, DateTimeKind.Utc).AddTicks(2081),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 15,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 116, DateTimeKind.Utc).AddTicks(5869),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 16,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 187, DateTimeKind.Utc).AddTicks(7073),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 17,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 246, DateTimeKind.Utc).AddTicks(4642),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 18,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 303, DateTimeKind.Utc).AddTicks(7456),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 19,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 361, DateTimeKind.Utc).AddTicks(9402),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 20,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 420, DateTimeKind.Utc).AddTicks(2912),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 21,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 480, DateTimeKind.Utc).AddTicks(859),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 22,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 546, DateTimeKind.Utc).AddTicks(7452),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 23,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 615, DateTimeKind.Utc).AddTicks(8564),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 24,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 685, DateTimeKind.Utc).AddTicks(3465),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 25,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 742, DateTimeKind.Utc).AddTicks(772),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 26,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 800, DateTimeKind.Utc).AddTicks(8304),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 27,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 859, DateTimeKind.Utc).AddTicks(5056),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 28,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 921, DateTimeKind.Utc).AddTicks(925),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 29,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 16, 978, DateTimeKind.Utc).AddTicks(2496),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 30,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 38, DateTimeKind.Utc).AddTicks(6891),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 31,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 99, DateTimeKind.Utc).AddTicks(144),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 32,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 159, DateTimeKind.Utc).AddTicks(6872),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 33,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 220, DateTimeKind.Utc).AddTicks(1867),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 34,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 279, DateTimeKind.Utc).AddTicks(7856),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 35,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 339, DateTimeKind.Utc).AddTicks(8761),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 36,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 407, DateTimeKind.Utc).AddTicks(4815),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 37,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 476, DateTimeKind.Utc).AddTicks(98),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 38,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 537, DateTimeKind.Utc).AddTicks(3631),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 39,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 607, DateTimeKind.Utc).AddTicks(6793),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 40,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 677, DateTimeKind.Utc).AddTicks(2896),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 41,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 747, DateTimeKind.Utc).AddTicks(7152),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 42,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 818, DateTimeKind.Utc).AddTicks(5481),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 43,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 887, DateTimeKind.Utc).AddTicks(5805),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 44,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 17, 956, DateTimeKind.Utc).AddTicks(8414),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 45,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 18, 19, DateTimeKind.Utc).AddTicks(6933),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 46,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 18, 75, DateTimeKind.Utc).AddTicks(5385),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 47,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 18, 149, DateTimeKind.Utc).AddTicks(4746),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 48,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 18, 220, DateTimeKind.Utc).AddTicks(9145),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
+                            UserId = 49,
+                            RoleId = 1,
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 18, 292, DateTimeKind.Utc).AddTicks(718),
+                            Description = "",
+                            IsActive = true
+                        },
+                        new
+                        {
                             UserId = 1,
                             RoleId = 2,
-                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 770, DateTimeKind.Utc).AddTicks(7978),
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 18, 292, DateTimeKind.Utc).AddTicks(2659),
                             Description = "",
                             IsActive = true
                         },
@@ -146,7 +466,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 2,
                             RoleId = 3,
-                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 770, DateTimeKind.Utc).AddTicks(7985),
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 18, 292, DateTimeKind.Utc).AddTicks(2661),
                             Description = "",
                             IsActive = true
                         },
@@ -154,7 +474,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 4,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 770, DateTimeKind.Utc).AddTicks(7986),
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 18, 292, DateTimeKind.Utc).AddTicks(2661),
                             Description = "",
                             IsActive = true
                         });
@@ -3060,9 +3380,9 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "71817fce-8561-4b17-827e-8cc8bec40001",
-                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 538, DateTimeKind.Utc).AddTicks(8598),
-                            DateBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConcurrencyStamp = "045cd25c-69a2-4436-8c53-f6385d5070f9",
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 15, 473, DateTimeKind.Utc).AddTicks(5406),
+                            DateBirth = new DateTime(1990, 5, 10, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "radnik@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Marko",
@@ -3071,7 +3391,7 @@ namespace eTravelAgencija.Services.Migrations
                             MainImage = "test",
                             NormalizedEmail = "RADNIK@ETRAVEL.COM",
                             NormalizedUserName = "RADNIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAECqKHITOjeJ63a2sNJlC81Nagiw+TVjcMHGESo+H8pBryFkStaQaSQ2ZG/Hh0EX0+Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENVSxlmpm7wL7Zo7rykMSjU2dcYHOjuQFy+XPaRt/ljwoaKgAge6HF35hWfjUmPcXA==",
                             PhoneNumber = "+38761111111",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3082,9 +3402,9 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7e736f3e-5619-4c56-887b-7aaa2b2a64e6",
-                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 629, DateTimeKind.Utc).AddTicks(8550),
-                            DateBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConcurrencyStamp = "8f0620fb-6d00-4372-8ed1-52a35ce553ae",
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 15, 535, DateTimeKind.Utc).AddTicks(2147),
+                            DateBirth = new DateTime(1985, 3, 20, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "direktor@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Amir",
@@ -3093,7 +3413,7 @@ namespace eTravelAgencija.Services.Migrations
                             MainImage = "test",
                             NormalizedEmail = "DIREKTOR@ETRAVEL.COM",
                             NormalizedUserName = "DIREKTOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPu6DV94Fs3jRxI6LNHA1TG7oO1ma/FqRLVemSVhQtlAjNBSaeozf3CX8lTEVmyUgg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPnnadrzwxUvCu6R0hl9zNzKLntmi7EWmhzq012qwVEMqkTID4sGDVG6TiGwaqnvdg==",
                             PhoneNumber = "+38762222222",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3104,9 +3424,9 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f45fc511-cf18-44f0-a081-7da18966aefb",
-                            CreatedAt = new DateTime(2025, 11, 14, 18, 1, 27, 696, DateTimeKind.Utc).AddTicks(7459),
-                            DateBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConcurrencyStamp = "95af7a92-6443-4fe2-9745-c420d7da8fdf",
+                            CreatedAt = new DateTime(2025, 11, 15, 17, 7, 15, 603, DateTimeKind.Utc).AddTicks(3319),
+                            DateBirth = new DateTime(2002, 11, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "korisnik@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Ajdin",
@@ -3115,11 +3435,891 @@ namespace eTravelAgencija.Services.Migrations
                             MainImage = "test",
                             NormalizedEmail = "KORISNIK@ETRAVEL.COM",
                             NormalizedUserName = "KORISNIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOjxHSLOYTREaAwD1JLewVnGz9Ed2sSI4sOyax2SWhDC1OVWpxmyAZ6qy/SZJYqQgQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ2Kz6DQqalVaoEKxDoFhgQUBYcr0oqrD/oSrUKBikgVWqxALff1quO4mAYDwtMNtg==",
                             PhoneNumber = "+38763333333",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "korisnik",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bd489cd5-66b2-415c-a798-820eb71bf8c8",
+                            CreatedAt = new DateTime(2025, 4, 13, 17, 7, 15, 684, DateTimeKind.Utc).AddTicks(3875),
+                            DateBirth = new DateTime(1962, 3, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user10@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User10",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER10@MAIL.COM",
+                            NormalizedUserName = "USER10",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPNV2rAiD2T9A+rcAaQIoq1rnj7jzj+EibMxpG8qypt5B4qL4bue50xRStitWNS9Fg==",
+                            PhoneNumber = "+38763201138",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user10",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 11,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "da63779c-1aef-42e9-b47b-494c8965d2b8",
+                            CreatedAt = new DateTime(2025, 9, 27, 17, 7, 15, 757, DateTimeKind.Utc).AddTicks(9166),
+                            DateBirth = new DateTime(2007, 3, 14, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user11@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User11",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER11@MAIL.COM",
+                            NormalizedUserName = "USER11",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO8R090Jw5Kg+y8Bo6zAX7VKxA6uS9pZ9oYXijHOZtGyZE2Wxxx5Vq9GtyFkz4lM1A==",
+                            PhoneNumber = "+38764119041",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user11",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 12,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "dd3ffe37-d712-4c5b-b312-c19b5c4d6fcb",
+                            CreatedAt = new DateTime(2025, 10, 6, 17, 7, 15, 821, DateTimeKind.Utc).AddTicks(649),
+                            DateBirth = new DateTime(2000, 3, 23, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user12@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User12",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER12@MAIL.COM",
+                            NormalizedUserName = "USER12",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL409NDUylHXySUcVIZGOC0+8lnQP7kilRGBMzgIm8CuOOVBXnEuew3AOllBFGTRbQ==",
+                            PhoneNumber = "+38767206817",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user12",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 13,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "07507e05-034b-4ec3-b80c-11b19d8561ec",
+                            CreatedAt = new DateTime(2025, 9, 27, 17, 7, 15, 892, DateTimeKind.Utc).AddTicks(960),
+                            DateBirth = new DateTime(1997, 10, 24, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user13@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User13",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER13@MAIL.COM",
+                            NormalizedUserName = "USER13",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDPDpNI1+qfZxyiIl57msyiUTw8HPo1dSEANbKGpwgUfOS3JIh/M4rvj7dFOxPrFRg==",
+                            PhoneNumber = "+38768804752",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user13",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 14,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bc5c5fb6-0bfc-45b4-bd9b-7d7bd757a08e",
+                            CreatedAt = new DateTime(2025, 2, 6, 17, 7, 15, 976, DateTimeKind.Utc).AddTicks(8569),
+                            DateBirth = new DateTime(1971, 1, 21, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user14@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User14",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER14@MAIL.COM",
+                            NormalizedUserName = "USER14",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPGTweFPt/HO+JJ2T2IKTXXpS5NNc2a+BX3BekszF4eET1K2aGkE7/rGMPMH0Xyt3A==",
+                            PhoneNumber = "+38762098345",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user14",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 15,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "308a8048-49bc-4257-ae41-3a7f2c6a4af4",
+                            CreatedAt = new DateTime(2025, 2, 28, 17, 7, 16, 45, DateTimeKind.Utc).AddTicks(2104),
+                            DateBirth = new DateTime(1996, 5, 13, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user15@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User15",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER15@MAIL.COM",
+                            NormalizedUserName = "USER15",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAfrC78b/GDw3wC0bnybhBcSELgDsrqfTIB3/lJ3KeRc4lVp1cD7o6MWXaoKBh6qXQ==",
+                            PhoneNumber = "+38763999429",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user15",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 16,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "fbd32576-6c46-4e97-9056-857c828657e1",
+                            CreatedAt = new DateTime(2025, 9, 3, 17, 7, 16, 116, DateTimeKind.Utc).AddTicks(5891),
+                            DateBirth = new DateTime(1999, 4, 21, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user16@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User16",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER16@MAIL.COM",
+                            NormalizedUserName = "USER16",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPsbRkhiYmowV2goLPmyegyDKGNOIqAeFeJuB+/2dApTwia04I0QP1KkVLnv5zbXCA==",
+                            PhoneNumber = "+38765830322",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user16",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 17,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "38c217f7-245d-4a59-8fd4-3d53b4efd3ac",
+                            CreatedAt = new DateTime(2025, 6, 15, 17, 7, 16, 187, DateTimeKind.Utc).AddTicks(7098),
+                            DateBirth = new DateTime(2001, 2, 24, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user17@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User17",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER17@MAIL.COM",
+                            NormalizedUserName = "USER17",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP2FLsboO3V1jjCvkNVRx79VMFDFPpUrkK/U+1PfVHur6kMONj+0psat4wabac8bQQ==",
+                            PhoneNumber = "+38766643738",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user17",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 18,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ec2630a1-40f1-417c-9484-3c8eabe6d6f3",
+                            CreatedAt = new DateTime(2025, 9, 29, 17, 7, 16, 246, DateTimeKind.Utc).AddTicks(4656),
+                            DateBirth = new DateTime(1993, 4, 18, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user18@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User18",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER18@MAIL.COM",
+                            NormalizedUserName = "USER18",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDs0rcRR3cVtBASlSkUnZ1j7WHIchxDRJ9ABYKyMtMe5SB3GXxdCQkrkAtocFkWZIg==",
+                            PhoneNumber = "+38762458341",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user18",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 19,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9756b520-b952-4741-a9ac-597ee44fdcaf",
+                            CreatedAt = new DateTime(2025, 2, 23, 17, 7, 16, 303, DateTimeKind.Utc).AddTicks(7477),
+                            DateBirth = new DateTime(1971, 6, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user19@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User19",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER19@MAIL.COM",
+                            NormalizedUserName = "USER19",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ72NBMMT+u++j0wBsf2P5uIUgCC6XJ3Xb0c1xEWA7YpE9S5wTLJ6IiGsoIZAz5x4g==",
+                            PhoneNumber = "+38764185189",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user19",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 20,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e6733175-92d3-4a73-acbd-2f0752e41b01",
+                            CreatedAt = new DateTime(2025, 9, 18, 17, 7, 16, 361, DateTimeKind.Utc).AddTicks(9415),
+                            DateBirth = new DateTime(1980, 8, 13, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user20@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User20",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER20@MAIL.COM",
+                            NormalizedUserName = "USER20",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO7VBMPAwrkdLwzFJ//SsRS72Bin8TIvYURKhAUO3C5plWqpIOri0LncYj0BujHOKg==",
+                            PhoneNumber = "+38764316705",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user20",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 21,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5c430c41-ed67-468c-9893-47a899274073",
+                            CreatedAt = new DateTime(2025, 3, 13, 17, 7, 16, 420, DateTimeKind.Utc).AddTicks(2919),
+                            DateBirth = new DateTime(1995, 6, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user21@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User21",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER21@MAIL.COM",
+                            NormalizedUserName = "USER21",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH/oJFb/TRlpWOzd6hZ9cpzjoIIJ5pAwFZu26AK0FTaIB/ER4WSmGcGQjoGZoROdmg==",
+                            PhoneNumber = "+38767221271",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user21",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 22,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "0516ac40-ecc1-4df4-9dee-df4f053fd2db",
+                            CreatedAt = new DateTime(2025, 2, 20, 17, 7, 16, 480, DateTimeKind.Utc).AddTicks(880),
+                            DateBirth = new DateTime(1997, 1, 22, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user22@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User22",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER22@MAIL.COM",
+                            NormalizedUserName = "USER22",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMqqw7cqhnQcHabQrCP/PVsvyTgTGeNU0tl/PZV7r5HMoRVAkAds5YRsXA9qHoak1A==",
+                            PhoneNumber = "+38761871936",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user22",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 23,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d0f7cd75-2617-4e15-a0cb-4b2ffb1f186f",
+                            CreatedAt = new DateTime(2025, 9, 2, 17, 7, 16, 546, DateTimeKind.Utc).AddTicks(7470),
+                            DateBirth = new DateTime(2001, 11, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user23@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User23",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER23@MAIL.COM",
+                            NormalizedUserName = "USER23",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOIpeyLhXVl2DhKJrIQnvxT/O98mAdIvn7Vr04cSa4pfSlEO4fmNjP1D86CrGenoiA==",
+                            PhoneNumber = "+38768276075",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user23",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 24,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "da43d0d6-0ab1-4114-9368-4ca3e56a8136",
+                            CreatedAt = new DateTime(2025, 10, 3, 17, 7, 16, 615, DateTimeKind.Utc).AddTicks(8601),
+                            DateBirth = new DateTime(1984, 6, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user24@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User24",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER24@MAIL.COM",
+                            NormalizedUserName = "USER24",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPNho4v7r71nx5FwkdByUFbXsGnHLlsrchKVTaK0+UtmxwEroI4W0x4IFBqqmuxtFQ==",
+                            PhoneNumber = "+38762629627",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user24",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 25,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "212c72a1-832c-4f0b-bbca-6f098e5c98f1",
+                            CreatedAt = new DateTime(2025, 2, 28, 17, 7, 16, 685, DateTimeKind.Utc).AddTicks(3487),
+                            DateBirth = new DateTime(1970, 3, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user25@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User25",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER25@MAIL.COM",
+                            NormalizedUserName = "USER25",
+                            PasswordHash = "AQAAAAIAAYagAAAAELb6j/BT/TskAKOl0yvinAiZ9K6jlDwiecLCnCX2Q0EDPMYOYDaYRdbmqepY2cZdLg==",
+                            PhoneNumber = "+38768300618",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user25",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 26,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c55cfa66-d9a9-4f35-bfca-ec185a48bc25",
+                            CreatedAt = new DateTime(2025, 3, 9, 17, 7, 16, 742, DateTimeKind.Utc).AddTicks(791),
+                            DateBirth = new DateTime(1984, 2, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user26@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User26",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER26@MAIL.COM",
+                            NormalizedUserName = "USER26",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMVVwM0bggK1ohG30qSw3JvuPIFvJmQAoqULc0r0XO3yWZ0V6rOecBK20jJ2e4yS3Q==",
+                            PhoneNumber = "+38768836764",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user26",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 27,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7b447756-7702-417e-928d-4cbb602398df",
+                            CreatedAt = new DateTime(2025, 3, 30, 17, 7, 16, 800, DateTimeKind.Utc).AddTicks(8481),
+                            DateBirth = new DateTime(1992, 4, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user27@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User27",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER27@MAIL.COM",
+                            NormalizedUserName = "USER27",
+                            PasswordHash = "AQAAAAIAAYagAAAAENOcgKRieBA32ZmN0ZxRqU+XDXe6zDXn8hlL49hCtBlN/NuN2MQH8XT791Nr3XDZOQ==",
+                            PhoneNumber = "+38763937224",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user27",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 28,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "1899b5d1-61e1-4c6f-86b8-a637b1dbfe19",
+                            CreatedAt = new DateTime(2025, 5, 28, 17, 7, 16, 859, DateTimeKind.Utc).AddTicks(5072),
+                            DateBirth = new DateTime(1997, 2, 22, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user28@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User28",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER28@MAIL.COM",
+                            NormalizedUserName = "USER28",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKiJUpJO6NfOM+Wp5zOeTAgdIdXhkLPePn0A9mwDIyC9tuaX+joOPXe2cHbBZoYI7w==",
+                            PhoneNumber = "+38767498489",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user28",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 29,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a17dbd03-528d-4173-8317-c022796d71f6",
+                            CreatedAt = new DateTime(2025, 3, 17, 17, 7, 16, 921, DateTimeKind.Utc).AddTicks(941),
+                            DateBirth = new DateTime(1996, 4, 9, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user29@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User29",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER29@MAIL.COM",
+                            NormalizedUserName = "USER29",
+                            PasswordHash = "AQAAAAIAAYagAAAAENkuWeHY06SubxP4J3vHn3iInH66SsHNeKVFWkcYLoYRWYRsrjGLkU7zaqXfs7yZuA==",
+                            PhoneNumber = "+38762355088",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user29",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 30,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c0892c60-05ba-46d8-99cb-06222b20b405",
+                            CreatedAt = new DateTime(2025, 3, 15, 17, 7, 16, 978, DateTimeKind.Utc).AddTicks(2517),
+                            DateBirth = new DateTime(1994, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user30@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User30",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER30@MAIL.COM",
+                            NormalizedUserName = "USER30",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFCENAurRvmB9pKsEKDt6JO9Z4pBJArQGPmYV/S2qqDg4zlsihtnPluc8CvJY1ijlw==",
+                            PhoneNumber = "+38764426400",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user30",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 31,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9f75e5fb-c89f-4a8b-9f39-0ef536e775ce",
+                            CreatedAt = new DateTime(2025, 6, 17, 17, 7, 17, 38, DateTimeKind.Utc).AddTicks(6902),
+                            DateBirth = new DateTime(1982, 9, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user31@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User31",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER31@MAIL.COM",
+                            NormalizedUserName = "USER31",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGrZndA27lJ8y2ASYKHi6xfOyY//R6frVGiH3Zufv0+SUmBxlZyu952SaiE8Bt68PQ==",
+                            PhoneNumber = "+38761295681",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user31",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 32,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6c2c210c-1ff5-43af-a4b1-8d8b7c8336cb",
+                            CreatedAt = new DateTime(2025, 3, 2, 17, 7, 17, 99, DateTimeKind.Utc).AddTicks(148),
+                            DateBirth = new DateTime(2001, 12, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user32@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User32",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER32@MAIL.COM",
+                            NormalizedUserName = "USER32",
+                            PasswordHash = "AQAAAAIAAYagAAAAEElN9DjeeA/O9znqXZ8F0VHKy+XutTF4Zi2a8DvCjmVGxE6X5iXgiESyTkmktNOECQ==",
+                            PhoneNumber = "+38761955082",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user32",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 33,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f9ebba8f-373d-48be-af6c-5d38e80bc37f",
+                            CreatedAt = new DateTime(2025, 7, 17, 17, 7, 17, 159, DateTimeKind.Utc).AddTicks(6878),
+                            DateBirth = new DateTime(1971, 11, 25, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user33@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User33",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER33@MAIL.COM",
+                            NormalizedUserName = "USER33",
+                            PasswordHash = "AQAAAAIAAYagAAAAENRH/zBoJ1PP63WjyeVE/EzavQ4aVep2pI79deqw67JfC2sW1x8s4bWt6Am3lth4eQ==",
+                            PhoneNumber = "+38766589837",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user33",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 34,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e26a072a-5fd1-4be3-8c9d-0b863f6a1ad4",
+                            CreatedAt = new DateTime(2025, 10, 15, 17, 7, 17, 220, DateTimeKind.Utc).AddTicks(1872),
+                            DateBirth = new DateTime(1967, 2, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user34@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User34",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER34@MAIL.COM",
+                            NormalizedUserName = "USER34",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOUKAUycw1Ci0KBb9HqP5bXHIco5lijyaEFGXdjcpKgFqyOVj7C2L6ibvKXtBRA15g==",
+                            PhoneNumber = "+38766879969",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user34",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 35,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bbab9b0d-4693-479d-87fb-88e19a43a168",
+                            CreatedAt = new DateTime(2025, 3, 2, 17, 7, 17, 279, DateTimeKind.Utc).AddTicks(7862),
+                            DateBirth = new DateTime(1985, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user35@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User35",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER35@MAIL.COM",
+                            NormalizedUserName = "USER35",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK/evLQm1Ijkdq4deCNyLa2BooSTOO6Dhc9K/rWqkR6qEPRHMgi5fS1CnUbNlpBw4g==",
+                            PhoneNumber = "+38764386433",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user35",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 36,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "40d46f7f-e634-4d0c-a680-4f8e93ebffce",
+                            CreatedAt = new DateTime(2025, 7, 5, 17, 7, 17, 339, DateTimeKind.Utc).AddTicks(8765),
+                            DateBirth = new DateTime(1966, 7, 6, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user36@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User36",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER36@MAIL.COM",
+                            NormalizedUserName = "USER36",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGg2DebE9LGucG5eTl70LhfwhAznRXoBMN8L6kySZczGVD5jfxGrLHlE+x+aSJdJYg==",
+                            PhoneNumber = "+38762678076",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user36",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 37,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a5b7ad55-49c4-47c2-973f-f6d23f08d368",
+                            CreatedAt = new DateTime(2025, 10, 24, 17, 7, 17, 407, DateTimeKind.Utc).AddTicks(4834),
+                            DateBirth = new DateTime(1967, 4, 14, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user37@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User37",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER37@MAIL.COM",
+                            NormalizedUserName = "USER37",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG3tRcz1ud/N5TEos0LD21WBON+4Fza7HKywpotBQz2lS583k8oVnrIhMDLOH2vJrA==",
+                            PhoneNumber = "+38766464221",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user37",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 38,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c594ad1c-4f07-4691-a33a-43204fa4082d",
+                            CreatedAt = new DateTime(2025, 3, 23, 17, 7, 17, 476, DateTimeKind.Utc).AddTicks(110),
+                            DateBirth = new DateTime(1987, 3, 23, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user38@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User38",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER38@MAIL.COM",
+                            NormalizedUserName = "USER38",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG9yxdAFhZyAujTDmP5g8umYE94C1xCeOhvGHcxW39tWkAVdbpg2wirLPmbX+S/KaQ==",
+                            PhoneNumber = "+38769076358",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user38",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 39,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "51f3bd99-0bb6-4ed3-84ef-44750a1a3b9b",
+                            CreatedAt = new DateTime(2025, 3, 29, 17, 7, 17, 537, DateTimeKind.Utc).AddTicks(3642),
+                            DateBirth = new DateTime(2003, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user39@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User39",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER39@MAIL.COM",
+                            NormalizedUserName = "USER39",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDCDab8Z03pvKz61tL5S4zB/FcSwXiwYCTGvIHoJEIbyghuf8dYI9v45SSufQaFy/w==",
+                            PhoneNumber = "+38763235703",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user39",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 40,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "325a2bdc-46ca-4c93-9389-94ee6e7be11b",
+                            CreatedAt = new DateTime(2025, 5, 26, 17, 7, 17, 607, DateTimeKind.Utc).AddTicks(6812),
+                            DateBirth = new DateTime(1992, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user40@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User40",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER40@MAIL.COM",
+                            NormalizedUserName = "USER40",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEG+lmgr7C/9esNULNYICOnUdzvv4ENiygEKpLz0SU6N77KWLoSn3nK2aUDYRly+NA==",
+                            PhoneNumber = "+38761531220",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user40",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 41,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8428af80-9162-495f-970e-f649b497bdc9",
+                            CreatedAt = new DateTime(2025, 5, 25, 17, 7, 17, 677, DateTimeKind.Utc).AddTicks(2908),
+                            DateBirth = new DateTime(1990, 5, 6, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user41@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User41",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER41@MAIL.COM",
+                            NormalizedUserName = "USER41",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGtoPm9VInv93RdmlwKTexI9z9+Lz5DYvPTJZet4goOdO3F/OfvrU5WBC5EvwFkinw==",
+                            PhoneNumber = "+38766296687",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user41",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 42,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5a93458e-bd4b-4dae-9586-619316c23149",
+                            CreatedAt = new DateTime(2025, 2, 2, 17, 7, 17, 747, DateTimeKind.Utc).AddTicks(7159),
+                            DateBirth = new DateTime(1970, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user42@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User42",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER42@MAIL.COM",
+                            NormalizedUserName = "USER42",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBv9/EwFSI9TrC2s+UZpKREtoMaS2lxS0wzu4wjjpSEPQoBM38/eSRTHMpqFOBA9NQ==",
+                            PhoneNumber = "+38763758696",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user42",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 43,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "dbb55d36-e1a3-4d81-b8ec-a566563795c2",
+                            CreatedAt = new DateTime(2025, 3, 12, 17, 7, 17, 818, DateTimeKind.Utc).AddTicks(5489),
+                            DateBirth = new DateTime(2001, 5, 24, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user43@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User43",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER43@MAIL.COM",
+                            NormalizedUserName = "USER43",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAUWsYGwzoXVDiQZa+6zg1vDayIjAgiX0xnWCQPiW9BV9wovu14k5A0S9IKQoOfI1g==",
+                            PhoneNumber = "+38765685071",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user43",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 44,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "40ecc3ae-beb9-4f90-9b25-6da4f1f1e001",
+                            CreatedAt = new DateTime(2025, 8, 16, 17, 7, 17, 887, DateTimeKind.Utc).AddTicks(5819),
+                            DateBirth = new DateTime(1976, 7, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user44@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User44",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER44@MAIL.COM",
+                            NormalizedUserName = "USER44",
+                            PasswordHash = "AQAAAAIAAYagAAAAELqszPC1WE4FJX8fSFejQvSsBbAJoosLHDUv1U7OcdzwFG+JZvwXBen14W1MvIjDig==",
+                            PhoneNumber = "+38769832099",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user44",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 45,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b426e8a4-4e96-45fb-ad4b-2446d2cc36f6",
+                            CreatedAt = new DateTime(2025, 10, 29, 17, 7, 17, 956, DateTimeKind.Utc).AddTicks(8432),
+                            DateBirth = new DateTime(1961, 7, 6, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user45@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User45",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER45@MAIL.COM",
+                            NormalizedUserName = "USER45",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPnmlUQZJ3UsDNBqg0vboFQBRJDCs31Y/LivYYrjU8bKp1odXiFCZe3jnLCLNTLn9w==",
+                            PhoneNumber = "+38761626149",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user45",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 46,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b598d965-e411-4dce-b0d9-8b3017b94127",
+                            CreatedAt = new DateTime(2025, 8, 26, 17, 7, 18, 19, DateTimeKind.Utc).AddTicks(6938),
+                            DateBirth = new DateTime(1967, 4, 4, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user46@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User46",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER46@MAIL.COM",
+                            NormalizedUserName = "USER46",
+                            PasswordHash = "AQAAAAIAAYagAAAAED/w4LBDA7zW1QigpKgscYnBANL1vbxyej3edCHUMuRHCXUTArJ18hHZx5ZZVpPk9g==",
+                            PhoneNumber = "+38762150492",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user46",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 47,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "221d7b83-680f-47ca-a469-b2a4051ae6d9",
+                            CreatedAt = new DateTime(2025, 5, 3, 17, 7, 18, 75, DateTimeKind.Utc).AddTicks(5407),
+                            DateBirth = new DateTime(1966, 12, 24, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user47@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User47",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER47@MAIL.COM",
+                            NormalizedUserName = "USER47",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA81BgTRhPvaNmk2eltkLWfvuaKZs/Iq+OFnsyWwsXvMCE1fClcB/9PXFly35lKG8Q==",
+                            PhoneNumber = "+38767181206",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user47",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 48,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "836556cc-3a15-4560-adb3-403ad16eb972",
+                            CreatedAt = new DateTime(2025, 5, 25, 17, 7, 18, 149, DateTimeKind.Utc).AddTicks(4764),
+                            DateBirth = new DateTime(1986, 12, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user48@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User48",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER48@MAIL.COM",
+                            NormalizedUserName = "USER48",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGBcTAocOkWnltQrp2D0VSMPm3iICxiKWuZPFQoq41iyqBOyzLGmSWHXWbwRH3agSQ==",
+                            PhoneNumber = "+38767822584",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user48",
+                            isBlocked = false
+                        },
+                        new
+                        {
+                            Id = 49,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "585e6d10-253c-43b9-8614-ed3515f35b13",
+                            CreatedAt = new DateTime(2025, 3, 17, 17, 7, 18, 220, DateTimeKind.Utc).AddTicks(9166),
+                            DateBirth = new DateTime(1982, 11, 24, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "user49@mail.com",
+                            EmailConfirmed = true,
+                            FirstName = "User49",
+                            LastName = "Test",
+                            LockoutEnabled = false,
+                            MainImage = "test",
+                            NormalizedEmail = "USER49@MAIL.COM",
+                            NormalizedUserName = "USER49",
+                            PasswordHash = "AQAAAAIAAYagAAAAED/yRPw4MZrbZdDbchIqau7eQCKWs3smygdwhNU5JiI/buwtjj+TN+D1DCr1PwD0Ug==",
+                            PhoneNumber = "+38767066178",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user49",
                             isBlocked = false
                         });
                 });
@@ -3205,6 +4405,31 @@ namespace eTravelAgencija.Services.Migrations
                         });
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.WorkApplication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AppliedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("CvFileName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("WorkApplications");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("eTravelAgencija.Services.Database.Role", null)
@@ -3244,13 +4469,13 @@ namespace eTravelAgencija.Services.Migrations
             modelBuilder.Entity("UserRole", b =>
                 {
                     b.HasOne("eTravelAgencija.Services.Database.Role", null)
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eTravelAgencija.Services.Database.User", null)
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -3463,6 +4688,17 @@ namespace eTravelAgencija.Services.Migrations
                     b.Navigation("Voucher");
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.WorkApplication", b =>
+                {
+                    b.HasOne("eTravelAgencija.Services.Database.User", "User")
+                        .WithMany("workApplications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("eTravelAgencija.Services.Database.Hotel", b =>
                 {
                     b.Navigation("HotelImages");
@@ -3502,9 +4738,18 @@ namespace eTravelAgencija.Services.Migrations
                     b.Navigation("Payments");
                 });
 
+            modelBuilder.Entity("eTravelAgencija.Services.Database.Role", b =>
+                {
+                    b.Navigation("UserRoles");
+                });
+
             modelBuilder.Entity("eTravelAgencija.Services.Database.User", b =>
                 {
+                    b.Navigation("UserRoles");
+
                     b.Navigation("UserVouchers");
+
+                    b.Navigation("workApplications");
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.Voucher", b =>

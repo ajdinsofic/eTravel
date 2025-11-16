@@ -4,6 +4,7 @@ using eTravelAgencija.Model.RequestObjects;
 using System.Linq;
 using eTravelAgencija.Model.Requests;
 using System;
+using eTravelAgencija.Model.ResponseObject;
 
 namespace eTravelAgencija.Services.Mapping
 {
@@ -288,6 +289,19 @@ namespace eTravelAgencija.Services.Mapping
             CreateMap<eTravelAgencija.Services.Database.Comment, eTravelAgencija.Model.model.Comment>()
                 .ForMember(dest => dest.user, opt => opt.MapFrom(src => src.user))
                 .ForMember(dest => dest.offer, opt => opt.MapFrom(src => src.offer));
+
+            // WorkApplication
+            CreateMap<WorkApplicationUpsertRequest, WorkApplication>()
+               .ForMember(dest => dest.CvFileName, opt => opt.Ignore()) 
+               .ForMember(dest => dest.AppliedAt, opt => opt.Ignore())
+               .ForMember(dest => dest.User, opt => opt.Ignore());
+
+            CreateMap<eTravelAgencija.Services.Database.WorkApplication, eTravelAgencija.Model.model.WorkApplication>()
+               .ForMember(dest => dest.User, opt => opt.Ignore());
+
+            CreateMap<eTravelAgencija.Services.Database.WorkApplication, CVDownloadResponse>()
+                .ForMember(dest => dest.fileBytes, opt => opt.Ignore());
+
         }
     }
 }

@@ -263,6 +263,27 @@ namespace eTravelAgencija.Services.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WorkApplications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    CvFileName = table.Column<string>(type: "text", nullable: false),
+                    AppliedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WorkApplications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WorkApplications_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HotelImages",
                 columns: table => new
                 {
@@ -586,9 +607,49 @@ namespace eTravelAgencija.Services.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "DateBirth", "Email", "EmailConfirmed", "FirstName", "LastLoginAt", "LastName", "LockoutEnabled", "LockoutEnd", "MainImage", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "isBlocked" },
                 values: new object[,]
                 {
-                    { 1, 0, "71817fce-8561-4b17-827e-8cc8bec40001", new DateTime(2025, 11, 14, 18, 1, 27, 538, DateTimeKind.Utc).AddTicks(8598), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "radnik@etravel.com", true, "Marko", null, "Radnik", false, null, "test", "RADNIK@ETRAVEL.COM", "RADNIK", "AQAAAAIAAYagAAAAECqKHITOjeJ63a2sNJlC81Nagiw+TVjcMHGESo+H8pBryFkStaQaSQ2ZG/Hh0EX0+Q==", "+38761111111", false, null, false, "radnik", false },
-                    { 2, 0, "7e736f3e-5619-4c56-887b-7aaa2b2a64e6", new DateTime(2025, 11, 14, 18, 1, 27, 629, DateTimeKind.Utc).AddTicks(8550), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "direktor@etravel.com", true, "Amir", null, "Direktor", false, null, "test", "DIREKTOR@ETRAVEL.COM", "DIREKTOR", "AQAAAAIAAYagAAAAEPu6DV94Fs3jRxI6LNHA1TG7oO1ma/FqRLVemSVhQtlAjNBSaeozf3CX8lTEVmyUgg==", "+38762222222", false, null, false, "direktor", false },
-                    { 4, 0, "f45fc511-cf18-44f0-a081-7da18966aefb", new DateTime(2025, 11, 14, 18, 1, 27, 696, DateTimeKind.Utc).AddTicks(7459), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "korisnik@etravel.com", true, "Ajdin", null, "Korisnik", false, null, "test", "KORISNIK@ETRAVEL.COM", "KORISNIK", "AQAAAAIAAYagAAAAEOjxHSLOYTREaAwD1JLewVnGz9Ed2sSI4sOyax2SWhDC1OVWpxmyAZ6qy/SZJYqQgQ==", "+38763333333", false, null, false, "korisnik", false }
+                    { 1, 0, "045cd25c-69a2-4436-8c53-f6385d5070f9", new DateTime(2025, 11, 15, 17, 7, 15, 473, DateTimeKind.Utc).AddTicks(5406), new DateTime(1990, 5, 10, 0, 0, 0, 0, DateTimeKind.Utc), "radnik@etravel.com", true, "Marko", null, "Radnik", false, null, "test", "RADNIK@ETRAVEL.COM", "RADNIK", "AQAAAAIAAYagAAAAENVSxlmpm7wL7Zo7rykMSjU2dcYHOjuQFy+XPaRt/ljwoaKgAge6HF35hWfjUmPcXA==", "+38761111111", false, null, false, "radnik", false },
+                    { 2, 0, "8f0620fb-6d00-4372-8ed1-52a35ce553ae", new DateTime(2025, 11, 15, 17, 7, 15, 535, DateTimeKind.Utc).AddTicks(2147), new DateTime(1985, 3, 20, 0, 0, 0, 0, DateTimeKind.Utc), "direktor@etravel.com", true, "Amir", null, "Direktor", false, null, "test", "DIREKTOR@ETRAVEL.COM", "DIREKTOR", "AQAAAAIAAYagAAAAEPnnadrzwxUvCu6R0hl9zNzKLntmi7EWmhzq012qwVEMqkTID4sGDVG6TiGwaqnvdg==", "+38762222222", false, null, false, "direktor", false },
+                    { 4, 0, "95af7a92-6443-4fe2-9745-c420d7da8fdf", new DateTime(2025, 11, 15, 17, 7, 15, 603, DateTimeKind.Utc).AddTicks(3319), new DateTime(2002, 11, 5, 0, 0, 0, 0, DateTimeKind.Utc), "korisnik@etravel.com", true, "Ajdin", null, "Korisnik", false, null, "test", "KORISNIK@ETRAVEL.COM", "KORISNIK", "AQAAAAIAAYagAAAAEJ2Kz6DQqalVaoEKxDoFhgQUBYcr0oqrD/oSrUKBikgVWqxALff1quO4mAYDwtMNtg==", "+38763333333", false, null, false, "korisnik", false },
+                    { 10, 0, "bd489cd5-66b2-415c-a798-820eb71bf8c8", new DateTime(2025, 4, 13, 17, 7, 15, 684, DateTimeKind.Utc).AddTicks(3875), new DateTime(1962, 3, 11, 0, 0, 0, 0, DateTimeKind.Utc), "user10@mail.com", true, "User10", null, "Test", false, null, "test", "USER10@MAIL.COM", "USER10", "AQAAAAIAAYagAAAAEPNV2rAiD2T9A+rcAaQIoq1rnj7jzj+EibMxpG8qypt5B4qL4bue50xRStitWNS9Fg==", "+38763201138", false, null, false, "user10", false },
+                    { 11, 0, "da63779c-1aef-42e9-b47b-494c8965d2b8", new DateTime(2025, 9, 27, 17, 7, 15, 757, DateTimeKind.Utc).AddTicks(9166), new DateTime(2007, 3, 14, 0, 0, 0, 0, DateTimeKind.Utc), "user11@mail.com", true, "User11", null, "Test", false, null, "test", "USER11@MAIL.COM", "USER11", "AQAAAAIAAYagAAAAEO8R090Jw5Kg+y8Bo6zAX7VKxA6uS9pZ9oYXijHOZtGyZE2Wxxx5Vq9GtyFkz4lM1A==", "+38764119041", false, null, false, "user11", false },
+                    { 12, 0, "dd3ffe37-d712-4c5b-b312-c19b5c4d6fcb", new DateTime(2025, 10, 6, 17, 7, 15, 821, DateTimeKind.Utc).AddTicks(649), new DateTime(2000, 3, 23, 0, 0, 0, 0, DateTimeKind.Utc), "user12@mail.com", true, "User12", null, "Test", false, null, "test", "USER12@MAIL.COM", "USER12", "AQAAAAIAAYagAAAAEL409NDUylHXySUcVIZGOC0+8lnQP7kilRGBMzgIm8CuOOVBXnEuew3AOllBFGTRbQ==", "+38767206817", false, null, false, "user12", false },
+                    { 13, 0, "07507e05-034b-4ec3-b80c-11b19d8561ec", new DateTime(2025, 9, 27, 17, 7, 15, 892, DateTimeKind.Utc).AddTicks(960), new DateTime(1997, 10, 24, 0, 0, 0, 0, DateTimeKind.Utc), "user13@mail.com", true, "User13", null, "Test", false, null, "test", "USER13@MAIL.COM", "USER13", "AQAAAAIAAYagAAAAEDPDpNI1+qfZxyiIl57msyiUTw8HPo1dSEANbKGpwgUfOS3JIh/M4rvj7dFOxPrFRg==", "+38768804752", false, null, false, "user13", false },
+                    { 14, 0, "bc5c5fb6-0bfc-45b4-bd9b-7d7bd757a08e", new DateTime(2025, 2, 6, 17, 7, 15, 976, DateTimeKind.Utc).AddTicks(8569), new DateTime(1971, 1, 21, 0, 0, 0, 0, DateTimeKind.Utc), "user14@mail.com", true, "User14", null, "Test", false, null, "test", "USER14@MAIL.COM", "USER14", "AQAAAAIAAYagAAAAEPGTweFPt/HO+JJ2T2IKTXXpS5NNc2a+BX3BekszF4eET1K2aGkE7/rGMPMH0Xyt3A==", "+38762098345", false, null, false, "user14", false },
+                    { 15, 0, "308a8048-49bc-4257-ae41-3a7f2c6a4af4", new DateTime(2025, 2, 28, 17, 7, 16, 45, DateTimeKind.Utc).AddTicks(2104), new DateTime(1996, 5, 13, 0, 0, 0, 0, DateTimeKind.Utc), "user15@mail.com", true, "User15", null, "Test", false, null, "test", "USER15@MAIL.COM", "USER15", "AQAAAAIAAYagAAAAEAfrC78b/GDw3wC0bnybhBcSELgDsrqfTIB3/lJ3KeRc4lVp1cD7o6MWXaoKBh6qXQ==", "+38763999429", false, null, false, "user15", false },
+                    { 16, 0, "fbd32576-6c46-4e97-9056-857c828657e1", new DateTime(2025, 9, 3, 17, 7, 16, 116, DateTimeKind.Utc).AddTicks(5891), new DateTime(1999, 4, 21, 0, 0, 0, 0, DateTimeKind.Utc), "user16@mail.com", true, "User16", null, "Test", false, null, "test", "USER16@MAIL.COM", "USER16", "AQAAAAIAAYagAAAAEPsbRkhiYmowV2goLPmyegyDKGNOIqAeFeJuB+/2dApTwia04I0QP1KkVLnv5zbXCA==", "+38765830322", false, null, false, "user16", false },
+                    { 17, 0, "38c217f7-245d-4a59-8fd4-3d53b4efd3ac", new DateTime(2025, 6, 15, 17, 7, 16, 187, DateTimeKind.Utc).AddTicks(7098), new DateTime(2001, 2, 24, 0, 0, 0, 0, DateTimeKind.Utc), "user17@mail.com", true, "User17", null, "Test", false, null, "test", "USER17@MAIL.COM", "USER17", "AQAAAAIAAYagAAAAEP2FLsboO3V1jjCvkNVRx79VMFDFPpUrkK/U+1PfVHur6kMONj+0psat4wabac8bQQ==", "+38766643738", false, null, false, "user17", false },
+                    { 18, 0, "ec2630a1-40f1-417c-9484-3c8eabe6d6f3", new DateTime(2025, 9, 29, 17, 7, 16, 246, DateTimeKind.Utc).AddTicks(4656), new DateTime(1993, 4, 18, 0, 0, 0, 0, DateTimeKind.Utc), "user18@mail.com", true, "User18", null, "Test", false, null, "test", "USER18@MAIL.COM", "USER18", "AQAAAAIAAYagAAAAEDs0rcRR3cVtBASlSkUnZ1j7WHIchxDRJ9ABYKyMtMe5SB3GXxdCQkrkAtocFkWZIg==", "+38762458341", false, null, false, "user18", false },
+                    { 19, 0, "9756b520-b952-4741-a9ac-597ee44fdcaf", new DateTime(2025, 2, 23, 17, 7, 16, 303, DateTimeKind.Utc).AddTicks(7477), new DateTime(1971, 6, 5, 0, 0, 0, 0, DateTimeKind.Utc), "user19@mail.com", true, "User19", null, "Test", false, null, "test", "USER19@MAIL.COM", "USER19", "AQAAAAIAAYagAAAAEJ72NBMMT+u++j0wBsf2P5uIUgCC6XJ3Xb0c1xEWA7YpE9S5wTLJ6IiGsoIZAz5x4g==", "+38764185189", false, null, false, "user19", false },
+                    { 20, 0, "e6733175-92d3-4a73-acbd-2f0752e41b01", new DateTime(2025, 9, 18, 17, 7, 16, 361, DateTimeKind.Utc).AddTicks(9415), new DateTime(1980, 8, 13, 0, 0, 0, 0, DateTimeKind.Utc), "user20@mail.com", true, "User20", null, "Test", false, null, "test", "USER20@MAIL.COM", "USER20", "AQAAAAIAAYagAAAAEO7VBMPAwrkdLwzFJ//SsRS72Bin8TIvYURKhAUO3C5plWqpIOri0LncYj0BujHOKg==", "+38764316705", false, null, false, "user20", false },
+                    { 21, 0, "5c430c41-ed67-468c-9893-47a899274073", new DateTime(2025, 3, 13, 17, 7, 16, 420, DateTimeKind.Utc).AddTicks(2919), new DateTime(1995, 6, 4, 0, 0, 0, 0, DateTimeKind.Utc), "user21@mail.com", true, "User21", null, "Test", false, null, "test", "USER21@MAIL.COM", "USER21", "AQAAAAIAAYagAAAAEH/oJFb/TRlpWOzd6hZ9cpzjoIIJ5pAwFZu26AK0FTaIB/ER4WSmGcGQjoGZoROdmg==", "+38767221271", false, null, false, "user21", false },
+                    { 22, 0, "0516ac40-ecc1-4df4-9dee-df4f053fd2db", new DateTime(2025, 2, 20, 17, 7, 16, 480, DateTimeKind.Utc).AddTicks(880), new DateTime(1997, 1, 22, 0, 0, 0, 0, DateTimeKind.Utc), "user22@mail.com", true, "User22", null, "Test", false, null, "test", "USER22@MAIL.COM", "USER22", "AQAAAAIAAYagAAAAEMqqw7cqhnQcHabQrCP/PVsvyTgTGeNU0tl/PZV7r5HMoRVAkAds5YRsXA9qHoak1A==", "+38761871936", false, null, false, "user22", false },
+                    { 23, 0, "d0f7cd75-2617-4e15-a0cb-4b2ffb1f186f", new DateTime(2025, 9, 2, 17, 7, 16, 546, DateTimeKind.Utc).AddTicks(7470), new DateTime(2001, 11, 2, 0, 0, 0, 0, DateTimeKind.Utc), "user23@mail.com", true, "User23", null, "Test", false, null, "test", "USER23@MAIL.COM", "USER23", "AQAAAAIAAYagAAAAEOIpeyLhXVl2DhKJrIQnvxT/O98mAdIvn7Vr04cSa4pfSlEO4fmNjP1D86CrGenoiA==", "+38768276075", false, null, false, "user23", false },
+                    { 24, 0, "da43d0d6-0ab1-4114-9368-4ca3e56a8136", new DateTime(2025, 10, 3, 17, 7, 16, 615, DateTimeKind.Utc).AddTicks(8601), new DateTime(1984, 6, 10, 0, 0, 0, 0, DateTimeKind.Utc), "user24@mail.com", true, "User24", null, "Test", false, null, "test", "USER24@MAIL.COM", "USER24", "AQAAAAIAAYagAAAAEPNho4v7r71nx5FwkdByUFbXsGnHLlsrchKVTaK0+UtmxwEroI4W0x4IFBqqmuxtFQ==", "+38762629627", false, null, false, "user24", false },
+                    { 25, 0, "212c72a1-832c-4f0b-bbca-6f098e5c98f1", new DateTime(2025, 2, 28, 17, 7, 16, 685, DateTimeKind.Utc).AddTicks(3487), new DateTime(1970, 3, 27, 0, 0, 0, 0, DateTimeKind.Utc), "user25@mail.com", true, "User25", null, "Test", false, null, "test", "USER25@MAIL.COM", "USER25", "AQAAAAIAAYagAAAAELb6j/BT/TskAKOl0yvinAiZ9K6jlDwiecLCnCX2Q0EDPMYOYDaYRdbmqepY2cZdLg==", "+38768300618", false, null, false, "user25", false },
+                    { 26, 0, "c55cfa66-d9a9-4f35-bfca-ec185a48bc25", new DateTime(2025, 3, 9, 17, 7, 16, 742, DateTimeKind.Utc).AddTicks(791), new DateTime(1984, 2, 5, 0, 0, 0, 0, DateTimeKind.Utc), "user26@mail.com", true, "User26", null, "Test", false, null, "test", "USER26@MAIL.COM", "USER26", "AQAAAAIAAYagAAAAEMVVwM0bggK1ohG30qSw3JvuPIFvJmQAoqULc0r0XO3yWZ0V6rOecBK20jJ2e4yS3Q==", "+38768836764", false, null, false, "user26", false },
+                    { 27, 0, "7b447756-7702-417e-928d-4cbb602398df", new DateTime(2025, 3, 30, 17, 7, 16, 800, DateTimeKind.Utc).AddTicks(8481), new DateTime(1992, 4, 11, 0, 0, 0, 0, DateTimeKind.Utc), "user27@mail.com", true, "User27", null, "Test", false, null, "test", "USER27@MAIL.COM", "USER27", "AQAAAAIAAYagAAAAENOcgKRieBA32ZmN0ZxRqU+XDXe6zDXn8hlL49hCtBlN/NuN2MQH8XT791Nr3XDZOQ==", "+38763937224", false, null, false, "user27", false },
+                    { 28, 0, "1899b5d1-61e1-4c6f-86b8-a637b1dbfe19", new DateTime(2025, 5, 28, 17, 7, 16, 859, DateTimeKind.Utc).AddTicks(5072), new DateTime(1997, 2, 22, 0, 0, 0, 0, DateTimeKind.Utc), "user28@mail.com", true, "User28", null, "Test", false, null, "test", "USER28@MAIL.COM", "USER28", "AQAAAAIAAYagAAAAEKiJUpJO6NfOM+Wp5zOeTAgdIdXhkLPePn0A9mwDIyC9tuaX+joOPXe2cHbBZoYI7w==", "+38767498489", false, null, false, "user28", false },
+                    { 29, 0, "a17dbd03-528d-4173-8317-c022796d71f6", new DateTime(2025, 3, 17, 17, 7, 16, 921, DateTimeKind.Utc).AddTicks(941), new DateTime(1996, 4, 9, 0, 0, 0, 0, DateTimeKind.Utc), "user29@mail.com", true, "User29", null, "Test", false, null, "test", "USER29@MAIL.COM", "USER29", "AQAAAAIAAYagAAAAENkuWeHY06SubxP4J3vHn3iInH66SsHNeKVFWkcYLoYRWYRsrjGLkU7zaqXfs7yZuA==", "+38762355088", false, null, false, "user29", false },
+                    { 30, 0, "c0892c60-05ba-46d8-99cb-06222b20b405", new DateTime(2025, 3, 15, 17, 7, 16, 978, DateTimeKind.Utc).AddTicks(2517), new DateTime(1994, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc), "user30@mail.com", true, "User30", null, "Test", false, null, "test", "USER30@MAIL.COM", "USER30", "AQAAAAIAAYagAAAAEFCENAurRvmB9pKsEKDt6JO9Z4pBJArQGPmYV/S2qqDg4zlsihtnPluc8CvJY1ijlw==", "+38764426400", false, null, false, "user30", false },
+                    { 31, 0, "9f75e5fb-c89f-4a8b-9f39-0ef536e775ce", new DateTime(2025, 6, 17, 17, 7, 17, 38, DateTimeKind.Utc).AddTicks(6902), new DateTime(1982, 9, 5, 0, 0, 0, 0, DateTimeKind.Utc), "user31@mail.com", true, "User31", null, "Test", false, null, "test", "USER31@MAIL.COM", "USER31", "AQAAAAIAAYagAAAAEGrZndA27lJ8y2ASYKHi6xfOyY//R6frVGiH3Zufv0+SUmBxlZyu952SaiE8Bt68PQ==", "+38761295681", false, null, false, "user31", false },
+                    { 32, 0, "6c2c210c-1ff5-43af-a4b1-8d8b7c8336cb", new DateTime(2025, 3, 2, 17, 7, 17, 99, DateTimeKind.Utc).AddTicks(148), new DateTime(2001, 12, 10, 0, 0, 0, 0, DateTimeKind.Utc), "user32@mail.com", true, "User32", null, "Test", false, null, "test", "USER32@MAIL.COM", "USER32", "AQAAAAIAAYagAAAAEElN9DjeeA/O9znqXZ8F0VHKy+XutTF4Zi2a8DvCjmVGxE6X5iXgiESyTkmktNOECQ==", "+38761955082", false, null, false, "user32", false },
+                    { 33, 0, "f9ebba8f-373d-48be-af6c-5d38e80bc37f", new DateTime(2025, 7, 17, 17, 7, 17, 159, DateTimeKind.Utc).AddTicks(6878), new DateTime(1971, 11, 25, 0, 0, 0, 0, DateTimeKind.Utc), "user33@mail.com", true, "User33", null, "Test", false, null, "test", "USER33@MAIL.COM", "USER33", "AQAAAAIAAYagAAAAENRH/zBoJ1PP63WjyeVE/EzavQ4aVep2pI79deqw67JfC2sW1x8s4bWt6Am3lth4eQ==", "+38766589837", false, null, false, "user33", false },
+                    { 34, 0, "e26a072a-5fd1-4be3-8c9d-0b863f6a1ad4", new DateTime(2025, 10, 15, 17, 7, 17, 220, DateTimeKind.Utc).AddTicks(1872), new DateTime(1967, 2, 16, 0, 0, 0, 0, DateTimeKind.Utc), "user34@mail.com", true, "User34", null, "Test", false, null, "test", "USER34@MAIL.COM", "USER34", "AQAAAAIAAYagAAAAEOUKAUycw1Ci0KBb9HqP5bXHIco5lijyaEFGXdjcpKgFqyOVj7C2L6ibvKXtBRA15g==", "+38766879969", false, null, false, "user34", false },
+                    { 35, 0, "bbab9b0d-4693-479d-87fb-88e19a43a168", new DateTime(2025, 3, 2, 17, 7, 17, 279, DateTimeKind.Utc).AddTicks(7862), new DateTime(1985, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc), "user35@mail.com", true, "User35", null, "Test", false, null, "test", "USER35@MAIL.COM", "USER35", "AQAAAAIAAYagAAAAEK/evLQm1Ijkdq4deCNyLa2BooSTOO6Dhc9K/rWqkR6qEPRHMgi5fS1CnUbNlpBw4g==", "+38764386433", false, null, false, "user35", false },
+                    { 36, 0, "40d46f7f-e634-4d0c-a680-4f8e93ebffce", new DateTime(2025, 7, 5, 17, 7, 17, 339, DateTimeKind.Utc).AddTicks(8765), new DateTime(1966, 7, 6, 0, 0, 0, 0, DateTimeKind.Utc), "user36@mail.com", true, "User36", null, "Test", false, null, "test", "USER36@MAIL.COM", "USER36", "AQAAAAIAAYagAAAAEGg2DebE9LGucG5eTl70LhfwhAznRXoBMN8L6kySZczGVD5jfxGrLHlE+x+aSJdJYg==", "+38762678076", false, null, false, "user36", false },
+                    { 37, 0, "a5b7ad55-49c4-47c2-973f-f6d23f08d368", new DateTime(2025, 10, 24, 17, 7, 17, 407, DateTimeKind.Utc).AddTicks(4834), new DateTime(1967, 4, 14, 0, 0, 0, 0, DateTimeKind.Utc), "user37@mail.com", true, "User37", null, "Test", false, null, "test", "USER37@MAIL.COM", "USER37", "AQAAAAIAAYagAAAAEG3tRcz1ud/N5TEos0LD21WBON+4Fza7HKywpotBQz2lS583k8oVnrIhMDLOH2vJrA==", "+38766464221", false, null, false, "user37", false },
+                    { 38, 0, "c594ad1c-4f07-4691-a33a-43204fa4082d", new DateTime(2025, 3, 23, 17, 7, 17, 476, DateTimeKind.Utc).AddTicks(110), new DateTime(1987, 3, 23, 0, 0, 0, 0, DateTimeKind.Utc), "user38@mail.com", true, "User38", null, "Test", false, null, "test", "USER38@MAIL.COM", "USER38", "AQAAAAIAAYagAAAAEG9yxdAFhZyAujTDmP5g8umYE94C1xCeOhvGHcxW39tWkAVdbpg2wirLPmbX+S/KaQ==", "+38769076358", false, null, false, "user38", false },
+                    { 39, 0, "51f3bd99-0bb6-4ed3-84ef-44750a1a3b9b", new DateTime(2025, 3, 29, 17, 7, 17, 537, DateTimeKind.Utc).AddTicks(3642), new DateTime(2003, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc), "user39@mail.com", true, "User39", null, "Test", false, null, "test", "USER39@MAIL.COM", "USER39", "AQAAAAIAAYagAAAAEDCDab8Z03pvKz61tL5S4zB/FcSwXiwYCTGvIHoJEIbyghuf8dYI9v45SSufQaFy/w==", "+38763235703", false, null, false, "user39", false },
+                    { 40, 0, "325a2bdc-46ca-4c93-9389-94ee6e7be11b", new DateTime(2025, 5, 26, 17, 7, 17, 607, DateTimeKind.Utc).AddTicks(6812), new DateTime(1992, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc), "user40@mail.com", true, "User40", null, "Test", false, null, "test", "USER40@MAIL.COM", "USER40", "AQAAAAIAAYagAAAAEEG+lmgr7C/9esNULNYICOnUdzvv4ENiygEKpLz0SU6N77KWLoSn3nK2aUDYRly+NA==", "+38761531220", false, null, false, "user40", false },
+                    { 41, 0, "8428af80-9162-495f-970e-f649b497bdc9", new DateTime(2025, 5, 25, 17, 7, 17, 677, DateTimeKind.Utc).AddTicks(2908), new DateTime(1990, 5, 6, 0, 0, 0, 0, DateTimeKind.Utc), "user41@mail.com", true, "User41", null, "Test", false, null, "test", "USER41@MAIL.COM", "USER41", "AQAAAAIAAYagAAAAEGtoPm9VInv93RdmlwKTexI9z9+Lz5DYvPTJZet4goOdO3F/OfvrU5WBC5EvwFkinw==", "+38766296687", false, null, false, "user41", false },
+                    { 42, 0, "5a93458e-bd4b-4dae-9586-619316c23149", new DateTime(2025, 2, 2, 17, 7, 17, 747, DateTimeKind.Utc).AddTicks(7159), new DateTime(1970, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc), "user42@mail.com", true, "User42", null, "Test", false, null, "test", "USER42@MAIL.COM", "USER42", "AQAAAAIAAYagAAAAEBv9/EwFSI9TrC2s+UZpKREtoMaS2lxS0wzu4wjjpSEPQoBM38/eSRTHMpqFOBA9NQ==", "+38763758696", false, null, false, "user42", false },
+                    { 43, 0, "dbb55d36-e1a3-4d81-b8ec-a566563795c2", new DateTime(2025, 3, 12, 17, 7, 17, 818, DateTimeKind.Utc).AddTicks(5489), new DateTime(2001, 5, 24, 0, 0, 0, 0, DateTimeKind.Utc), "user43@mail.com", true, "User43", null, "Test", false, null, "test", "USER43@MAIL.COM", "USER43", "AQAAAAIAAYagAAAAEAUWsYGwzoXVDiQZa+6zg1vDayIjAgiX0xnWCQPiW9BV9wovu14k5A0S9IKQoOfI1g==", "+38765685071", false, null, false, "user43", false },
+                    { 44, 0, "40ecc3ae-beb9-4f90-9b25-6da4f1f1e001", new DateTime(2025, 8, 16, 17, 7, 17, 887, DateTimeKind.Utc).AddTicks(5819), new DateTime(1976, 7, 2, 0, 0, 0, 0, DateTimeKind.Utc), "user44@mail.com", true, "User44", null, "Test", false, null, "test", "USER44@MAIL.COM", "USER44", "AQAAAAIAAYagAAAAELqszPC1WE4FJX8fSFejQvSsBbAJoosLHDUv1U7OcdzwFG+JZvwXBen14W1MvIjDig==", "+38769832099", false, null, false, "user44", false },
+                    { 45, 0, "b426e8a4-4e96-45fb-ad4b-2446d2cc36f6", new DateTime(2025, 10, 29, 17, 7, 17, 956, DateTimeKind.Utc).AddTicks(8432), new DateTime(1961, 7, 6, 0, 0, 0, 0, DateTimeKind.Utc), "user45@mail.com", true, "User45", null, "Test", false, null, "test", "USER45@MAIL.COM", "USER45", "AQAAAAIAAYagAAAAEPnmlUQZJ3UsDNBqg0vboFQBRJDCs31Y/LivYYrjU8bKp1odXiFCZe3jnLCLNTLn9w==", "+38761626149", false, null, false, "user45", false },
+                    { 46, 0, "b598d965-e411-4dce-b0d9-8b3017b94127", new DateTime(2025, 8, 26, 17, 7, 18, 19, DateTimeKind.Utc).AddTicks(6938), new DateTime(1967, 4, 4, 0, 0, 0, 0, DateTimeKind.Utc), "user46@mail.com", true, "User46", null, "Test", false, null, "test", "USER46@MAIL.COM", "USER46", "AQAAAAIAAYagAAAAED/w4LBDA7zW1QigpKgscYnBANL1vbxyej3edCHUMuRHCXUTArJ18hHZx5ZZVpPk9g==", "+38762150492", false, null, false, "user46", false },
+                    { 47, 0, "221d7b83-680f-47ca-a469-b2a4051ae6d9", new DateTime(2025, 5, 3, 17, 7, 18, 75, DateTimeKind.Utc).AddTicks(5407), new DateTime(1966, 12, 24, 0, 0, 0, 0, DateTimeKind.Utc), "user47@mail.com", true, "User47", null, "Test", false, null, "test", "USER47@MAIL.COM", "USER47", "AQAAAAIAAYagAAAAEA81BgTRhPvaNmk2eltkLWfvuaKZs/Iq+OFnsyWwsXvMCE1fClcB/9PXFly35lKG8Q==", "+38767181206", false, null, false, "user47", false },
+                    { 48, 0, "836556cc-3a15-4560-adb3-403ad16eb972", new DateTime(2025, 5, 25, 17, 7, 18, 149, DateTimeKind.Utc).AddTicks(4764), new DateTime(1986, 12, 16, 0, 0, 0, 0, DateTimeKind.Utc), "user48@mail.com", true, "User48", null, "Test", false, null, "test", "USER48@MAIL.COM", "USER48", "AQAAAAIAAYagAAAAEGBcTAocOkWnltQrp2D0VSMPm3iICxiKWuZPFQoq41iyqBOyzLGmSWHXWbwRH3agSQ==", "+38767822584", false, null, false, "user48", false },
+                    { 49, 0, "585e6d10-253c-43b9-8614-ed3515f35b13", new DateTime(2025, 3, 17, 17, 7, 18, 220, DateTimeKind.Utc).AddTicks(9166), new DateTime(1982, 11, 24, 0, 0, 0, 0, DateTimeKind.Utc), "user49@mail.com", true, "User49", null, "Test", false, null, "test", "USER49@MAIL.COM", "USER49", "AQAAAAIAAYagAAAAED/yRPw4MZrbZdDbchIqau7eQCKWs3smygdwhNU5JiI/buwtjj+TN+D1DCr1PwD0Ug==", "+38767066178", false, null, false, "user49", false }
                 });
 
             migrationBuilder.InsertData(
@@ -715,9 +776,49 @@ namespace eTravelAgencija.Services.Migrations
                 columns: new[] { "RoleId", "UserId", "CreatedAt", "Description", "IsActive" },
                 values: new object[,]
                 {
-                    { 2, 1, new DateTime(2025, 11, 14, 18, 1, 27, 770, DateTimeKind.Utc).AddTicks(7978), "", true },
-                    { 3, 2, new DateTime(2025, 11, 14, 18, 1, 27, 770, DateTimeKind.Utc).AddTicks(7985), "", true },
-                    { 1, 4, new DateTime(2025, 11, 14, 18, 1, 27, 770, DateTimeKind.Utc).AddTicks(7986), "", true }
+                    { 2, 1, new DateTime(2025, 11, 15, 17, 7, 18, 292, DateTimeKind.Utc).AddTicks(2659), "", true },
+                    { 3, 2, new DateTime(2025, 11, 15, 17, 7, 18, 292, DateTimeKind.Utc).AddTicks(2661), "", true },
+                    { 1, 4, new DateTime(2025, 11, 15, 17, 7, 18, 292, DateTimeKind.Utc).AddTicks(2661), "", true },
+                    { 1, 10, new DateTime(2025, 11, 15, 17, 7, 15, 757, DateTimeKind.Utc).AddTicks(9142), "", true },
+                    { 1, 11, new DateTime(2025, 11, 15, 17, 7, 15, 821, DateTimeKind.Utc).AddTicks(631), "", true },
+                    { 1, 12, new DateTime(2025, 11, 15, 17, 7, 15, 892, DateTimeKind.Utc).AddTicks(936), "", true },
+                    { 1, 13, new DateTime(2025, 11, 15, 17, 7, 15, 976, DateTimeKind.Utc).AddTicks(8546), "", true },
+                    { 1, 14, new DateTime(2025, 11, 15, 17, 7, 16, 45, DateTimeKind.Utc).AddTicks(2081), "", true },
+                    { 1, 15, new DateTime(2025, 11, 15, 17, 7, 16, 116, DateTimeKind.Utc).AddTicks(5869), "", true },
+                    { 1, 16, new DateTime(2025, 11, 15, 17, 7, 16, 187, DateTimeKind.Utc).AddTicks(7073), "", true },
+                    { 1, 17, new DateTime(2025, 11, 15, 17, 7, 16, 246, DateTimeKind.Utc).AddTicks(4642), "", true },
+                    { 1, 18, new DateTime(2025, 11, 15, 17, 7, 16, 303, DateTimeKind.Utc).AddTicks(7456), "", true },
+                    { 1, 19, new DateTime(2025, 11, 15, 17, 7, 16, 361, DateTimeKind.Utc).AddTicks(9402), "", true },
+                    { 1, 20, new DateTime(2025, 11, 15, 17, 7, 16, 420, DateTimeKind.Utc).AddTicks(2912), "", true },
+                    { 1, 21, new DateTime(2025, 11, 15, 17, 7, 16, 480, DateTimeKind.Utc).AddTicks(859), "", true },
+                    { 1, 22, new DateTime(2025, 11, 15, 17, 7, 16, 546, DateTimeKind.Utc).AddTicks(7452), "", true },
+                    { 1, 23, new DateTime(2025, 11, 15, 17, 7, 16, 615, DateTimeKind.Utc).AddTicks(8564), "", true },
+                    { 1, 24, new DateTime(2025, 11, 15, 17, 7, 16, 685, DateTimeKind.Utc).AddTicks(3465), "", true },
+                    { 1, 25, new DateTime(2025, 11, 15, 17, 7, 16, 742, DateTimeKind.Utc).AddTicks(772), "", true },
+                    { 1, 26, new DateTime(2025, 11, 15, 17, 7, 16, 800, DateTimeKind.Utc).AddTicks(8304), "", true },
+                    { 1, 27, new DateTime(2025, 11, 15, 17, 7, 16, 859, DateTimeKind.Utc).AddTicks(5056), "", true },
+                    { 1, 28, new DateTime(2025, 11, 15, 17, 7, 16, 921, DateTimeKind.Utc).AddTicks(925), "", true },
+                    { 1, 29, new DateTime(2025, 11, 15, 17, 7, 16, 978, DateTimeKind.Utc).AddTicks(2496), "", true },
+                    { 1, 30, new DateTime(2025, 11, 15, 17, 7, 17, 38, DateTimeKind.Utc).AddTicks(6891), "", true },
+                    { 1, 31, new DateTime(2025, 11, 15, 17, 7, 17, 99, DateTimeKind.Utc).AddTicks(144), "", true },
+                    { 1, 32, new DateTime(2025, 11, 15, 17, 7, 17, 159, DateTimeKind.Utc).AddTicks(6872), "", true },
+                    { 1, 33, new DateTime(2025, 11, 15, 17, 7, 17, 220, DateTimeKind.Utc).AddTicks(1867), "", true },
+                    { 1, 34, new DateTime(2025, 11, 15, 17, 7, 17, 279, DateTimeKind.Utc).AddTicks(7856), "", true },
+                    { 1, 35, new DateTime(2025, 11, 15, 17, 7, 17, 339, DateTimeKind.Utc).AddTicks(8761), "", true },
+                    { 1, 36, new DateTime(2025, 11, 15, 17, 7, 17, 407, DateTimeKind.Utc).AddTicks(4815), "", true },
+                    { 1, 37, new DateTime(2025, 11, 15, 17, 7, 17, 476, DateTimeKind.Utc).AddTicks(98), "", true },
+                    { 1, 38, new DateTime(2025, 11, 15, 17, 7, 17, 537, DateTimeKind.Utc).AddTicks(3631), "", true },
+                    { 1, 39, new DateTime(2025, 11, 15, 17, 7, 17, 607, DateTimeKind.Utc).AddTicks(6793), "", true },
+                    { 1, 40, new DateTime(2025, 11, 15, 17, 7, 17, 677, DateTimeKind.Utc).AddTicks(2896), "", true },
+                    { 1, 41, new DateTime(2025, 11, 15, 17, 7, 17, 747, DateTimeKind.Utc).AddTicks(7152), "", true },
+                    { 1, 42, new DateTime(2025, 11, 15, 17, 7, 17, 818, DateTimeKind.Utc).AddTicks(5481), "", true },
+                    { 1, 43, new DateTime(2025, 11, 15, 17, 7, 17, 887, DateTimeKind.Utc).AddTicks(5805), "", true },
+                    { 1, 44, new DateTime(2025, 11, 15, 17, 7, 17, 956, DateTimeKind.Utc).AddTicks(8414), "", true },
+                    { 1, 45, new DateTime(2025, 11, 15, 17, 7, 18, 19, DateTimeKind.Utc).AddTicks(6933), "", true },
+                    { 1, 46, new DateTime(2025, 11, 15, 17, 7, 18, 75, DateTimeKind.Utc).AddTicks(5385), "", true },
+                    { 1, 47, new DateTime(2025, 11, 15, 17, 7, 18, 149, DateTimeKind.Utc).AddTicks(4746), "", true },
+                    { 1, 48, new DateTime(2025, 11, 15, 17, 7, 18, 220, DateTimeKind.Utc).AddTicks(9145), "", true },
+                    { 1, 49, new DateTime(2025, 11, 15, 17, 7, 18, 292, DateTimeKind.Utc).AddTicks(718), "", true }
                 });
 
             migrationBuilder.InsertData(
@@ -1112,6 +1213,11 @@ namespace eTravelAgencija.Services.Migrations
                 name: "IX_UserVouchers_VoucherId",
                 table: "UserVouchers",
                 column: "VoucherId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WorkApplications_UserId",
+                table: "WorkApplications",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -1158,6 +1264,9 @@ namespace eTravelAgencija.Services.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserVouchers");
+
+            migrationBuilder.DropTable(
+                name: "WorkApplications");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
