@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
@@ -15,6 +16,12 @@ namespace eTravelAgencija.WebAPI.Controllers
             
         }
 
+        [HttpPost("check-active")]
+        public async Task<IActionResult> CheckActiveReservations()
+        {
+            await (_service as IReservationService).CheckAllReservationsActive();
+            return Ok("Reservation statuses updated.");
+        }
         
     }
 }

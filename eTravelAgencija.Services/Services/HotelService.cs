@@ -6,7 +6,11 @@ using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
 using eTravelAgencija.Services.Interfaces;
+using eTravelAgencija.Services.Recommendation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ML;
+using Microsoft.ML.Data;
+using Microsoft.ML.Trainers;
 
 namespace eTravelAgencija.Services.Services
 {
@@ -22,7 +26,6 @@ namespace eTravelAgencija.Services.Services
         {
             foreach (var hotel in entities)
             {
-                // 🔹 1. Filtriraj slike (radi uvijek)
                 if (search?.isMainImage == true)
                 {
                     hotel.HotelImages = hotel.HotelImages
@@ -33,18 +36,25 @@ namespace eTravelAgencija.Services.Services
                 {
                     hotel.HotelImages = hotel.HotelImages.ToList();
                 }
-        
-                // 🔹 2. Ako postoji RoomId, filtriraj sobe i izračunaj cijenu
+
                 if (search?.RoomId != null)
                 {
                     hotel.HotelRooms = hotel.HotelRooms
                         .Where(hr => hr.RoomId == search.RoomId)
                         .ToList();
-        
+
                     await SetCalculatedPriceAsync(hotel, search.RoomId.Value);
                 }
+                else
+                {
+                    var firstRoomId = hotel.HotelRooms.FirstOrDefault()?.RoomId ?? 0;
+
+                    if (firstRoomId != 0)
+                        await SetCalculatedPriceAsync(hotel, firstRoomId);
+                }
+
             }
-        
+
             return entities;
         }
 
@@ -74,9 +84,9 @@ namespace eTravelAgencija.Services.Services
                 query = query.Where(h => h.HotelRooms.Any(hr => hr.RoomId == search.RoomId));
 
             if (search?.isMainImage == true)
-                {
-                    query = query.Where(h => h.HotelImages.Any(hr => hr.IsMain == search.isMainImage));
-                }
+            {
+                query = query.Where(h => h.HotelImages.Any(hr => hr.IsMain == search.isMainImage));
+            }
 
             return base.ApplyFilter(query, search);
         }
@@ -92,7 +102,7 @@ namespace eTravelAgencija.Services.Services
                 case "cetverokrevetna":
                     return basePrice + 200; // +200 KM
                 case "petokrevetna":
-                    return basePrice + 200;
+                    return basePrice + 300;
                 default:
                     return basePrice; // fallback ako nije prepoznata soba
             }
@@ -116,7 +126,43 @@ namespace eTravelAgencija.Services.Services
             }
         }
 
+        public Model.model.Hotel GetMostPopularHotelForOffer(int offerId)
+        {
+            
+            var hotelIds = _context.OfferHotels
+                .Where(oh => oh.OfferDetailsId == offerId)
+                .Select(oh => oh.HotelId)
+                .Distinct()
+                .ToList();
 
+            if (!hotelIds.Any())
+                return null;
+
+            
+            var popularity = _context.Reservations
+                .Where(r => hotelIds.Contains(r.HotelId))
+                .GroupBy(r => r.HotelId)
+                .Select(g => new
+                {
+                    HotelId = g.Key,
+                    Count = g.Count()
+                })
+                .OrderByDescending(x => x.Count)
+                .FirstOrDefault();
+
+            
+            int chosenHotelId = popularity?.HotelId ?? hotelIds.First();
+
+            
+            var hotel = _context.Hotels
+                .Where(h => h.Id == chosenHotelId)
+                .Include(h => h.HotelImages.Where(img => img.IsMain == true))
+                .Include(h => h.HotelRooms).ThenInclude(hr => hr.Rooms)
+                .Include(h => h.OfferHotels)
+                .FirstOrDefault();
+
+            return _mapper.Map<Model.model.Hotel>(hotel);
+        }
 
     }
 }

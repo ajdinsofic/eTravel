@@ -19,6 +19,8 @@ namespace eTravelAgencija.Model.model
         public string Token { get; set; }
         public bool isBlocked { get; set; }
         public List<string> Roles { get; set; } = new List<string>();
+        public ICollection<UserVoucher> UserVouchers = new List<UserVoucher>();
+        public ICollection<WorkApplication> workApplications = new List<WorkApplication>();
         
     }
 }

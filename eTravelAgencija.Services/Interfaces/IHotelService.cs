@@ -11,6 +11,6 @@ namespace eTravelAgencija.Services.Interfaces
 {
     public interface IHotelService : ICRUDService<Model.model.Hotel, HotelSearchObject, HotelUpsertRequest, HotelUpsertRequest>
     {
-
+        Model.model.Hotel GetMostPopularHotelForOffer(int offerId);
     }
 }

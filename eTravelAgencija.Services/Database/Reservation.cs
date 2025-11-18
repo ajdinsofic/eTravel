@@ -15,7 +15,7 @@ namespace eTravelAgencija.Services.Database
         public int UserId { get; set; }
         public User User { get; set; }
 
-        [ForeignKey(nameof(Offer))]
+        [ForeignKey(nameof(OfferDetails))]
         public int OfferId { get; set; }
         public OfferDetails OfferDetails { get; set; }
 

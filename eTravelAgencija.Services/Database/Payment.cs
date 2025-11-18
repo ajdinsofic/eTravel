@@ -26,6 +26,7 @@ namespace eTravelAgencija.Services.Database
         [Required]
         public string PaymentMethod { get; set; } 
         public DateTime PaymentDeadline { get; set; }
+        public bool DeadlineExtended { get; set; }
 
         public bool IsConfirmed { get; set; } = false;
     }

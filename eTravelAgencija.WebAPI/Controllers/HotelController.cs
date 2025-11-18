@@ -25,5 +25,13 @@ namespace eTravelAgencija.WebAPI.Controllers
         {
             
         }
+
+        [HttpGet("{offerId}/recommended")]
+        public IActionResult GetRecommended(int offerId)
+        {
+            var result = (_service as IHotelService).GetMostPopularHotelForOffer(offerId);
+            return Ok(result);
+        }
+
     }
 }

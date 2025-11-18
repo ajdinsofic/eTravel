@@ -40,7 +40,7 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.ResidenceTotal, opt => opt.MapFrom(src => src.Details.ResidenceTotal))
                 .ForMember(dest => dest.ResidenceTaxPerDay, opt => opt.MapFrom(src => src.Details.ResidenceTaxPerDay));
 
-            CreateMap<Offer, Model.model.Offer>()
+            CreateMap<Database.Offer, Model.model.Offer>()
                 .ForMember(dest => dest.OfferId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.DaysInTotal, opt => opt.MapFrom(src => src.DaysInTotal))
@@ -98,6 +98,13 @@ namespace eTravelAgencija.Services.Mapping
                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
                .ForMember(dest => dest.isBlocked, opt => opt.MapFrom(_ => false));
+
+            CreateMap<User, UserLoginResponse>()
+                .ForMember(dest => dest.Userid, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.username, opt => opt.MapFrom(src => src.UserName))
+                .ForMember(dest => dest.Token, opt => opt.Ignore())
+                .ForMember(dest => dest.Roles, opt => opt.Ignore());
+
 
             // Kraj User
 
