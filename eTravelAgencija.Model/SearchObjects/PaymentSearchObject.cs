@@ -7,9 +7,9 @@ namespace eTravelAgencija.Model.SearchObjects
 {
     public class PaymentSearchObject : BaseSearchObject
     {
-        public int reservationId { get; set; }
+        public int? reservationId { get; set; }
 
-        public int rateId { get; set; }
+        public int? rateId { get; set; }
 
     }
 }

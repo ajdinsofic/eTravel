@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using eTravelAgencija.Services.Interfaces;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    c.OperationFilter<FileUploadOperationFilter>();
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "eTravelAgencija API", Version = "v1" });
 
     // ✅ Dodaj JWT definiciju
@@ -69,7 +71,8 @@ builder.Services.AddTransient<IResevationPreviewService, ReservationPreviewServi
 builder.Services.AddTransient<IReservationService, ReservationService>();
 builder.Services.AddTransient<IPaymentService, PaymentService>();
 builder.Services.AddTransient<ICommentService, CommentService>();
-
+builder.Services.AddTransient<IReportService, ReportService>();
+builder.Services.AddTransient<IWorkApplicationService, WorkApplicationService>();
 
 
 builder.Services.AddDbContext<eTravelAgencijaDbContext>(options =>
@@ -100,6 +103,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+    RequestPath = ""
+});
+
 
 app.UseAuthorization();
 

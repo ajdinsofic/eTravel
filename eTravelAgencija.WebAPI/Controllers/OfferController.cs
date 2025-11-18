@@ -24,6 +24,14 @@ namespace eTravelAgencija.WebAPI.Controllers
         {
             
         }
+
+        [HttpGet("{offerId}/recommended")]
+        public IActionResult GetRecommendedOffers(int offerId)
+        {
+            var result = (_service as IOfferService).RecommendOffers(offerId);
+            return Ok(result);
+        }
+
     }
 }
 

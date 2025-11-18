@@ -11,6 +11,6 @@ namespace eTravelAgencija.Services.Interfaces
 {
     public interface IReservationService : ICRUDService<Model.model.Reservation,ReservationSearchObject,ReservationUpsertRequest,ReservationUpsertRequest>
     {
-        
+        Task CheckAllReservationsActive();
     }
 }

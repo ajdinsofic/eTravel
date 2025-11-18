@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using eTravelAgencija.Model;
 using eTravelAgencija.Model.Requests;
+using eTravelAgencija.Model.ResponseObject;
 using eTravelAgencija.Model.Responses;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
@@ -91,7 +92,7 @@ namespace eTravelAgencija.Services.Services
         }
 
 
-        public async Task<Model.model.User?> AuthenticateAsync(UserLoginRequest request)
+        public async Task<UserLoginResponse?> AuthenticateAsync(UserLoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.Username);
             if (user == null || user.isBlocked)
@@ -104,7 +105,7 @@ namespace eTravelAgencija.Services.Services
             return await GetUserResponseWithTokenAsync(user);
         }
 
-        private async Task<Model.model.User> GetUserResponseWithTokenAsync(User user)
+        private async Task<UserLoginResponse> GetUserResponseWithTokenAsync(User user)
         {
             var roles = await _userManager.GetRolesAsync(user);
 
@@ -127,7 +128,7 @@ namespace eTravelAgencija.Services.Services
                 expires: DateTime.UtcNow.AddHours(2),
                 signingCredentials: creds);
 
-            var userResponse = _mapper.Map<Model.model.User>(user);
+            var userResponse = _mapper.Map<UserLoginResponse>(user);
             userResponse.Token = new JwtSecurityTokenHandler().WriteToken(token);
             userResponse.Roles = roles.ToList();
 
