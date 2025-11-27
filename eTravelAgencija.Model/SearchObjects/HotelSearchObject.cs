@@ -12,6 +12,6 @@ namespace eTravelAgencija.Model.SearchObjects
         public int? OfferId { get; set; }
         public DateTime? DepartureDate { get; set; }
         public int? RoomId { get; set; }
-        public bool isMainImage { get; set; } = true;
+        public bool isMainImage { get; set; }
     }
 }

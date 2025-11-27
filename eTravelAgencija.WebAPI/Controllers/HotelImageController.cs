@@ -11,16 +11,21 @@ namespace eTravelAgencija.WebAPI.Controllers
     public class HotelImageController 
         : BaseCRUDController<
             HotelImages,
-            BaseSearchObject,
-            HotelImageUpsertRequest,
-            HotelImageUpsertRequest>
+            HotelImageSearchObject,
+            HotelImageInsertRequest,
+            HotelImageUpdateRequest>
     {
 
         public HotelImageController(
-            ILogger<BaseCRUDController<HotelImages, BaseSearchObject, HotelImageUpsertRequest, HotelImageUpsertRequest>> logger,
+            ILogger<BaseCRUDController<HotelImages, HotelImageSearchObject, HotelImageInsertRequest, HotelImageUpdateRequest>> logger,
             IHotelImageService hotelImageService)
             : base(logger, hotelImageService)
         {
+        }
+
+        public override Task<ActionResult<HotelImages>> Create([FromForm] HotelImageInsertRequest insert)
+        {
+            return base.Create(insert);
         }
     }
 }

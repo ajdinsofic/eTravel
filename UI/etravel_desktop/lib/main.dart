@@ -1,9 +1,38 @@
+import 'package:etravel_desktop/models/hotel_image.dart';
+import 'package:etravel_desktop/models/offer_plan_day.dart';
+import 'package:etravel_desktop/providers/category_provider.dart';
+import 'package:etravel_desktop/providers/hotel_image_provider.dart';
+import 'package:etravel_desktop/providers/hotel_provider.dart';
+import 'package:etravel_desktop/providers/hotel_room_provider.dart';
+import 'package:etravel_desktop/providers/offer_hotel_provider.dart';
+import 'package:etravel_desktop/providers/offer_image_provider.dart';
+import 'package:etravel_desktop/providers/offer_plan_day_provider.dart';
+import 'package:etravel_desktop/providers/offer_provider.dart';
+import 'package:etravel_desktop/providers/room_provider.dart';
+import 'package:etravel_desktop/providers/sub_category_provider.dart';
+import 'package:etravel_desktop/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
-import 'screens/offer_screen.dart';
+import 'package:provider/provider.dart';   // ili login
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => OfferProvider()),
+        ChangeNotifierProvider(create: (_) => CategoryProvider()),
+        ChangeNotifierProvider(create: (_) => SubCategoryProvider()),
+        ChangeNotifierProvider(create: (_) => HotelProvider()),
+        ChangeNotifierProvider(create: (_) => OfferHotelProvider()),
+        ChangeNotifierProvider(create: (_) => HotelImageProvider()),
+        ChangeNotifierProvider(create: (_) => OfferImageProvider()),
+        ChangeNotifierProvider(create: (_) => HotelRoomProvider()),
+        ChangeNotifierProvider(create: (_) => RoomProvider()),
+        ChangeNotifierProvider(create: (_) => OfferPlanDayProvider())
+      ],
+      child: const MyApp(),
+    ),);
+}
+
+class UserProvider {
 }
 
 class MyApp extends StatelessWidget {
@@ -13,14 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      // početni ekran
-      initialRoute: "/login",
-
-      routes: {
-        "/login": (context) => const LoginScreen(),
-        "/offer": (context) => const OfferScreen(),   
-      },
+      home: LoginScreen(), 
     );
   }
 }

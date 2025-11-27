@@ -1,5 +1,7 @@
 import 'package:etravel_desktop/models/login_request.dart';
 import 'package:etravel_desktop/providers/auth_provider.dart';
+import 'package:etravel_desktop/screens/offer_screen.dart';
+import 'package:etravel_desktop/widgets/master_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,8 +32,17 @@ class _LoginScreenState extends State<LoginScreen> {
   setState(() => _isLoading = false);
 
   if (status == "OK") {
-    // Uspješan login
-    Navigator.pushReplacementNamed(context, "/offer");
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MasterScreen(
+          selectedIndex: 0,
+          child: OfferScreen(),
+        ),
+      ),
+    );
+
     return;
   }
 
@@ -59,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
     ),
   );
 }
+
 
 
   @override

@@ -1,15 +1,19 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:etravel_desktop/models/offer_hotel.dart';
 import 'package:etravel_desktop/models/offer_image.dart';
 import 'package:etravel_desktop/models/offer_plan_day.dart';
-import 'package:etravel_desktop/models/sub_category.dart';
+import 'package:etravel_desktop/models/offer_sub_category.dart';
 
+part 'offer.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class Offer {
   final int offerId;
   final String title;
   final int daysInTotal;
   final String wayOfTravel;
   final int? subCategoryId;
-  final SubCategory? subCategory;
+  final OfferSubCategory? subCategory;
   final String description;
   final String country;
   final String city;
@@ -17,7 +21,6 @@ class Offer {
   final double residenceTaxPerDay;
   final double travelInsuranceTotal;
   final double residenceTotal;
-
   final List<OfferImage> offerImages;
   final List<OfferPlanDay> offerPlanDays;
   final List<OfferHotel> offerHotels;
@@ -41,35 +44,6 @@ class Offer {
     required this.offerHotels,
   });
 
-  factory Offer.fromJson(Map<String, dynamic> json) {
-    return Offer(
-      offerId: json['offerId'],
-      title: json['title'],
-      daysInTotal: json['daysInTotal'],
-      wayOfTravel: json['wayOfTravel'],
-      subCategoryId: json['subCategoryId'],
-      subCategory: json["subCategory"] == null
-        ? null
-        : SubCategory.fromJson(json["subCategory"]),
-      description: json['description'],
-      country: json['country'],
-      city: json['city'],
-      minimalPrice: (json['minimalPrice'] as num).toDouble(),
-      residenceTaxPerDay: (json['residenceTaxPerDay'] as num).toDouble(),
-      travelInsuranceTotal: (json['travelInsuranceTotal'] as num).toDouble(),
-      residenceTotal: (json['residenceTotal'] as num).toDouble(),
-
-      offerImages: (json['offerImages'] as List<dynamic>)
-          .map((x) => OfferImage.fromJson(x))
-          .toList(),
-
-      offerPlanDays: (json['offerPlanDays'] as List<dynamic>)
-          .map((x) => OfferPlanDay.fromJson(x))
-          .toList(),
-
-      offerHotels: (json['offerHotels'] as List<dynamic>)
-          .map((x) => OfferHotel.fromJson(x))
-          .toList(),
-    );
-  }
+  factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);
+  Map<String, dynamic> toJson() => _$OfferToJson(this);
 }

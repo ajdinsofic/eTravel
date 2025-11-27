@@ -7,7 +7,7 @@ using eTravelAgencija.Model.SearchObjects;
 
 namespace eTravelAgencija.Services.Interfaces
 {
-    public interface IOfferHotelService : ICRUDService<Model.model.OfferHotels, BaseSearchObject, OfferHotelInsertRequest, OfferHotelUpdateRequest>
+    public interface IOfferHotelService : ICRUDService<Model.model.OfferHotels, OfferHotelSearchObject, OfferHotelInsertRequest, OfferHotelUpdateRequest>
     {
 
     }

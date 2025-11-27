@@ -12,13 +12,22 @@ namespace eTravelAgencija.Services.Mapping
     {
         public MappingProfile()
         {
+
+
+            // Offer sub-category and category
+            CreateMap<eTravelAgencija.Services.Database.OfferSubCategory,
+                 eTravelAgencija.Model.model.OfferSubCategory>();
+
+            CreateMap<eTravelAgencija.Services.Database.OfferCategory,
+                 eTravelAgencija.Model.model.OfferCategory>();
+
             // Pocetak Offer i Offerdetails
             CreateMap<OfferInsertRequest, Database.Offer>()
-                .ForMember(dest => dest.Id, opt => opt.Ignore()) 
-                .ForMember(dest => dest.Details, opt => opt.Ignore()) 
-                .ForMember(dest => dest.SubCategory, opt => opt.Ignore()); 
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Details, opt => opt.Ignore())
+                .ForMember(dest => dest.SubCategory, opt => opt.Ignore());
 
-            
+
             CreateMap<OfferUpdateRequest, Database.Offer>()
               .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
               .ForMember(dest => dest.DaysInTotal, opt => opt.MapFrom(src => src.DaysInTotal))
@@ -57,7 +66,7 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.OfferHotels, opt => opt.MapFrom(src => src.Details.OfferHotels))
                 .ForMember(dest => dest.OfferPlanDays, opt => opt.MapFrom(src => src.Details.OfferPlanDays));
 
-    
+
             CreateMap<Database.OfferDetails, Model.model.Offer>()
                 .ForMember(dest => dest.OfferId, opt => opt.MapFrom(src => src.OfferId))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
@@ -73,7 +82,7 @@ namespace eTravelAgencija.Services.Mapping
 
             // Kraj Offer i OfferDetails
 
-            CreateMap<eTravelAgencija.Services.Database.OfferHotels, eTravelAgencija.Model.model.OfferHotels>();   
+            CreateMap<eTravelAgencija.Services.Database.OfferHotels, eTravelAgencija.Model.model.OfferHotels>();
 
 
             // Pocetak User
@@ -120,7 +129,7 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.HotelRooms, opt => opt.Ignore())
                 .ForMember(dest => dest.HotelImages, opt => opt.Ignore())
                 .ForMember(dest => dest.OfferHotels, opt => opt.Ignore())
-                .ForMember(dest => dest.CalculatedPrice, opt => opt.Ignore()); 
+                .ForMember(dest => dest.CalculatedPrice, opt => opt.Ignore());
 
             // HotelRooms
             CreateMap<HotelRoomInsertRequest, Database.HotelRooms>()
@@ -129,12 +138,12 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.RoomsLeft, opt => opt.MapFrom(src => src.RoomsLeft))
                 .ForMember(dest => dest.Hotel, opt => opt.Ignore())
                 .ForMember(dest => dest.Rooms, opt => opt.Ignore());
-            
+
             CreateMap<HotelRoomUpdateRequest, Database.HotelRooms>()
                 .ForMember(dest => dest.RoomsLeft, opt => opt.MapFrom(src => src.RoomsLeft))
                 .ForMember(dest => dest.Hotel, opt => opt.Ignore())
                 .ForMember(dest => dest.Rooms, opt => opt.Ignore());
-            
+
             CreateMap<eTravelAgencija.Services.Database.HotelRooms,
                       eTravelAgencija.Model.model.HotelRooms>()
                 .ForMember(dest => dest.HotelId, opt => opt.MapFrom(src => src.HotelId))
@@ -142,7 +151,7 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.RoomsLeft, opt => opt.MapFrom(src => src.RoomsLeft))
                 .ForMember(dest => dest.Hotel, opt => opt.MapFrom(src => src.Hotel))
                 .ForMember(dest => dest.Room, opt => opt.MapFrom(src => src.Rooms));
-            
+
 
             // 🖼️ HotelImages
             CreateMap<Database.HotelImages, Model.model.HotelImages>()
@@ -151,15 +160,25 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.IsMain, opt => opt.MapFrom(src => src.IsMain))
                 .ForMember(dest => dest.HotelId, opt => opt.MapFrom(src => src.HotelId));
 
-            
-            CreateMap<HotelImageUpsertRequest, eTravelAgencija.Services.Database.HotelImages>()
+
+            CreateMap<HotelImageInsertRequest, eTravelAgencija.Services.Database.HotelImages>()
+                .ForMember(dest => dest.Hotel, opt => opt.Ignore());
+
+            CreateMap<HotelImageUpdateRequest, eTravelAgencija.Services.Database.HotelImages>()
                 .ForMember(dest => dest.Hotel, opt => opt.Ignore());
 
             // OfferImages
-            CreateMap<OfferImageUpsertRequest, Database.OfferImage>()
-               .ForMember(dest => dest.isMain, opt => opt.MapFrom(src => src.IsMain))
-               .ForMember(dest => dest.Id, opt => opt.Ignore())
-               .ForMember(dest => dest.OfferDetails, opt => opt.Ignore());
+            CreateMap<OfferImageInsertRequest, Database.OfferImage>()
+    .ForMember(dest => dest.isMain, opt => opt.MapFrom(src => src.IsMain))
+    .ForMember(dest => dest.Id, opt => opt.Ignore())
+    .ForMember(dest => dest.OfferDetails, opt => opt.Ignore())
+    .ForSourceMember(src => src.image, opt => opt.DoNotValidate());
+
+    CreateMap<OfferImageUpdateRequest, Database.OfferImage>()
+    .ForMember(dest => dest.isMain, opt => opt.MapFrom(src => src.IsMain))
+    .ForMember(dest => dest.Id, opt => opt.Ignore())
+    .ForMember(dest => dest.OfferDetails, opt => opt.Ignore());
+    // 🚫 Nemoj mapirati fajl u bazu!
 
             CreateMap<eTravelAgencija.Services.Database.OfferImage, eTravelAgencija.Model.model.OfferImage>();
 
@@ -182,9 +201,7 @@ namespace eTravelAgencija.Services.Mapping
             // 🏷️ Rooms
             CreateMap<Database.Rooms, Model.model.Room>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => src.RoomType))
-                .ForMember(dest => dest.RoomCount, opt => opt.MapFrom(src => src.RoomCount));
-
+                .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => src.RoomType));
             // 🧳 OfferHotels (ako ga koristiš u Hotel objektu)
             CreateMap<OfferHotelInsertRequest, Database.OfferHotels>()
                 .ForMember(dest => dest.OfferDetailsId, opt => opt.MapFrom(src => src.OfferId))
@@ -193,13 +210,13 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.ReturnDate, opt => opt.MapFrom(src => src.ReturnDate ?? DateTime.MinValue))
                 .ForMember(dest => dest.OfferDetails, opt => opt.Ignore())
                 .ForMember(dest => dest.Hotel, opt => opt.Ignore());
-            
+
             CreateMap<OfferHotelUpdateRequest, Database.OfferHotels>()
                 .ForMember(dest => dest.DepartureDate, opt => opt.MapFrom(src => src.DepartureDate ?? default))
                 .ForMember(dest => dest.ReturnDate, opt => opt.MapFrom(src => src.ReturnDate ?? default))
                 .ForMember(dest => dest.OfferDetails, opt => opt.Ignore())
                 .ForMember(dest => dest.Hotel, opt => opt.Ignore());
-            
+
             CreateMap<eTravelAgencija.Services.Database.OfferHotels,
                       eTravelAgencija.Model.model.OfferHotels>()
                 .ForMember(dest => dest.OfferId, opt => opt.MapFrom(src => src.OfferDetailsId))
@@ -269,29 +286,29 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.Payments, opt => opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
 
-            CreateMap<Database.Reservation,Model.model.Reservation>()
+            CreateMap<Database.Reservation, Model.model.Reservation>()
                 .ForMember(dest => dest.UserNeeds,
                            opt => opt.MapFrom(src => src.addedNeeds))
                 .ForMember(dest => dest.Payments, opt => opt.MapFrom(src => src.Payments));
 
 
             // Payment
-            CreateMap<PaymentInsertRequest, Database.Payment>()        
-                .ForMember(dest => dest.PaymentDeadline, opt => opt.Ignore()); 
+            CreateMap<PaymentInsertRequest, Database.Payment>()
+                .ForMember(dest => dest.PaymentDeadline, opt => opt.Ignore());
 
             CreateMap<Database.Payment, Model.model.Payment>()
                 .ForMember(dest => dest.reservation, opt => opt.MapFrom(src => src.Reservation))
                 .ForMember(dest => dest.rate, opt => opt.MapFrom(src => src.Rate));
-            
-                CreateMap<PaymentUpdateRequest, eTravelAgencija.Services.Database.Payment>()
-                .ForMember(dest => dest.Reservation, opt => opt.Ignore())
-                .ForMember(dest => dest.Rate, opt => opt.Ignore())
-                .ForMember(dest => dest.PaymentDeadline, opt => opt.Ignore()); 
+
+            CreateMap<PaymentUpdateRequest, eTravelAgencija.Services.Database.Payment>()
+            .ForMember(dest => dest.Reservation, opt => opt.Ignore())
+            .ForMember(dest => dest.Rate, opt => opt.Ignore())
+            .ForMember(dest => dest.PaymentDeadline, opt => opt.Ignore());
 
             // Comments
             CreateMap<CommentUpsertRequest, eTravelAgencija.Services.Database.Comment>()
-                .ForMember(dest => dest.user, opt => opt.Ignore())   
-                .ForMember(dest => dest.offer, opt => opt.Ignore()); 
+                .ForMember(dest => dest.user, opt => opt.Ignore())
+                .ForMember(dest => dest.offer, opt => opt.Ignore());
 
             CreateMap<eTravelAgencija.Services.Database.Comment, eTravelAgencija.Model.model.Comment>()
                 .ForMember(dest => dest.user, opt => opt.MapFrom(src => src.user))
@@ -299,7 +316,7 @@ namespace eTravelAgencija.Services.Mapping
 
             // WorkApplication
             CreateMap<WorkApplicationUpsertRequest, WorkApplication>()
-               .ForMember(dest => dest.CvFileName, opt => opt.Ignore()) 
+               .ForMember(dest => dest.CvFileName, opt => opt.Ignore())
                .ForMember(dest => dest.AppliedAt, opt => opt.Ignore())
                .ForMember(dest => dest.User, opt => opt.Ignore());
 

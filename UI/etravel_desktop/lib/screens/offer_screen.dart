@@ -1,8 +1,12 @@
 import 'package:etravel_desktop/config/api_config.dart';
-import 'package:etravel_desktop/models/offer_image.dart';
+import 'package:etravel_desktop/models/offer_category.dart';
+import 'package:etravel_desktop/models/offer_sub_category.dart';
+import 'package:etravel_desktop/models/search_provider.dart';
+import 'package:etravel_desktop/providers/category_provider.dart';
+import 'package:etravel_desktop/providers/sub_category_provider.dart';
+import 'package:etravel_desktop/screens/offer_wizard_popup.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../utils/session.dart';
+import 'package:provider/provider.dart';
 import 'package:dotted_border/dotted_border.dart';
 
 // MODELI & PROVIDER
@@ -17,44 +21,149 @@ class OfferScreen extends StatefulWidget {
 }
 
 class _OfferScreenState extends State<OfferScreen> {
-  bool _showUserMenu = false;
+  late OfferProvider _offerProvider;
+  late CategoryProvider _categoryProvider;
+  late SubCategoryProvider _subCategoryProvider;
 
-  // STATE ZA API
-  List<Offer> offers = [];
-  bool loading = true;
-  bool loadError = false;
+  dynamic filter;
+
+  SearchResult<Offer>? offers;
+  SearchResult<OfferCategory>? categories;
+  SearchResult<OfferSubCategory>? subcategories;
+
+  OfferCategory? selectedCategory;
+  OfferSubCategory? selectedSubCategory;
+
+  bool showSubcategoryDropdown = false;
+
+  String title = "Dodane ponude";
 
   @override
   void initState() {
     super.initState();
-    _fetchOffers();
+    _offerProvider = Provider.of<OfferProvider>(context, listen: false);
+    _categoryProvider = Provider.of<CategoryProvider>(context, listen: false);
+    _subCategoryProvider = Provider.of<SubCategoryProvider>(
+      context,
+      listen: false,
+    );
+    _loadCategories();
+    _loadOffers();
   }
 
-  Future<void> _fetchOffers() async {
-    try {
-      final provider = OfferProvider();
-      final result = await provider.getOffers(
-        page: 0,
-        pageSize: 50,
-        isMainImage: true,
-      );
+  Future<void> _loadOffers([dynamic filter]) async {
+    final result = await _offerProvider.get(filter: filter);
 
-      setState(() {
-        offers = result.items;
-        loading = false;
-      });
-    } catch (e) {
-      print("Greška API: $e");
-      setState(() {
-        loading = false;
-        loadError = true;
-      });
-    }
+    setState(() {
+      offers = result;
+    });
+  }
+
+  Future<void> _searchOffers(String query, [int? subCategory]) async {
+    final result = await _offerProvider.get(
+      filter: {"fts": query, "isMainImage": true, "subCategoryId": subCategory},
+    );
+
+    setState(() {
+      offers = result;
+    });
+  }
+
+  Future<void> _loadCategories() async {
+    final result = await _categoryProvider.get();
+
+    setState(() {
+      categories = result;
+    });
+  }
+
+  Future<void> _loadSubCategories(dynamic filter) async {
+    final result = await _subCategoryProvider.get(filter: filter);
+
+    setState(() {
+      subcategories = result;
+      final containsMinusOne = result.items.any((s) => s.id == -1);
+      showSubcategoryDropdown = !containsMinusOne && result.items.isNotEmpty;
+    });
+  }
+
+  void _onCategorySelected(OfferCategory category) {
+    setState(() {
+      selectedCategory = category;
+      selectedSubCategory = null;
+    });
+    _loadSubCategories({"categoryId": category?.id, "RetrieveAll": true});
+  }
+
+  Future<void> _showSuccessOfferPopup(BuildContext context) async {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(color: Colors.blue, width: 3),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(25),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  "Uspješno ste kreirali ponudu!",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+
+                const SizedBox(height: 15),
+
+                const Text(
+                  "Vaša nova ponuda je sada dostupna\nu odabranoj kategoriji ili podkategoriji.",
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                  textAlign: TextAlign.center,
+                ),
+
+                const SizedBox(height: 25),
+
+                SizedBox(
+                  width: 120,
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 12,
+                        horizontal: 20,
+                      ),
+                    ),
+                    child: const Text("OK"),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   // ============================================================
   // MAIN BUILD
   // ============================================================
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,8 +171,6 @@ class _OfferScreenState extends State<OfferScreen> {
         children: [
           Column(
             children: [
-              _buildHeader(),
-
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -73,14 +180,61 @@ class _OfferScreenState extends State<OfferScreen> {
                       _filterSection(),
                       const SizedBox(height: 32),
 
-                      const Text(
-                        "Dodane ponude",
+                      Text(
+                        title,
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 16),
+
+                      const SizedBox(height: 20),
+
+                      // 🔍 SEARCH BAR
+                      Container(
+                        margin: EdgeInsets.only(right: 630),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 48,
+                            right: 48,
+                            bottom: 20,
+                          ),
+                          child: SizedBox(
+                            width: 320,
+                            child: TextField(
+                              onChanged: (value) {
+                                if (selectedCategory == null &&
+                                    selectedSubCategory == null) {
+                                  _searchOffers(value);
+                                } else if (selectedCategory != null &&
+                                    selectedSubCategory == null) {
+                                  _searchOffers(value, -1);
+                                } else {
+                                  _searchOffers(value, selectedSubCategory?.id);
+                                }
+                              },
+                              decoration: InputDecoration(
+                                hintText: "pretražite destinacije",
+                                prefixIcon: const Icon(
+                                  Icons.search,
+                                  size: 20,
+                                  color: Colors.black45,
+                                ),
+                                filled: true,
+                                fillColor: const Color(0xfff4eef6),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 14,
+                                  horizontal: 18,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(28),
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
 
                       _offerGrid(),
 
@@ -91,135 +245,11 @@ class _OfferScreenState extends State<OfferScreen> {
               ),
             ],
           ),
-
-          if (_showUserMenu) Positioned(top: 70, right: 24, child: _userMenu()),
         ],
       ),
     );
   }
 
-  // ============================================================
-  // HEADER
-  // ============================================================
-  Widget _buildHeader() {
-    return Container(
-      height: 70,
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      color: const Color(0xFF64B5F6),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "eTravel",
-            style: GoogleFonts.leckerliOne(color: Colors.white, fontSize: 32),
-          ),
-
-          Row(
-            children: [
-              _topLink("Ponude", selected: true),
-              _topLink("Recenzije"),
-              _topLink("Rezervacije"),
-              _topLink("Korisnici"),
-              _topLink("Radnici"),
-              _topLink("Aplikanti"),
-            ],
-          ),
-
-          GestureDetector(
-            onTap: () => setState(() => _showUserMenu = !_showUserMenu),
-            child: Row(
-              children: [
-                const CircleAvatar(
-                  radius: 18,
-                  backgroundColor: Colors.white,
-                  child: Icon(Icons.person, color: Colors.black87),
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  Session.username ?? "Korisnik",
-                  style: const TextStyle(color: Colors.white),
-                ),
-                const Icon(Icons.keyboard_arrow_down, color: Colors.white),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // ============================================================
-  // USER MENU OVERLAY
-  // ============================================================
-  Widget _userMenu() {
-    return Container(
-      width: 220,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.15),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            alignment: Alignment.centerLeft,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  Session.username ?? "",
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  Session.roles.join(", "),
-                  style: const TextStyle(fontSize: 12, color: Colors.grey),
-                ),
-              ],
-            ),
-          ),
-
-          const Divider(),
-
-          ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text("Postavke"),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text("Moj profil"),
-            onTap: () {},
-          ),
-
-          const Divider(),
-
-          ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text("Odjava"),
-            onTap: () {
-              Session.odjava();
-              Navigator.pushReplacementNamed(context, "/login");
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  // ============================================================
-  // HEADER SLIKA
-  // ============================================================
   Widget _headerImage() {
     return Container(
       height: 260,
@@ -261,19 +291,15 @@ class _OfferScreenState extends State<OfferScreen> {
   }
 
   // ============================================================
-  // NAV LINK
+  // HELPER ZA FORM INPUT
   // ============================================================
-  Widget _topLink(String text, {bool selected = false}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 16,
-          color: selected ? Colors.white : Colors.white70,
-          fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-        ),
-      ),
+  InputDecoration _inputDecoration(String label) {
+    return InputDecoration(
+      labelText: label,
+      labelStyle: TextStyle(fontSize: 15, color: Colors.grey.shade700),
+      filled: true,
+      fillColor: Colors.white,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
     );
   }
 
@@ -303,9 +329,50 @@ class _OfferScreenState extends State<OfferScreen> {
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              _FilterDropdown(label: "odaberi kategoriju"),
-              _FilterDropdown(label: "odaberite podkategoriju"),
+            children: [
+              // CATEGORY DROPDOWN
+              SizedBox(
+                width: 300,
+                child: DropdownButtonFormField<OfferCategory>(
+                  value: selectedCategory,
+                  decoration: _inputDecoration("odaberi kategoriju"),
+                  items:
+                      (categories?.items ?? [])
+                          .map(
+                            (c) =>
+                                DropdownMenuItem(value: c, child: Text(c.name)),
+                          )
+                          .toList(),
+                  onChanged: (value) {
+                    if (value != null) _onCategorySelected(value);
+                  },
+                ),
+              ),
+
+              // SUBCATEGORY DROPDOWN
+              if (showSubcategoryDropdown)
+                SizedBox(
+                  width: 300,
+                  child: DropdownButtonFormField<OfferSubCategory>(
+                    value:
+                        selectedSubCategory, // ← ovo će biti OfferSubCategory?
+                    decoration: _inputDecoration("odaberite podkategoriju"),
+                    items:
+                        (subcategories?.items ?? [])
+                            .map(
+                              (s) => DropdownMenuItem(
+                                value: s, // ← vraća cijeli model, ne samo ID
+                                child: Text(s.name),
+                              ),
+                            )
+                            .toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedSubCategory = value;
+                      });
+                    },
+                  ),
+                ),
             ],
           ),
 
@@ -315,7 +382,17 @@ class _OfferScreenState extends State<OfferScreen> {
             width: 220,
             height: 45,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (selectedCategory != null && selectedSubCategory == null) {
+                  title = "Ponude iz kategorije ${selectedCategory?.name}";
+                } else if (selectedCategory != null &&
+                    selectedSubCategory != null) {
+                  title =
+                      "Ponude iz podkategorije ${selectedSubCategory?.name}";
+                }
+                var filter = {"subCategoryId": selectedSubCategory?.id ?? -1};
+                _loadOffers(filter);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF64B5F6),
                 shape: RoundedRectangleBorder(
@@ -341,20 +418,6 @@ class _OfferScreenState extends State<OfferScreen> {
   // GRID PONUDA (DINAMIČKO)
   // ============================================================
   Widget _offerGrid() {
-    if (loading) {
-      return const Padding(
-        padding: EdgeInsets.all(40),
-        child: CircularProgressIndicator(),
-      );
-    }
-
-    if (loadError) {
-      return const Padding(
-        padding: EdgeInsets.all(40),
-        child: Text("Došlo je do greške pri učitavanju ponuda."),
-      );
-    }
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 48),
       child: Wrap(
@@ -363,32 +426,14 @@ class _OfferScreenState extends State<OfferScreen> {
         children: [
           _addOfferCard(),
 
-          ...offers.map((o) {
-            final img =
-                o.offerImages.isNotEmpty
-                    ? o.offerImages.firstWhere(
-                      (x) => x.isMain,
-                      orElse:
-                          () => OfferImage(
-                            id: 0,
-                            offerId: o.offerId,
-                            imageUrl: "",
-                            isMain: true,
-                          ),
-                    )
-                    : OfferImage(
-                      id: 0,
-                      offerId: o.offerId,
-                      imageUrl: "",
-                      isMain: true,
-                    );
+          ...(offers?.items ?? []).map((o) {
+            final mainImage =
+                (o.offerImages.isNotEmpty &&
+                        o.offerImages.first.imageUrl.isNotEmpty)
+                    ? "${ApiConfig.imagesOffers}/${o.offerImages.first.imageUrl}"
+                    : "assets/images/placeholder.jpg";
 
-            final safeImageUrl =
-                img.imageUrl.isEmpty
-                    ? "assets/images/placeholder.jpg"
-                    : "${ApiConfig.imagesOffers}/${img.imageUrl}";
-
-            return _offerCard(o.title.toUpperCase(), safeImageUrl);
+            return _offerCard(o.title.toUpperCase(), mainImage);
           }).toList(),
         ],
       ),
@@ -424,7 +469,23 @@ class _OfferScreenState extends State<OfferScreen> {
             const SizedBox(height: 18),
 
             ElevatedButton(
-              onPressed: () => print("Klik na dodaj ponudu"),
+              onPressed: () async {
+                final result = await showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder:
+                      (_) => OfferWizardPopup(
+                        selectedSubCategoryId: selectedCategory?.id,
+                      ),
+                );
+
+                // ⭐ Ako je wizard završio uspješno
+                if (result == true) {
+                  await _showSuccessOfferPopup(context);
+                  await _loadOffers(); // refresh liste
+                }
+              },
+
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 backgroundColor: const Color.fromARGB(255, 173, 172, 172),
@@ -433,7 +494,6 @@ class _OfferScreenState extends State<OfferScreen> {
               ),
               child: const Icon(Icons.add, size: 32),
             ),
-
             const SizedBox(height: 16),
 
             const Text(
@@ -530,36 +590,6 @@ class _OfferScreenState extends State<OfferScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-// ============================================================
-// DROPDOWN KOMPONENTA
-// ============================================================
-class _FilterDropdown extends StatelessWidget {
-  final String label;
-  const _FilterDropdown({super.key, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300,
-      child: DropdownButtonFormField<String>(
-        decoration: InputDecoration(
-          labelText: label,
-          labelStyle: TextStyle(fontSize: 15, color: Colors.grey.shade700),
-          filled: true,
-          fillColor: Colors.white,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-        ),
-        items: const [
-          DropdownMenuItem(value: "1", child: Text("Januar")),
-          DropdownMenuItem(value: "2", child: Text("Februar")),
-          DropdownMenuItem(value: "3", child: Text("Mart")),
-        ],
-        onChanged: (value) {},
       ),
     );
   }

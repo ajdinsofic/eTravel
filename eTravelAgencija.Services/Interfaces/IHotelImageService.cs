@@ -9,7 +9,7 @@ using eTravelAgencija.Model.SearchObjects;
 
 namespace eTravelAgencija.Services.Interfaces
 {
-    public interface IHotelImageService : ICRUDService<Model.model.HotelImages, BaseSearchObject, HotelImageUpsertRequest, HotelImageUpsertRequest>
+    public interface IHotelImageService : ICRUDService<Model.model.HotelImages, HotelImageSearchObject, HotelImageInsertRequest, HotelImageUpdateRequest>
     {
         
     }

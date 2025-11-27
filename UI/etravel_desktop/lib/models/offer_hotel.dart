@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'offer_hotel.g.dart';
+
+@JsonSerializable()
 class OfferHotel {
   final int offerId;
   final int hotelId;
@@ -11,12 +16,6 @@ class OfferHotel {
     required this.returnDate,
   });
 
-  factory OfferHotel.fromJson(Map<String, dynamic> json) {
-    return OfferHotel(
-      offerId: json['offerId'],
-      hotelId: json['hotelId'],
-      departureDate: DateTime.parse(json['departureDate']),
-      returnDate: DateTime.parse(json['returnDate']),
-    );
-  }
+  factory OfferHotel.fromJson(Map<String, dynamic> json) => _$OfferHotelFromJson(json);
+  Map<String, dynamic> toJson() => _$OfferHotelToJson(this);
 }

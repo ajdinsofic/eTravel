@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'offer_image.g.dart';
+
+@JsonSerializable()
 class OfferImage {
   final int id;
   final int offerId;
@@ -11,12 +16,6 @@ class OfferImage {
     required this.isMain,
   });
 
-  factory OfferImage.fromJson(Map<String, dynamic> json) {
-    return OfferImage(
-      id: json['id'],
-      offerId: json['offerId'],
-      imageUrl: json['imageUrl'],
-      isMain: json['isMain'] ?? false,
-    );
-  }
+  factory OfferImage.fromJson(Map<String, dynamic> json) => _$OfferImageFromJson(json);
+  Map<String, dynamic> toJson() => _$OfferImageToJson(this);
 }

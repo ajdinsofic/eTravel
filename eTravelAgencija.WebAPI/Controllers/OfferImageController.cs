@@ -10,21 +10,27 @@ using eTravelAgencija.Services.Interfaces;
 namespace eTravelAgencija.WebAPI.Controllers
 {
 
-    public class OfferImageController 
+    public class OfferImageController
         : BaseCRUDController<
             OfferImage,
-            BaseSearchObject,
-            OfferImageUpsertRequest,
-            OfferImageUpsertRequest>
+            OfferImageSearchObject,
+            OfferImageInsertRequest,
+            OfferImageUpdateRequest>
     {
 
 
         public OfferImageController(
-            ILogger<BaseCRUDController<OfferImage, BaseSearchObject, OfferImageUpsertRequest, OfferImageUpsertRequest>> logger,
+            ILogger<BaseCRUDController<OfferImage, OfferImageSearchObject, OfferImageInsertRequest, OfferImageUpdateRequest>> logger,
             IOfferImageService offerImageService)
             : base(logger, offerImageService)
         {
-            
+
         }
+
+        public override Task<ActionResult<OfferImage>> Create([FromForm] OfferImageInsertRequest insert)
+        {
+            return base.Create(insert);
+        }
+
     }
 }
