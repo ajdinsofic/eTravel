@@ -10,7 +10,5 @@ namespace eTravelAgencija.Model.model
         public int Id { get; set; }
 
         public string RoomType { get; set; }
-
-        public int RoomCount { get; set; }
     }
 }

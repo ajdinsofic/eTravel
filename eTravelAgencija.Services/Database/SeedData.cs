@@ -373,10 +373,10 @@ namespace eTravelAgencija.Services.Database.Seed
             // =========================================================================
 
             builder.Entity<Rooms>().HasData(
-            new Rooms { Id = 1, RoomType = "Dvokrevetna", RoomCount = 2 },
-            new Rooms { Id = 2, RoomType = "Trokrevetna", RoomCount = 3 },
-            new Rooms { Id = 3, RoomType = "Petokrevetna", RoomCount = 2 },
-            new Rooms { Id = 4, RoomType = "Cetverokrevetna", RoomCount = 4 }
+            new Rooms { Id = 1, RoomType = "Dvokrevetna" },
+            new Rooms { Id = 2, RoomType = "Trokrevetna" },
+            new Rooms { Id = 3, RoomType = "Petokrevetna" },
+            new Rooms { Id = 4, RoomType = "Cetverokrevetna"}
             );
 
             // =========================================================================

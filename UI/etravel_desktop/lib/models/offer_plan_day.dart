@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'offer_plan_day.g.dart';
+
+@JsonSerializable()
 class OfferPlanDay {
   final int offerDetailsId;
   final String dayTitle;
@@ -11,12 +16,6 @@ class OfferPlanDay {
     required this.dayNumber,
   });
 
-  factory OfferPlanDay.fromJson(Map<String, dynamic> json) {
-    return OfferPlanDay(
-      offerDetailsId: json['offerDetailsId'],
-      dayTitle: json['dayTitle'],
-      dayDescription: json['dayDescription'],
-      dayNumber: json['dayNumber'],
-    );
-  }
+  factory OfferPlanDay.fromJson(Map<String, dynamic> json) => _$OfferPlanDayFromJson(json);
+  Map<String, dynamic> toJson() => _$OfferPlanDayToJson(this);
 }

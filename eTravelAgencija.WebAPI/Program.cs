@@ -63,6 +63,8 @@ builder.Services.AddTransient<IOfferService, OfferService>();
 builder.Services.AddTransient<IHotelService, HotelService>();
 builder.Services.AddTransient<IOfferHotelService, OfferHotelService>();
 builder.Services.AddTransient<IOfferImageService, OfferImageService>();
+builder.Services.AddTransient<IOfferSubCategoryService, OfferSubCategoryService>();
+builder.Services.AddTransient<IOfferCategoryService, OfferCategoryService>();
 builder.Services.AddTransient<IHotelImageService, HotelImageService>();
 builder.Services.AddTransient<IHotelRoomsService, HotelRoomsService>();
 builder.Services.AddTransient<IOfferPlanDayService, OfferPlanDayService>();
@@ -73,6 +75,7 @@ builder.Services.AddTransient<IPaymentService, PaymentService>();
 builder.Services.AddTransient<ICommentService, CommentService>();
 builder.Services.AddTransient<IReportService, ReportService>();
 builder.Services.AddTransient<IWorkApplicationService, WorkApplicationService>();
+builder.Services.AddTransient<IRoomService, RoomService>();
 
 
 builder.Services.AddDbContext<eTravelAgencijaDbContext>(options =>

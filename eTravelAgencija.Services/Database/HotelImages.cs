@@ -14,7 +14,6 @@ namespace eTravelAgencija.Services.Database
 
         public Hotel Hotel { get; set; }
 
-        [Required]
         public string ImageUrl { get; set; }
 
         public bool IsMain { get; set; }

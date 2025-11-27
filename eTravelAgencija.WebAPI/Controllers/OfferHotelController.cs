@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
-    public class OfferHotelController : BaseCRUDController<Model.model.OfferHotels, BaseSearchObject, OfferHotelInsertRequest, OfferHotelUpdateRequest>
+    public class OfferHotelController : BaseCRUDController<Model.model.OfferHotels, OfferHotelSearchObject, OfferHotelInsertRequest, OfferHotelUpdateRequest>
     {
-        public OfferHotelController(ILogger<BaseCRUDController<Model.model.OfferHotels, BaseSearchObject, OfferHotelInsertRequest, OfferHotelUpdateRequest>> logger, IOfferHotelService offerHotelService):base(logger, offerHotelService)
+        public OfferHotelController(ILogger<BaseCRUDController<Model.model.OfferHotels, OfferHotelSearchObject, OfferHotelInsertRequest, OfferHotelUpdateRequest>> logger, IOfferHotelService offerHotelService):base(logger, offerHotelService)
         {
             
         }

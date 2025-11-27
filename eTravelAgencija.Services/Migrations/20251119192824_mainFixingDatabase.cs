@@ -112,8 +112,7 @@ namespace eTravelAgencija.Services.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    RoomType = table.Column<string>(type: "text", nullable: false),
-                    RoomCount = table.Column<int>(type: "integer", nullable: false)
+                    RoomType = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -607,9 +606,9 @@ namespace eTravelAgencija.Services.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "DateBirth", "Email", "EmailConfirmed", "FirstName", "LastLoginAt", "LastName", "LockoutEnabled", "LockoutEnd", "MainImage", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "isBlocked" },
                 values: new object[,]
                 {
-                    { 1, 0, "8cb56a4d-09f0-4f3c-8587-684ef3ebef2b", new DateTime(2025, 11, 18, 1, 30, 39, 641, DateTimeKind.Utc).AddTicks(1106), new DateTime(1990, 5, 10, 0, 0, 0, 0, DateTimeKind.Utc), "radnik@etravel.com", true, "Marko", null, "Radnik", false, null, "test", "RADNIK@ETRAVEL.COM", "RADNIK", "AQAAAAIAAYagAAAAECqqkxxPoPRE44nL9SE/4piJ5UccVd0TxHJ+31WSysZqJ8dhEBCKH39sk3fKFX8rxQ==", "+38761111111", false, null, false, "radnik", false },
-                    { 2, 0, "76033641-7f74-4bb5-a246-900ca7de2f40", new DateTime(2025, 11, 18, 1, 30, 39, 709, DateTimeKind.Utc).AddTicks(9330), new DateTime(1985, 3, 20, 0, 0, 0, 0, DateTimeKind.Utc), "direktor@etravel.com", true, "Amir", null, "Direktor", false, null, "test", "DIREKTOR@ETRAVEL.COM", "DIREKTOR", "AQAAAAIAAYagAAAAEMRKBPKoF3OR7JUmGosiBQXrAwfsoIdc99U4xZap2j+3lItsJNaLjgwr++xX+VP3DA==", "+38762222222", false, null, false, "direktor", false },
-                    { 4, 0, "0a4b8abf-39e9-447c-b279-0a06696cebcc", new DateTime(2025, 11, 18, 1, 30, 39, 777, DateTimeKind.Utc).AddTicks(2078), new DateTime(2002, 11, 5, 0, 0, 0, 0, DateTimeKind.Utc), "korisnik@etravel.com", true, "Ajdin", null, "Korisnik", false, null, "test", "KORISNIK@ETRAVEL.COM", "KORISNIK", "AQAAAAIAAYagAAAAEKoX7ISEN0eRVo2kTZmNR3wrq0aXPgV1l39NdFhw8qECSNMfcHK3DuJNE/GWAkgnEQ==", "+38763333333", false, null, false, "korisnik", false }
+                    { 1, 0, "94a85ec9-8cc2-4319-9128-9b1f610f28b9", new DateTime(2025, 11, 19, 19, 28, 24, 99, DateTimeKind.Utc).AddTicks(7631), new DateTime(1990, 5, 10, 0, 0, 0, 0, DateTimeKind.Utc), "radnik@etravel.com", true, "Marko", null, "Radnik", false, null, "test", "RADNIK@ETRAVEL.COM", "RADNIK", "AQAAAAIAAYagAAAAEOJKLtpip5YjJg7JGSaH7kmrUkJ2+H3wg+T62dSmEOztqEPMhcI9/ItPPnGsgx2WAw==", "+38761111111", false, null, false, "radnik", false },
+                    { 2, 0, "597819f5-939a-4091-a30e-4d9fd2376c1d", new DateTime(2025, 11, 19, 19, 28, 24, 194, DateTimeKind.Utc).AddTicks(6034), new DateTime(1985, 3, 20, 0, 0, 0, 0, DateTimeKind.Utc), "direktor@etravel.com", true, "Amir", null, "Direktor", false, null, "test", "DIREKTOR@ETRAVEL.COM", "DIREKTOR", "AQAAAAIAAYagAAAAEOrPH5xro8JN8OABoKKBfEU1Pw/VtZafz2GQUjyu2oF63D/bkrIPu2MRfJM4DmRv4g==", "+38762222222", false, null, false, "direktor", false },
+                    { 4, 0, "27532a63-2931-4663-9e96-ba0ce347da15", new DateTime(2025, 11, 19, 19, 28, 24, 265, DateTimeKind.Utc).AddTicks(8545), new DateTime(2002, 11, 5, 0, 0, 0, 0, DateTimeKind.Utc), "korisnik@etravel.com", true, "Ajdin", null, "Korisnik", false, null, "test", "KORISNIK@ETRAVEL.COM", "KORISNIK", "AQAAAAIAAYagAAAAEFd5rq8Pz2gII96yKdpTmi0mKyiVkiCRzAPKL0Ykgjj9B2kWxGPa3am/Ol6/fngSpQ==", "+38763333333", false, null, false, "korisnik", false }
                 });
 
             migrationBuilder.InsertData(
@@ -652,13 +651,13 @@ namespace eTravelAgencija.Services.Migrations
 
             migrationBuilder.InsertData(
                 table: "Rooms",
-                columns: new[] { "Id", "RoomCount", "RoomType" },
+                columns: new[] { "Id", "RoomType" },
                 values: new object[,]
                 {
-                    { 1, 2, "Dvokrevetna" },
-                    { 2, 3, "Trokrevetna" },
-                    { 3, 2, "Petokrevetna" },
-                    { 4, 4, "Cetverokrevetna" }
+                    { 1, "Dvokrevetna" },
+                    { 2, "Trokrevetna" },
+                    { 3, "Petokrevetna" },
+                    { 4, "Cetverokrevetna" }
                 });
 
             migrationBuilder.InsertData(
@@ -666,9 +665,9 @@ namespace eTravelAgencija.Services.Migrations
                 columns: new[] { "RoleId", "UserId", "CreatedAt", "Description", "IsActive" },
                 values: new object[,]
                 {
-                    { 2, 1, new DateTime(2025, 11, 18, 1, 30, 39, 834, DateTimeKind.Utc).AddTicks(5021), "", true },
-                    { 3, 2, new DateTime(2025, 11, 18, 1, 30, 39, 834, DateTimeKind.Utc).AddTicks(5028), "", true },
-                    { 1, 4, new DateTime(2025, 11, 18, 1, 30, 39, 834, DateTimeKind.Utc).AddTicks(5029), "", true }
+                    { 2, 1, new DateTime(2025, 11, 19, 19, 28, 24, 332, DateTimeKind.Utc).AddTicks(4394), "", true },
+                    { 3, 2, new DateTime(2025, 11, 19, 19, 28, 24, 332, DateTimeKind.Utc).AddTicks(4400), "", true },
+                    { 1, 4, new DateTime(2025, 11, 19, 19, 28, 24, 332, DateTimeKind.Utc).AddTicks(4401), "", true }
                 });
 
             migrationBuilder.InsertData(

@@ -9,8 +9,5 @@ namespace eTravelAgencija.Services.Database
 
         [Required]
         public string RoomType { get; set; }
-
-        [Required]
-        public int RoomCount { get; set; }
     }
 }

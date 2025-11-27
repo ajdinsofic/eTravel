@@ -60,7 +60,9 @@ namespace eTravelAgencija.WebAPI.Controllers
             if (!deleted)
                 return NotFound();
 
-            return NoContent();
+            return Ok();
         }
+
+        
     }
 }

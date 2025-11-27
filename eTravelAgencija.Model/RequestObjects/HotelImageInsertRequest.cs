@@ -1,14 +1,15 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace eTravelAgencija.Model.RequestObjects
 {
-    public class HotelImageUpsertRequest
+    public class HotelImageInsertRequest
     {
         [Required]
         public int HotelId { get; set; }
-
-        [Required]
-        public string ImageUrl { get; set; } = string.Empty;
         public bool IsMain { get; set; } = false;
+        public IFormFile image { get; set; }
+
+
     }
 }
