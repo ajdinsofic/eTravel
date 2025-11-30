@@ -5,8 +5,12 @@ part 'hotel_room_insert.g.dart';
 @JsonSerializable()
 class HotelRoomInsertRequest {
   int? hotelId;
-  final int roomId;
-  final int roomsLeft;
+  int roomId;
+  int roomsLeft;
+  String? roomTypeError;
+  String? roomCountError;
+
+
 
   @JsonKey(ignore: true)
     bool isNew;
@@ -18,7 +22,9 @@ class HotelRoomInsertRequest {
     this.hotelId,
     required this.roomId,
     required this.roomsLeft,
-    this.isNew = false
+    this.isNew = false,
+    this.roomTypeError,
+    this.roomCountError
   });
 
   factory HotelRoomInsertRequest.fromJson(Map<String, dynamic> json) =>

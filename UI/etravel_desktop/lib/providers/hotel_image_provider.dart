@@ -28,7 +28,7 @@ class HotelImageProvider extends BaseProvider<HotelImage> {
     request.files.add(
       await http.MultipartFile.fromPath(
         "image",
-        req.image.path,
+        req.image!.path,
       ),
     );
 

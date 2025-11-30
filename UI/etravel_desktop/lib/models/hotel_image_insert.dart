@@ -4,7 +4,7 @@ class HotelImageInsertRequest {
   int? id;
   int hotelId;
   bool isMain;
-  File image;
+  File? image;
   String? imageUrl;  // slika iz baze
 
   HotelImageInsertRequest({
@@ -12,6 +12,6 @@ class HotelImageInsertRequest {
     this.imageUrl,
     required this.hotelId,
     this.isMain = false,
-    required this.image,
+    this.image,
   });
 }

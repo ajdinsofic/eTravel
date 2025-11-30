@@ -1,3 +1,4 @@
+import 'package:etravel_desktop/screens/login_screen.dart';
 import 'package:etravel_desktop/screens/offer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,62 +23,48 @@ class _MasterScreenState extends State<MasterScreen> {
   bool _showUserMenu = false;
 
   void _navigate(int index) {
-  Widget screen;
+    Widget screen;
 
-  switch (index) {
-    case 0:
-      screen = OfferScreen();
-      break;
-    // case 1:
-    //   screen = ReviewScreen();
-    //   break;
-    // case 2:
-    //   screen = ReservationScreen();
-    //   break;
-    // case 3:
-    //   screen = UsersScreen();
-    //   break;
-    // case 4:
-    //   screen = WorkersScreen();
-    //   break;
-    // case 5:
-    //   screen = ApplicantsScreen();
-    //   break;
-    default:
-      screen = OfferScreen();
-  }
+    switch (index) {
+      case 0:
+        screen = OfferScreen();
+        break;
+      // case 1:
+      //   screen = ReviewScreen();
+      //   break;
+      // case 2:
+      //   screen = ReservationScreen();
+      //   break;
+      // case 3:
+      //   screen = UsersScreen();
+      //   break;
+      // case 4:
+      //   screen = WorkersScreen();
+      //   break;
+      // case 5:
+      //   screen = ApplicantsScreen();
+      //   break;
+      default:
+        screen = OfferScreen();
+    }
 
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(
-      builder: (_) => MasterScreen(
-        selectedIndex: index,
-        child: screen,
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => MasterScreen(selectedIndex: index, child: screen),
       ),
-    ),
-  );
-}
-
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          Column(
-            children: [
-              _buildHeader(),
-              Expanded(child: widget.child),
-            ],
-          ),
+          Column(children: [_buildHeader(), Expanded(child: widget.child)]),
 
           // USER MENU DROPDOWN
-          if (_showUserMenu)
-            Positioned(
-              top: 70,
-              right: 20,
-              child: _userMenu(),
-            ),
+          if (_showUserMenu) Positioned(top: 70, right: 20, child: _userMenu()),
         ],
       ),
     );
@@ -97,10 +84,7 @@ class _MasterScreenState extends State<MasterScreen> {
           // LOGO
           Text(
             "eTravel",
-            style: GoogleFonts.leckerliOne(
-              color: Colors.white,
-              fontSize: 32,
-            ),
+            style: GoogleFonts.leckerliOne(color: Colors.white, fontSize: 32),
           ),
 
           // NAVIGATION LINKS
@@ -110,18 +94,17 @@ class _MasterScreenState extends State<MasterScreen> {
               _topLink("Recenzije", 1),
               _topLink("Rezervacije", 2),
               _topLink("Korisnici", 3),
-              if (Session.roles.contains("Direktor"))
-                _topLink("Radnici", 4),
-              if (Session.roles.contains("Direktor"))
-                _topLink("Aplikanti", 5),
+              if (Session.roles.contains("Direktor")) _topLink("Radnici", 4),
+              if (Session.roles.contains("Direktor")) _topLink("Aplikanti", 5),
             ],
           ),
 
           // USER MENU BUTTON
           GestureDetector(
-            onTap: () => setState(() {
-              _showUserMenu = !_showUserMenu;
-            }),
+            onTap:
+                () => setState(() {
+                  _showUserMenu = !_showUserMenu;
+                }),
             child: Row(
               children: [
                 const CircleAvatar(
@@ -201,10 +184,7 @@ class _MasterScreenState extends State<MasterScreen> {
                 const SizedBox(height: 4),
                 Text(
                   Session.roles.join(", "),
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
+                  style: const TextStyle(fontSize: 12, color: Colors.grey),
                 ),
               ],
             ),
@@ -230,7 +210,11 @@ class _MasterScreenState extends State<MasterScreen> {
             title: const Text("Odjava"),
             onTap: () {
               Session.odjava();
-              Navigator.pushReplacementNamed(context, "/login");
+
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+              );
             },
           ),
         ],
@@ -238,5 +222,3 @@ class _MasterScreenState extends State<MasterScreen> {
     );
   }
 }
-
-

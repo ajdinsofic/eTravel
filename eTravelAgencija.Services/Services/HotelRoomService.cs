@@ -12,12 +12,21 @@ using eTravelAgencija.Services.Interfaces;
 namespace eTravelAgencija.Services.Services
 {
     public class HotelRoomsService
-        : BaseCRUDService<Model.model.HotelRooms, BaseSearchObject, Database.HotelRooms, HotelRoomInsertRequest, HotelRoomUpdateRequest>,
+        : BaseCRUDService<Model.model.HotelRooms, HotelRoomSearchObject, Database.HotelRooms, HotelRoomInsertRequest, HotelRoomUpdateRequest>,
           IHotelRoomsService
     {
         public HotelRoomsService(eTravelAgencijaDbContext context, IMapper mapper)
             : base(context, mapper)
         {}
+
+        public override IQueryable<HotelRooms> ApplyFilter(IQueryable<HotelRooms> query, HotelRoomSearchObject search)
+        {
+            if (search.hotelId.HasValue)
+            {
+                query = query.Where(h => h.HotelId == search.hotelId);
+            }
+            return base.ApplyFilter(query, search);
+        }
 
        
     }

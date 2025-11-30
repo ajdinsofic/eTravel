@@ -9,11 +9,13 @@ import '../providers/room_provider.dart';
 class RoomEditorPopup extends StatefulWidget {
   final List<HotelRoomInsertRequest> initialRooms;
   final int? hotelId;
+  final bool isReadOnly;
 
   const RoomEditorPopup({
     super.key,
     required this.initialRooms,
     required this.hotelId,
+    required this.isReadOnly,
   });
 
   @override
@@ -37,47 +39,25 @@ class _RoomEditorPopupState extends State<RoomEditorPopup> {
     _roomProvider = Provider.of<RoomProvider>(context, listen: false);
     _hotelRoomProvider = Provider.of<HotelRoomProvider>(context, listen: false);
 
-    // PREUZMI POČETNE SOBE (copy lista)
+    // copy rows & add errors
     rows =
-        widget.initialRooms
-            .map(
-              (r) => HotelRoomInsertRequest(
-                hotelId: r.hotelId,
-                roomId: r.roomId,
-                roomsLeft: r.roomsLeft,
-              ),
-            )
-            .toList();
+        widget.initialRooms.map((r) {
+          return HotelRoomInsertRequest(
+            hotelId: r.hotelId,
+            roomId: r.roomId,
+            roomsLeft: r.roomsLeft,
+            isNew: r.isNew,
+            roomTypeError: null,
+            roomCountError: null,
+          );
+        }).toList();
 
-    // kontroleri za roomsLeft
     countControllers =
         rows
             .map((r) => TextEditingController(text: r.roomsLeft.toString()))
             .toList();
 
     loadRoomTypes();
-  }
-
-  Future<void> deleteRow(int index) async {
-    final room = rows[index];
-
-    if (room.hotelId == null || room.roomId == 0) {
-      removeRow(index);
-      return;
-    }
-
-    try {
-      await _hotelRoomProvider.deleteRoom(room.hotelId!, room.roomId);
-
-      setState(() {
-        rows.removeAt(index);
-        countControllers.removeAt(index);
-      });
-    } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Greška pri brisanju sobe: $e")));
-    }
   }
 
   Future<void> loadRoomTypes() async {
@@ -89,31 +69,22 @@ class _RoomEditorPopupState extends State<RoomEditorPopup> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint("❌ Greška pri učitavanju room type: $e");
+      debugPrint("❌ Greška pri učitavanju soba: $e");
       setState(() => isLoading = false);
     }
   }
 
   List<Room> getUnusedTypes(int index) {
-    final usedIds =
+    final used =
         rows
             .where((r) => r.roomId != 0 && r.roomId != rows[index].roomId)
             .map((r) => r.roomId)
             .toList();
 
-    return availableRoomTypes
-        .where((room) => !usedIds.contains(room.id))
-        .toList();
+    return availableRoomTypes.where((rt) => !used.contains(rt.id)).toList();
   }
 
   void addRow() {
-    if (rows.length >= availableRoomTypes.length) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Nema više dostupnih tipova soba.")),
-      );
-      return;
-    }
-
     setState(() {
       rows.add(
         HotelRoomInsertRequest(
@@ -121,11 +92,31 @@ class _RoomEditorPopupState extends State<RoomEditorPopup> {
           roomId: 0,
           roomsLeft: 0,
           isNew: true,
+          roomTypeError: null,
+          roomCountError: null,
         ),
       );
 
       countControllers.add(TextEditingController(text: "0"));
     });
+  }
+
+  Future<void> deleteRow(int index) async {
+    final row = rows[index];
+
+    if (row.hotelId == null || row.roomId == 0) {
+      removeRow(index);
+      return;
+    }
+
+    try {
+      await _hotelRoomProvider.deleteRoom(row.hotelId!, row.roomId);
+      removeRow(index);
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Greška: $e")));
+    }
   }
 
   void removeRow(int index) {
@@ -138,20 +129,27 @@ class _RoomEditorPopupState extends State<RoomEditorPopup> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return Dialog(
-        backgroundColor: Colors.transparent,
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(40),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: const CircularProgressIndicator(),
+  return Dialog(
+    backgroundColor: Colors.transparent,
+    child: Center(
+      child: Container(
+        padding: const EdgeInsets.all(30),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: const SizedBox(
+          width: 40,
+          height: 40,
+          child: CircularProgressIndicator(
+            strokeWidth: 4,
           ),
         ),
-      );
-    }
+      ),
+    ),
+  );
+}
+
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -161,264 +159,314 @@ class _RoomEditorPopupState extends State<RoomEditorPopup> {
           padding: const EdgeInsets.all(25),
           decoration: BoxDecoration(
             color: const Color(0xFFE4E4E4),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(18),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // HEADER
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Informacije o sobama",
-                    style: GoogleFonts.openSans(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // HEADER
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Informacije o sobama",
+                      style: GoogleFonts.openSans(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: const Icon(Icons.close),
-                  ),
-                ],
-              ),
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: const Icon(Icons.close),
+                    ),
+                  ],
+                ),
 
-              const SizedBox(height: 20),
+                const SizedBox(height: 20),
 
-              Align(
-                alignment: Alignment.centerLeft,
-                child: ElevatedButton(
-                  onPressed: addRow,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF64B5F6),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 18,
+                // ADD ROW BUTTON
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: ElevatedButton(
+                    onPressed:
+                        (widget.isReadOnly ||
+                                rows.length >= availableRoomTypes.length)
+                            ? null // 🔴 DISABLED (SIVO, NEKLIKABILNO)
+                            : addRow, // 🟢 ENABLED (AKTIVNO)
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF64B5F6),
+                      disabledBackgroundColor:
+                          Colors.grey, // 🔥 siva boja kad je off
+                      disabledForegroundColor:
+                          Colors.white70, // da ne bude pretamno
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 18,
+                      ),
                     ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                    child: const Text(
+                      "dodaj red  +",
+                      style: TextStyle(color: Colors.white),
                     ),
-                  ),
-                  child: const Text(
-                    "dodaj red  +",
-                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-              ),
 
-              const SizedBox(height: 15),
+                const SizedBox(height: 15),
 
-              // TABLE HEADER
-              Row(
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Text(
-                      "Tip sobe",
-                      style: GoogleFonts.openSans(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Text(
-                      "Broj soba",
-                      style: GoogleFonts.openSans(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Center(
+                // TABLE COLUMNS
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 4,
                       child: Text(
-                        "Akcija",
+                        "Tip sobe",
                         style: GoogleFonts.openSans(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 10),
-
-              // ROWS
-              Column(
-                children: List.generate(rows.length, (index) {
-                  final unused = getUnusedTypes(index);
-                  final isNew = rows[index].isNew;
-
-                  return Container(
-                    margin: const EdgeInsets.symmetric(vertical: 6),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 10,
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        "Broj soba",
+                        style: GoogleFonts.openSans(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFD9D9D9),
-                      borderRadius: BorderRadius.circular(14),
+                    Expanded(
+                      flex: 2,
+                      child: Center(
+                        child: Text(
+                          "Akcija",
+                          style: GoogleFonts.openSans(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ),
-                    child: Row(
-                      children: [
-                        // ---------------------------------------
-                        // ROOM TYPE (dropdown)
-                        // ---------------------------------------
-                        Expanded(
-                          flex: 4,
-                          child: AbsorbPointer(
-                            absorbing: !isNew, // 🔥 disable ako nije new
-                            child: DropdownButtonFormField<int>(
-                              value:
-                                  rows[index].roomId == 0
-                                      ? null
-                                      : rows[index].roomId,
-                              items:
-                                  unused.map((room) {
-                                    return DropdownMenuItem(
-                                      value: room.id,
-                                      child: Text(
-                                        room.roomType,
-                                        style: TextStyle(
-                                          color:
-                                              isNew
-                                                  ? Colors.black
-                                                  : Colors.grey, // 🔥 posivi
-                                        ),
+                  ],
+                ),
+
+                const SizedBox(height: 10),
+
+                // ROW LIST
+                Column(
+                  children: List.generate(rows.length, (index) {
+                    final isNew = rows[index].isNew;
+                    final unused = getUnusedTypes(index);
+
+                    return Container(
+                      margin: const EdgeInsets.symmetric(vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 12,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFD9D9D9),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              // DROPDOWN
+                              Expanded(
+                                flex: 4,
+                                child: AbsorbPointer(
+                                  absorbing: widget.isReadOnly || !isNew,
+                                  child: DropdownButtonFormField<int>(
+                                    value:
+                                        rows[index].roomId == 0
+                                            ? null
+                                            : rows[index].roomId,
+                                    items:
+                                        unused
+                                            .map(
+                                              (room) => DropdownMenuItem(
+                                                value: room.id,
+                                                child: Text(room.roomType),
+                                              ),
+                                            )
+                                            .toList(),
+                                    onChanged:
+                                        widget.isReadOnly
+                                            ? null
+                                            : (val) {
+                                              setState(() {
+                                                rows[index].roomId = val!;
+                                                rows[index].roomTypeError =
+                                                    null;
+                                              });
+                                            },
+                                    decoration: InputDecoration(
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
-                                    );
-                                  }).toList(),
-                              onChanged: (roomId) {
-                                if (roomId == null) return;
-
-                                final room = availableRoomTypes.firstWhere(
-                                  (r) => r.id == roomId,
-                                );
-
-                                setState(() {
-                                  rows[index] = HotelRoomInsertRequest(
-                                    hotelId: rows[index].hotelId,
-                                    roomId: room.id,
-                                    roomsLeft: rows[index].roomsLeft,
-                                    isNew: rows[index].isNew,
-                                  );
-                                });
-                              },
-                              decoration: InputDecoration(
-                                filled: true,
-                                fillColor: Colors.white,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+
+                              const SizedBox(width: 10),
+
+                              // NUMBER
+                              Expanded(
+                                flex: 3,
+                                child: TextField(
+                                  controller: countControllers[index],
+                                  enabled: !widget.isReadOnly,
+                                  keyboardType: TextInputType.number,
+                                  onChanged: (v) {
+                                    rows[index].roomsLeft =
+                                        int.tryParse(v) ?? 0;
+                                    rows[index].roomCountError = null;
+                                  },
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              const SizedBox(width: 10),
+
+                              // DELETE
+                              Expanded(
+                                flex: 2,
+                                child: Center(
+                                  child: IconButton(
+                                    onPressed:
+                                        widget.isReadOnly
+                                            ? null
+                                            : (isNew
+                                                ? () => removeRow(index)
+                                                : () => deleteRow(index)),
+                                    icon: Icon(
+                                      Icons.close,
+                                      color:
+                                          widget.isReadOnly
+                                              ? Colors.grey
+                                              : Colors.red,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
 
-                        const SizedBox(width: 10),
+                          // 🔥 ERRORS IN ONE ROW
+                          if (rows[index].roomTypeError != null ||
+                              rows[index].roomCountError != null)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: Row(
+                                children: [
+                                  // TYPE ERROR
+                                  Expanded(
+                                    flex: 4,
+                                    child:
+                                        rows[index].roomTypeError == null
+                                            ? const SizedBox()
+                                            : Text(
+                                              rows[index].roomTypeError!,
+                                              style: const TextStyle(
+                                                color: Colors.red,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                  ),
 
-                        // ---------------------------------------
-                        // ROOMS LEFT (number input)
-                        // ---------------------------------------
-                        Expanded(
-                          flex: 3,
-                          child: TextField(
-                            controller: countControllers[index],
-                            keyboardType: TextInputType.number,
-                            onChanged: (v) {
-                              final newCount = int.tryParse(v) ?? 0;
+                                  const SizedBox(width: 10),
 
-                              setState(() {
-                                rows[index] = HotelRoomInsertRequest(
-                                  hotelId: rows[index].hotelId,
-                                  roomId: rows[index].roomId,
-                                  roomsLeft: newCount,
-                                  isNew: rows[index].isNew,
-                                );
-                              });
+                                  // COUNT ERROR
+                                  Expanded(
+                                    flex: 3,
+                                    child:
+                                        rows[index].roomCountError == null
+                                            ? const SizedBox()
+                                            : Text(
+                                              rows[index].roomCountError!,
+                                              style: const TextStyle(
+                                                color: Colors.red,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                  ),
+
+                                  const Expanded(flex: 2, child: SizedBox()),
+                                ],
+                              ),
+                            ),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
+
+                const SizedBox(height: 25),
+
+                // SAVE BUTTON
+                SizedBox(
+                  width: 160,
+                  child: ElevatedButton(
+                    onPressed:
+                        widget.isReadOnly
+                            ? null
+                            : () {
+                              bool hasError = false;
+
+                              // RESET ERRORS
+                              for (var r in rows) {
+                                r.roomTypeError = null;
+                                r.roomCountError = null;
+                              }
+
+                              // VALIDATE TYPE
+                              for (var r in rows) {
+                                if (r.roomId == 0) {
+                                  r.roomTypeError = "Odaberite tip sobe.";
+                                  hasError = true;
+                                }
+                              }
+
+                              // VALIDATE COUNT
+                              for (var r in rows) {
+                                if (r.roomsLeft <= 0) {
+                                  r.roomCountError =
+                                      "Broj soba mora biti veći od 0.";
+                                  hasError = true;
+                                }
+                              }
+
+                              setState(() {});
+
+                              if (hasError) return;
+
+                              Navigator.pop(context, rows);
                             },
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        const SizedBox(width: 10),
-
-                        // ---------------------------------------
-                        // DELETE BUTTON
-                        // ---------------------------------------
-                        Expanded(
-                          flex: 2,
-                          child: Center(
-                            child: IconButton(
-                              onPressed:
-                                  isNew
-                                      ? () => removeRow(index)
-                                      : () =>
-                                          deleteRow(index), // 🔥 disable za postojeće
-                              icon: Icon(
-                                Icons.close,
-                                color: Colors.red, // 🔥 posivi
-                                size: 26,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF64B5F6),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
-                  );
-                }),
-              ),
-
-              const SizedBox(height: 25),
-
-              // SAVE
-              SizedBox(
-                width: 160,
-                child: ElevatedButton(
-                  onPressed: () {
-                    for (var r in rows) {
-                      if (r.roomId == 0) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Odaberite tip sobe.")),
-                        );
-                        return;
-                      }
-                      if (r.roomsLeft <= 0) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Unesite broj soba.")),
-                        );
-                        return;
-                      }
-                    }
-
-                    Navigator.pop(context, rows);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF64B5F6),
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                    child: const Text(
+                      "Spasi",
+                      style: TextStyle(color: Colors.white),
                     ),
-                  ),
-                  child: const Text(
-                    "Spasi",
-                    style: TextStyle(color: Colors.white),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
