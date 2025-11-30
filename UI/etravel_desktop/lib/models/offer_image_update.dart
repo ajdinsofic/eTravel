@@ -8,10 +8,14 @@ class OfferImageUpdateRequest {
   int offerId;
   bool isMain;
 
+  @JsonKey(ignore: true)
+  bool? isUpdated = false;
+
   OfferImageUpdateRequest({
     this.id,
     required this.offerId,
     required this.isMain,
+    this.isUpdated
   });
 
   factory OfferImageUpdateRequest.fromJson(Map<String, dynamic> json) =>

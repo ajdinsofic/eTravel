@@ -15,7 +15,7 @@ class OfferHotelProvider extends BaseProvider<OfferHotel> {
   }
 
   Future<void> updateOfferHotelDates({
-  required int offerId,
+  required int? offerId,
   required int hotelId,
   required String departureDateIso,
   required String returnDateIso,

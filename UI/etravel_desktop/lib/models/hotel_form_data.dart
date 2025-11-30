@@ -30,6 +30,7 @@ class HotelFormData {
   String? imagesError;
 
   HotelFormData({
+    this.hotelId,
     this.isNew = true,
     this.name = "",
     this.address = "",

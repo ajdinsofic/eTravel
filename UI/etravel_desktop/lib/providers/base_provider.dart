@@ -92,7 +92,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
   }
 
   // DELETE
-  Future<bool> delete(int id) async {
+  Future<bool> delete(int? id) async {
     final url = "${ApiConfig.apiBase}/api/$endpoint/$id";
 
     final response = await http.delete(
