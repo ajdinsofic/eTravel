@@ -8,7 +8,7 @@ namespace eTravelAgencija.Services.Interfaces
 {
     public interface IReportService
     {
-        Task<AgeRegistrationReportResponse> GetAgeReport(string range);
+        Task<List<AgeGroupStatsResponse>> GetAgeReport(string range);
         Task<List<DestinationStatsResponse>> GetTopDestinations();
     }
 }

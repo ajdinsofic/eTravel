@@ -19,6 +19,8 @@ namespace eTravelAgencija.Services.Database
 
         public string City { get; set; }
 
+        public int TotalCountOfReservations { get; set; }
+
         [Column(TypeName = "decimal(18,2)")]
         public decimal MinimalPrice { get; set; }
 

@@ -7,7 +7,7 @@ namespace eTravelAgencija.Services.Database
     {
         public string Description { get; set; }
 
-        public ICollection<UserRole> UserRoles = new List<UserRole>();
+        public ICollection<UserRole> UserRoles {get; set;} = new List<UserRole>();
     
     }
 
