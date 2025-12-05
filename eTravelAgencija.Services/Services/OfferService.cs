@@ -26,6 +26,11 @@ namespace eTravelAgencija.Services.Database
 
         public override IQueryable<Offer> ApplyFilter(IQueryable<Offer> query, OfferSearchObject search)
         {
+            if(search?.offerId.HasValue == true)
+            {
+                query = query.Where(u => u.Id == search.offerId);
+            }
+
             if (search.SubCategoryId == -1 || search.SubCategoryId > 0)
             {
                 query = query.Where(o => o.SubCategoryId == search.SubCategoryId);
@@ -89,6 +94,7 @@ namespace eTravelAgencija.Services.Database
                 City = request.City,
                 Country = request.Country,
                 Description = request.Description,
+                TotalCountOfReservations = 0
             };
 
             entity.Details = details;

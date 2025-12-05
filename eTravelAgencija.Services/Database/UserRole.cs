@@ -4,13 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using eTravelAgencija.Services.Database;
 using Microsoft.AspNetCore.Identity;
 
-public class UserRole : IdentityUserRole<int>
+namespace eTravelAgencija.Services.Database
 {
-    public string Description { get; set; } = string.Empty;
+    public class UserRole : IdentityUserRole<int>
+    {
+        public string Description { get; set; } = string.Empty;
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; } = true;
 
+
+    }
 }
+
 

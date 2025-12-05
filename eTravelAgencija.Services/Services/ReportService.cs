@@ -39,21 +39,21 @@ namespace eTravelAgencija.Services.Services
         }
 
 
-        public async Task<AgeRegistrationReportResponse> GetAgeReport(string range)
+        public async Task<List<AgeGroupStatsResponse>> GetAgeReport(string range)
         {
-            DateTime now = DateTime.UtcNow.Date; 
+            DateTime now = DateTime.UtcNow.Date;
             DateTime fromDate;
-            DateTime toDate = now; 
+            DateTime toDate = now;
 
             switch (range)
             {
                 case "dan":
-                    fromDate = now;  
+                    fromDate = now;
                     break;
 
                 case "sedmica":
                     int dayOfWeek = (int)now.DayOfWeek;
-                    if (dayOfWeek == 0) dayOfWeek = 7; 
+                    if (dayOfWeek == 0) dayOfWeek = 7;
 
                     fromDate = now.AddDays(-(dayOfWeek - 1));
                     break;
@@ -67,11 +67,11 @@ namespace eTravelAgencija.Services.Services
             }
 
             var usersQuery = _context.Users
-                .Include(u => u.UserRoles)            
+                .Include(u => u.UserRoles)
                 .Where(u => u.UserRoles.Any(ur => ur.RoleId == 1))
                 .AsQueryable();
 
-
+            // Filtar po vremenskom intervalu
             if (range == "mjesec")
             {
                 usersQuery = usersQuery
@@ -84,7 +84,6 @@ namespace eTravelAgencija.Services.Services
             }
 
             var users = await usersQuery.ToListAsync();
-
             int total = users.Count;
 
             var groups = users
@@ -96,43 +95,35 @@ namespace eTravelAgencija.Services.Services
                     Percentage = total == 0 ? 0 :
                         Math.Round(((decimal)g.Count() / total) * 100, 2)
                 })
+                .OrderByDescending(g => g.Count)
                 .ToList();
 
-            return new AgeRegistrationReportResponse
-            {
-                TotalRegistrations = total,
-                AgeGroups = groups
-            };
+            return groups; // ← sada vraća samo listu
         }
 
 
         public async Task<List<DestinationStatsResponse>> GetTopDestinations()
         {
-            int currentYear = DateTime.UtcNow.Year;
-
-            var reservations = await _context.Reservations
-               .Include(r => r.OfferDetails).ThenInclude(r => r.Offer)
-               .Where(r => r.CreatedAt.Year == currentYear && r.IsActive == false)
-               .Where(r => r.User.UserRoles.Any(ur => ur.RoleId == 1)) 
-               .ToListAsync();
-
-
-            int total = reservations.Count;
-
-            var grouped = reservations
-                .GroupBy(r => r.OfferDetails.Offer.Title)
-                .Select(g => new DestinationStatsResponse
-                {
-                    DestinationName = g.Key,
-                    Count = g.Count(),
-                    Percentage = total == 0 ? 0 :
-                        Math.Round(((decimal)g.Count() / total) * 100, 2)
-                })
-                .OrderByDescending(g => g.Count)
+            var offers = await _context.OfferDetails
+                .Include(o => o.Offer)
+                .OrderByDescending(o => o.TotalCountOfReservations)
                 .Take(5)
+                .ToListAsync();
+
+            int total = offers.Sum(o => o.TotalCountOfReservations);
+
+            var result = offers
+                .Select(o => new DestinationStatsResponse
+                {
+                    DestinationName = o.Offer.Title,
+                    Count = o.TotalCountOfReservations,
+                    Percentage = total == 0 ? 0 :
+                        Math.Round(((decimal)o.TotalCountOfReservations / total) * 100, 2)
+                })
                 .ToList();
 
-            return grouped;
+            return result;
         }
+
     }
 }

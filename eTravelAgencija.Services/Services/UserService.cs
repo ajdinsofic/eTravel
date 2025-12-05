@@ -25,42 +25,76 @@ namespace eTravelAgencija.Services.Services
         private readonly eTravelAgencijaDbContext _context;
         private readonly IConfiguration _config;
         private readonly UserManager<User> _userManager;
-        public UserService(eTravelAgencijaDbContext context, IMapper mapper, UserManager<User> userManager,IConfiguration config) : base(context, mapper)
+        public UserService(eTravelAgencijaDbContext context, IMapper mapper, UserManager<User> userManager, IConfiguration config, IUserRoleService userRoleService) : base(context, mapper)
         {
             _userManager = userManager;
             _config = config;
         }
 
+        public override IQueryable<User> ApplyFilter(IQueryable<User> query, UserSearchObject search)
+        {
+            
+            if (!string.IsNullOrWhiteSpace(search.personNameSearch))
+            {
+                var searchText = search.personNameSearch.ToLower();
+
+                query = query.Where(x =>
+                    ((x.FirstName ?? "").ToLower() + " " + (x.LastName ?? "").ToLower())
+                    .Contains(searchText)
+                );
+            }
+
+            return base.ApplyFilter(query, search);
+        }
+
+
         public override IQueryable<User> AddInclude(IQueryable<User> query, UserSearchObject? search = null)
         {
-            if(search?.hasWorkAplication == true)
+            if (search.onlyUsers.HasValue)
             {
-               query = query.Include(u => u.workApplications).Where(u => u.UserRoles.Any(ur => ur.RoleId == 1));   
+                query = query
+                    .Include(u => u.UserRoles)
+                    .Where(u => u.UserRoles.Any(r => r.RoleId == 1));
             }
-            if (search?.onlyWorkers == true)
-            {
-                query = query.Include(u => u.UserRoles).Where(u => u.UserRoles.Any(ur => ur.RoleId == 2));
 
+            if (search.onlyWorkers.HasValue)
+            {
+                query = query
+                    .Include(u => u.UserRoles)
+                    .Where(u => u.UserRoles.Any(r => r.RoleId == 2));
             }
+
+            if (search.onlyDirectors.HasValue)
+            {
+                query = query
+                    .Include(u => u.UserRoles)
+                    .Where(u => u.UserRoles.Any(r => r.RoleId == 3));
+            }
+
+            if (search.activeReservations.HasValue)
+            {
+                query = query.Include(u => u.UserReservations).Where(u => u.UserReservations.Any(r => r.IsActive == true));
+            }
+
             return base.AddInclude(query, search);
         }
 
         public override async Task<Model.model.User> CreateAsync(UserUpsertRequest request)
         {
-            
+
             if (await _userManager.FindByEmailAsync(request.Email) is not null)
                 throw new InvalidOperationException("Korisnik sa ovom email adresom već postoji.");
 
             if (await _userManager.FindByNameAsync(request.Username) is not null)
                 throw new InvalidOperationException("Korisnik sa ovim korisničkim imenom već postoji.");
 
-            
+
             var user = _mapper.Map<User>(request);
             user.UserName = request.Username;
             user.CreatedAt = DateTime.UtcNow;
             user.isBlocked = false;
 
-            
+
             var passwordValidator = new PasswordValidator<User>();
             var validationResult = await passwordValidator.ValidateAsync(_userManager, user, request.Password);
 
@@ -70,7 +104,7 @@ namespace eTravelAgencija.Services.Services
                 throw new InvalidOperationException($"Lozinka nije validna: {errors}");
             }
 
-            
+
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {
@@ -78,15 +112,11 @@ namespace eTravelAgencija.Services.Services
                 throw new InvalidOperationException($"Kreiranje korisnika nije uspjelo: {errors}");
             }
 
-            
+
             await _userManager.AddToRoleAsync(user, "Korisnik");
 
-            
-            var userResponse = _mapper.Map<Model.model.User>(user);
 
-            
-            var roles = await _userManager.GetRolesAsync(user);
-            userResponse.Roles = roles.ToList();
+            var userResponse = _mapper.Map<Model.model.User>(user);
 
             return userResponse;
         }
