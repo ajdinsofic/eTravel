@@ -1,28 +1,31 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using eTravelAgencija.Model;
+using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.Requests;
 using eTravelAgencija.Model.ResponseObject;
 using eTravelAgencija.Model.Responses;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
 using eTravelAgencija.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace eTravelAgencija.Services.Services
 {
-    public class UserService : BaseCRUDService<Model.model.User, UserSearchObject, Database.User, UserUpsertRequest, UserUpsertRequest>, IUserService
+    public class UserService : BaseCRUDService<Model.model.User, UserSearchObject, Database.User, UserInsertRequest, UserUpdateRequest>, IUserService
     {
-        private readonly eTravelAgencijaDbContext _context;
         private readonly IConfiguration _config;
         private readonly UserManager<User> _userManager;
         public UserService(eTravelAgencijaDbContext context, IMapper mapper, UserManager<User> userManager, IConfiguration config, IUserRoleService userRoleService) : base(context, mapper)
@@ -33,7 +36,7 @@ namespace eTravelAgencija.Services.Services
 
         public override IQueryable<User> ApplyFilter(IQueryable<User> query, UserSearchObject search)
         {
-            
+
             if (!string.IsNullOrWhiteSpace(search.personNameSearch))
             {
                 var searchText = search.personNameSearch.ToLower();
@@ -43,6 +46,15 @@ namespace eTravelAgencija.Services.Services
                     .Contains(searchText)
                 );
             }
+
+            if (search.CheckMoreRoles == true)
+            {
+                query = query.Where(u =>
+                    u.UserRoles.Count == 1 &&
+                    u.UserRoles.Any(ur => ur.RoleId == 1)
+                );
+            }
+
 
             return base.ApplyFilter(query, search);
         }
@@ -79,9 +91,8 @@ namespace eTravelAgencija.Services.Services
             return base.AddInclude(query, search);
         }
 
-        public override async Task<Model.model.User> CreateAsync(UserUpsertRequest request)
+        public override async Task<Model.model.User> CreateAsync([FromForm] UserInsertRequest request)
         {
-
             if (await _userManager.FindByEmailAsync(request.Email) is not null)
                 throw new InvalidOperationException("Korisnik sa ovom email adresom već postoji.");
 
@@ -89,12 +100,27 @@ namespace eTravelAgencija.Services.Services
                 throw new InvalidOperationException("Korisnik sa ovim korisničkim imenom već postoji.");
 
 
+            // ---------------------------
+            // MAP ROLE ID → ROLE NAME
+            // ---------------------------
+            string roleName = request.RoleId switch
+            {
+                1 => "Korisnik",
+                2 => "Radnik",
+                3 => "Direktor",
+                _ => throw new InvalidOperationException("Neispravan roleId.")
+            };
+
             var user = _mapper.Map<User>(request);
+
+
             user.UserName = request.Username;
             user.CreatedAt = DateTime.UtcNow;
             user.isBlocked = false;
+            // DUMMY Image
+            user.ImageUrl = "test.jpg";
 
-
+            // VALIDACIJA LOZINKE
             var passwordValidator = new PasswordValidator<User>();
             var validationResult = await passwordValidator.ValidateAsync(_userManager, user, request.Password);
 
@@ -104,7 +130,7 @@ namespace eTravelAgencija.Services.Services
                 throw new InvalidOperationException($"Lozinka nije validna: {errors}");
             }
 
-
+            // KREIRANJE KORISNIKA
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {
@@ -112,14 +138,74 @@ namespace eTravelAgencija.Services.Services
                 throw new InvalidOperationException($"Kreiranje korisnika nije uspjelo: {errors}");
             }
 
+            // ---------------------------
+            // ADD ROLE TO USER
+            // ---------------------------
+            await _userManager.AddToRoleAsync(user, roleName);
 
-            await _userManager.AddToRoleAsync(user, "Korisnik");
-
+            await _context.SaveChangesAsync();
 
             var userResponse = _mapper.Map<Model.model.User>(user);
-
             return userResponse;
         }
+
+        public async Task<bool> AddUserImage(UserImageRequest request)
+        {
+            var user = await _context.Users.FindAsync(request.userId);
+
+            if (user == null)
+                throw new Exception("Korisnik nije pronađen.");
+
+            if (request.Image == null || request.Image.Length == 0)
+                throw new Exception("Slika nije validna.");
+
+            // Folder: wwwroot/users
+            var folderPath = Path.Combine("wwwroot", "images", "users");
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+
+            // Generiši ime slike
+            var extension = Path.GetExtension(request.Image.FileName);
+            var fileName = $"{Guid.NewGuid()}{extension}";
+            var filePath = Path.Combine(folderPath, fileName);
+
+            // Snimi na disk
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await request.Image.CopyToAsync(stream);
+            }
+
+            // Snimi u bazu
+            user.ImageUrl = fileName;
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public override async Task BeforeUpdateAsync(User entity, UserUpdateRequest request)
+        {
+            // da li se username mijenja?
+            if (!string.Equals(entity.UserName, request.Username, StringComparison.OrdinalIgnoreCase))
+            {
+                // reset security stamp → svi prethodni tokeni se automatski smatraju nevažećim
+                await _userManager.UpdateSecurityStampAsync(entity);
+
+                // ažuriraj Identity username polja
+                entity.UserName = request.Username;
+                entity.NormalizedUserName = request.Username.ToUpper();
+            }
+
+            // update ostalih polja normalno
+            entity.FirstName = request.FirstName;
+            entity.LastName = request.LastName;
+            entity.Email = request.Email;
+            entity.NormalizedEmail = request.Email?.ToUpper();
+            entity.PhoneNumber = request.PhoneNumber;
+            entity.DateBirth = request.DateBirth;
+
+            await base.BeforeUpdateAsync(entity, request);
+        }
+
 
 
         public async Task<UserLoginResponse?> AuthenticateAsync(UserLoginRequest request)
@@ -164,5 +250,79 @@ namespace eTravelAgencija.Services.Services
 
             return userResponse;
         }
+
+        public async Task<bool> UnblockUser(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null) return false;
+
+            user.isBlocked = false;
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> blockUser(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null) return false;
+
+            user.isBlocked = true;
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> DeleteUserImageAsync(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+
+            if (user == null)
+                throw new Exception("User not found.");
+
+            if (string.IsNullOrWhiteSpace(user.ImageUrl))
+                return true; // nema slike
+
+            var folderPath = Path.Combine("wwwroot", "images", "users");
+            var filePath = Path.Combine(folderPath, user.ImageUrl);
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath); // obriši iz foldera
+            }
+
+            // očisti u bazi
+            user.ImageUrl = "prazno.jpg";
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> CheckPasswordAsync(CheckPasswordRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(request.UserId.ToString());
+
+            if (user == null)
+                return false;
+
+            return await _userManager.CheckPasswordAsync(user, request.CurrentPassword);
+        }
+
+        public async Task<bool> UpdateNewPasswordAsync(UpdateNewPasswordRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(request.UserId.ToString());
+            if (user == null)
+                return false;
+
+            // generišemo reset token
+            var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            var result = await _userManager.ResetPasswordAsync(user, resetToken, request.NewPassword);
+
+            return result.Succeeded;
+        }
+
+
+
     }
 }

@@ -22,6 +22,20 @@ namespace eTravelAgencija.Services.Services
             _env = env;
         }
 
+        public override IQueryable<Database.WorkApplication> ApplyFilter(IQueryable<Database.WorkApplication> query, WorkApplicationSearchObject? search = null)
+        {
+            if(search?.personName != null)
+            {
+                var searchText = search.personName.ToLower();
+
+                query = query.Where(x =>
+                    ((x.User.FirstName ?? "").ToLower() + " " + (x.User.LastName ?? "").ToLower())
+                    .Contains(searchText)
+                );
+            }
+            return base.ApplyFilter(query, search);
+        }
+
         public override IQueryable<WorkApplication> AddInclude(IQueryable<WorkApplication> query, WorkApplicationSearchObject? search = null)
         {
             query = query.Include(u => u.User);

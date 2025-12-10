@@ -7,6 +7,7 @@ namespace eTravelAgencija.Model.SearchObjects
 {
     public class WorkApplicationSearchObject : BaseSearchObject
     {
+        public string? personName { get; set; }
         public int? UserId { get; set; }
     }
 }

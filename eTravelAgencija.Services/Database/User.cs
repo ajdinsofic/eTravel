@@ -11,9 +11,9 @@ namespace eTravelAgencija.Services.Database
         public string LastName { get; set; }
         public DateTime DateBirth {get; set;}
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public string MainImage {get; set;} 
         public DateTime? LastLoginAt { get; set; }
         public bool isBlocked { get; set; } = false;
+        public string ImageUrl {get; set;}  
         public ICollection<UserRole> UserRoles {get; set;} = new List<UserRole>();
         public ICollection<Reservation> UserReservations { get; set; } = new List<Reservation>();       
 

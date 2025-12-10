@@ -9,7 +9,6 @@ import '../config/api_config.dart';
 class OfferProvider extends BaseProvider<Offer> {
   OfferProvider() : super("Offer");
 
-  static const String baseUrl = "${ApiConfig.apiBase}/api/Offer";
 
   @override
   Offer fromJson(dynamic data) {

@@ -1,11 +1,12 @@
 using System.Linq;
 using AutoMapper;
+using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Interfaces;
 
 namespace eTravelAgencija.Services.Services
 {
-    public class UserRoleService : BaseService<Model.model.UserRole, UserRoleSearchObject, Database.UserRole>, IUserRoleService
+    public class UserRoleService : BaseCRUDService<Model.model.UserRole, UserRoleSearchObject, Database.UserRole, UserRoleUpsertRequest, UserRoleUpsertRequest>, IUserRoleService
     {
         public UserRoleService(eTravelAgencijaDbContext context, IMapper mapper): base(context,mapper)
         {

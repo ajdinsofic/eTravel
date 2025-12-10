@@ -9,9 +9,7 @@ namespace eTravelAgencija.Model.model
     {
         public int Id {get; set;}
         public int userId {get; set;}
-        public User user {get; set;}
         public int offerId {get; set;}
-        public Offer offer {get; set;}
         public string comment {get; set;}
         public int starRate { get; set; }
     }

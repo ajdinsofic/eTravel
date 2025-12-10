@@ -123,6 +123,37 @@ class _OfferWizardPopupState extends State<OfferWizardPopup> {
     );
   }
 
+  void _showUnsavedOfferWarning() {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text(
+          "Sačuvajte izmjene",
+          style: TextStyle(fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+        content: const Text(
+          "Ne možete mijenjati tab dok imate nesačuvane izmjene.\n"
+          "Prvo sačuvajte podatke",
+          textAlign: TextAlign.center,
+        ),
+        actions: [
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blueAccent,
+              foregroundColor: Colors.white,
+            ),
+            child: const Text("U redu"),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
   Future<bool> _confirmDeleteOffer(BuildContext context) async {
     return await showDialog(
       context: context,
@@ -292,65 +323,50 @@ class _OfferWizardPopupState extends State<OfferWizardPopup> {
   }
 
   Widget _tabButton(String key, String label) {
-    final bool selected = selectedTabControl == key;
+  final bool selected = selectedTabControl == key;
 
-    // 🔥 Ako postoje izmjene — blokiraj sve tabove osim "izbrisi"
-    final bool disabled = hasUnsavedChanges && key != "izbrisi";
+  return MouseRegion(
+    cursor: SystemMouseCursors.click,
+    child: GestureDetector(
+      onTap: () async {
+        // 1. Ako postoje nesačuvane izmjene → blokiraj i pokaži upozorenje
+        if (hasUnsavedChanges) {
+          _showUnsavedOfferWarning();
+          return;
+        }
 
-    return MouseRegion(
-      cursor:
-          disabled ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () async {
-          if (disabled) {
-            // 🔒 potpuno blokiran
-            return;
-          }
-
-          if (key == "izbrisi") {
-            final confirm = await _confirmDeleteOffer(context);
-            if (!confirm) return;
-
+        // 2. Ako je tab = IZBRISI → delete popup
+        if (key == "izbrisi") {
+          final confirm = await _confirmDeleteOffer(context);
+          if (confirm) {
             await _cleanupOfferData();
-            return;
+            if (context.mounted) Navigator.pop(context);
           }
+          return;
+        }
 
-          // OSTALI TABOVI
-          setState(() {
-            selectedTabControl = key;
+        // 3. Normalni tab switch
+        setState(() {
+          selectedTabControl = key;
+          isReadOnlyMode = (key == "detalji");
+        });
+      },
 
-            if (key == "detalji") {
-              isReadOnlyMode = true;
-            } else if (key == "uredi") {
-              isReadOnlyMode = false;
-            }
-          });
-        },
-
-        child: Opacity(
-          opacity: disabled ? 0.4 : 1.0, // vizuelno ugašeno
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6.0),
-            child: Text(
-              label,
-              style: TextStyle(
-                color:
-                    disabled
-                        ? Colors.grey.shade300
-                        : selected
-                        ? Colors.black
-                        : Colors.white,
-                decoration:
-                    disabled ? TextDecoration.lineThrough : TextDecoration.none,
-                fontSize: 17,
-                fontWeight: selected ? FontWeight.bold : FontWeight.w500,
-              ),
-            ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 6.0),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: selected ? Colors.black : Colors.white,
+            fontSize: 17,
+            fontWeight: selected ? FontWeight.bold : FontWeight.w500,
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   Widget _tabDivider() {
     return Padding(

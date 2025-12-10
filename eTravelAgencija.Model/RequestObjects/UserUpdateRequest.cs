@@ -1,9 +1,11 @@
+using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 
 namespace eTravelAgencija.Model.Requests
 {
-    public class UserUpsertRequest
+    public class UserUpdateRequest
     {
         [Required]
         [MaxLength(50)]
@@ -23,14 +25,11 @@ namespace eTravelAgencija.Model.Requests
         [RegularExpression(@"^(?=.*\d).{6,}$", ErrorMessage = "Username must contain at least one number.")]
         public string Username { get; set; } = string.Empty;
 
+        public DateTime DateBirth { get; set; }
+
         [Required]
         [RegularExpression(@"^\+[1-9]\d{1,14}$",
         ErrorMessage = "Phone number must be in international E.164 format, e.g. +38761234567")]
         public string? PhoneNumber { get; set; }
-
-        [Required]
-        [StringLength(10, MinimumLength = 6, ErrorMessage = "Username must be between 6 and 10 characters.")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,10}$", ErrorMessage = "Username must have at least 1 uppercase, 1 lowercase, 1 number, 1 special character, and be 6-10 characters long.")]
-        public string? Password { get; set; }
     }
 }

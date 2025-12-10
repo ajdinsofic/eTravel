@@ -37,6 +37,7 @@ Offer _$OfferFromJson(Map<String, dynamic> json) => Offer(
       (json['offerHotels'] as List<dynamic>)
           .map((e) => OfferHotel.fromJson(e as Map<String, dynamic>))
           .toList(),
+  totalCountOfReservations: (json['totalCountOfReservations'] as num).toInt(),
 );
 
 Map<String, dynamic> _$OfferToJson(Offer instance) => <String, dynamic>{
@@ -53,6 +54,7 @@ Map<String, dynamic> _$OfferToJson(Offer instance) => <String, dynamic>{
   'residenceTaxPerDay': instance.residenceTaxPerDay,
   'travelInsuranceTotal': instance.travelInsuranceTotal,
   'residenceTotal': instance.residenceTotal,
+  'totalCountOfReservations': instance.totalCountOfReservations,
   'offerImages': instance.offerImages.map((e) => e.toJson()).toList(),
   'offerPlanDays': instance.offerPlanDays.map((e) => e.toJson()).toList(),
   'offerHotels': instance.offerHotels.map((e) => e.toJson()).toList(),

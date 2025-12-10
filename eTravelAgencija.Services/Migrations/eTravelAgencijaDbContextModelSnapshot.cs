@@ -137,6 +137,280 @@ namespace eTravelAgencija.Services.Migrations
                     b.HasIndex("userId");
 
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            comment = "Predivno putovanje! Organizacija odlična, vodič fenomenalan.",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 4
+                        },
+                        new
+                        {
+                            Id = 2,
+                            comment = "Sve super osim hotela koji je mogao biti bolji.",
+                            offerId = 1,
+                            starRate = 4,
+                            userId = 5
+                        },
+                        new
+                        {
+                            Id = 3,
+                            comment = "Santorini je san! Svaka preporuka, ponovo bih išao.",
+                            offerId = 2,
+                            starRate = 5,
+                            userId = 6
+                        },
+                        new
+                        {
+                            Id = 4,
+                            comment = "Lijepo putovanje, ali dosta gužve.",
+                            offerId = 2,
+                            starRate = 4,
+                            userId = 7
+                        },
+                        new
+                        {
+                            Id = 5,
+                            comment = "Veoma interesantna tura, vodič je znao sve detalje.",
+                            offerId = 3,
+                            starRate = 5,
+                            userId = 8
+                        },
+                        new
+                        {
+                            Id = 6,
+                            comment = "Odlična cijena za ono što se dobije.",
+                            offerId = 3,
+                            starRate = 4,
+                            userId = 9
+                        },
+                        new
+                        {
+                            Id = 7,
+                            comment = "Barcelona je bila fantastična! Hotel blizu centra.",
+                            offerId = 4,
+                            starRate = 5,
+                            userId = 10
+                        },
+                        new
+                        {
+                            Id = 8,
+                            comment = "Predugo putovanje avionom, ali sve ostalo vrhunski.",
+                            offerId = 4,
+                            starRate = 4,
+                            userId = 11
+                        },
+                        new
+                        {
+                            Id = 9,
+                            comment = "Grad svjetlosti je ispunio sva očekivanja!",
+                            offerId = 5,
+                            starRate = 5,
+                            userId = 12
+                        },
+                        new
+                        {
+                            Id = 10,
+                            comment = "Skupo, ali vrijedilo je svakog dinara.",
+                            offerId = 5,
+                            starRate = 5,
+                            userId = 13
+                        },
+                        new
+                        {
+                            Id = 11,
+                            comment = "Mirno i ugodno putovanje, savršeno za vikend bijeg.",
+                            offerId = 7,
+                            starRate = 4,
+                            userId = 14
+                        },
+                        new
+                        {
+                            Id = 12,
+                            comment = "Sve je bilo dobro organizovano.",
+                            offerId = 7,
+                            starRate = 4,
+                            userId = 15
+                        },
+                        new
+                        {
+                            Id = 13,
+                            comment = "Dubai je nevjerovatno iskustvo! Top organizacija.",
+                            offerId = 10,
+                            starRate = 5,
+                            userId = 16
+                        },
+                        new
+                        {
+                            Id = 14,
+                            comment = "Hotel vrhunski, vodič odličan. Preporučujem!",
+                            offerId = 10,
+                            starRate = 5,
+                            userId = 17
+                        },
+                        new
+                        {
+                            Id = 15,
+                            comment = "Lijep grad, ali premalo vremena u slobodnoj zoni.",
+                            offerId = 12,
+                            starRate = 3,
+                            userId = 18
+                        },
+                        new
+                        {
+                            Id = 30,
+                            comment = "Uživao sam u svakom trenutku. Posebno mi se dopala posjeta galeriji Uffizi. Preporučujem!",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 6
+                        },
+                        new
+                        {
+                            Id = 40,
+                            comment = "Prelijep grad, ali je bilo dosta gužve. Vodič je bio odličan i puno nam je olakšao obilazak.",
+                            offerId = 1,
+                            starRate = 4,
+                            userId = 7
+                        },
+                        new
+                        {
+                            Id = 50,
+                            comment = "Firenca je idealna destinacija za ljubitelje historije i arhitekture. Sve pohvale eTravel timu!",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 8
+                        },
+                        new
+                        {
+                            Id = 60,
+                            comment = "Putovanje je bilo divno, ali mislim da je moglo trajati dan duže. Grad nudi previše toga da se vidi.",
+                            offerId = 1,
+                            starRate = 4,
+                            userId = 9
+                        },
+                        new
+                        {
+                            Id = 70,
+                            comment = "Odlična organizacija, lijep hotel i savršeno isplanirana tura. Definitivno ponovo putujem preko vas!",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 10
+                        },
+                        new
+                        {
+                            Id = 80,
+                            comment = "Predivna atmosfera u gradu. Najviše mi se dopao obilazak Duoma. Vrijedi svake marke!",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 11
+                        },
+                        new
+                        {
+                            Id = 90,
+                            comment = "Vrlo profesionalna agencija. Sve je bilo ispoštovano prema planu. Putovanje bez brige!",
+                            offerId = 1,
+                            starRate = 4,
+                            userId = 12
+                        },
+                        new
+                        {
+                            Id = 100,
+                            comment = "Iznad očekivanja! Hrana u Firenci je savršena, a vodič izuzetno ljubazan i informisan.",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 13
+                        },
+                        new
+                        {
+                            Id = 110,
+                            comment = "Sve je bilo odlično, ali raspored je bio malo pretrpan. Ipak, uživao sam u obilasku grada.",
+                            offerId = 1,
+                            starRate = 3,
+                            userId = 14
+                        },
+                        new
+                        {
+                            Id = 120,
+                            comment = "Najbolje putovanje do sada! Preporučujem svakome ko želi spoj kulture, hrane i dobre organizacije.",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 15
+                        },
+                        new
+                        {
+                            Id = 130,
+                            comment = "Bilo je super, ali mislim da bi bilo bolje da smo imali više slobodnog vremena za samostalno istraživanje.",
+                            offerId = 1,
+                            starRate = 4,
+                            userId = 16
+                        },
+                        new
+                        {
+                            Id = 140,
+                            comment = "Savršeno iskustvo! Firenca je čarobna, sve preporuke za ovaj aranžman.",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 17
+                        },
+                        new
+                        {
+                            Id = 150,
+                            comment = "Putovanje je prošlo bez ikakvih problema. Sve na vrijeme, sve tačno onako kako je opisano.",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 5
+                        },
+                        new
+                        {
+                            Id = 160,
+                            comment = "Moja druga posjeta Firenci, ali prvi put preko ove agencije. Organizacija vrhunska!",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 6
+                        },
+                        new
+                        {
+                            Id = 170,
+                            comment = "Uživala sam! Preporučila bih ovo putovanje svima koji žele opuštajuće i edukativno iskustvo.",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 7
+                        },
+                        new
+                        {
+                            Id = 180,
+                            comment = "Sve preporuke! Jedino što bih promijenio jeste dužina pauza tokom obilaska.",
+                            offerId = 1,
+                            starRate = 4,
+                            userId = 8
+                        },
+                        new
+                        {
+                            Id = 190,
+                            comment = "Perfektno putovanje, odličan vodič i fenomenalne lokacije. Firenca je nevjerovatna!",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 9
+                        },
+                        new
+                        {
+                            Id = 200,
+                            comment = "Sve je bilo super, ali smještaj bi mogao biti malo bliže centru grada.",
+                            offerId = 1,
+                            starRate = 4,
+                            userId = 10
+                        },
+                        new
+                        {
+                            Id = 210,
+                            comment = "Najbolje organizovan aranžman na kojem sam bila. Svaka čast eTravel timu!",
+                            offerId = 1,
+                            starRate = 5,
+                            userId = 11
+                        });
                 });
 
             modelBuilder.Entity("eTravelAgencija.Services.Database.Hotel", b =>
@@ -3317,6 +3591,10 @@ namespace eTravelAgencija.Services.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime?>("LastLoginAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -3329,10 +3607,6 @@ namespace eTravelAgencija.Services.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("MainImage")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -3380,18 +3654,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6912ed4b-52f3-4cf7-b2ca-c9a706d896cd",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 9, 901, DateTimeKind.Utc).AddTicks(4051),
+                            ConcurrencyStamp = "22bb85f1-10ec-46d6-967b-a11c8a1de08c",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 38, 583, DateTimeKind.Utc).AddTicks(5696),
                             DateBirth = new DateTime(1990, 5, 10, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "radnik@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Marko",
+                            ImageUrl = "test.jpg",
                             LastName = "Radnik",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "RADNIK@ETRAVEL.COM",
                             NormalizedUserName = "RADNIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKwiQR5dKgEt0mzcUXJ8t4VNfBsoGL82Tq9xZfC/tssb/78JrWo5yTjvztHyxhELxQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDo8n9Me3SVRjmJpDSX+JIXKr4cXwpYYCxweQJ83kMLSyWeb7NOKTgCocrJyUoRQRQ==",
                             PhoneNumber = "+38761111111",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3402,18 +3676,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "27c7be79-22c7-46bf-aba4-abeebc58603d",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 9, 982, DateTimeKind.Utc).AddTicks(9648),
+                            ConcurrencyStamp = "9c7b6175-c6b6-4244-9d4b-28d80ace3b09",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 38, 638, DateTimeKind.Utc).AddTicks(4095),
                             DateBirth = new DateTime(1985, 3, 20, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "direktor@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Amir",
+                            ImageUrl = "test.jpg",
                             LastName = "Direktor",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "DIREKTOR@ETRAVEL.COM",
                             NormalizedUserName = "DIREKTOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGJTrW6xqV9sQ8D7WbtJuVyRZIRETpugGnlxbFp6ueWRuAK0KDjvFkxIjldMV81IXQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP3fEk02JZ/cWDPqIdDGCF3SxetwmRQHYWaj5zaFtY0Rp929C9xSq1qYaL76H9LCgg==",
                             PhoneNumber = "+38762222222",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3424,18 +3698,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "06484dc4-427b-4c21-81cb-e86cef4a2ac3",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 63, DateTimeKind.Utc).AddTicks(1065),
+                            ConcurrencyStamp = "1f0d4a8c-b012-49ba-a3b4-dcdceab0bdae",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 38, 702, DateTimeKind.Utc).AddTicks(2547),
                             DateBirth = new DateTime(2002, 11, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "korisnik@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Ajdin",
+                            ImageUrl = "test.jpg",
                             LastName = "Korisnik",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "KORISNIK@ETRAVEL.COM",
                             NormalizedUserName = "KORISNIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEH9l6g/gF5iyxFfmOgU/1EcOZfbQZaKFArRJwV6ViN2s4ZajZwSykHR6NlpNJLmvbQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE/s55AiDNHyqoE6UpuXYRWJ1oDwMgdE0yWM5lnm/fDmxrWcqx4sL1uXU2HQYoPKVg==",
                             PhoneNumber = "+38763333333",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3446,18 +3720,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 5,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "45e46448-4393-4b62-9169-14e9a6411a75",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 134, DateTimeKind.Utc).AddTicks(6874),
+                            ConcurrencyStamp = "81239983-63e3-4330-a23c-959750011934",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 38, 772, DateTimeKind.Utc).AddTicks(1084),
                             DateBirth = new DateTime(1998, 4, 12, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "maja.petrovic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Maja",
+                            ImageUrl = "test.jpg",
                             LastName = "Petrović",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "MAJA.PETROVIC@ETRAVEL.COM",
                             NormalizedUserName = "MAJA.PETROVIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBWdChZcbt5G0CsTWnnUl/T/XhLQhfAn3iVg/hKDrlXwJRB3Fjnnj1Voy9y1GMyTRw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECSD2TKvg1eSsaN2g3MzvpPnFcNl4Bm9DISQX8l1+WUCWGrFhSVKqi8jwYzAft2Yrg==",
                             PhoneNumber = "+38761555111",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3468,18 +3742,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 6,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c0549c4f-0f1b-49ce-8695-8ca7ba529502",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 208, DateTimeKind.Utc).AddTicks(5347),
+                            ConcurrencyStamp = "9805bfa2-e128-433e-b1d4-2053a0fb5282",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 38, 844, DateTimeKind.Utc).AddTicks(8920),
                             DateBirth = new DateTime(1995, 9, 8, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "edin.mesic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Edin",
+                            ImageUrl = "test.jpg",
                             LastName = "Mešić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "EDIN.MESIC@ETRAVEL.COM",
                             NormalizedUserName = "EDIN.MESIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOwe4HP3LJjp4egqiRxMfNZqQZ6TQfHwax4G35bPzA+qKGXaymbRLYI88lFmp+Y7eA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEASlDkaHJJfn5pOoKaCn+vg630tm2lAKO2CHlujWw+3puzqBtMWDj6lsPus7e1eQLw==",
                             PhoneNumber = "+38761666123",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3490,18 +3764,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 7,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bd6b19d6-bba2-4ce2-a9b3-de2b94c711d4",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 296, DateTimeKind.Utc).AddTicks(6922),
+                            ConcurrencyStamp = "9892f200-c61c-4d9b-9339-bd5e21ce2d70",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 38, 925, DateTimeKind.Utc).AddTicks(2986),
                             DateBirth = new DateTime(2000, 1, 22, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "lana.kovac@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Lana",
+                            ImageUrl = "test.jpg",
                             LastName = "Kovač",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "LANA.KOVAC@ETRAVEL.COM",
                             NormalizedUserName = "LANA.KOVAC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEODTnElj3QfgNKppohMa313ek+TisfDG5v0WvdptrnDi33J+hw+oXN82lqpIrYTdYQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBF159iXug59A+/eYqAMGvf1fPoQAgUf9NQ56BOf7+1MOWgzFyWHLfNjsmJSxWguBw==",
                             PhoneNumber = "+38761777141",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3512,18 +3786,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 8,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0cac548b-0851-4e84-b05f-7b75506e92d9",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 378, DateTimeKind.Utc).AddTicks(3701),
+                            ConcurrencyStamp = "ebf356ee-aea6-4daa-a2ee-270f86bbe419",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 38, 993, DateTimeKind.Utc).AddTicks(2784),
                             DateBirth = new DateTime(1993, 6, 30, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "haris.becirovic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Haris",
+                            ImageUrl = "test.jpg",
                             LastName = "Bećirović",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "HARIS.BECIROVIC@ETRAVEL.COM",
                             NormalizedUserName = "HARIS.BECIROVIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBZFwaAnnFl2yklbfsI5NxTC6oiE129DNwvGv1NdFSPDKMvpWsAg58pmP0UdecoD2w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOSwi/nynd6iFR8t4fFfobS8PsBb5Oukyq2VzNDa1OCrfCKwAq6nPzzD6fLBV3V8hg==",
                             PhoneNumber = "+38761888222",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3534,18 +3808,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 9,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1e4ff7cf-f67c-43af-a69f-4bea8b4211ab",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 463, DateTimeKind.Utc).AddTicks(9241),
+                            ConcurrencyStamp = "450bb644-e5ce-4750-89ab-6007630fe09a",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 66, DateTimeKind.Utc).AddTicks(1263),
                             DateBirth = new DateTime(1999, 2, 14, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "amira.karic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Amira",
+                            ImageUrl = "test.jpg",
                             LastName = "Karić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "AMIRA.KARIC@ETRAVEL.COM",
                             NormalizedUserName = "AMIRA.KARIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDFYzzZIzcCK65SYc2x9pS66ytdMlinxvLGrV/KFkTawbUqXF3kFoImkGya/4gIqmg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPAdrNehXA1YW6NMCj8mekcPT8s9eLVeLQb0YU3hfJ1XbqBVkP8KXEyzAEmDQ1k2ow==",
                             PhoneNumber = "+38761999444",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3556,18 +3830,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 10,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2345616c-d63f-4f58-8433-2b07cbde0a5a",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 533, DateTimeKind.Utc).AddTicks(5735),
+                            ConcurrencyStamp = "1f341df6-a589-4afd-bb74-e0560d1c208c",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 165, DateTimeKind.Utc).AddTicks(4776),
                             DateBirth = new DateTime(1997, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "tarik.suljic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Tarik",
+                            ImageUrl = "test.jpg",
                             LastName = "Suljić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "TARIK.SULJIC@ETRAVEL.COM",
                             NormalizedUserName = "TARIK.SULJIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAECc3o8kzLD4ACYSfs1WYCGOdjm8/d4iQm81yiNF/7r+nOF3n6cE4YgmenRAJiE31NA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMgytAvU39wUjvGEYoDxWPOus78E+nucMTbyJprF6fFBOm0bUHJQ7tMfKQ9chX7wWQ==",
                             PhoneNumber = "+38762011223",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3578,18 +3852,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 11,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "43a030f4-cbd8-46a0-8028-2d4250e8d796",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 604, DateTimeKind.Utc).AddTicks(1712),
+                            ConcurrencyStamp = "e493ea9e-e0b8-4216-a904-2787a037431a",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 250, DateTimeKind.Utc).AddTicks(4074),
                             DateBirth = new DateTime(2001, 10, 11, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "selma.babic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Selma",
+                            ImageUrl = "test.jpg",
                             LastName = "Babić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "SELMA.BABIC@ETRAVEL.COM",
                             NormalizedUserName = "SELMA.BABIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJau59lvBxxVskm8CTSRNcLoVmlQCFdDXdoS570+GdPLxp7gwymaSfqSKQdEeg+Qgg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJmwwhoBNU7cgANOZpF2RqyCqrtrJoX6b+x/IXqYfaWetE7YP4lgBBTH/GC+IIZ4wA==",
                             PhoneNumber = "+38762044321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3600,18 +3874,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 12,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ea587dfc-4b7d-44ba-90f1-b88248379bed",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 669, DateTimeKind.Utc).AddTicks(4544),
+                            ConcurrencyStamp = "76885b7a-6cef-42cd-8e08-a2f247eda90f",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 318, DateTimeKind.Utc).AddTicks(9815),
                             DateBirth = new DateTime(1994, 12, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "nedim.ceric@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Nedim",
+                            ImageUrl = "test.jpg",
                             LastName = "Ćerić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "NEDIM.CERIC@ETRAVEL.COM",
                             NormalizedUserName = "NEDIM.CERIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAENEQp7B6C8vGeUT6OuKAjp7d4RHc+6prlKKeWUZ2qh/HvjUCIRSL7JDb0hneQMupQg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGnY3mIdRUSNAReZvvNCZ0o/vyr+luPc3Rl/69iGu1psLe6wpX29JlYBxfm+pDE+Cw==",
                             PhoneNumber = "+38762077311",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3622,18 +3896,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 13,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d2d953b3-7068-4aa0-bd1f-69536a8396d7",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 749, DateTimeKind.Utc).AddTicks(6343),
+                            ConcurrencyStamp = "19c8eccc-6025-4792-aff7-c4af2ac71e19",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 381, DateTimeKind.Utc).AddTicks(5118),
                             DateBirth = new DateTime(1996, 11, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "alma.vujic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Alma",
+                            ImageUrl = "test.jpg",
                             LastName = "Vujić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "ALMA.VUJIC@ETRAVEL.COM",
                             NormalizedUserName = "ALMA.VUJIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPahCqqrHYjyuw7jcVzrf76zq4dWsp/1s3JJfpOgADgW7TJuDUPD9Cme1LjDTXA08Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBJ8cUpFdNL2G0Jnt2nz+pdW6FSz7jtwe5tk70fz5iPi0b29pbPQeUEM34IbuCkaug==",
                             PhoneNumber = "+38762111333",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3644,18 +3918,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 14,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "53a1199d-8aef-4a31-a12a-4e94c4555c49",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 825, DateTimeKind.Utc).AddTicks(6880),
+                            ConcurrencyStamp = "01cddec0-675c-4e3e-b75a-a16ebc8f31bb",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 441, DateTimeKind.Utc).AddTicks(6605),
                             DateBirth = new DateTime(1992, 7, 4, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "mirza.drace@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Mirza",
+                            ImageUrl = "test.jpg",
                             LastName = "DračE",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "MIRZA.DRACE@ETRAVEL.COM",
                             NormalizedUserName = "MIRZA.DRACE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJB5cEyb0SH+Bm43QuMZgJFEcC2UDDY1VJPN1LOqX8W5H+bp2yrda8APKyVVTHw7aA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFdydWdjMLjIrNuQ9CbiTdpncjFpdHKZH7V4tvGshnvFuFfaGnkadi3ljp7U7TUzMQ==",
                             PhoneNumber = "+38762144555",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3666,18 +3940,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 15,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "91f064a8-2e25-47ac-afbb-bd7b119223f3",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 900, DateTimeKind.Utc).AddTicks(1971),
+                            ConcurrencyStamp = "531bb7d2-d6ca-44d5-ab9c-3eb366d9a544",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 499, DateTimeKind.Utc).AddTicks(2072),
                             DateBirth = new DateTime(2000, 6, 17, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "melisa.nuhanovic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Melisa",
+                            ImageUrl = "test.jpg",
                             LastName = "Nuhanović",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "MELISA.NUHANOVIC@ETRAVEL.COM",
                             NormalizedUserName = "MELISA.NUHANOVIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAECVqZZBvzJ8fHifDUqdVspmbesJ0vDGH03/nNBWkBtYHd0vUbaLzrFVnu9GsbW/wYg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE0iLKtkdw/goLsGXvaIO9GOVO3Nc0THwrAV/cnoL9Q5h7T6U5LNJ3b2ZqBoOYj6tg==",
                             PhoneNumber = "+38762200333",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3688,18 +3962,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 16,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "122892f0-7829-4320-b069-a730ae9311e8",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 10, 975, DateTimeKind.Utc).AddTicks(6201),
+                            ConcurrencyStamp = "11cc0fe7-dd10-47d1-bf3d-c6f6940f0ca7",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 559, DateTimeKind.Utc).AddTicks(3076),
                             DateBirth = new DateTime(1991, 3, 29, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "almin.kosuta@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Almin",
+                            ImageUrl = "test.jpg",
                             LastName = "Košuta",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "ALMIN.KOSUTA@ETRAVEL.COM",
                             NormalizedUserName = "ALMIN.KOSUTA",
-                            PasswordHash = "AQAAAAIAAYagAAAAELQjdSfOK19mbQkvB4oII11gguNkT12oESAzyIpc5ZvEo6j4OR7HpjxOFHj3bquq0g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFv8xy19W0vf8EdK2L7hMx5Q8UoF8lx4Xv7glvbs+5mhtdy7zbk861qs/qSkMSH0EA==",
                             PhoneNumber = "+38762255677",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3710,18 +3984,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 17,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "36c7cd54-c055-43cf-9761-5d2732f355a2",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 33, DateTimeKind.Utc).AddTicks(4724),
+                            ConcurrencyStamp = "f0a04d93-2752-4ea3-a147-4844aafe47ea",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 623, DateTimeKind.Utc).AddTicks(9704),
                             DateBirth = new DateTime(1998, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "dina.hodzic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Dina",
+                            ImageUrl = "test.jpg",
                             LastName = "Hodžić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "DINA.HODZIC@ETRAVEL.COM",
                             NormalizedUserName = "DINA.HODZIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAENmNRZ6KEoBfAgXOpyj12WNJaxUjUwHBhwooLZxY8dee1wRxLScIO7W14VbeAiEaCA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPqrB8zVuIMNCMijHey87iWj0PK+55jvPDDX2ZDAXdJMTJy47pzBax8fh5Cp9BJmyg==",
                             PhoneNumber = "+38762277991",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3732,18 +4006,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 18,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e9c4849e-5dbf-4dd7-93da-db1054d0d722",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 96, DateTimeKind.Utc).AddTicks(8297),
+                            ConcurrencyStamp = "c0f43a3f-a8e1-472f-84c5-0203bb454dfe",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 712, DateTimeKind.Utc).AddTicks(8124),
                             DateBirth = new DateTime(1997, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "alem.celik@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Alem",
+                            ImageUrl = "test.jpg",
                             LastName = "Čelik",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "ALEM.CELIK@ETRAVEL.COM",
                             NormalizedUserName = "ALEM.CELIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOG98SUebuocwt8ncxnhDsT/HuiuPcZr4Gwut9703Cp7nVjV2M98evxzNVWGwjuw/w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKUBJwirzCr6lNBFF7E27fJiGyD8Zaa5UNsiQDhJll70vTrqlE4NIWyImbvb6A7Hlg==",
                             PhoneNumber = "+38762300990",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3754,18 +4028,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 19,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ace84c7c-138d-481f-b6ee-9a82d218da97",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 157, DateTimeKind.Utc).AddTicks(962),
+                            ConcurrencyStamp = "8b8a44ab-3140-4bbc-b1c7-7275458e92a0",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 770, DateTimeKind.Utc).AddTicks(6992),
                             DateBirth = new DateTime(2001, 1, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "lejla.avdic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Lejla",
+                            ImageUrl = "test.jpg",
                             LastName = "Avdić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "LEJLA.AVDIC@ETRAVEL.COM",
                             NormalizedUserName = "LEJLA.AVDIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAELWc8D+Y+EJelguN34P2ah4SdeOV27HyBJHZGoZqa5EfPC3k9sf6GFH+bv6zNC8Wzg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMaxAdIUYeBQzyzk1Fzst+hCtA5lFdgsAVst9YAG7fJSLDnHBSkBex3fhjenoBfjCw==",
                             PhoneNumber = "+38762355123",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3776,18 +4050,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 20,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5a8e1ba9-a39c-4ed8-a33a-3f7604380910",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 218, DateTimeKind.Utc).AddTicks(4561),
+                            ConcurrencyStamp = "eebc4899-ffd7-45ff-b6a9-e291b5b5c1b6",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 829, DateTimeKind.Utc).AddTicks(5519),
                             DateBirth = new DateTime(1999, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "adnan.pasalic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Adnan",
+                            ImageUrl = "test.jpg",
                             LastName = "Pašalić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "ADNAN.PASALIC@ETRAVEL.COM",
                             NormalizedUserName = "ADNAN.PASALIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPu/eKqoGDWvvnGan7JjWqLBUbRKSVdfEzgSHI2HpVhUXznOLlsOzQZczSBU7jWJcw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJNyR8NrRpEJCTJl2WQP1AvdOhbe5Ytl+oWuN8Uy8NnFVkbKTBKPEMvtYX9wu56nfQ==",
                             PhoneNumber = "+38762388321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3798,18 +4072,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 21,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "028c9b6a-6134-4329-b71b-16b48f022a1f",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 279, DateTimeKind.Utc).AddTicks(9951),
+                            ConcurrencyStamp = "e337b9a2-c638-4435-ae0d-64e22264d155",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 893, DateTimeKind.Utc).AddTicks(6985),
                             DateBirth = new DateTime(1996, 4, 14, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "inez.kantic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Inez",
+                            ImageUrl = "test.jpg",
                             LastName = "Kantić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "INEZ.KANTIC@ETRAVEL.COM",
                             NormalizedUserName = "INEZ.KANTIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAENSfyrvZY3tkKrVnGSLq2D4rZNtvV5jUu1iz1EmJwQYYFdwFc6CkAljBXLfHMw5SgA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE3Ilh8OkhNRlZArLo7fSPvLPJ6duaglp/yGVLvlgRpNQYwjgB4BVrNzuJx3mIJVpQ==",
                             PhoneNumber = "+38762444123",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3820,18 +4094,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 22,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "101c6643-37a1-4b24-844a-5979f70517b5",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 341, DateTimeKind.Utc).AddTicks(4877),
+                            ConcurrencyStamp = "3fac10fe-e77b-4746-b85f-0d3c970c5519",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 39, 971, DateTimeKind.Utc).AddTicks(6146),
                             DateBirth = new DateTime(1993, 11, 19, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "amir.halilovic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Amir",
+                            ImageUrl = "test.jpg",
                             LastName = "Halilović",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "AMIR.HALILOVIC@ETRAVEL.COM",
                             NormalizedUserName = "AMIR.HALILOVIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAENH9GDZ8pJIhCFHvn+jFQFWc0arAKNbuU2bBHRy8kcOGdgbLLTX/QkGQ9JLcXYLRiA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPmkK089MzuDG5y/uIHLLzg53LBf7lWKk6qohRiFPuPrfyUg6xh0XeLGH0c5qZYIxw==",
                             PhoneNumber = "+38762477331",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3842,18 +4116,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 23,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b410b079-b50a-4d46-8d3f-92ecc38580d6",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 403, DateTimeKind.Utc).AddTicks(2123),
+                            ConcurrencyStamp = "beb9d896-278f-47a5-b796-e55719f1162c",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 51, DateTimeKind.Utc).AddTicks(4041),
                             DateBirth = new DateTime(2002, 12, 21, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "lamija.kreso@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Lamija",
+                            ImageUrl = "test.jpg",
                             LastName = "Krešo",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "LAMIJA.KRESO@ETRAVEL.COM",
                             NormalizedUserName = "LAMIJA.KRESO",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOVlAqgzHtCC5P9+GI9KlcKwLe1V21iIifCUySokx3nyz6JTWljedA+mKOvSiBl5FA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECh4ZmUSQDwgA8RGeJeQP6722ZB5qiKY4tCFq0qVKqKD59RLOSZ6cfjJNIjSYfjALw==",
                             PhoneNumber = "+38762555991",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3864,18 +4138,18 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 24,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6bdcf072-b290-491d-b9b3-7c3e81bf9bf6",
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 464, DateTimeKind.Utc).AddTicks(4024),
+                            ConcurrencyStamp = "08894509-9618-439a-8130-6b3e136f8d5d",
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 117, DateTimeKind.Utc).AddTicks(6871),
                             DateBirth = new DateTime(1998, 7, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "omer.smajic@etravel.com",
                             EmailConfirmed = true,
                             FirstName = "Omer",
+                            ImageUrl = "test.jpg",
                             LastName = "Smajić",
                             LockoutEnabled = false,
-                            MainImage = "test",
                             NormalizedEmail = "OMER.SMAJIC@ETRAVEL.COM",
                             NormalizedUserName = "OMER.SMAJIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFzj+g6uv135t5fhirA60GTGCmpj6sgUejFzXidiiMI9Yb138/nVvdW22xcZwWodCg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAjNiknkU/7g9XYfvAJNBC5yaUaSUI91o0Tlpk3e6p99j28gaC7K6RHRLDtpH3+iVQ==",
                             PhoneNumber = "+38762666112",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3913,7 +4187,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 1,
                             RoleId = 2,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(208),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4018),
                             Description = "",
                             IsActive = true
                         },
@@ -3921,7 +4195,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 2,
                             RoleId = 3,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(225),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4040),
                             Description = "",
                             IsActive = true
                         },
@@ -3929,7 +4203,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 4,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(226),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4041),
                             Description = "",
                             IsActive = true
                         },
@@ -3937,7 +4211,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 5,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(290),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4042),
                             Description = "",
                             IsActive = true
                         },
@@ -3945,7 +4219,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 6,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(291),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4109),
                             Description = "",
                             IsActive = true
                         },
@@ -3953,7 +4227,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 7,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(291),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4110),
                             Description = "",
                             IsActive = true
                         },
@@ -3961,7 +4235,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 8,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(292),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4111),
                             Description = "",
                             IsActive = true
                         },
@@ -3969,7 +4243,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 9,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(293),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4112),
                             Description = "",
                             IsActive = true
                         },
@@ -3977,7 +4251,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 10,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(294),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4113),
                             Description = "",
                             IsActive = true
                         },
@@ -3985,7 +4259,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 11,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(294),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4114),
                             Description = "",
                             IsActive = true
                         },
@@ -3993,7 +4267,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 12,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(295),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4115),
                             Description = "",
                             IsActive = true
                         },
@@ -4001,7 +4275,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 13,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(296),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4116),
                             Description = "",
                             IsActive = true
                         },
@@ -4009,7 +4283,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 14,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(296),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4116),
                             Description = "",
                             IsActive = true
                         },
@@ -4017,7 +4291,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 15,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(297),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4117),
                             Description = "",
                             IsActive = true
                         },
@@ -4025,7 +4299,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 16,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(298),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4118),
                             Description = "",
                             IsActive = true
                         },
@@ -4033,7 +4307,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 17,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(298),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4119),
                             Description = "",
                             IsActive = true
                         },
@@ -4041,7 +4315,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 18,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(299),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4119),
                             Description = "",
                             IsActive = true
                         },
@@ -4049,7 +4323,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 19,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(300),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4120),
                             Description = "",
                             IsActive = true
                         },
@@ -4057,7 +4331,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 20,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(301),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4121),
                             Description = "",
                             IsActive = true
                         },
@@ -4065,7 +4339,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 21,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(301),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4122),
                             Description = "",
                             IsActive = true
                         },
@@ -4073,7 +4347,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 22,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(302),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4122),
                             Description = "",
                             IsActive = true
                         },
@@ -4081,7 +4355,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 23,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(303),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4123),
                             Description = "",
                             IsActive = true
                         },
@@ -4089,7 +4363,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 24,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(303),
+                            CreatedAt = new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4124),
                             Description = "",
                             IsActive = true
                         });
@@ -4164,11 +4438,185 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("letter")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("WorkApplications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AppliedAt = new DateTime(2025, 12, 7, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(259),
+                            CvFileName = "test.pdf",
+                            UserId = 4,
+                            letter = "Smisleno me motiviše vaša moderna organizacija i želja da radim na projektima koji imaju stvarni utjecaj. Vjerujem da mogu doprinijeti svojim radnim navikama i voljom za učenjem."
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AppliedAt = new DateTime(2025, 12, 5, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(277),
+                            CvFileName = "test.pdf",
+                            UserId = 5,
+                            letter = "Privukla me prilika da radim u dinamičnom okruženju gdje se cijeni timski rad i napredak. Želim biti dio profesionalne i pozitivne radne zajednice."
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AppliedAt = new DateTime(2025, 12, 2, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(282),
+                            CvFileName = "test.pdf",
+                            UserId = 6,
+                            letter = "Vaša kompanija je prepoznata po kvalitetnom radu i inovacijama. Smatram da mogu mnogo naučiti i istovremeno doprinijeti svojim iskustvom i posvećenošću."
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AppliedAt = new DateTime(2025, 11, 29, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(283),
+                            CvFileName = "test.pdf",
+                            UserId = 7,
+                            letter = "Želim raditi u sredini koja podstiče razvoj i podržava kreativnost. Vaša firma upravo to nudi, i zato bih voljela biti dio vašeg tima."
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AppliedAt = new DateTime(2025, 11, 27, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(284),
+                            CvFileName = "test.pdf",
+                            UserId = 8,
+                            letter = "Vašu kompaniju vidim kao mjesto gdje se talenat i rad cijene. Motivisan sam da se usavršavam i doprinosim vašem rastu."
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AppliedAt = new DateTime(2025, 11, 25, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(286),
+                            CvFileName = "test.pdf",
+                            UserId = 9,
+                            letter = "Tražim priliku da radim u profesionalnoj sredini gdje mogu napredovati. Posebno me privlači vaša organizacijska kultura i pristup radu."
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AppliedAt = new DateTime(2025, 11, 22, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(287),
+                            CvFileName = "test.pdf",
+                            UserId = 10,
+                            letter = "Motiviše me želja da učim nove tehnologije i doprinesem timskim rezultatima. Vjerujem da bih se dobro uklopio u vaše okruženje."
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AppliedAt = new DateTime(2025, 11, 21, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(288),
+                            CvFileName = "test.pdf",
+                            UserId = 11,
+                            letter = "Smatram da je vaša kompanija idealno mjesto za profesionalni rast. Cijenim vaš pristup organizaciji i inovativnosti."
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AppliedAt = new DateTime(2025, 11, 19, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(289),
+                            CvFileName = "test.pdf",
+                            UserId = 12,
+                            letter = "Zainteresovana sam za rad kod vas jer nudite stabilno i ugodno radno okruženje u kojem se prepoznaje trud i zalaganje."
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AppliedAt = new DateTime(2025, 11, 17, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(290),
+                            CvFileName = "test.pdf",
+                            UserId = 13,
+                            letter = "Želim biti dio tima koji teži kvaliteti i rastu. Vaša firma mi djeluje kao pravo mjesto za to."
+                        },
+                        new
+                        {
+                            Id = 11,
+                            AppliedAt = new DateTime(2025, 11, 16, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(293),
+                            CvFileName = "test.pdf",
+                            UserId = 14,
+                            letter = "Motivisan sam mogućnošću da radim u kompaniji koja cijeni profesionalizam i timski rad. Spreman sam da dam svoj maksimum."
+                        },
+                        new
+                        {
+                            Id = 12,
+                            AppliedAt = new DateTime(2025, 11, 15, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(294),
+                            CvFileName = "test.pdf",
+                            UserId = 15,
+                            letter = "Privlači me prilika da radim sa stručnim i kreativnim timom. Vaš način rada me posebno inspiriše."
+                        },
+                        new
+                        {
+                            Id = 13,
+                            AppliedAt = new DateTime(2025, 11, 14, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(295),
+                            CvFileName = "test.pdf",
+                            UserId = 16,
+                            letter = "Vaša kompanija nudi odlične mogućnosti za rast i razvoj, što je glavni razlog moje prijave."
+                        },
+                        new
+                        {
+                            Id = 14,
+                            AppliedAt = new DateTime(2025, 11, 13, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(297),
+                            CvFileName = "test.pdf",
+                            UserId = 17,
+                            letter = "Motivisan sam da učim, radim i napredujem. Vjerujem da bih bio odličan dodatak vašem timu."
+                        },
+                        new
+                        {
+                            Id = 15,
+                            AppliedAt = new DateTime(2025, 11, 12, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(298),
+                            CvFileName = "test.pdf",
+                            UserId = 18,
+                            letter = "Želim raditi u okruženju gdje se cijeni inicijativa, kreativnost i kvalitetan rad. Vaša firma ispunjava sve te kriterije."
+                        },
+                        new
+                        {
+                            Id = 16,
+                            AppliedAt = new DateTime(2025, 11, 11, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(299),
+                            CvFileName = "test.pdf",
+                            UserId = 19,
+                            letter = "Vidim veliku vrijednost u vašim projektima i načinu rada. Želim biti dio tima koji radi sa strašću."
+                        },
+                        new
+                        {
+                            Id = 17,
+                            AppliedAt = new DateTime(2025, 11, 10, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(300),
+                            CvFileName = "test.pdf",
+                            UserId = 20,
+                            letter = "Prijavljujem se jer vjerujem da bih u vašoj kompaniji mogao postići veliki profesionalni iskorak."
+                        },
+                        new
+                        {
+                            Id = 18,
+                            AppliedAt = new DateTime(2025, 11, 9, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(301),
+                            CvFileName = "test.pdf",
+                            UserId = 21,
+                            letter = "Motiviše me želja da radim u stabilnoj i ozbiljnoj organizaciji koja nudi perspektivu i razvoj."
+                        },
+                        new
+                        {
+                            Id = 19,
+                            AppliedAt = new DateTime(2025, 11, 8, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(302),
+                            CvFileName = "test.pdf",
+                            UserId = 22,
+                            letter = "Vaša kompanija mi djeluje kao pravo mjesto da pokažem svoje vještine i dodatno ih unaprijedim."
+                        },
+                        new
+                        {
+                            Id = 20,
+                            AppliedAt = new DateTime(2025, 11, 7, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(306),
+                            CvFileName = "test.pdf",
+                            UserId = 23,
+                            letter = "Privlači me vaš profesionalan pristup, moderna organizacija i atmosfera koja podstiče učenje."
+                        },
+                        new
+                        {
+                            Id = 21,
+                            AppliedAt = new DateTime(2025, 11, 6, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(307),
+                            CvFileName = "test.pdf",
+                            UserId = 24,
+                            letter = "Motivisana sam da radim u vašoj firmi jer cijenim vaše vrijednosti i način poslovanja. Vjerujem da bih se idealno uklopila."
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
