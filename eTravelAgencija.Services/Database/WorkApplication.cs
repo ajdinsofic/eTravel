@@ -19,6 +19,10 @@ namespace eTravelAgencija.Services.Database
         public string CvFileName { get; set; }
     
         public DateTime AppliedAt { get; set; }
+
+        public string letter { get; set; }
+
+
     }
 
 }

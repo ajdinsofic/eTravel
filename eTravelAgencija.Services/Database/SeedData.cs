@@ -80,7 +80,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761111111",
                     isBlocked = false,
                     DateBirth = new DateTime(1990, 5, 10, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Radnik123!")
                 },
@@ -97,7 +97,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762222222",
                     isBlocked = false,
                     DateBirth = new DateTime(1985, 3, 20, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Direktor123!")
                 },
@@ -114,7 +114,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38763333333",
                     isBlocked = false,
                     DateBirth = new DateTime(2002, 11, 5, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -132,7 +132,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761555111",
                     isBlocked = false,
                     DateBirth = new DateTime(1998, 4, 12, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -150,7 +150,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761666123",
                     isBlocked = false,
                     DateBirth = new DateTime(1995, 9, 8, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -168,7 +168,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761777141",
                     isBlocked = false,
                     DateBirth = new DateTime(2000, 1, 22, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -186,7 +186,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761888222",
                     isBlocked = false,
                     DateBirth = new DateTime(1993, 6, 30, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -204,7 +204,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761999444",
                     isBlocked = false,
                     DateBirth = new DateTime(1999, 2, 14, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -222,7 +222,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762011223",
                     isBlocked = false,
                     DateBirth = new DateTime(1997, 5, 19, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -240,7 +240,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762044321",
                     isBlocked = false,
                     DateBirth = new DateTime(2001, 10, 11, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -258,7 +258,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762077311",
                     isBlocked = false,
                     DateBirth = new DateTime(1994, 12, 2, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -276,7 +276,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762111333",
                     isBlocked = false,
                     DateBirth = new DateTime(1996, 11, 9, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -294,7 +294,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762144555",
                     isBlocked = false,
                     DateBirth = new DateTime(1992, 7, 4, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -312,7 +312,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762200333",
                     isBlocked = false,
                     DateBirth = new DateTime(2000, 6, 17, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -330,7 +330,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762255677",
                     isBlocked = false,
                     DateBirth = new DateTime(1991, 3, 29, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -348,7 +348,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762277991",
                     isBlocked = false,
                     DateBirth = new DateTime(1998, 8, 27, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -366,7 +366,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762300990",
                     isBlocked = false,
                     DateBirth = new DateTime(1997, 2, 8, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -384,7 +384,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762355123",
                     isBlocked = false,
                     DateBirth = new DateTime(2001, 1, 5, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -402,7 +402,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762388321",
                     isBlocked = false,
                     DateBirth = new DateTime(1999, 9, 3, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -420,7 +420,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762444123",
                     isBlocked = false,
                     DateBirth = new DateTime(1996, 4, 14, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -438,7 +438,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762477331",
                     isBlocked = false,
                     DateBirth = new DateTime(1993, 11, 19, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -456,7 +456,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762555991",
                     isBlocked = false,
                     DateBirth = new DateTime(2002, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -474,7 +474,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762666112",
                     isBlocked = false,
                     DateBirth = new DateTime(1998, 7, 1, 0, 0, 0, DateTimeKind.Utc),
-                    MainImage = "test",
+                    ImageUrl = "test.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 }
@@ -486,7 +486,7 @@ namespace eTravelAgencija.Services.Database.Seed
             builder.Entity<UserRole>().HasData(
                 new UserRole { UserId = 1, RoleId = 2 }, // radnik → Radnik
                 new UserRole { UserId = 2, RoleId = 3 }, // direktor → Direktor
-                // KORISNICI (Svi ostali)
+                                                         // KORISNICI (Svi ostali)
                 new UserRole { UserId = 4, RoleId = 1 },
                 new UserRole { UserId = 5, RoleId = 1 },
                 new UserRole { UserId = 6, RoleId = 1 },
@@ -970,7 +970,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     new HotelImages { Id = hid++, HotelId = hotelId, ImageUrl = $"hotel{hotelId}_1.jpg", IsMain = false },
                     new HotelImages { Id = hid++, HotelId = hotelId, ImageUrl = $"hotel{hotelId}_2.jpg", IsMain = false },
                     new HotelImages { Id = hid++, HotelId = hotelId, ImageUrl = $"hotel{hotelId}_3.jpg", IsMain = false }
-                    
+
 
                 );
             }
@@ -1569,6 +1569,476 @@ new Payment
                     IsConfirmed = true
                 }
             );
+
+            builder.Entity<Comment>().HasData(
+            new Comment
+            {
+                Id = 1,
+                userId = 4,      // Ajdin
+                offerId = 1,     // Firenca
+                comment = "Predivno putovanje! Organizacija odlična, vodič fenomenalan.",
+                starRate = 5
+            },
+            new Comment
+            {
+                Id = 2,
+                userId = 5,
+                offerId = 1,
+                comment = "Sve super osim hotela koji je mogao biti bolji.",
+                starRate = 4
+            },
+            new Comment
+            {
+                Id = 3,
+                userId = 6,
+                offerId = 2,     // Santorini
+                comment = "Santorini je san! Svaka preporuka, ponovo bih išao.",
+                starRate = 5
+            },
+            new Comment
+            {
+                Id = 4,
+                userId = 7,
+                offerId = 2,
+                comment = "Lijepo putovanje, ali dosta gužve.",
+                starRate = 4
+            },
+            new Comment
+            {
+                Id = 5,
+                userId = 8,
+                offerId = 3,     // Istanbul
+                comment = "Veoma interesantna tura, vodič je znao sve detalje.",
+                starRate = 5
+            },
+            new Comment
+            {
+                Id = 6,
+                userId = 9,
+                offerId = 3,
+                comment = "Odlična cijena za ono što se dobije.",
+                starRate = 4
+            },
+            new Comment
+            {
+                Id = 7,
+                userId = 10,
+                offerId = 4,     // Barcelona
+                comment = "Barcelona je bila fantastična! Hotel blizu centra.",
+                starRate = 5
+            },
+            new Comment
+            {
+                Id = 8,
+                userId = 11,
+                offerId = 4,
+                comment = "Predugo putovanje avionom, ali sve ostalo vrhunski.",
+                starRate = 4
+            },
+            new Comment
+            {
+                Id = 9,
+                userId = 12,
+                offerId = 5,     // Pariz
+                comment = "Grad svjetlosti je ispunio sva očekivanja!",
+                starRate = 5
+            },
+            new Comment
+            {
+                Id = 10,
+                userId = 13,
+                offerId = 5,
+                comment = "Skupo, ali vrijedilo je svakog dinara.",
+                starRate = 5
+            },
+            new Comment
+            {
+                Id = 11,
+                userId = 14,
+                offerId = 7,     // Beč
+                comment = "Mirno i ugodno putovanje, savršeno za vikend bijeg.",
+                starRate = 4
+            },
+            new Comment
+            {
+                Id = 12,
+                userId = 15,
+                offerId = 7,
+                comment = "Sve je bilo dobro organizovano.",
+                starRate = 4
+            },
+            new Comment
+            {
+                Id = 13,
+                userId = 16,
+                offerId = 10,    // Dubai
+                comment = "Dubai je nevjerovatno iskustvo! Top organizacija.",
+                starRate = 5
+            },
+            new Comment
+            {
+                Id = 14,
+                userId = 17,
+                offerId = 10,
+                comment = "Hotel vrhunski, vodič odličan. Preporučujem!",
+                starRate = 5
+            },
+            new Comment
+            {
+                Id = 15,
+                userId = 18,
+                offerId = 12,    // Budimpešta
+                comment = "Lijep grad, ali premalo vremena u slobodnoj zoni.",
+                starRate = 3
+            },
+
+new Comment
+{
+    Id = 30,
+    userId = 6, // Edin
+    offerId = 1,
+    comment = "Uživao sam u svakom trenutku. Posebno mi se dopala posjeta galeriji Uffizi. Preporučujem!",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 40,
+    userId = 7, // Lana
+    offerId = 1,
+    comment = "Prelijep grad, ali je bilo dosta gužve. Vodič je bio odličan i puno nam je olakšao obilazak.",
+    starRate = 4
+},
+
+new Comment
+{
+    Id = 50,
+    userId = 8, // Haris
+    offerId = 1,
+    comment = "Firenca je idealna destinacija za ljubitelje historije i arhitekture. Sve pohvale eTravel timu!",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 60,
+    userId = 9, // Amira
+    offerId = 1,
+    comment = "Putovanje je bilo divno, ali mislim da je moglo trajati dan duže. Grad nudi previše toga da se vidi.",
+    starRate = 4
+},
+
+new Comment
+{
+    Id = 70,
+    userId = 10, // Tarik
+    offerId = 1,
+    comment = "Odlična organizacija, lijep hotel i savršeno isplanirana tura. Definitivno ponovo putujem preko vas!",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 80,
+    userId = 11, // Selma
+    offerId = 1,
+    comment = "Predivna atmosfera u gradu. Najviše mi se dopao obilazak Duoma. Vrijedi svake marke!",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 90,
+    userId = 12, // Nedim
+    offerId = 1,
+    comment = "Vrlo profesionalna agencija. Sve je bilo ispoštovano prema planu. Putovanje bez brige!",
+    starRate = 4
+},
+
+new Comment
+{
+    Id = 100,
+    userId = 13, // Alma
+    offerId = 1,
+    comment = "Iznad očekivanja! Hrana u Firenci je savršena, a vodič izuzetno ljubazan i informisan.",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 110,
+    userId = 14, // Mirza
+    offerId = 1,
+    comment = "Sve je bilo odlično, ali raspored je bio malo pretrpan. Ipak, uživao sam u obilasku grada.",
+    starRate = 3
+},
+
+new Comment
+{
+    Id = 120,
+    userId = 15, // Melisa
+    offerId = 1,
+    comment = "Najbolje putovanje do sada! Preporučujem svakome ko želi spoj kulture, hrane i dobre organizacije.",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 130,
+    userId = 16, // Almin
+    offerId = 1,
+    comment = "Bilo je super, ali mislim da bi bilo bolje da smo imali više slobodnog vremena za samostalno istraživanje.",
+    starRate = 4
+},
+
+new Comment
+{
+    Id = 140,
+    userId = 17, // Dina
+    offerId = 1,
+    comment = "Savršeno iskustvo! Firenca je čarobna, sve preporuke za ovaj aranžman.",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 150,
+    userId = 5,
+    offerId = 1,
+    comment = "Putovanje je prošlo bez ikakvih problema. Sve na vrijeme, sve tačno onako kako je opisano.",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 160,
+    userId = 6,
+    offerId = 1,
+    comment = "Moja druga posjeta Firenci, ali prvi put preko ove agencije. Organizacija vrhunska!",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 170,
+    userId = 7,
+    offerId = 1,
+    comment = "Uživala sam! Preporučila bih ovo putovanje svima koji žele opuštajuće i edukativno iskustvo.",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 180,
+    userId = 8,
+    offerId = 1,
+    comment = "Sve preporuke! Jedino što bih promijenio jeste dužina pauza tokom obilaska.",
+    starRate = 4
+},
+
+new Comment
+{
+    Id = 190,
+    userId = 9,
+    offerId = 1,
+    comment = "Perfektno putovanje, odličan vodič i fenomenalne lokacije. Firenca je nevjerovatna!",
+    starRate = 5
+},
+
+new Comment
+{
+    Id = 200,
+    userId = 10,
+    offerId = 1,
+    comment = "Sve je bilo super, ali smještaj bi mogao biti malo bliže centru grada.",
+    starRate = 4
+},
+
+new Comment
+{
+    Id = 210,
+    userId = 11,
+    offerId = 1,
+    comment = "Najbolje organizovan aranžman na kojem sam bila. Svaka čast eTravel timu!",
+    starRate = 5
+}
+
+         );
+
+            builder.Entity<WorkApplication>().HasData(
+    new WorkApplication
+    {
+        Id = 1,
+        UserId = 4,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-2),
+        letter = "Smisleno me motiviše vaša moderna organizacija i želja da radim na projektima koji imaju stvarni utjecaj. Vjerujem da mogu doprinijeti svojim radnim navikama i voljom za učenjem."
+    },
+    new WorkApplication
+    {
+        Id = 2,
+        UserId = 5,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-4),
+        letter = "Privukla me prilika da radim u dinamičnom okruženju gdje se cijeni timski rad i napredak. Želim biti dio profesionalne i pozitivne radne zajednice."
+    },
+    new WorkApplication
+    {
+        Id = 3,
+        UserId = 6,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-7),
+        letter = "Vaša kompanija je prepoznata po kvalitetnom radu i inovacijama. Smatram da mogu mnogo naučiti i istovremeno doprinijeti svojim iskustvom i posvećenošću."
+    },
+    new WorkApplication
+    {
+        Id = 4,
+        UserId = 7,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-10),
+        letter = "Želim raditi u sredini koja podstiče razvoj i podržava kreativnost. Vaša firma upravo to nudi, i zato bih voljela biti dio vašeg tima."
+    },
+    new WorkApplication
+    {
+        Id = 5,
+        UserId = 8,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-12),
+        letter = "Vašu kompaniju vidim kao mjesto gdje se talenat i rad cijene. Motivisan sam da se usavršavam i doprinosim vašem rastu."
+    },
+    new WorkApplication
+    {
+        Id = 6,
+        UserId = 9,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-14),
+        letter = "Tražim priliku da radim u profesionalnoj sredini gdje mogu napredovati. Posebno me privlači vaša organizacijska kultura i pristup radu."
+    },
+    new WorkApplication
+    {
+        Id = 7,
+        UserId = 10,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-17),
+        letter = "Motiviše me želja da učim nove tehnologije i doprinesem timskim rezultatima. Vjerujem da bih se dobro uklopio u vaše okruženje."
+    },
+    new WorkApplication
+    {
+        Id = 8,
+        UserId = 11,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-18),
+        letter = "Smatram da je vaša kompanija idealno mjesto za profesionalni rast. Cijenim vaš pristup organizaciji i inovativnosti."
+    },
+    new WorkApplication
+    {
+        Id = 9,
+        UserId = 12,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-20),
+        letter = "Zainteresovana sam za rad kod vas jer nudite stabilno i ugodno radno okruženje u kojem se prepoznaje trud i zalaganje."
+    },
+    new WorkApplication
+    {
+        Id = 10,
+        UserId = 13,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-22),
+        letter = "Želim biti dio tima koji teži kvaliteti i rastu. Vaša firma mi djeluje kao pravo mjesto za to."
+    },
+    new WorkApplication
+    {
+        Id = 11,
+        UserId = 14,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-23),
+        letter = "Motivisan sam mogućnošću da radim u kompaniji koja cijeni profesionalizam i timski rad. Spreman sam da dam svoj maksimum."
+    },
+    new WorkApplication
+    {
+        Id = 12,
+        UserId = 15,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-24),
+        letter = "Privlači me prilika da radim sa stručnim i kreativnim timom. Vaš način rada me posebno inspiriše."
+    },
+    new WorkApplication
+    {
+        Id = 13,
+        UserId = 16,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-25),
+        letter = "Vaša kompanija nudi odlične mogućnosti za rast i razvoj, što je glavni razlog moje prijave."
+    },
+    new WorkApplication
+    {
+        Id = 14,
+        UserId = 17,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-26),
+        letter = "Motivisan sam da učim, radim i napredujem. Vjerujem da bih bio odličan dodatak vašem timu."
+    },
+    new WorkApplication
+    {
+        Id = 15,
+        UserId = 18,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-27),
+        letter = "Želim raditi u okruženju gdje se cijeni inicijativa, kreativnost i kvalitetan rad. Vaša firma ispunjava sve te kriterije."
+    },
+    new WorkApplication
+    {
+        Id = 16,
+        UserId = 19,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-28),
+        letter = "Vidim veliku vrijednost u vašim projektima i načinu rada. Želim biti dio tima koji radi sa strašću."
+    },
+    new WorkApplication
+    {
+        Id = 17,
+        UserId = 20,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-29),
+        letter = "Prijavljujem se jer vjerujem da bih u vašoj kompaniji mogao postići veliki profesionalni iskorak."
+    },
+    new WorkApplication
+    {
+        Id = 18,
+        UserId = 21,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-30),
+        letter = "Motiviše me želja da radim u stabilnoj i ozbiljnoj organizaciji koja nudi perspektivu i razvoj."
+    },
+    new WorkApplication
+    {
+        Id = 19,
+        UserId = 22,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-31),
+        letter = "Vaša kompanija mi djeluje kao pravo mjesto da pokažem svoje vještine i dodatno ih unaprijedim."
+    },
+    new WorkApplication
+    {
+        Id = 20,
+        UserId = 23,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-32),
+        letter = "Privlači me vaš profesionalan pristup, moderna organizacija i atmosfera koja podstiče učenje."
+    },
+    new WorkApplication
+    {
+        Id = 21,
+        UserId = 24,
+        CvFileName = "test.pdf",
+        AppliedAt = DateTime.UtcNow.AddDays(-33),
+        letter = "Motivisana sam da radim u vašoj firmi jer cijenim vaše vrijednosti i način poslovanja. Vjerujem da bih se idealno uklopila."
+    }
+);
+
+
+
+
 
 
 

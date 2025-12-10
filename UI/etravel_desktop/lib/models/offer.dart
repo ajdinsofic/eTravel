@@ -21,6 +21,7 @@ class Offer {
   final double residenceTaxPerDay;
   final double travelInsuranceTotal;
   final double residenceTotal;
+  final int totalCountOfReservations;
   final List<OfferImage> offerImages;
   final List<OfferPlanDay> offerPlanDays;
   final List<OfferHotel> offerHotels;
@@ -42,6 +43,7 @@ class Offer {
     required this.offerImages,
     required this.offerPlanDays,
     required this.offerHotels,
+    required this.totalCountOfReservations,
   });
 
   factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);

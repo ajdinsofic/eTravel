@@ -76,6 +76,8 @@ builder.Services.AddTransient<ICommentService, CommentService>();
 builder.Services.AddTransient<IReportService, ReportService>();
 builder.Services.AddTransient<IWorkApplicationService, WorkApplicationService>();
 builder.Services.AddTransient<IRoomService, RoomService>();
+builder.Services.AddTransient<IUserRoleService, UserRoleService>();
+builder.Services.AddTransient<IRateService, RateService>();
 
 
 builder.Services.AddDbContext<eTravelAgencijaDbContext>(options =>
@@ -114,7 +116,7 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = ""
 });
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

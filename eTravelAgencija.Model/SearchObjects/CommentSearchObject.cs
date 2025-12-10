@@ -8,7 +8,11 @@ namespace eTravelAgencija.Model.SearchObjects
 {
     public class CommentSearchObject : BaseSearchObject
     {
+        public string? pearsonName { get; set; }
+        
         [Required]
         public int offerId { get; set; }
+
+
     }
 }

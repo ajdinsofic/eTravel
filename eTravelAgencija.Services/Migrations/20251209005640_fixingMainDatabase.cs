@@ -40,9 +40,9 @@ namespace eTravelAgencija.Services.Migrations
                     LastName = table.Column<string>(type: "text", nullable: false),
                     DateBirth = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    MainImage = table.Column<string>(type: "text", nullable: false),
                     LastLoginAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     isBlocked = table.Column<bool>(type: "boolean", nullable: false),
+                    ImageUrl = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -269,7 +269,8 @@ namespace eTravelAgencija.Services.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<int>(type: "integer", nullable: false),
                     CvFileName = table.Column<string>(type: "text", nullable: false),
-                    AppliedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    AppliedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    letter = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -604,32 +605,32 @@ namespace eTravelAgencija.Services.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "DateBirth", "Email", "EmailConfirmed", "FirstName", "LastLoginAt", "LastName", "LockoutEnabled", "LockoutEnd", "MainImage", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "isBlocked" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "DateBirth", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "LastLoginAt", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "isBlocked" },
                 values: new object[,]
                 {
-                    { 1, 0, "6912ed4b-52f3-4cf7-b2ca-c9a706d896cd", new DateTime(2025, 12, 5, 1, 55, 9, 901, DateTimeKind.Utc).AddTicks(4051), new DateTime(1990, 5, 10, 0, 0, 0, 0, DateTimeKind.Utc), "radnik@etravel.com", true, "Marko", null, "Radnik", false, null, "test", "RADNIK@ETRAVEL.COM", "RADNIK", "AQAAAAIAAYagAAAAEKwiQR5dKgEt0mzcUXJ8t4VNfBsoGL82Tq9xZfC/tssb/78JrWo5yTjvztHyxhELxQ==", "+38761111111", false, null, false, "radnik", false },
-                    { 2, 0, "27c7be79-22c7-46bf-aba4-abeebc58603d", new DateTime(2025, 12, 5, 1, 55, 9, 982, DateTimeKind.Utc).AddTicks(9648), new DateTime(1985, 3, 20, 0, 0, 0, 0, DateTimeKind.Utc), "direktor@etravel.com", true, "Amir", null, "Direktor", false, null, "test", "DIREKTOR@ETRAVEL.COM", "DIREKTOR", "AQAAAAIAAYagAAAAEGJTrW6xqV9sQ8D7WbtJuVyRZIRETpugGnlxbFp6ueWRuAK0KDjvFkxIjldMV81IXQ==", "+38762222222", false, null, false, "direktor", false },
-                    { 4, 0, "06484dc4-427b-4c21-81cb-e86cef4a2ac3", new DateTime(2025, 12, 5, 1, 55, 10, 63, DateTimeKind.Utc).AddTicks(1065), new DateTime(2002, 11, 5, 0, 0, 0, 0, DateTimeKind.Utc), "korisnik@etravel.com", true, "Ajdin", null, "Korisnik", false, null, "test", "KORISNIK@ETRAVEL.COM", "KORISNIK", "AQAAAAIAAYagAAAAEH9l6g/gF5iyxFfmOgU/1EcOZfbQZaKFArRJwV6ViN2s4ZajZwSykHR6NlpNJLmvbQ==", "+38763333333", false, null, false, "korisnik", false },
-                    { 5, 0, "45e46448-4393-4b62-9169-14e9a6411a75", new DateTime(2025, 12, 5, 1, 55, 10, 134, DateTimeKind.Utc).AddTicks(6874), new DateTime(1998, 4, 12, 0, 0, 0, 0, DateTimeKind.Utc), "maja.petrovic@etravel.com", true, "Maja", null, "Petrović", false, null, "test", "MAJA.PETROVIC@ETRAVEL.COM", "MAJA.PETROVIC", "AQAAAAIAAYagAAAAEBWdChZcbt5G0CsTWnnUl/T/XhLQhfAn3iVg/hKDrlXwJRB3Fjnnj1Voy9y1GMyTRw==", "+38761555111", false, null, false, "maja.petrovic", false },
-                    { 6, 0, "c0549c4f-0f1b-49ce-8695-8ca7ba529502", new DateTime(2025, 12, 5, 1, 55, 10, 208, DateTimeKind.Utc).AddTicks(5347), new DateTime(1995, 9, 8, 0, 0, 0, 0, DateTimeKind.Utc), "edin.mesic@etravel.com", true, "Edin", null, "Mešić", false, null, "test", "EDIN.MESIC@ETRAVEL.COM", "EDIN.MESIC", "AQAAAAIAAYagAAAAEOwe4HP3LJjp4egqiRxMfNZqQZ6TQfHwax4G35bPzA+qKGXaymbRLYI88lFmp+Y7eA==", "+38761666123", false, null, false, "edin.mesic", false },
-                    { 7, 0, "bd6b19d6-bba2-4ce2-a9b3-de2b94c711d4", new DateTime(2025, 12, 5, 1, 55, 10, 296, DateTimeKind.Utc).AddTicks(6922), new DateTime(2000, 1, 22, 0, 0, 0, 0, DateTimeKind.Utc), "lana.kovac@etravel.com", true, "Lana", null, "Kovač", false, null, "test", "LANA.KOVAC@ETRAVEL.COM", "LANA.KOVAC", "AQAAAAIAAYagAAAAEODTnElj3QfgNKppohMa313ek+TisfDG5v0WvdptrnDi33J+hw+oXN82lqpIrYTdYQ==", "+38761777141", false, null, false, "lana.kovac", false },
-                    { 8, 0, "0cac548b-0851-4e84-b05f-7b75506e92d9", new DateTime(2025, 12, 5, 1, 55, 10, 378, DateTimeKind.Utc).AddTicks(3701), new DateTime(1993, 6, 30, 0, 0, 0, 0, DateTimeKind.Utc), "haris.becirovic@etravel.com", true, "Haris", null, "Bećirović", false, null, "test", "HARIS.BECIROVIC@ETRAVEL.COM", "HARIS.BECIROVIC", "AQAAAAIAAYagAAAAEBZFwaAnnFl2yklbfsI5NxTC6oiE129DNwvGv1NdFSPDKMvpWsAg58pmP0UdecoD2w==", "+38761888222", false, null, false, "haris.becirovic", false },
-                    { 9, 0, "1e4ff7cf-f67c-43af-a69f-4bea8b4211ab", new DateTime(2025, 12, 5, 1, 55, 10, 463, DateTimeKind.Utc).AddTicks(9241), new DateTime(1999, 2, 14, 0, 0, 0, 0, DateTimeKind.Utc), "amira.karic@etravel.com", true, "Amira", null, "Karić", false, null, "test", "AMIRA.KARIC@ETRAVEL.COM", "AMIRA.KARIC", "AQAAAAIAAYagAAAAEDFYzzZIzcCK65SYc2x9pS66ytdMlinxvLGrV/KFkTawbUqXF3kFoImkGya/4gIqmg==", "+38761999444", false, null, false, "amira.karic", false },
-                    { 10, 0, "2345616c-d63f-4f58-8433-2b07cbde0a5a", new DateTime(2025, 12, 5, 1, 55, 10, 533, DateTimeKind.Utc).AddTicks(5735), new DateTime(1997, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc), "tarik.suljic@etravel.com", true, "Tarik", null, "Suljić", false, null, "test", "TARIK.SULJIC@ETRAVEL.COM", "TARIK.SULJIC", "AQAAAAIAAYagAAAAECc3o8kzLD4ACYSfs1WYCGOdjm8/d4iQm81yiNF/7r+nOF3n6cE4YgmenRAJiE31NA==", "+38762011223", false, null, false, "tarik.suljic", false },
-                    { 11, 0, "43a030f4-cbd8-46a0-8028-2d4250e8d796", new DateTime(2025, 12, 5, 1, 55, 10, 604, DateTimeKind.Utc).AddTicks(1712), new DateTime(2001, 10, 11, 0, 0, 0, 0, DateTimeKind.Utc), "selma.babic@etravel.com", true, "Selma", null, "Babić", false, null, "test", "SELMA.BABIC@ETRAVEL.COM", "SELMA.BABIC", "AQAAAAIAAYagAAAAEJau59lvBxxVskm8CTSRNcLoVmlQCFdDXdoS570+GdPLxp7gwymaSfqSKQdEeg+Qgg==", "+38762044321", false, null, false, "selma.babic", false },
-                    { 12, 0, "ea587dfc-4b7d-44ba-90f1-b88248379bed", new DateTime(2025, 12, 5, 1, 55, 10, 669, DateTimeKind.Utc).AddTicks(4544), new DateTime(1994, 12, 2, 0, 0, 0, 0, DateTimeKind.Utc), "nedim.ceric@etravel.com", true, "Nedim", null, "Ćerić", false, null, "test", "NEDIM.CERIC@ETRAVEL.COM", "NEDIM.CERIC", "AQAAAAIAAYagAAAAENEQp7B6C8vGeUT6OuKAjp7d4RHc+6prlKKeWUZ2qh/HvjUCIRSL7JDb0hneQMupQg==", "+38762077311", false, null, false, "nedim.ceric", false },
-                    { 13, 0, "d2d953b3-7068-4aa0-bd1f-69536a8396d7", new DateTime(2025, 12, 5, 1, 55, 10, 749, DateTimeKind.Utc).AddTicks(6343), new DateTime(1996, 11, 9, 0, 0, 0, 0, DateTimeKind.Utc), "alma.vujic@etravel.com", true, "Alma", null, "Vujić", false, null, "test", "ALMA.VUJIC@ETRAVEL.COM", "ALMA.VUJIC", "AQAAAAIAAYagAAAAEPahCqqrHYjyuw7jcVzrf76zq4dWsp/1s3JJfpOgADgW7TJuDUPD9Cme1LjDTXA08Q==", "+38762111333", false, null, false, "alma.vujic", false },
-                    { 14, 0, "53a1199d-8aef-4a31-a12a-4e94c4555c49", new DateTime(2025, 12, 5, 1, 55, 10, 825, DateTimeKind.Utc).AddTicks(6880), new DateTime(1992, 7, 4, 0, 0, 0, 0, DateTimeKind.Utc), "mirza.drace@etravel.com", true, "Mirza", null, "DračE", false, null, "test", "MIRZA.DRACE@ETRAVEL.COM", "MIRZA.DRACE", "AQAAAAIAAYagAAAAEJB5cEyb0SH+Bm43QuMZgJFEcC2UDDY1VJPN1LOqX8W5H+bp2yrda8APKyVVTHw7aA==", "+38762144555", false, null, false, "mirza.drace", false },
-                    { 15, 0, "91f064a8-2e25-47ac-afbb-bd7b119223f3", new DateTime(2025, 12, 5, 1, 55, 10, 900, DateTimeKind.Utc).AddTicks(1971), new DateTime(2000, 6, 17, 0, 0, 0, 0, DateTimeKind.Utc), "melisa.nuhanovic@etravel.com", true, "Melisa", null, "Nuhanović", false, null, "test", "MELISA.NUHANOVIC@ETRAVEL.COM", "MELISA.NUHANOVIC", "AQAAAAIAAYagAAAAECVqZZBvzJ8fHifDUqdVspmbesJ0vDGH03/nNBWkBtYHd0vUbaLzrFVnu9GsbW/wYg==", "+38762200333", false, null, false, "melisa.nuhanovic", false },
-                    { 16, 0, "122892f0-7829-4320-b069-a730ae9311e8", new DateTime(2025, 12, 5, 1, 55, 10, 975, DateTimeKind.Utc).AddTicks(6201), new DateTime(1991, 3, 29, 0, 0, 0, 0, DateTimeKind.Utc), "almin.kosuta@etravel.com", true, "Almin", null, "Košuta", false, null, "test", "ALMIN.KOSUTA@ETRAVEL.COM", "ALMIN.KOSUTA", "AQAAAAIAAYagAAAAELQjdSfOK19mbQkvB4oII11gguNkT12oESAzyIpc5ZvEo6j4OR7HpjxOFHj3bquq0g==", "+38762255677", false, null, false, "almin.kosuta", false },
-                    { 17, 0, "36c7cd54-c055-43cf-9761-5d2732f355a2", new DateTime(2025, 12, 5, 1, 55, 11, 33, DateTimeKind.Utc).AddTicks(4724), new DateTime(1998, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc), "dina.hodzic@etravel.com", true, "Dina", null, "Hodžić", false, null, "test", "DINA.HODZIC@ETRAVEL.COM", "DINA.HODZIC", "AQAAAAIAAYagAAAAENmNRZ6KEoBfAgXOpyj12WNJaxUjUwHBhwooLZxY8dee1wRxLScIO7W14VbeAiEaCA==", "+38762277991", false, null, false, "dina.hodzic", false },
-                    { 18, 0, "e9c4849e-5dbf-4dd7-93da-db1054d0d722", new DateTime(2025, 12, 5, 1, 55, 11, 96, DateTimeKind.Utc).AddTicks(8297), new DateTime(1997, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc), "alem.celik@etravel.com", true, "Alem", null, "Čelik", false, null, "test", "ALEM.CELIK@ETRAVEL.COM", "ALEM.CELIK", "AQAAAAIAAYagAAAAEOG98SUebuocwt8ncxnhDsT/HuiuPcZr4Gwut9703Cp7nVjV2M98evxzNVWGwjuw/w==", "+38762300990", false, null, false, "alem.celik", false },
-                    { 19, 0, "ace84c7c-138d-481f-b6ee-9a82d218da97", new DateTime(2025, 12, 5, 1, 55, 11, 157, DateTimeKind.Utc).AddTicks(962), new DateTime(2001, 1, 5, 0, 0, 0, 0, DateTimeKind.Utc), "lejla.avdic@etravel.com", true, "Lejla", null, "Avdić", false, null, "test", "LEJLA.AVDIC@ETRAVEL.COM", "LEJLA.AVDIC", "AQAAAAIAAYagAAAAELWc8D+Y+EJelguN34P2ah4SdeOV27HyBJHZGoZqa5EfPC3k9sf6GFH+bv6zNC8Wzg==", "+38762355123", false, null, false, "lejla.avdic", false },
-                    { 20, 0, "5a8e1ba9-a39c-4ed8-a33a-3f7604380910", new DateTime(2025, 12, 5, 1, 55, 11, 218, DateTimeKind.Utc).AddTicks(4561), new DateTime(1999, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc), "adnan.pasalic@etravel.com", true, "Adnan", null, "Pašalić", false, null, "test", "ADNAN.PASALIC@ETRAVEL.COM", "ADNAN.PASALIC", "AQAAAAIAAYagAAAAEPu/eKqoGDWvvnGan7JjWqLBUbRKSVdfEzgSHI2HpVhUXznOLlsOzQZczSBU7jWJcw==", "+38762388321", false, null, false, "adnan.pasalic", false },
-                    { 21, 0, "028c9b6a-6134-4329-b71b-16b48f022a1f", new DateTime(2025, 12, 5, 1, 55, 11, 279, DateTimeKind.Utc).AddTicks(9951), new DateTime(1996, 4, 14, 0, 0, 0, 0, DateTimeKind.Utc), "inez.kantic@etravel.com", true, "Inez", null, "Kantić", false, null, "test", "INEZ.KANTIC@ETRAVEL.COM", "INEZ.KANTIC", "AQAAAAIAAYagAAAAENSfyrvZY3tkKrVnGSLq2D4rZNtvV5jUu1iz1EmJwQYYFdwFc6CkAljBXLfHMw5SgA==", "+38762444123", false, null, false, "inez.kantic", false },
-                    { 22, 0, "101c6643-37a1-4b24-844a-5979f70517b5", new DateTime(2025, 12, 5, 1, 55, 11, 341, DateTimeKind.Utc).AddTicks(4877), new DateTime(1993, 11, 19, 0, 0, 0, 0, DateTimeKind.Utc), "amir.halilovic@etravel.com", true, "Amir", null, "Halilović", false, null, "test", "AMIR.HALILOVIC@ETRAVEL.COM", "AMIR.HALILOVIC", "AQAAAAIAAYagAAAAENH9GDZ8pJIhCFHvn+jFQFWc0arAKNbuU2bBHRy8kcOGdgbLLTX/QkGQ9JLcXYLRiA==", "+38762477331", false, null, false, "amir.halilovic", false },
-                    { 23, 0, "b410b079-b50a-4d46-8d3f-92ecc38580d6", new DateTime(2025, 12, 5, 1, 55, 11, 403, DateTimeKind.Utc).AddTicks(2123), new DateTime(2002, 12, 21, 0, 0, 0, 0, DateTimeKind.Utc), "lamija.kreso@etravel.com", true, "Lamija", null, "Krešo", false, null, "test", "LAMIJA.KRESO@ETRAVEL.COM", "LAMIJA.KRESO", "AQAAAAIAAYagAAAAEOVlAqgzHtCC5P9+GI9KlcKwLe1V21iIifCUySokx3nyz6JTWljedA+mKOvSiBl5FA==", "+38762555991", false, null, false, "lamija.kreso", false },
-                    { 24, 0, "6bdcf072-b290-491d-b9b3-7c3e81bf9bf6", new DateTime(2025, 12, 5, 1, 55, 11, 464, DateTimeKind.Utc).AddTicks(4024), new DateTime(1998, 7, 1, 0, 0, 0, 0, DateTimeKind.Utc), "omer.smajic@etravel.com", true, "Omer", null, "Smajić", false, null, "test", "OMER.SMAJIC@ETRAVEL.COM", "OMER.SMAJIC", "AQAAAAIAAYagAAAAEFzj+g6uv135t5fhirA60GTGCmpj6sgUejFzXidiiMI9Yb138/nVvdW22xcZwWodCg==", "+38762666112", false, null, false, "omer.smajic", false }
+                    { 1, 0, "22bb85f1-10ec-46d6-967b-a11c8a1de08c", new DateTime(2025, 12, 9, 0, 56, 38, 583, DateTimeKind.Utc).AddTicks(5696), new DateTime(1990, 5, 10, 0, 0, 0, 0, DateTimeKind.Utc), "radnik@etravel.com", true, "Marko", "test.jpg", null, "Radnik", false, null, "RADNIK@ETRAVEL.COM", "RADNIK", "AQAAAAIAAYagAAAAEDo8n9Me3SVRjmJpDSX+JIXKr4cXwpYYCxweQJ83kMLSyWeb7NOKTgCocrJyUoRQRQ==", "+38761111111", false, null, false, "radnik", false },
+                    { 2, 0, "9c7b6175-c6b6-4244-9d4b-28d80ace3b09", new DateTime(2025, 12, 9, 0, 56, 38, 638, DateTimeKind.Utc).AddTicks(4095), new DateTime(1985, 3, 20, 0, 0, 0, 0, DateTimeKind.Utc), "direktor@etravel.com", true, "Amir", "test.jpg", null, "Direktor", false, null, "DIREKTOR@ETRAVEL.COM", "DIREKTOR", "AQAAAAIAAYagAAAAEP3fEk02JZ/cWDPqIdDGCF3SxetwmRQHYWaj5zaFtY0Rp929C9xSq1qYaL76H9LCgg==", "+38762222222", false, null, false, "direktor", false },
+                    { 4, 0, "1f0d4a8c-b012-49ba-a3b4-dcdceab0bdae", new DateTime(2025, 12, 9, 0, 56, 38, 702, DateTimeKind.Utc).AddTicks(2547), new DateTime(2002, 11, 5, 0, 0, 0, 0, DateTimeKind.Utc), "korisnik@etravel.com", true, "Ajdin", "test.jpg", null, "Korisnik", false, null, "KORISNIK@ETRAVEL.COM", "KORISNIK", "AQAAAAIAAYagAAAAEE/s55AiDNHyqoE6UpuXYRWJ1oDwMgdE0yWM5lnm/fDmxrWcqx4sL1uXU2HQYoPKVg==", "+38763333333", false, null, false, "korisnik", false },
+                    { 5, 0, "81239983-63e3-4330-a23c-959750011934", new DateTime(2025, 12, 9, 0, 56, 38, 772, DateTimeKind.Utc).AddTicks(1084), new DateTime(1998, 4, 12, 0, 0, 0, 0, DateTimeKind.Utc), "maja.petrovic@etravel.com", true, "Maja", "test.jpg", null, "Petrović", false, null, "MAJA.PETROVIC@ETRAVEL.COM", "MAJA.PETROVIC", "AQAAAAIAAYagAAAAECSD2TKvg1eSsaN2g3MzvpPnFcNl4Bm9DISQX8l1+WUCWGrFhSVKqi8jwYzAft2Yrg==", "+38761555111", false, null, false, "maja.petrovic", false },
+                    { 6, 0, "9805bfa2-e128-433e-b1d4-2053a0fb5282", new DateTime(2025, 12, 9, 0, 56, 38, 844, DateTimeKind.Utc).AddTicks(8920), new DateTime(1995, 9, 8, 0, 0, 0, 0, DateTimeKind.Utc), "edin.mesic@etravel.com", true, "Edin", "test.jpg", null, "Mešić", false, null, "EDIN.MESIC@ETRAVEL.COM", "EDIN.MESIC", "AQAAAAIAAYagAAAAEASlDkaHJJfn5pOoKaCn+vg630tm2lAKO2CHlujWw+3puzqBtMWDj6lsPus7e1eQLw==", "+38761666123", false, null, false, "edin.mesic", false },
+                    { 7, 0, "9892f200-c61c-4d9b-9339-bd5e21ce2d70", new DateTime(2025, 12, 9, 0, 56, 38, 925, DateTimeKind.Utc).AddTicks(2986), new DateTime(2000, 1, 22, 0, 0, 0, 0, DateTimeKind.Utc), "lana.kovac@etravel.com", true, "Lana", "test.jpg", null, "Kovač", false, null, "LANA.KOVAC@ETRAVEL.COM", "LANA.KOVAC", "AQAAAAIAAYagAAAAEBF159iXug59A+/eYqAMGvf1fPoQAgUf9NQ56BOf7+1MOWgzFyWHLfNjsmJSxWguBw==", "+38761777141", false, null, false, "lana.kovac", false },
+                    { 8, 0, "ebf356ee-aea6-4daa-a2ee-270f86bbe419", new DateTime(2025, 12, 9, 0, 56, 38, 993, DateTimeKind.Utc).AddTicks(2784), new DateTime(1993, 6, 30, 0, 0, 0, 0, DateTimeKind.Utc), "haris.becirovic@etravel.com", true, "Haris", "test.jpg", null, "Bećirović", false, null, "HARIS.BECIROVIC@ETRAVEL.COM", "HARIS.BECIROVIC", "AQAAAAIAAYagAAAAEOSwi/nynd6iFR8t4fFfobS8PsBb5Oukyq2VzNDa1OCrfCKwAq6nPzzD6fLBV3V8hg==", "+38761888222", false, null, false, "haris.becirovic", false },
+                    { 9, 0, "450bb644-e5ce-4750-89ab-6007630fe09a", new DateTime(2025, 12, 9, 0, 56, 39, 66, DateTimeKind.Utc).AddTicks(1263), new DateTime(1999, 2, 14, 0, 0, 0, 0, DateTimeKind.Utc), "amira.karic@etravel.com", true, "Amira", "test.jpg", null, "Karić", false, null, "AMIRA.KARIC@ETRAVEL.COM", "AMIRA.KARIC", "AQAAAAIAAYagAAAAEPAdrNehXA1YW6NMCj8mekcPT8s9eLVeLQb0YU3hfJ1XbqBVkP8KXEyzAEmDQ1k2ow==", "+38761999444", false, null, false, "amira.karic", false },
+                    { 10, 0, "1f341df6-a589-4afd-bb74-e0560d1c208c", new DateTime(2025, 12, 9, 0, 56, 39, 165, DateTimeKind.Utc).AddTicks(4776), new DateTime(1997, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc), "tarik.suljic@etravel.com", true, "Tarik", "test.jpg", null, "Suljić", false, null, "TARIK.SULJIC@ETRAVEL.COM", "TARIK.SULJIC", "AQAAAAIAAYagAAAAEMgytAvU39wUjvGEYoDxWPOus78E+nucMTbyJprF6fFBOm0bUHJQ7tMfKQ9chX7wWQ==", "+38762011223", false, null, false, "tarik.suljic", false },
+                    { 11, 0, "e493ea9e-e0b8-4216-a904-2787a037431a", new DateTime(2025, 12, 9, 0, 56, 39, 250, DateTimeKind.Utc).AddTicks(4074), new DateTime(2001, 10, 11, 0, 0, 0, 0, DateTimeKind.Utc), "selma.babic@etravel.com", true, "Selma", "test.jpg", null, "Babić", false, null, "SELMA.BABIC@ETRAVEL.COM", "SELMA.BABIC", "AQAAAAIAAYagAAAAEJmwwhoBNU7cgANOZpF2RqyCqrtrJoX6b+x/IXqYfaWetE7YP4lgBBTH/GC+IIZ4wA==", "+38762044321", false, null, false, "selma.babic", false },
+                    { 12, 0, "76885b7a-6cef-42cd-8e08-a2f247eda90f", new DateTime(2025, 12, 9, 0, 56, 39, 318, DateTimeKind.Utc).AddTicks(9815), new DateTime(1994, 12, 2, 0, 0, 0, 0, DateTimeKind.Utc), "nedim.ceric@etravel.com", true, "Nedim", "test.jpg", null, "Ćerić", false, null, "NEDIM.CERIC@ETRAVEL.COM", "NEDIM.CERIC", "AQAAAAIAAYagAAAAEGnY3mIdRUSNAReZvvNCZ0o/vyr+luPc3Rl/69iGu1psLe6wpX29JlYBxfm+pDE+Cw==", "+38762077311", false, null, false, "nedim.ceric", false },
+                    { 13, 0, "19c8eccc-6025-4792-aff7-c4af2ac71e19", new DateTime(2025, 12, 9, 0, 56, 39, 381, DateTimeKind.Utc).AddTicks(5118), new DateTime(1996, 11, 9, 0, 0, 0, 0, DateTimeKind.Utc), "alma.vujic@etravel.com", true, "Alma", "test.jpg", null, "Vujić", false, null, "ALMA.VUJIC@ETRAVEL.COM", "ALMA.VUJIC", "AQAAAAIAAYagAAAAEBJ8cUpFdNL2G0Jnt2nz+pdW6FSz7jtwe5tk70fz5iPi0b29pbPQeUEM34IbuCkaug==", "+38762111333", false, null, false, "alma.vujic", false },
+                    { 14, 0, "01cddec0-675c-4e3e-b75a-a16ebc8f31bb", new DateTime(2025, 12, 9, 0, 56, 39, 441, DateTimeKind.Utc).AddTicks(6605), new DateTime(1992, 7, 4, 0, 0, 0, 0, DateTimeKind.Utc), "mirza.drace@etravel.com", true, "Mirza", "test.jpg", null, "DračE", false, null, "MIRZA.DRACE@ETRAVEL.COM", "MIRZA.DRACE", "AQAAAAIAAYagAAAAEFdydWdjMLjIrNuQ9CbiTdpncjFpdHKZH7V4tvGshnvFuFfaGnkadi3ljp7U7TUzMQ==", "+38762144555", false, null, false, "mirza.drace", false },
+                    { 15, 0, "531bb7d2-d6ca-44d5-ab9c-3eb366d9a544", new DateTime(2025, 12, 9, 0, 56, 39, 499, DateTimeKind.Utc).AddTicks(2072), new DateTime(2000, 6, 17, 0, 0, 0, 0, DateTimeKind.Utc), "melisa.nuhanovic@etravel.com", true, "Melisa", "test.jpg", null, "Nuhanović", false, null, "MELISA.NUHANOVIC@ETRAVEL.COM", "MELISA.NUHANOVIC", "AQAAAAIAAYagAAAAEE0iLKtkdw/goLsGXvaIO9GOVO3Nc0THwrAV/cnoL9Q5h7T6U5LNJ3b2ZqBoOYj6tg==", "+38762200333", false, null, false, "melisa.nuhanovic", false },
+                    { 16, 0, "11cc0fe7-dd10-47d1-bf3d-c6f6940f0ca7", new DateTime(2025, 12, 9, 0, 56, 39, 559, DateTimeKind.Utc).AddTicks(3076), new DateTime(1991, 3, 29, 0, 0, 0, 0, DateTimeKind.Utc), "almin.kosuta@etravel.com", true, "Almin", "test.jpg", null, "Košuta", false, null, "ALMIN.KOSUTA@ETRAVEL.COM", "ALMIN.KOSUTA", "AQAAAAIAAYagAAAAEFv8xy19W0vf8EdK2L7hMx5Q8UoF8lx4Xv7glvbs+5mhtdy7zbk861qs/qSkMSH0EA==", "+38762255677", false, null, false, "almin.kosuta", false },
+                    { 17, 0, "f0a04d93-2752-4ea3-a147-4844aafe47ea", new DateTime(2025, 12, 9, 0, 56, 39, 623, DateTimeKind.Utc).AddTicks(9704), new DateTime(1998, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc), "dina.hodzic@etravel.com", true, "Dina", "test.jpg", null, "Hodžić", false, null, "DINA.HODZIC@ETRAVEL.COM", "DINA.HODZIC", "AQAAAAIAAYagAAAAEPqrB8zVuIMNCMijHey87iWj0PK+55jvPDDX2ZDAXdJMTJy47pzBax8fh5Cp9BJmyg==", "+38762277991", false, null, false, "dina.hodzic", false },
+                    { 18, 0, "c0f43a3f-a8e1-472f-84c5-0203bb454dfe", new DateTime(2025, 12, 9, 0, 56, 39, 712, DateTimeKind.Utc).AddTicks(8124), new DateTime(1997, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc), "alem.celik@etravel.com", true, "Alem", "test.jpg", null, "Čelik", false, null, "ALEM.CELIK@ETRAVEL.COM", "ALEM.CELIK", "AQAAAAIAAYagAAAAEKUBJwirzCr6lNBFF7E27fJiGyD8Zaa5UNsiQDhJll70vTrqlE4NIWyImbvb6A7Hlg==", "+38762300990", false, null, false, "alem.celik", false },
+                    { 19, 0, "8b8a44ab-3140-4bbc-b1c7-7275458e92a0", new DateTime(2025, 12, 9, 0, 56, 39, 770, DateTimeKind.Utc).AddTicks(6992), new DateTime(2001, 1, 5, 0, 0, 0, 0, DateTimeKind.Utc), "lejla.avdic@etravel.com", true, "Lejla", "test.jpg", null, "Avdić", false, null, "LEJLA.AVDIC@ETRAVEL.COM", "LEJLA.AVDIC", "AQAAAAIAAYagAAAAEMaxAdIUYeBQzyzk1Fzst+hCtA5lFdgsAVst9YAG7fJSLDnHBSkBex3fhjenoBfjCw==", "+38762355123", false, null, false, "lejla.avdic", false },
+                    { 20, 0, "eebc4899-ffd7-45ff-b6a9-e291b5b5c1b6", new DateTime(2025, 12, 9, 0, 56, 39, 829, DateTimeKind.Utc).AddTicks(5519), new DateTime(1999, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc), "adnan.pasalic@etravel.com", true, "Adnan", "test.jpg", null, "Pašalić", false, null, "ADNAN.PASALIC@ETRAVEL.COM", "ADNAN.PASALIC", "AQAAAAIAAYagAAAAEJNyR8NrRpEJCTJl2WQP1AvdOhbe5Ytl+oWuN8Uy8NnFVkbKTBKPEMvtYX9wu56nfQ==", "+38762388321", false, null, false, "adnan.pasalic", false },
+                    { 21, 0, "e337b9a2-c638-4435-ae0d-64e22264d155", new DateTime(2025, 12, 9, 0, 56, 39, 893, DateTimeKind.Utc).AddTicks(6985), new DateTime(1996, 4, 14, 0, 0, 0, 0, DateTimeKind.Utc), "inez.kantic@etravel.com", true, "Inez", "test.jpg", null, "Kantić", false, null, "INEZ.KANTIC@ETRAVEL.COM", "INEZ.KANTIC", "AQAAAAIAAYagAAAAEE3Ilh8OkhNRlZArLo7fSPvLPJ6duaglp/yGVLvlgRpNQYwjgB4BVrNzuJx3mIJVpQ==", "+38762444123", false, null, false, "inez.kantic", false },
+                    { 22, 0, "3fac10fe-e77b-4746-b85f-0d3c970c5519", new DateTime(2025, 12, 9, 0, 56, 39, 971, DateTimeKind.Utc).AddTicks(6146), new DateTime(1993, 11, 19, 0, 0, 0, 0, DateTimeKind.Utc), "amir.halilovic@etravel.com", true, "Amir", "test.jpg", null, "Halilović", false, null, "AMIR.HALILOVIC@ETRAVEL.COM", "AMIR.HALILOVIC", "AQAAAAIAAYagAAAAEPmkK089MzuDG5y/uIHLLzg53LBf7lWKk6qohRiFPuPrfyUg6xh0XeLGH0c5qZYIxw==", "+38762477331", false, null, false, "amir.halilovic", false },
+                    { 23, 0, "beb9d896-278f-47a5-b796-e55719f1162c", new DateTime(2025, 12, 9, 0, 56, 40, 51, DateTimeKind.Utc).AddTicks(4041), new DateTime(2002, 12, 21, 0, 0, 0, 0, DateTimeKind.Utc), "lamija.kreso@etravel.com", true, "Lamija", "test.jpg", null, "Krešo", false, null, "LAMIJA.KRESO@ETRAVEL.COM", "LAMIJA.KRESO", "AQAAAAIAAYagAAAAECh4ZmUSQDwgA8RGeJeQP6722ZB5qiKY4tCFq0qVKqKD59RLOSZ6cfjJNIjSYfjALw==", "+38762555991", false, null, false, "lamija.kreso", false },
+                    { 24, 0, "08894509-9618-439a-8130-6b3e136f8d5d", new DateTime(2025, 12, 9, 0, 56, 40, 117, DateTimeKind.Utc).AddTicks(6871), new DateTime(1998, 7, 1, 0, 0, 0, 0, DateTimeKind.Utc), "omer.smajic@etravel.com", true, "Omer", "test.jpg", null, "Smajić", false, null, "OMER.SMAJIC@ETRAVEL.COM", "OMER.SMAJIC", "AQAAAAIAAYagAAAAEAjNiknkU/7g9XYfvAJNBC5yaUaSUI91o0Tlpk3e6p99j28gaC7K6RHRLDtpH3+iVQ==", "+38762666112", false, null, false, "omer.smajic", false }
                 });
 
             migrationBuilder.InsertData(
@@ -701,29 +702,29 @@ namespace eTravelAgencija.Services.Migrations
                 columns: new[] { "RoleId", "UserId", "CreatedAt", "Description", "IsActive" },
                 values: new object[,]
                 {
-                    { 2, 1, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(208), "", true },
-                    { 3, 2, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(225), "", true },
-                    { 1, 4, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(226), "", true },
-                    { 1, 5, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(290), "", true },
-                    { 1, 6, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(291), "", true },
-                    { 1, 7, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(291), "", true },
-                    { 1, 8, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(292), "", true },
-                    { 1, 9, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(293), "", true },
-                    { 1, 10, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(294), "", true },
-                    { 1, 11, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(294), "", true },
-                    { 1, 12, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(295), "", true },
-                    { 1, 13, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(296), "", true },
-                    { 1, 14, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(296), "", true },
-                    { 1, 15, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(297), "", true },
-                    { 1, 16, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(298), "", true },
-                    { 1, 17, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(298), "", true },
-                    { 1, 18, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(299), "", true },
-                    { 1, 19, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(300), "", true },
-                    { 1, 20, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(301), "", true },
-                    { 1, 21, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(301), "", true },
-                    { 1, 22, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(302), "", true },
-                    { 1, 23, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(303), "", true },
-                    { 1, 24, new DateTime(2025, 12, 5, 1, 55, 11, 526, DateTimeKind.Utc).AddTicks(303), "", true }
+                    { 2, 1, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4018), "", true },
+                    { 3, 2, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4040), "", true },
+                    { 1, 4, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4041), "", true },
+                    { 1, 5, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4042), "", true },
+                    { 1, 6, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4109), "", true },
+                    { 1, 7, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4110), "", true },
+                    { 1, 8, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4111), "", true },
+                    { 1, 9, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4112), "", true },
+                    { 1, 10, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4113), "", true },
+                    { 1, 11, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4114), "", true },
+                    { 1, 12, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4115), "", true },
+                    { 1, 13, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4116), "", true },
+                    { 1, 14, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4116), "", true },
+                    { 1, 15, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4117), "", true },
+                    { 1, 16, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4118), "", true },
+                    { 1, 17, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4119), "", true },
+                    { 1, 18, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4119), "", true },
+                    { 1, 19, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4120), "", true },
+                    { 1, 20, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4121), "", true },
+                    { 1, 21, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4122), "", true },
+                    { 1, 22, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4122), "", true },
+                    { 1, 23, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4123), "", true },
+                    { 1, 24, new DateTime(2025, 12, 9, 0, 56, 40, 182, DateTimeKind.Utc).AddTicks(4124), "", true }
                 });
 
             migrationBuilder.InsertData(
@@ -851,6 +852,34 @@ namespace eTravelAgencija.Services.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "WorkApplications",
+                columns: new[] { "Id", "AppliedAt", "CvFileName", "UserId", "letter" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2025, 12, 7, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(259), "test.pdf", 4, "Smisleno me motiviše vaša moderna organizacija i želja da radim na projektima koji imaju stvarni utjecaj. Vjerujem da mogu doprinijeti svojim radnim navikama i voljom za učenjem." },
+                    { 2, new DateTime(2025, 12, 5, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(277), "test.pdf", 5, "Privukla me prilika da radim u dinamičnom okruženju gdje se cijeni timski rad i napredak. Želim biti dio profesionalne i pozitivne radne zajednice." },
+                    { 3, new DateTime(2025, 12, 2, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(282), "test.pdf", 6, "Vaša kompanija je prepoznata po kvalitetnom radu i inovacijama. Smatram da mogu mnogo naučiti i istovremeno doprinijeti svojim iskustvom i posvećenošću." },
+                    { 4, new DateTime(2025, 11, 29, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(283), "test.pdf", 7, "Želim raditi u sredini koja podstiče razvoj i podržava kreativnost. Vaša firma upravo to nudi, i zato bih voljela biti dio vašeg tima." },
+                    { 5, new DateTime(2025, 11, 27, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(284), "test.pdf", 8, "Vašu kompaniju vidim kao mjesto gdje se talenat i rad cijene. Motivisan sam da se usavršavam i doprinosim vašem rastu." },
+                    { 6, new DateTime(2025, 11, 25, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(286), "test.pdf", 9, "Tražim priliku da radim u profesionalnoj sredini gdje mogu napredovati. Posebno me privlači vaša organizacijska kultura i pristup radu." },
+                    { 7, new DateTime(2025, 11, 22, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(287), "test.pdf", 10, "Motiviše me želja da učim nove tehnologije i doprinesem timskim rezultatima. Vjerujem da bih se dobro uklopio u vaše okruženje." },
+                    { 8, new DateTime(2025, 11, 21, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(288), "test.pdf", 11, "Smatram da je vaša kompanija idealno mjesto za profesionalni rast. Cijenim vaš pristup organizaciji i inovativnosti." },
+                    { 9, new DateTime(2025, 11, 19, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(289), "test.pdf", 12, "Zainteresovana sam za rad kod vas jer nudite stabilno i ugodno radno okruženje u kojem se prepoznaje trud i zalaganje." },
+                    { 10, new DateTime(2025, 11, 17, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(290), "test.pdf", 13, "Želim biti dio tima koji teži kvaliteti i rastu. Vaša firma mi djeluje kao pravo mjesto za to." },
+                    { 11, new DateTime(2025, 11, 16, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(293), "test.pdf", 14, "Motivisan sam mogućnošću da radim u kompaniji koja cijeni profesionalizam i timski rad. Spreman sam da dam svoj maksimum." },
+                    { 12, new DateTime(2025, 11, 15, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(294), "test.pdf", 15, "Privlači me prilika da radim sa stručnim i kreativnim timom. Vaš način rada me posebno inspiriše." },
+                    { 13, new DateTime(2025, 11, 14, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(295), "test.pdf", 16, "Vaša kompanija nudi odlične mogućnosti za rast i razvoj, što je glavni razlog moje prijave." },
+                    { 14, new DateTime(2025, 11, 13, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(297), "test.pdf", 17, "Motivisan sam da učim, radim i napredujem. Vjerujem da bih bio odličan dodatak vašem timu." },
+                    { 15, new DateTime(2025, 11, 12, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(298), "test.pdf", 18, "Želim raditi u okruženju gdje se cijeni inicijativa, kreativnost i kvalitetan rad. Vaša firma ispunjava sve te kriterije." },
+                    { 16, new DateTime(2025, 11, 11, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(299), "test.pdf", 19, "Vidim veliku vrijednost u vašim projektima i načinu rada. Želim biti dio tima koji radi sa strašću." },
+                    { 17, new DateTime(2025, 11, 10, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(300), "test.pdf", 20, "Prijavljujem se jer vjerujem da bih u vašoj kompaniji mogao postići veliki profesionalni iskorak." },
+                    { 18, new DateTime(2025, 11, 9, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(301), "test.pdf", 21, "Motiviše me želja da radim u stabilnoj i ozbiljnoj organizaciji koja nudi perspektivu i razvoj." },
+                    { 19, new DateTime(2025, 11, 8, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(302), "test.pdf", 22, "Vaša kompanija mi djeluje kao pravo mjesto da pokažem svoje vještine i dodatno ih unaprijedim." },
+                    { 20, new DateTime(2025, 11, 7, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(306), "test.pdf", 23, "Privlači me vaš profesionalan pristup, moderna organizacija i atmosfera koja podstiče učenje." },
+                    { 21, new DateTime(2025, 11, 6, 0, 56, 40, 183, DateTimeKind.Utc).AddTicks(307), "test.pdf", 24, "Motivisana sam da radim u vašoj firmi jer cijenim vaše vrijednosti i način poslovanja. Vjerujem da bih se idealno uklopila." }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Offers",
                 columns: new[] { "Id", "DaysInTotal", "SubCategoryId", "Title", "WayOfTravel" },
                 values: new object[,]
@@ -873,6 +902,47 @@ namespace eTravelAgencija.Services.Migrations
                     { 16, 6, 8, "Lisabon", "Avion" },
                     { 17, 5, 5, "Atina", "Avion" },
                     { 18, 3, 14, "Split", "Autobus" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "comment", "offerId", "starRate", "userId" },
+                values: new object[,]
+                {
+                    { 1, "Predivno putovanje! Organizacija odlična, vodič fenomenalan.", 1, 5, 4 },
+                    { 2, "Sve super osim hotela koji je mogao biti bolji.", 1, 4, 5 },
+                    { 3, "Santorini je san! Svaka preporuka, ponovo bih išao.", 2, 5, 6 },
+                    { 4, "Lijepo putovanje, ali dosta gužve.", 2, 4, 7 },
+                    { 5, "Veoma interesantna tura, vodič je znao sve detalje.", 3, 5, 8 },
+                    { 6, "Odlična cijena za ono što se dobije.", 3, 4, 9 },
+                    { 7, "Barcelona je bila fantastična! Hotel blizu centra.", 4, 5, 10 },
+                    { 8, "Predugo putovanje avionom, ali sve ostalo vrhunski.", 4, 4, 11 },
+                    { 9, "Grad svjetlosti je ispunio sva očekivanja!", 5, 5, 12 },
+                    { 10, "Skupo, ali vrijedilo je svakog dinara.", 5, 5, 13 },
+                    { 11, "Mirno i ugodno putovanje, savršeno za vikend bijeg.", 7, 4, 14 },
+                    { 12, "Sve je bilo dobro organizovano.", 7, 4, 15 },
+                    { 13, "Dubai je nevjerovatno iskustvo! Top organizacija.", 10, 5, 16 },
+                    { 14, "Hotel vrhunski, vodič odličan. Preporučujem!", 10, 5, 17 },
+                    { 15, "Lijep grad, ali premalo vremena u slobodnoj zoni.", 12, 3, 18 },
+                    { 30, "Uživao sam u svakom trenutku. Posebno mi se dopala posjeta galeriji Uffizi. Preporučujem!", 1, 5, 6 },
+                    { 40, "Prelijep grad, ali je bilo dosta gužve. Vodič je bio odličan i puno nam je olakšao obilazak.", 1, 4, 7 },
+                    { 50, "Firenca je idealna destinacija za ljubitelje historije i arhitekture. Sve pohvale eTravel timu!", 1, 5, 8 },
+                    { 60, "Putovanje je bilo divno, ali mislim da je moglo trajati dan duže. Grad nudi previše toga da se vidi.", 1, 4, 9 },
+                    { 70, "Odlična organizacija, lijep hotel i savršeno isplanirana tura. Definitivno ponovo putujem preko vas!", 1, 5, 10 },
+                    { 80, "Predivna atmosfera u gradu. Najviše mi se dopao obilazak Duoma. Vrijedi svake marke!", 1, 5, 11 },
+                    { 90, "Vrlo profesionalna agencija. Sve je bilo ispoštovano prema planu. Putovanje bez brige!", 1, 4, 12 },
+                    { 100, "Iznad očekivanja! Hrana u Firenci je savršena, a vodič izuzetno ljubazan i informisan.", 1, 5, 13 },
+                    { 110, "Sve je bilo odlično, ali raspored je bio malo pretrpan. Ipak, uživao sam u obilasku grada.", 1, 3, 14 },
+                    { 120, "Najbolje putovanje do sada! Preporučujem svakome ko želi spoj kulture, hrane i dobre organizacije.", 1, 5, 15 },
+                    { 130, "Bilo je super, ali mislim da bi bilo bolje da smo imali više slobodnog vremena za samostalno istraživanje.", 1, 4, 16 },
+                    { 140, "Savršeno iskustvo! Firenca je čarobna, sve preporuke za ovaj aranžman.", 1, 5, 17 },
+                    { 150, "Putovanje je prošlo bez ikakvih problema. Sve na vrijeme, sve tačno onako kako je opisano.", 1, 5, 5 },
+                    { 160, "Moja druga posjeta Firenci, ali prvi put preko ove agencije. Organizacija vrhunska!", 1, 5, 6 },
+                    { 170, "Uživala sam! Preporučila bih ovo putovanje svima koji žele opuštajuće i edukativno iskustvo.", 1, 5, 7 },
+                    { 180, "Sve preporuke! Jedino što bih promijenio jeste dužina pauza tokom obilaska.", 1, 4, 8 },
+                    { 190, "Perfektno putovanje, odličan vodič i fenomenalne lokacije. Firenca je nevjerovatna!", 1, 5, 9 },
+                    { 200, "Sve je bilo super, ali smještaj bi mogao biti malo bliže centru grada.", 1, 4, 10 },
+                    { 210, "Najbolje organizovan aranžman na kojem sam bila. Svaka čast eTravel timu!", 1, 5, 11 }
                 });
 
             migrationBuilder.InsertData(

@@ -1,7 +1,17 @@
+import 'package:etravel_desktop/models/user.dart';
+import 'package:etravel_desktop/providers/user_provider.dart';
 import 'package:etravel_desktop/screens/login_screen.dart';
 import 'package:etravel_desktop/screens/offer_screen.dart';
+import 'package:etravel_desktop/screens/report_screen.dart';
+import 'package:etravel_desktop/screens/reservations_screen.dart';
+import 'package:etravel_desktop/screens/review_screen.dart';
+import 'package:etravel_desktop/screens/user_screen.dart';
+import 'package:etravel_desktop/screens/view_my_profile_screen.dart';
+import 'package:etravel_desktop/screens/work_applicatons_screen.dart';
+import 'package:etravel_desktop/screens/worker_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../config/api_config.dart';
 import '../utils/session.dart';
 
@@ -21,6 +31,7 @@ class MasterScreen extends StatefulWidget {
 
 class _MasterScreenState extends State<MasterScreen> {
   bool _showUserMenu = false;
+  User? loggedUser;
 
   void _navigate(int index) {
     Widget screen;
@@ -29,21 +40,24 @@ class _MasterScreenState extends State<MasterScreen> {
       case 0:
         screen = OfferScreen();
         break;
-      // case 1:
-      //   screen = ReviewScreen();
-      //   break;
-      // case 2:
-      //   screen = ReservationScreen();
-      //   break;
-      // case 3:
-      //   screen = UsersScreen();
-      //   break;
-      // case 4:
-      //   screen = WorkersScreen();
-      //   break;
-      // case 5:
-      //   screen = ApplicantsScreen();
-      //   break;
+      case 1:
+        screen = ReviewScreen();
+        break;
+      case 2:
+        screen = ReservationScreen();
+        break;
+      case 3:
+        screen = UserScreen();
+        break;
+      case 4:
+        screen = EmployeeScreen();
+        break;
+      case 5:
+        screen = WorkApplicationsScreen();
+        break;
+      case 6:
+        screen = ReportScreen();
+        break;
       default:
         screen = OfferScreen();
     }
@@ -54,6 +68,24 @@ class _MasterScreenState extends State<MasterScreen> {
         builder: (_) => MasterScreen(selectedIndex: index, child: screen),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMyUser();
+  }
+
+  Future<void> _loadMyUser() async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+
+    // učitaj ponovo trenutnog usera
+    final myUser = await userProvider.getById(Session.userId!);
+
+    setState(() {
+      loggedUser =
+          myUser; // ovo je varijabla koja drži podatke u MasterScreen-u
+    });
   }
 
   @override
@@ -96,6 +128,7 @@ class _MasterScreenState extends State<MasterScreen> {
               _topLink("Korisnici", 3),
               if (Session.roles.contains("Direktor")) _topLink("Radnici", 4),
               if (Session.roles.contains("Direktor")) _topLink("Aplikanti", 5),
+              _topLink("Izvještaji", 6),
             ],
           ),
 
@@ -114,7 +147,7 @@ class _MasterScreenState extends State<MasterScreen> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  Session.username ?? "Korisnik",
+                  loggedUser!.username ?? "Korisnik",
                   style: const TextStyle(color: Colors.white),
                 ),
                 const Icon(Icons.keyboard_arrow_down, color: Colors.white),
@@ -193,14 +226,27 @@ class _MasterScreenState extends State<MasterScreen> {
           const Divider(),
 
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text("Postavke"),
-            onTap: () {},
-          ),
-          ListTile(
             leading: const Icon(Icons.person),
             title: const Text("Moj profil"),
-            onTap: () {},
+            onTap: () async {
+              final userProvider = Provider.of<UserProvider>(
+                context,
+                listen: false,
+              );
+
+              final myUser = await userProvider.getById(Session.userId!);
+
+              final result = await showDialog(
+                context: context,
+                barrierDismissible: true,
+                builder: (_) => ViewMyProfileEditPopup(user: myUser),
+              );
+
+              if (result == true) {
+                await _loadMyUser(); // ponovo učitaj usera
+                setState(() {}); // osvježi UI
+              }
+            },
           ),
 
           const Divider(),

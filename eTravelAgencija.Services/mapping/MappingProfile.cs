@@ -97,22 +97,41 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.LastLoginAt, opt => opt.MapFrom(src => src.LastLoginAt))
                 .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
                 .ForMember(dest => dest.isBlocked, opt => opt.MapFrom(src => src.isBlocked))
+                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl))
                 .ForMember(dest => dest.Token, opt => opt.Ignore());
 
             CreateMap<UserRole, eTravelAgencija.Model.model.UserRole>()
      .ForMember(dest => dest.userId, opt => opt.MapFrom(src => src.UserId))
      .ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => src.RoleId));
 
+     CreateMap<UserRoleUpsertRequest, Database.UserRole>()
+    .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.userId))
+    .ForMember(dest => dest.RoleId, opt => opt.MapFrom(src => src.roleId));
 
 
-            CreateMap<UserUpsertRequest, Database.User>()
+
+
+            CreateMap<UserInsertRequest, Database.User>()
                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Username))
                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
+               .ForMember(dest => dest.DateBirth, opt => opt.MapFrom(src => src.DateBirth))
                .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
-               .ForMember(dest => dest.isBlocked, opt => opt.MapFrom(_ => false));
+               .ForMember(dest => dest.isBlocked, opt => opt.MapFrom(_ => false))
+               .ForMember(dest => dest.ImageUrl, opt => opt.Ignore());
+
+               CreateMap<UserUpdateRequest, Database.User>()
+               .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Username))
+               .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+               .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
+               .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
+               .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
+               .ForMember(dest => dest.DateBirth, opt => opt.MapFrom(src => src.DateBirth))
+               .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(_ => DateTime.UtcNow))
+               .ForMember(dest => dest.isBlocked, opt => opt.MapFrom(_ => false))
+               .ForMember(dest => dest.ImageUrl, opt => opt.Ignore());
 
             CreateMap<User, UserLoginResponse>()
                 .ForMember(dest => dest.Userid, opt => opt.MapFrom(src => src.Id))
@@ -322,9 +341,8 @@ namespace eTravelAgencija.Services.Mapping
                 .ForMember(dest => dest.user, opt => opt.Ignore())
                 .ForMember(dest => dest.offer, opt => opt.Ignore());
 
-            CreateMap<eTravelAgencija.Services.Database.Comment, eTravelAgencija.Model.model.Comment>()
-                .ForMember(dest => dest.user, opt => opt.MapFrom(src => src.user))
-                .ForMember(dest => dest.offer, opt => opt.MapFrom(src => src.offer));
+            CreateMap<eTravelAgencija.Services.Database.Comment, eTravelAgencija.Model.model.Comment>();
+                
 
             // WorkApplication
             CreateMap<WorkApplicationUpsertRequest, WorkApplication>()
@@ -332,8 +350,8 @@ namespace eTravelAgencija.Services.Mapping
                .ForMember(dest => dest.AppliedAt, opt => opt.Ignore())
                .ForMember(dest => dest.User, opt => opt.Ignore());
 
-            CreateMap<eTravelAgencija.Services.Database.WorkApplication, eTravelAgencija.Model.model.WorkApplication>()
-               .ForMember(dest => dest.User, opt => opt.Ignore());
+            CreateMap<eTravelAgencija.Services.Database.WorkApplication, eTravelAgencija.Model.model.WorkApplication>();
+               
 
             CreateMap<eTravelAgencija.Services.Database.WorkApplication, CVDownloadResponse>()
                 .ForMember(dest => dest.fileBytes, opt => opt.Ignore());

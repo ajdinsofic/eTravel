@@ -646,7 +646,6 @@ class _OfferScreenState extends State<OfferScreen> {
                                 ),
                               ),
                         );
-                        await _loadOffers({"isMainImage": true});
                       },
                     ),
                     IconButton(
@@ -668,7 +667,6 @@ class _OfferScreenState extends State<OfferScreen> {
                                 ),
                               ),
                         );
-                        await _loadOffers({"isMainImage": true});
                       },
                     ),
                     IconButton(
