@@ -182,6 +182,17 @@ namespace eTravelAgencija.Services.Services
             return true;
         }
 
+        public async Task<string?> GetUserImage(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+
+            if (user == null)
+                throw new Exception("Korisnik nije pronađen.");
+
+            return user.ImageUrl; // npr: "a3f9d2c4.jpg"
+        }
+
+
         public override async Task BeforeUpdateAsync(User entity, UserUpdateRequest request)
         {
             // da li se username mijenja?
@@ -321,8 +332,5 @@ namespace eTravelAgencija.Services.Services
 
             return result.Succeeded;
         }
-
-
-
     }
 }
