@@ -18,7 +18,8 @@ namespace eTravelAgencija.Services.Services
             _context = context;
         }
 
-        public async Task<Model.model.ReservationPreview> GeneratePreviewAsync(ReservationPreviewRequest request)
+        public async Task<Model.model.ReservationPreview> GeneratePreviewAsync(
+    ReservationPreviewRequest request)
         {
             var offer = await _context.OfferDetails
                 .Include(o => o.Offer)
@@ -30,11 +31,12 @@ namespace eTravelAgencija.Services.Services
             if (offer == null || hotel == null || room == null)
                 throw new Exception("Nevažeća ponuda, hotel ili soba.");
 
-            decimal total = request.BasePrice;
-            if (request.IncludeInsurance)
-            {
-                total += offer.TravelInsuranceTotal;
-            }
+            // ✅ JASNA NULL-PROVJERA
+            decimal basePrice = request.BasePrice ?? 0m;
+
+            decimal total = basePrice;
+
+            if (request.IncludeInsurance == true) { total += offer?.TravelInsuranceTotal ?? 0m; }
 
             total += offer.ResidenceTotal;
 
@@ -52,50 +54,46 @@ namespace eTravelAgencija.Services.Services
                 if (!userHasVoucher)
                     throw new Exception("Nevažeći kod — ovaj vaučer nije povezan s vašim računom.");
 
-                
                 total -= total * voucher.Discount;
             }
 
-            
             var preview = new ReservationPreview
             {
-                UserId = request.UserId,
-                OfferId = request.OfferId,
-                HotelId = request.HotelId,
-                RoomId = request.RoomId,
-                OfferTitle = offer?.Offer?.Title ?? "",
-                HotelTitle = hotel?.Name ?? "",
-                HotelStars = hotel?.Stars.ToString() ?? "",
-                RoomType = room?.RoomType ?? "",
+                OfferTitle = offer.Offer?.Title ?? "",
+                HotelTitle = hotel.Name ?? "",
+                HotelStars = hotel.Stars.ToString(),
+                RoomType = room.RoomType ?? "",
                 ResidenceTaxTotal = offer.ResidenceTotal,
                 Insurance = offer.TravelInsuranceTotal,
-                IncludeInsurance = true,
+                IncludeInsurance = request.IncludeInsurance == true,
                 VoucherCode = request.VoucherCode,
+                BasePrice = basePrice,          // ✅ UVIJEK decimal
                 TotalPrice = total
             };
 
             return preview;
         }
 
+
         public async Task<bool> ApprovingRatePayment(int hotelId)
         {
             var hotel = await _context.Hotels
                 .Include(h => h.OfferHotels)
                 .FirstOrDefaultAsync(h => h.Id == hotelId);
-        
+
             if (hotel == null)
                 throw new Exception("Hotel nije pronađen.");
-        
+
             var departure = hotel.OfferHotels.FirstOrDefault()?.DepartureDate;
-        
+
             if (departure == null)
                 throw new Exception("Datum polaska nije postavljen za ovaj hotel.");
-        
+
             var today = DateTime.UtcNow.Date;
-        
-            
+
+
             int monthsDifference = ((departure.Value.Year - today.Year) * 12) + departure.Value.Month - today.Month;
-        
+
             return monthsDifference >= 2;
         }
 

@@ -15,6 +15,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new Role { Id = 1, Name = "Korisnik", NormalizedName = "KORISNIK", Description = "Osnovna korisnička rola" },
                 new Role { Id = 2, Name = "Radnik", NormalizedName = "RADNIK", Description = "Zaposleni koji upravlja ponudama i rezervacijama" },
                 new Role { Id = 3, Name = "Direktor", NormalizedName = "DIREKTOR", Description = "Administrator sistema" }
+                //new Role { Id = 4, Name = "Anonymus", NormalizedName = "ANONYMUS", Description = "Neprijavljeni korisnik mobilne aplikacije" }
+
             );
 
             // =========================================================================
@@ -478,6 +480,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 }
+
             );
 
             // =========================================================================
@@ -1863,7 +1866,32 @@ new Comment
     starRate = 5
 }
 
-         );
+);
+
+builder.Entity<UserToken>().HasData(
+    new UserToken { UserId = 4,  Equity = 120 },
+    new UserToken { UserId = 5,  Equity = 340 },
+    new UserToken { UserId = 6,  Equity = 75 },
+    new UserToken { UserId = 7,  Equity = 210 },
+    new UserToken { UserId = 8,  Equity = 500 },
+    new UserToken { UserId = 9,  Equity = 160 },
+    new UserToken { UserId = 10, Equity = 90 },
+    new UserToken { UserId = 11, Equity = 430 },
+    new UserToken { UserId = 12, Equity = 60 },
+    new UserToken { UserId = 13, Equity = 280 },
+    new UserToken { UserId = 14, Equity = 150 },
+    new UserToken { UserId = 15, Equity = 390 },
+    new UserToken { UserId = 16, Equity = 45 },
+    new UserToken { UserId = 17, Equity = 310 },
+    new UserToken { UserId = 18, Equity = 200 },
+    new UserToken { UserId = 19, Equity = 470 },
+    new UserToken { UserId = 20, Equity = 130 },
+    new UserToken { UserId = 21, Equity = 260 },
+    new UserToken { UserId = 22, Equity = 80 },
+    new UserToken { UserId = 23, Equity = 350 },
+    new UserToken { UserId = 24, Equity = 170 }
+);
+
 
             builder.Entity<WorkApplication>().HasData(
     new WorkApplication

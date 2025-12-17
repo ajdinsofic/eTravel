@@ -356,6 +356,12 @@ namespace eTravelAgencija.Services.Mapping
             CreateMap<eTravelAgencija.Services.Database.WorkApplication, CVDownloadResponse>()
                 .ForMember(dest => dest.fileBytes, opt => opt.Ignore());
 
+            CreateMap<UserToken, Model.model.UserToken>();
+
+            // API ➜ DB (INSERT / UPDATE)
+            CreateMap<UserTokenUpsertRequest, UserToken>()
+                .ForMember(dest => dest.User, opt => opt.Ignore());
+
         }
     }
 }
