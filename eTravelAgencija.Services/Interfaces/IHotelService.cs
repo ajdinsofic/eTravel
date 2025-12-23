@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eTravelAgencija.Model;
 using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.Responses;
 using eTravelAgencija.Model.SearchObjects;
@@ -11,6 +12,6 @@ namespace eTravelAgencija.Services.Interfaces
 {
     public interface IHotelService : ICRUDService<Model.model.Hotel, HotelSearchObject, HotelUpsertRequest, HotelUpsertRequest>
     {
-        Model.model.Hotel GetMostPopularHotelForOffer(int offerId);
+        Task<RecommendedHotelRoomDto?> RecommendHotelRoomForOfferAsync(int offerId, int userId);
     }
 }

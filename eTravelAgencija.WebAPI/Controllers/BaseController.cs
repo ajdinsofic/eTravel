@@ -25,7 +25,7 @@ namespace eTravelAgencija.WebAPI.Controllers
         }
 
         // 🟢 GET — svi podaci (paged)
-        [Authorize(Roles = "Korisnik,Direktor,Radnik")]
+        [AllowAnonymous]
         [HttpGet]
         public virtual async Task<ActionResult<PagedResult<TResponse>>> Get([FromQuery] TSearch? search = null)
         {
@@ -44,7 +44,7 @@ namespace eTravelAgencija.WebAPI.Controllers
         }
 
         // 🟡 GET — po ID
-        [Authorize(Roles = "Korisnik,Direktor,Radnik")]
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public virtual async Task<ActionResult<TResponse>> GetById(int id)
         {

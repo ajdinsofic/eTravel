@@ -18,16 +18,6 @@ namespace eTravelAgencija.WebAPI.Controllers
             
         }
 
-        public override Task<ActionResult<WorkApplication>> Create([FromForm] WorkApplicationUpsertRequest insert)
-        {
-            return base.Create(insert);
-        }
-
-        public override Task<ActionResult<WorkApplication>> Update(int id, [FromForm] WorkApplicationUpsertRequest update)
-        {
-            return base.Update(id, update);
-        }
-
         [HttpGet("{id}/download-cv")]
         public async Task<IActionResult> DownloadCV(int id)
         {
@@ -39,6 +29,14 @@ namespace eTravelAgencija.WebAPI.Controllers
                 result.CvFileName
             );
         }
+
+        [HttpPost("insertCV")]
+    public async Task<IActionResult> InsertCV(
+        [FromForm] WorkApplicationUpsertRequest request)
+    {
+        await (_service as IWorkApplicationService).InsertCV(request);
+        return Ok();
+    }
 
     }
 }

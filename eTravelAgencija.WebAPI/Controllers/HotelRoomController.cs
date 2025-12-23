@@ -12,9 +12,9 @@ namespace eTravelAgencija.WebAPI.Controllers
 {
     public class HotelRoomController : BaseCRUDController<Model.model.HotelRooms, HotelRoomSearchObject, HotelRoomInsertRequest, HotelRoomUpdateRequest>
     {
-        public HotelRoomController(ILogger<BaseCRUDController<Model.model.HotelRooms, HotelRoomSearchObject, HotelRoomInsertRequest, HotelRoomUpdateRequest>> logger, IHotelRoomsService hotelRoomsService) : base(logger, hotelRoomsService){}
+        public HotelRoomController(ILogger<BaseCRUDController<Model.model.HotelRooms, HotelRoomSearchObject, HotelRoomInsertRequest, HotelRoomUpdateRequest>> logger, IHotelRoomsService hotelRoomsService) : base(logger, hotelRoomsService) { }
 
-        [Authorize(Roles = "Korisnik,Radnik,Direktor")]
+        [AllowAnonymous]
         [HttpGet("{hotelId}/{roomId}")]
         public async Task<Model.model.HotelRooms?> GetByCompositeKey(int hotelId, int roomId)
         {
@@ -25,7 +25,7 @@ namespace eTravelAgencija.WebAPI.Controllers
         [HttpPut("{hotelId}/{roomId}")]
         public async Task<Model.model.HotelRooms?> UpdateByCompositeKey(int hotelId, int roomId, HotelRoomUpdateRequest plan)
         {
-            return await _service.UpdateCompositeAsync([hotelId,roomId], plan);
+            return await _service.UpdateCompositeAsync([hotelId, roomId], plan);
         }
 
         [Authorize(Roles = "Radnik,Direktor")]
@@ -34,6 +34,16 @@ namespace eTravelAgencija.WebAPI.Controllers
         {
             return await _service.DeleteCompositeAsync(hotelId, roomId);
         }
+
+        [HttpPut("increase-rooms-left")]
+        public async Task<IActionResult> IncreaseRoomsLeft(
+         [FromQuery] int hotelId,
+         [FromQuery] int roomId)
+        {
+            await (_service as IHotelRoomsService).IncreaseRoomsLeft(hotelId, roomId);
+            return Ok(true);
+        }
+
 
 
     }

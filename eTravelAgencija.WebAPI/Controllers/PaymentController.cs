@@ -37,5 +37,11 @@ namespace eTravelAgencija.WebAPI.Controllers
         {
             return await _service.DeleteCompositeAsync(reservationId, rateId);
         }
+
+        [HttpGet("summary/{reservationId}")]
+        public async Task<ActionResult<Model.model.PaymentSummary>> GetSummary(int reservationId)
+        {
+            return await (_service as IPaymentService).GetPaymentSummary(reservationId);
+        }
     }
 }

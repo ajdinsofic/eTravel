@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using eTravelAgencija.Services.Services;
 using eTravelAgencija.Services.Interfaces;
+using eTravelAgencija.Model;
 
 namespace eTravelAgencija.WebAPI.Controllers
 {
@@ -26,10 +27,13 @@ namespace eTravelAgencija.WebAPI.Controllers
             
         }
 
-        [HttpGet("{offerId}/recommended")]
-        public IActionResult GetRecommended(int offerId)
+        [HttpGet("offers/{offerId}/hotel-room")]
+        public async Task<ActionResult<RecommendedHotelRoomDto>> GetRecommendedHotelRoomForOffer(
+            int offerId,
+            [FromQuery] int userId)
         {
-            var result = (_service as IHotelService).GetMostPopularHotelForOffer(offerId);
+            var result = await (_service as IHotelService).RecommendHotelRoomForOfferAsync(offerId, userId);
+            if (result == null) return NotFound("No suitable hotel/room found for this offer.");
             return Ok(result);
         }
 

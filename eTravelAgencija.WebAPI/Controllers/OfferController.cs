@@ -9,7 +9,7 @@ using eTravelAgencija.Services.Interfaces;
 namespace eTravelAgencija.WebAPI.Controllers
 {
 
-    public class OfferController 
+    public class OfferController
         : BaseCRUDController<
             Offer,
             OfferSearchObject,
@@ -22,14 +22,31 @@ namespace eTravelAgencija.WebAPI.Controllers
             IOfferService offerService)
             : base(logger, offerService)
         {
-            
+
         }
 
-        [HttpGet("{offerId}/recommended")]
-        public IActionResult GetRecommendedOffers(int offerId)
+        [HttpGet("recommended/OffersForUser/{userId}")]
+        public IActionResult GetRecommendedForUser(int userId)
         {
-            var result = (_service as IOfferService).RecommendOffers(offerId);
+            var result = (_service as IOfferService)
+                .RecommendOffersForUser(userId);
+
             return Ok(result);
+        }
+
+
+        [HttpPut("{offerId}/increaseTotalReservation")]
+        public async Task<IActionResult> IncreaseTotalReservation(int offerId)
+        {
+            await (_service as IOfferService).IncreaseTotalReservation(offerId);
+            return Ok(new { message = "TotalCountOfReservations povećan." });
+        }
+
+        [HttpPut("{offerId}/decreaseTotalReservation")]
+        public async Task<IActionResult> DecreaseTotalReservation(int offerId)
+        {
+            await (_service as IOfferService).DecreaseTotalReservation(offerId);
+            return Ok(new { message = "TotalCountOfReservations smanjen." });
         }
 
     }

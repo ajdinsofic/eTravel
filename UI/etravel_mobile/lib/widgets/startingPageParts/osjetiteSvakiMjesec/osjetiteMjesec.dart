@@ -51,17 +51,17 @@ class _osjetiteMjesecState extends State<osjetiteMjesec> {
                     children: List.generate(mjeseciKolone.length, (index) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder:
-                                  (context) => Universalofferpage(
-                                    mjesec: mjeseciKolone[index],
-                                  ), // Passing the required mjesec
-                            ),
-                            (Route<dynamic> route) =>
-                                false, // Clears previous routes
-                          );
+                          // Navigator.pushAndRemoveUntil(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder:
+                          //         (context) => Universalofferpage(
+                          //           podkategorija: mjeseciKolone[index],
+                          //         ), // Passing the required mjesec
+                          //   ),
+                          //   (Route<dynamic> route) =>
+                          //       false, // Clears previous routes
+                          // );
                         },
                         child: Container(
                           width: screenWidth * sirine[index],
@@ -93,17 +93,17 @@ class _osjetiteMjesecState extends State<osjetiteMjesec> {
                     bottom: 0,
                     child: GestureDetector(
                       onTap: () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder:
-                                  (context) => Universalofferpage(
-                                    mjesec: mjeseciRedove[index],
-                                  ), // Passing the required mjesec
-                            ),
-                            (Route<dynamic> route) =>
-                                false, // Clears previous routes
-                          );
+                          // Navigator.pushAndRemoveUntil(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder:
+                          //         (context) => Universalofferpage(
+                          //           podkategorija: mjeseciRedove[index],
+                          //         ), // Passing the required mjesec
+                          //   ),
+                          //   (Route<dynamic> route) =>
+                          //       false, // Clears previous routes
+                          // );
                         },
                       child: Container(
                         width: screenWidth * 0.1,

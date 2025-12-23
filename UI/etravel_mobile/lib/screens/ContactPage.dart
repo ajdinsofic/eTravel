@@ -1,19 +1,34 @@
-import 'package:etravel_app/widgets/SljedecaDestinacijaIMenuBar.dart';
 import 'package:flutter/material.dart';
+import 'package:etravel_app/widgets/SljedecaDestinacijaIMenuBar.dart';
 
-class contactPage extends StatefulWidget {
-  const contactPage({super.key});
+class ContactPage extends StatefulWidget {
+  const ContactPage({super.key});
 
   @override
-  State<contactPage> createState() => _contactPageState();
+  State<ContactPage> createState() => _ContactPageState();
 }
 
-class _contactPageState extends State<contactPage> {
+class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SljedecaDestinacijaIMenuBar(),
-      body: Text("Ovo je contact page"),
+      backgroundColor: Colors.white,
+
+      body: CustomScrollView(
+        slivers: [
+          SljedecaDestinacijaIMenuBar(daLijeKliknuo: false),
+
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                "Ovo je contact page",
+                style: const TextStyle(fontSize: 20),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

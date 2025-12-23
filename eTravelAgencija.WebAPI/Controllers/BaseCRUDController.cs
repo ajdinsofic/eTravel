@@ -27,7 +27,7 @@ namespace eTravelAgencija.WebAPI.Controllers
             _logger = logger;
         }
 
-        [Authorize(Roles = "Direktor,Radnik")]
+        [Authorize(Roles = "Korisnik,Direktor,Radnik")]
         [HttpPost]
         public virtual async Task<ActionResult<TResponse>> Create([FromBody] TInsert insert)
         {
@@ -38,7 +38,7 @@ namespace eTravelAgencija.WebAPI.Controllers
             return Ok(entity);
         }
 
-        [Authorize(Roles = "Direktor,Radnik")]
+        [Authorize(Roles = "Korisnik,Direktor,Radnik")]
         [HttpPut("{id}")]
         public virtual async Task<ActionResult<TResponse>> Update(int id, [FromBody] TUpdate update)
         {
@@ -52,7 +52,7 @@ namespace eTravelAgencija.WebAPI.Controllers
             return Ok(updated);
         }
 
-        [Authorize(Roles = "Direktor,Radnik")]
+        [Authorize(Roles = "Korisnik,Direktor,Radnik")]
         [HttpDelete("{id}")]
         public virtual async Task<IActionResult> Delete(int id)
         {
