@@ -17,5 +17,6 @@ namespace eTravelAgencija.Services.Database
         [ForeignKey(nameof(Voucher))]
         public int VoucherId { get; set; }
         public Voucher Voucher { get; set; }
+        public bool isUsed {get; set;}
     }
 }

@@ -18,7 +18,7 @@ namespace eTravelAgencija.WebAPI.Controllers
         }
 
 
-        [Authorize(Roles = "Korisnik")]
+        [AllowAnonymous]
         [HttpGet("generate")]
         public async Task<IActionResult> GeneratePreview([FromQuery] ReservationPreviewRequest request)
         {

@@ -28,11 +28,11 @@ namespace eTravelAgencija.Services.Services
     public class UserTokenService
     : BaseCRUDService<
         Model.model.UserToken,
-        BaseSearchObject,
+        UserTokenSearchObject,
         Database.UserToken,
         UserTokenUpsertRequest,
         UserTokenUpsertRequest>,
-      IUserTokenService   
+      IUserTokenService
     {
         public UserTokenService(
             eTravelAgencijaDbContext context,
@@ -40,6 +40,19 @@ namespace eTravelAgencija.Services.Services
         ) : base(context, mapper)
         {
         }
+
+        public override IQueryable<UserToken> ApplyFilter(
+    IQueryable<UserToken> query,
+    UserTokenSearchObject search)
+        {
+            if (search?.UserId != null)
+            {
+                query = query.Where(x => x.UserId == search.UserId);
+            }
+
+            return base.ApplyFilter(query, search);
+        }
+
     }
 
 }

@@ -85,6 +85,12 @@ public class eTravelAgencijaDbContext
         builder.Entity<Payment>()
         .HasKey(p => new { p.ReservationId, p.RateId });
 
+        builder.Entity<Reservation>()
+        .HasOne(r => r.OfferDetails)
+        .WithMany()
+        .HasForeignKey(r => r.OfferId);
+
+
         SeedData.Seed(builder);
 
     }

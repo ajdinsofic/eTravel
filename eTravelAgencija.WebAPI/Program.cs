@@ -12,6 +12,7 @@ using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using eTravelAgencija.Services.Interfaces;
 using Microsoft.Extensions.FileProviders;
+using eTravelAgencija.Model.model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +51,12 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.Configure<PayPalSettings>(
+    builder.Configuration.GetSection("PayPal"));
+
+builder.Services.AddHttpClient();
+
+
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 builder.Services.AddControllers()
@@ -78,12 +85,15 @@ builder.Services.AddTransient<IWorkApplicationService, WorkApplicationService>()
 builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddTransient<IUserRoleService, UserRoleService>();
 builder.Services.AddTransient<IRateService, RateService>();
+builder.Services.AddTransient<IUserTokenService, UserTokenService>();
+builder.Services.AddTransient<IUserVoucherService, UserVoucherService>();
+builder.Services.AddScoped<PayPalService>();
 
 
 builder.Services.AddDbContext<eTravelAgencijaDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddIdentity<User, Role>(options =>
+builder.Services.AddIdentity<eTravelAgencija.Services.Database.User, eTravelAgencija.Services.Database.Role>(options =>
 {
     options.SignIn.RequireConfirmedEmail = false;
     options.SignIn.RequireConfirmedPhoneNumber = false;
@@ -107,7 +117,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseStaticFiles(new StaticFileOptions
 {

@@ -1134,444 +1134,152 @@ namespace eTravelAgencija.Services.Database.Seed
     new Reservation { Id = 2016, UserId = 21, OfferId = 2, HotelId = 112, RoomId = 1, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 900, PriceLeftToPay = 600, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
     new Reservation { Id = 2017, UserId = 22, OfferId = 3, HotelId = 122, RoomId = 1, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 350, PriceLeftToPay = 50, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
     new Reservation { Id = 2018, UserId = 23, OfferId = 1, HotelId = 100, RoomId = 1, IsActive = true, IncludeInsurance = false, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 450, PriceLeftToPay = 150, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2019, UserId = 24, OfferId = 2, HotelId = 111, RoomId = 3, IsActive = true, IncludeInsurance = true, isFirstRatePaid = false, isFullPaid = true, TotalPrice = 900, PriceLeftToPay = 0, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" }
+    new Reservation { Id = 2019, UserId = 24, OfferId = 2, HotelId = 111, RoomId = 3, IsActive = true, IncludeInsurance = true, isFirstRatePaid = false, isFullPaid = true, TotalPrice = 900, PriceLeftToPay = 0, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
+    new Reservation
+    {
+        Id = 3000,
+        UserId = 6,
+        OfferId = 1,
+        HotelId = 100,
+        RoomId = 1,
+        IsActive = true,
+        IncludeInsurance = false,
+        isFirstRatePaid = true,
+        isFullPaid = true,
+        TotalPrice = 0,
+        PriceLeftToPay = 0,
+        CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
+        addedNeeds = ""
+    },
+
+    // ============================
+    // USER 6 — SANTORINI (Offer 2)
+    // ============================
+    new Reservation
+    {
+        Id = 3001,
+        UserId = 6,
+        OfferId = 2,
+        HotelId = 110,
+        RoomId = 2,
+        IsActive = true,
+        IncludeInsurance = false,
+        isFirstRatePaid = true,
+        isFullPaid = true,
+        TotalPrice = 0,
+        PriceLeftToPay = 0,
+        CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
+        addedNeeds = ""
+    },
+
+    // ============================
+    // USER 6 — ISTANBUL (Offer 3)
+    // ============================
+    new Reservation
+    {
+        Id = 3002,
+        UserId = 6,
+        OfferId = 3,
+        HotelId = 120,
+        RoomId = 1,
+        IsActive = true,
+        IncludeInsurance = false,
+        isFirstRatePaid = true,
+        isFullPaid = true,
+        TotalPrice = 0,
+        PriceLeftToPay = 0,
+        CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
+        addedNeeds = ""
+    }
 );
 
             builder.Entity<Payment>().HasData(
-                // RES 2000 – Total 450 → 100 + 200 + 150
-                new Payment { ReservationId = 2000, RateId = 1, Amount = 100, PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2000, RateId = 2, Amount = 200, PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2000, RateId = 3, Amount = 150, PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
 
-                // RES 2001 – Total 900 → 100 + 200 + 600
-                new Payment { ReservationId = 2001, RateId = 1, Amount = 100, PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2001, RateId = 2, Amount = 200, PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2001, RateId = 3, Amount = 600, PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
+    // =====================================================
+    // RES 2000 – 1 + 2 + 5 (FULL PAID)
+    // =====================================================
+    new Payment { ReservationId = 2000, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2000, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2000, RateId = 5, Amount = 150, PaymentMethod = "kartica", IsConfirmed = true },
 
-                // RES 2002 – Total 350 → 100 + 200 + 50
-                new Payment { ReservationId = 2002, RateId = 1, Amount = 100, PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2002, RateId = 2, Amount = 200, PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "uplatnica", PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = false },
-                //new Payment { ReservationId = 2002, RateId = 3, Amount = 50, PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
+    // =====================================================
+    // RES 2001 – 1 + 2 + 5 (FULL PAID)
+    // =====================================================
+    new Payment { ReservationId = 2001, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2001, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2001, RateId = 5, Amount = 600, PaymentMethod = "kartica", IsConfirmed = true },
 
-                // RES 2003 – Total 900
-                new Payment { ReservationId = 2003, RateId = 1, Amount = 100, PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2003, RateId = 2, Amount = 200, PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2003, RateId = 3, Amount = 600, PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "uplatnica", PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = false },
+    // =====================================================
+    // RES 2002 – 1 CONFIRMED, 2 PENDING
+    // =====================================================
+    new Payment { ReservationId = 2002, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2002, RateId = 2, Amount = 200, PaymentMethod = "uplatnica", IsConfirmed = false },
 
-// RES 2004 – Total 450
-// Puni iznos
-new Payment
-{
-    ReservationId = 2004,
-    RateId = 4, // pretpostavka: 4 = "Puni iznos"
-    Amount = 1000m, // stavi pravi puni iznos
-    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-    PaymentMethod = "uplatnica",
-    PaymentDeadline = new DateTime(2025, 12, 05, 0, 0, 0, DateTimeKind.Utc),
-    IsConfirmed = false,
-    DeadlineExtended = false
-},
+    // =====================================================
+    // RES 2003 – 1 + 2 CONFIRMED, 5 PENDING
+    // =====================================================
+    new Payment { ReservationId = 2003, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2003, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2003, RateId = 5, Amount = 600, PaymentMethod = "uplatnica", IsConfirmed = false },
 
-//new Payment { ReservationId = 2004, RateId = 1, Amount = 100, PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-//new Payment { ReservationId = 2004, RateId = 2, Amount = 200, PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-//new Payment { ReservationId = 2004, RateId = 3, Amount = 150, PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentMethod = "kartica", PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
+    // =====================================================
+    // RES 2004 – FULL AMOUNT (PENDING)
+    // =====================================================
+    new Payment
+    {
+        ReservationId = 2004,
+        RateId = 4,
+        Amount = 450,
+        PaymentMethod = "uplatnica",
+        IsConfirmed = false
+    },
 
-new Payment
-{
-    ReservationId = 2005,
-    RateId = 1, // Prva rata
-    Amount = 100m,
-    PaymentMethod = "kartica",
-    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-    IsConfirmed = true,
-    DeadlineExtended = false
-},
+    // =====================================================
+    // RES 2005 – 1 CONFIRMED + 5 PENDING
+    // =====================================================
+    new Payment { ReservationId = 2005, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2005, RateId = 5, Amount = 400, PaymentMethod = "uplatnica", IsConfirmed = false },
 
-new Payment
-{
-    ReservationId = 2005,
-    RateId = 5, // Preostali iznos — postavi pravi ID
-    Amount = 400m, // iznos preostale uplate
-    PaymentMethod = "uplatnica",
-    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-    PaymentDeadline = new DateTime(2025, 12, 20, 0, 0, 0, DateTimeKind.Utc),
-    IsConfirmed = false,
-    DeadlineExtended = false
-},
+    // =====================================================
+    // RES 2006 – 1 + 2 + 5 (FULL PAID)
+    // =====================================================
+    new Payment { ReservationId = 2006, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2006, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2006, RateId = 5, Amount = 150, PaymentMethod = "kartica", IsConfirmed = true },
 
-                //new Payment { ReservationId = 2005, RateId = 1, Amount = 100, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                //new Payment { ReservationId = 2005, RateId = 2, Amount = 200, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                //new Payment { ReservationId = 2005, RateId = 3, Amount = 50, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
+    // =====================================================
+    // RES 2007 – 1 + 2 (čekanje 5)
+    // =====================================================
+    new Payment { ReservationId = 2007, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2007, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
 
-                // RES 2006 – Total 450 → 100 + 200 + 150
-                new Payment { ReservationId = 2006, RateId = 1, Amount = 100, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2006, RateId = 2, Amount = 200, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2006, RateId = 3, Amount = 150, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
+    // =====================================================
+    // RES 2008 – 1 + 2 + 5 (FULL PAID)
+    // =====================================================
+    new Payment { ReservationId = 2008, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2008, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2008, RateId = 5, Amount = 50, PaymentMethod = "kartica", IsConfirmed = true },
 
-                // RES 2007 – Total 900 → 100 + 200 + 600
-                new Payment { ReservationId = 2007, RateId = 1, Amount = 100, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2007, RateId = 2, Amount = 200, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2007, RateId = 3, Amount = 600, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
+    // =====================================================
+    // RES 2009 – 1 + 2 + 5 (FULL PAID)
+    // =====================================================
+    new Payment { ReservationId = 2009, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2009, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+    new Payment { ReservationId = 2009, RateId = 5, Amount = 150, PaymentMethod = "kartica", IsConfirmed = true },
 
-                // RES 2008 – Total 350 → 100 + 200 + 50
-                new Payment { ReservationId = 2008, RateId = 1, Amount = 100, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2008, RateId = 2, Amount = 200, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2008, RateId = 3, Amount = 50, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
+    // =====================================================
+    // RES 2010 – FULL AMOUNT CONFIRMED
+    // =====================================================
+    new Payment
+    {
+        ReservationId = 2010,
+        RateId = 4,
+        Amount = 900,
+        PaymentMethod = "kartica",
+        IsConfirmed = true
+    }
+);
 
-                // RES 2009 – Total 450 → 100 + 200 + 150
-                new Payment { ReservationId = 2009, RateId = 1, Amount = 100, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2009, RateId = 2, Amount = 200, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-                new Payment { ReservationId = 2009, RateId = 3, Amount = 150, PaymentMethod = "kartica", PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc), PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc), IsConfirmed = true },
-
-                // RES 2010 – Total 900 → 100 + 200 + 600
-                new Payment
-                {
-                    ReservationId = 2010,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2010,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2010,
-                    RateId = 3,
-                    Amount = 600,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-
-                // RES 2011 – Total 350 → 100 + 200 + 50
-                new Payment
-                {
-                    ReservationId = 2011,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2011,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2011,
-                    RateId = 3,
-                    Amount = 50,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-
-                // RES 2012 – Total 450 → 100 + 200 + 150
-                new Payment
-                {
-                    ReservationId = 2012,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2012,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2012,
-                    RateId = 3,
-                    Amount = 150,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-
-                // RES 2013 – Total 900 → 100 + 200 + 600
-                new Payment
-                {
-                    ReservationId = 2013,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2013,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2013,
-                    RateId = 3,
-                    Amount = 600,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-
-                // RES 2014 – Total 350 → 100 + 200 + 50
-                new Payment
-                {
-                    ReservationId = 2014,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2014,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2014,
-                    RateId = 3,
-                    Amount = 50,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                // RES 2015 – Total 450 → 100 + 200 + 150
-                new Payment
-                {
-                    ReservationId = 2015,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2015,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2015,
-                    RateId = 3,
-                    Amount = 150,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-
-                // RES 2016 – Total 900 → 100 + 200 + 600
-                new Payment
-                {
-                    ReservationId = 2016,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2016,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2016,
-                    RateId = 3,
-                    Amount = 600,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-
-                // RES 2017 – Total 350 → 100 + 200 + 50
-                new Payment
-                {
-                    ReservationId = 2017,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2017,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2017,
-                    RateId = 3,
-                    Amount = 50,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-
-                // RES 2018 – Total 450 → 100 + 200 + 150
-                new Payment
-                {
-                    ReservationId = 2018,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2018,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2018,
-                    RateId = 3,
-                    Amount = 150,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-
-                // RES 2019 – Total 900 → 100 + 200 + 600
-                new Payment
-                {
-                    ReservationId = 2019,
-                    RateId = 1,
-                    Amount = 100,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 02, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2019,
-                    RateId = 2,
-                    Amount = 200,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 06, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                },
-
-                new Payment
-                {
-                    ReservationId = 2019,
-                    RateId = 3,
-                    Amount = 600,
-                    PaymentMethod = "kartica",
-                    PaymentDate = new DateTime(2025, 12, 11, 0, 0, 0, DateTimeKind.Utc),
-                    PaymentDeadline = new DateTime(2025, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-                    IsConfirmed = true
-                }
-            );
 
             builder.Entity<Comment>().HasData(
             new Comment
@@ -1867,6 +1575,61 @@ new Comment
 }
 
 );
+
+builder.Entity<Voucher>().HasData(
+    new Voucher
+    {
+        Id = 1,
+        VoucherCode = "ETRAVEL20",
+        Discount = 0.20m,          // 20%
+        priceInTokens = 40
+    },
+    new Voucher
+    {
+        Id = 2,
+        VoucherCode = "ETRAVEL50",
+        Discount = 0.50m,          // 50%
+        priceInTokens = 80
+    },
+    new Voucher
+    {
+        Id = 3,
+        VoucherCode = "ETRAVEL70",
+        Discount = 0.70m,          // 70%
+        priceInTokens = 120
+    }
+);
+
+builder.Entity<UserVoucher>().HasData(
+    // Maja (5)
+    new UserVoucher { UserId = 5, VoucherId = 1, isUsed = false },
+    new UserVoucher { UserId = 5, VoucherId = 2, isUsed = true },
+
+    // Edin (6)
+    new UserVoucher { UserId = 6, VoucherId = 1, isUsed = false },
+
+    // Lana (7)
+    new UserVoucher { UserId = 7, VoucherId = 3, isUsed = false },
+
+    // Haris (8)
+    new UserVoucher { UserId = 8, VoucherId = 2, isUsed = true },
+
+    // Amira (9)
+    new UserVoucher { UserId = 9, VoucherId = 1, isUsed = false },
+    new UserVoucher { UserId = 9, VoucherId = 3, isUsed = true },
+
+    // Tarik (10)
+    new UserVoucher { UserId = 10, VoucherId = 2, isUsed = false },
+
+    // Selma (11)
+    new UserVoucher { UserId = 11, VoucherId = 1, isUsed = false },
+
+    // Nedim (12)
+    new UserVoucher { UserId = 12, VoucherId = 3, isUsed = false }
+);
+
+
+
 
 builder.Entity<UserToken>().HasData(
     new UserToken { UserId = 4,  Equity = 120 },

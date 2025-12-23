@@ -26,7 +26,7 @@ namespace eTravelAgencija.Services.Database
 
         public override IQueryable<Offer> ApplyFilter(IQueryable<Offer> query, OfferSearchObject search)
         {
-            if(search?.offerId.HasValue == true)
+            if (search?.offerId.HasValue == true)
             {
                 query = query.Where(u => u.Id == search.offerId);
             }
@@ -39,6 +39,13 @@ namespace eTravelAgencija.Services.Database
             if (!string.IsNullOrWhiteSpace(search.FTS))
             {
                 query = query.Where(o => o.Title.ToLower().Contains(search.FTS.ToLower()));
+            }
+
+            if (search?.isPopularOffers == true)
+            {
+                query = query
+                    .OrderByDescending(o => o.Details.TotalCountOfReservations)
+                    .Take(3);
             }
 
             return base.ApplyFilter(query, search);
@@ -121,21 +128,51 @@ namespace eTravelAgencija.Services.Database
             await base.BeforeUpdateAsync(entity, request);
         }
 
-        public List<Model.model.Offer> RecommendOffers(int offerId)
+        public async Task IncreaseTotalReservation(int offerId)
+        {
+            var offerDetails = await _context.OfferDetails
+                .FirstOrDefaultAsync(x => x.OfferId == offerId);
+
+            if (offerDetails == null)
+                throw new Exception("OfferDetails nije pronađen.");
+
+            offerDetails.TotalCountOfReservations += 1;
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DecreaseTotalReservation(int offerId)
+        {
+            var offerDetails = await _context.OfferDetails
+                .FirstOrDefaultAsync(x => x.OfferId == offerId);
+
+            if (offerDetails == null)
+                throw new Exception("OfferDetails nije pronađen.");
+
+            // zaštita da ne ode u minus
+            if (offerDetails.TotalCountOfReservations > 0)
+                offerDetails.TotalCountOfReservations -= 1;
+
+            await _context.SaveChangesAsync();
+        }
+
+        private Dictionary<int, float> GetItemToItemScores(int baseOfferId)
         {
             var ml = new MLContext();
 
-            // 1️⃣ Load all reservations grouped by user
+            // 1️⃣ Rezervacije po korisniku
             var reservations = _context.Reservations
                 .GroupBy(r => r.UserId)
                 .ToList();
 
             var data = new List<OfferEntry>();
 
-            // 2️⃣ Generate co-occurrence pairs OfferID -> CoOfferID
             foreach (var group in reservations)
             {
-                var offerIds = group.Select(r => r.OfferId).Distinct().ToList();
+                var offerIds = group
+                    .Select(r => r.OfferId)
+                    .Distinct()
+                    .ToList();
 
                 foreach (var o1 in offerIds)
                 {
@@ -154,13 +191,12 @@ namespace eTravelAgencija.Services.Database
                 }
             }
 
-            if (data.Count == 0)
-                return new List<Model.model.Offer>();
+            if (!data.Any())
+                return new Dictionary<int, float>();
 
-            // 3️⃣ Load data
+            // 2️⃣ Load data
             var trainData = ml.Data.LoadFromEnumerable(data);
 
-            // 4️⃣ REQUIRED: convert OfferID and CoOfferID to KEY columns
             var pipeline = ml.Transforms.Conversion
                 .MapValueToKey("OfferID")
                 .Append(ml.Transforms.Conversion.MapValueToKey("CoOfferID"));
@@ -168,7 +204,6 @@ namespace eTravelAgencija.Services.Database
             var pipelineModel = pipeline.Fit(trainData);
             var transformed = pipelineModel.Transform(trainData);
 
-            // 5️⃣ MatrixFactorization configuration
             var options = new MatrixFactorizationTrainer.Options
             {
                 MatrixColumnIndexColumnName = "OfferID",
@@ -180,50 +215,89 @@ namespace eTravelAgencija.Services.Database
                 NumberOfIterations = 80
             };
 
-            var est = ml.Recommendation().Trainers.MatrixFactorization(options);
+            var model = ml.Recommendation().Trainers.MatrixFactorization(options)
+                .Fit(transformed);
 
-            // 6️⃣ Fit model
-            var model = est.Fit(transformed);
+            // 3️⃣ Score svih ostalih offera
+            var scores = new Dictionary<int, float>();
 
-            // 7️⃣ Score all other offers
-            var allOffers = _context.Offers.Include(o => o.Details).Where(o => o.Id != offerId).ToList();
-            var scores = new List<(Database.Offer offer, float score)>();
+            var allOffers = _context.Offers
+                .Where(o => o.Id != baseOfferId)
+                .Select(o => o.Id)
+                .ToList();
 
-            foreach (var offer in allOffers)
+            foreach (var otherId in allOffers)
             {
-                // 7.1 – Prepare single-row data
-                var singleInput = new List<OfferEntry>()
+                var input = new List<OfferEntry>
         {
             new OfferEntry
             {
-                OfferID = (uint)offerId,
-                CoOfferID = (uint)offer.Id
+                OfferID = (uint)baseOfferId,
+                CoOfferID = (uint)otherId
             }
         };
 
-                var predictionData = ml.Data.LoadFromEnumerable(singleInput);
+                var inputData = ml.Data.LoadFromEnumerable(input);
+                var transformedInput = pipelineModel.Transform(inputData);
+                var scored = model.Transform(transformedInput);
 
-                // 7.2 – Apply SAME key-mapping pipeline
-                var transformedPrediction = pipelineModel.Transform(predictionData);
-
-                // 7.3 – Score using model.Transform()
-                var scored = model.Transform(transformedPrediction);
-
-                // 7.4 – Extract the score column
                 var score = scored.GetColumn<float>("Score").First();
-
-                scores.Add((offer, score));
+                scores[otherId] = score;
             }
 
-            // 8️⃣ Return Top 5 recommendations
-            var final = scores
-                .OrderByDescending(s => s.score)
-                .Take(5)
-                .Select(s => s.offer)
-                .ToList();
-
-            return _mapper.Map<List<Model.model.Offer>>(final);
+            return scores;
         }
 
+        public List<Model.model.Offer> RecommendOffersForUser(int userId)
+        {
+            // 1️⃣ Sve ponude koje je korisnik rezervisao
+            var userOfferIds = _context.Reservations
+                .Where(r => r.UserId == userId)
+                .Select(r => r.OfferId)
+                .Distinct()
+                .ToList();
+
+            if (!userOfferIds.Any())
+                return new List<Model.model.Offer>();
+
+            var aggregatedScores = new Dictionary<int, float>();
+
+            // 2️⃣ Za svaku korisnikovu ponudu → ML score
+            foreach (var offerId in userOfferIds)
+            {
+                var scores = GetItemToItemScores(offerId);
+
+                foreach (var kvp in scores)
+                {
+                    // preskoči već rezervisane
+                    if (userOfferIds.Contains(kvp.Key))
+                        continue;
+
+                    if (!aggregatedScores.ContainsKey(kvp.Key))
+                        aggregatedScores[kvp.Key] = 0;
+
+                    // agregacija (implicitni user profile)
+                    aggregatedScores[kvp.Key] += kvp.Value;
+                }
+            }
+
+            if (!aggregatedScores.Any())
+                return new List<Model.model.Offer>();
+
+            // 3️⃣ Top 5 preporuka
+            var recommendedIds = aggregatedScores
+                .OrderByDescending(x => x.Value)
+                .Take(5)
+                .Select(x => x.Key)
+                .ToList();
+
+            var offers = _context.Offers
+                .Include(o => o.Details)
+                .Where(o => recommendedIds.Contains(o.Id))
+                .ToList();
+
+            return _mapper.Map<List<Model.model.Offer>>(offers);
+        }
     }
+
 }

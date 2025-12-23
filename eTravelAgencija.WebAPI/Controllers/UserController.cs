@@ -63,13 +63,26 @@ namespace eTravelAgencija.WebAPI.Controllers
             return Ok(new { message = "Korisnik je uspješno odblokiran." });
         }
 
-        [Authorize(Roles = "Radnik,Direktor")]
+        [Authorize(Roles = "Korisnik,Radnik,Direktor")]
         [HttpPost("userImage")]
         public async Task<ActionResult<bool>> AddImage([FromForm] UserImageRequest request)
         {
             var result = await _userService.AddUserImage(request);
             return Ok(result);
         }
+
+        [Authorize(Roles = "Korisnik,Radnik,Direktor")]
+        [HttpGet("{userId}/userImage")]
+        public async Task<ActionResult<string>> GetUserImage(int userId)
+        {
+            var imageName = await _userService.GetUserImage(userId);
+        
+            if (imageName == null)
+                return NotFound();
+        
+            return Ok(imageName);
+        }
+
 
         [Authorize(Roles = "Korisnik,Radnik,Direktor")]
         [HttpDelete("{id}/delete-image")]

@@ -10,6 +10,6 @@ namespace eTravelAgencija.Services.Interfaces
 {
     public interface IPaymentService : ICRUDService<Model.model.Payment, PaymentSearchObject,PaymentInsertRequest,PaymentUpdateRequest>
     {
-        
+        Task<Model.model.PaymentSummary> GetPaymentSummary(int reservationId);
     }
 }

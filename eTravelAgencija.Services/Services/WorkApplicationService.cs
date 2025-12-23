@@ -24,7 +24,7 @@ namespace eTravelAgencija.Services.Services
 
         public override IQueryable<Database.WorkApplication> ApplyFilter(IQueryable<Database.WorkApplication> query, WorkApplicationSearchObject? search = null)
         {
-            if(search?.personName != null)
+            if (search?.personName != null)
             {
                 var searchText = search.personName.ToLower();
 
@@ -42,9 +42,8 @@ namespace eTravelAgencija.Services.Services
             return base.AddInclude(query, search);
         }
 
-        public override async Task BeforeInsertAsync(WorkApplication entity, WorkApplicationUpsertRequest request)
+        public async Task InsertCV(WorkApplicationUpsertRequest request)
         {
-            
             if (request.CvFile == null || request.CvFile.Length == 0)
                 throw new Exception("CV je obavezan.");
 
@@ -54,24 +53,30 @@ namespace eTravelAgencija.Services.Services
             if (!allowedExtensions.Contains(ext))
                 throw new Exception("Dozvoljeni formati su: PDF, DOC, DOCX.");
 
-            string root = Directory.GetCurrentDirectory();
-            string folder = Path.Combine(root, "wwwroot", "cv");
+            string root = _env.WebRootPath;
+            string folder = Path.Combine(root, "cv");
             Directory.CreateDirectory(folder);
-            
+
             string fileName = $"cv_{Guid.NewGuid()}{ext}";
             string fullPath = Path.Combine(folder, fileName);
-            
+
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 await request.CvFile.CopyToAsync(stream);
             }
 
-            entity.CvFileName = fileName;
-            entity.UserId = request.UserId;
-            entity.AppliedAt = DateTime.UtcNow;
+            var entity = new WorkApplication
+            {
+                UserId = request.UserId,
+                CvFileName = fileName,
+                letter = request.letter,
+                AppliedAt = DateTime.UtcNow
+            };
 
-            await base.BeforeInsertAsync(entity, request);
+            _context.WorkApplications.Add(entity);
+            await _context.SaveChangesAsync();
         }
+
 
         public async Task<CVDownloadResponse> DownloadCVAsync(int id)
         {
@@ -83,7 +88,7 @@ namespace eTravelAgencija.Services.Services
             string root = Directory.GetCurrentDirectory();
             string folder = Path.Combine(root, "wwwroot", "cv");
             string fullPath = Path.Combine(folder, entity.CvFileName);
-            
+
 
             if (!File.Exists(fullPath))
                 throw new Exception("CV fajl ne postoji.");

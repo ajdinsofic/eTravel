@@ -10,6 +10,8 @@ namespace eTravelAgencija.Services.Interfaces
 {
     public interface IOfferService : ICRUDService<Model.model.Offer, OfferSearchObject, OfferInsertRequest, OfferUpdateRequest>
     {
-        List<Model.model.Offer> RecommendOffers(int offerId);
+        Task IncreaseTotalReservation(int offerId);
+       Task DecreaseTotalReservation(int offerId);
+       List<Model.model.Offer> RecommendOffersForUser(int userId);
     }
 }

@@ -12,5 +12,6 @@ namespace eTravelAgencija.Model.RequestObjects
     {
         public int UserId { get; set; }
         public IFormFile CvFile { get; set; }
+        public string letter {get; set;}
     }
 }

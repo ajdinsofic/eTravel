@@ -7,10 +7,6 @@ namespace eTravelAgencija.Model.model
 {
    public partial class ReservationPreview
    {
-      public int UserId { get; set; }
-      public int OfferId { get; set; }
-      public int HotelId { get; set; }
-      public int RoomId { get; set; }
       public string OfferTitle { get; set; }
       public string HotelTitle { get; set; }
       public string HotelStars { get; set; }

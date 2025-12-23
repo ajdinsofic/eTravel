@@ -1,12 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using eTravelAgencija.Model;
 using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.SearchObjects;
 using eTravelAgencija.Services.Database;
 using eTravelAgencija.Services.Interfaces;
 using eTravelAgencija.Services.Recommendation;
+using eTravelAgencija.Services.Recommendations.MLModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.ML;
 using Microsoft.ML.Data;
@@ -16,6 +19,15 @@ namespace eTravelAgencija.Services.Services
 {
     public class HotelService : BaseCRUDService<Model.model.Hotel, HotelSearchObject, Database.Hotel, HotelUpsertRequest, HotelUpsertRequest>, IHotelService
     {
+        private static readonly MLContext _ml = new MLContext(seed: 42);
+        private static ITransformer? _hotelModel;
+        private static PredictionEngine<UserHotelEntry, UserHotelPrediction>? _hotelEngine;
+        private static ITransformer? _roomModel;
+        private static PredictionEngine<UserRoomEntry, UserRoomPrediction>? _roomEngine;
+        private static DateTime _lastTrainUtc = DateTime.MinValue;
+        private static readonly TimeSpan _retrainEvery = TimeSpan.FromMinutes(30);
+
+        private static readonly object _lock = new();
         public HotelService(eTravelAgencijaDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
@@ -126,42 +138,229 @@ namespace eTravelAgencija.Services.Services
             }
         }
 
-        public Model.model.Hotel GetMostPopularHotelForOffer(int offerId)
+        public async Task<RecommendedHotelRoomDto?> RecommendHotelRoomForOfferAsync(int offerId, int userId)
         {
-            
-            var hotelIds = _context.OfferHotels
-                .Where(oh => oh.OfferDetailsId == offerId)
-                .Select(oh => oh.HotelId)
+            // 1) Skupi hotele koji pripadaju ponudi (RULES)
+            var validHotels = await _context.OfferHotels
+                .Where(x => x.OfferDetailsId == offerId)
+                .Select(x => x.HotelId)
                 .Distinct()
+                .ToListAsync();
+
+            if (validHotels.Count == 0) return null;
+
+            // 2) Skupi user's history (da vidimo da li ima smisla ML ili fallback)
+            var userReservations = await _context.Reservations
+                .Where(r => r.UserId == userId)
+                .ToListAsync();
+
+            // Ako user nema historiju → fallback
+            if (userReservations.Count < 2)
+            {
+                return await FallbackBestHotelRoomForOfferAsync(offerId, validHotels);
+            }
+
+            // 3) Osiguraj/treniraj ML modele (User→Hotel, User→Room)
+            await EnsureModelsTrainedAsync();
+
+            // Ako iz bilo kog razloga nema modela → fallback
+            if (_hotelEngine == null || _roomEngine == null)
+                return await FallbackBestHotelRoomForOfferAsync(offerId, validHotels);
+
+            // 4) Rangiraj samo valid hotels (ML)
+            int bestHotelId = validHotels.First();
+            float bestHotelScore = float.MinValue;
+
+            foreach (var hid in validHotels)
+            {
+                var pred = _hotelEngine.Predict(new UserHotelEntry
+                {
+                    UserId = (uint)userId,
+                    HotelId = (uint)hid
+                });
+
+                if (pred.Score > bestHotelScore)
+                {
+                    bestHotelScore = pred.Score;
+                    bestHotelId = hid;
+                }
+            }
+
+            // 5) Za taj hotel, uzmi dostupne sobe (RULES)
+            var availableRoomIds = await _context.HotelRooms
+                .Where(hr => hr.HotelId == bestHotelId && hr.RoomsLeft > 0)
+                .Select(hr => hr.RoomId)
+                .Distinct()
+                .ToListAsync();
+
+            // Ako nema soba → fallback na bilo koji hotel u ponudi sa sobom
+            if (availableRoomIds.Count == 0)
+            {
+                return await FallbackBestHotelRoomForOfferAsync(offerId, validHotels);
+            }
+
+            // 6) ML rangiranje roomId (User→Room), ali samo među sobama tog hotela
+            int bestRoomId = availableRoomIds.First();
+            float bestRoomScore = float.MinValue;
+
+            foreach (var rid in availableRoomIds)
+            {
+                var pred = _roomEngine.Predict(new UserRoomEntry
+                {
+                    UserId = (uint)userId,
+                    RoomId = (uint)rid
+                });
+
+                if (pred.Score > bestRoomScore)
+                {
+                    bestRoomScore = pred.Score;
+                    bestRoomId = rid;
+                }
+            }
+
+            // 7) Vrati DTO sa nazivima
+            var hotel = await _context.Hotels.FirstOrDefaultAsync(h => h.Id == bestHotelId);
+            var room = await _context.Rooms.FirstOrDefaultAsync(r => r.Id == bestRoomId);
+
+            return new RecommendedHotelRoomDto
+            {
+                HotelId = bestHotelId,
+                RoomId = bestRoomId,
+            };
+        }
+
+        // ================================
+        // TRAINING / CACHING
+        // ================================
+        private async Task EnsureModelsTrainedAsync()
+        {
+            // retrain na X minuta (ili kad prvi put pozove)
+            if (_hotelModel != null && _roomModel != null && DateTime.UtcNow - _lastTrainUtc < _retrainEvery)
+                return;
+
+            // zaključavanje da se ne trenira paralelno
+            lock (_lock)
+            {
+                if (_hotelModel != null && _roomModel != null && DateTime.UtcNow - _lastTrainUtc < _retrainEvery)
+                    return;
+            }
+
+            // Napravi training data iz cijele baze rezervacija
+            var allReservations = await _context.Reservations
+                .AsNoTracking()
+                .Select(r => new { r.UserId, r.HotelId, r.RoomId })
+                .ToListAsync();
+
+            if (allReservations.Count == 0) return;
+
+            var hotelData = allReservations
+                .Where(x => x.HotelId != null)
+                .Select(x => new UserHotelEntry
+                {
+                    UserId = (uint)x.UserId,
+                    HotelId = (uint)x.HotelId!,
+                    Label = 1f
+                })
                 .ToList();
 
-            if (!hotelIds.Any())
-                return null;
-
-            
-            var popularity = _context.Reservations
-                .Where(r => hotelIds.Contains(r.HotelId))
-                .GroupBy(r => r.HotelId)
-                .Select(g => new
+            var roomData = allReservations
+                .Where(x => x.RoomId != null)
+                .Select(x => new UserRoomEntry
                 {
-                    HotelId = g.Key,
-                    Count = g.Count()
+                    UserId = (uint)x.UserId,
+                    RoomId = (uint)x.RoomId!,
+                    Label = 1f
                 })
-                .OrderByDescending(x => x.Count)
-                .FirstOrDefault();
+                .ToList();
 
-            
-            int chosenHotelId = popularity?.HotelId ?? hotelIds.First();
+            // Ako nema dovoljno podataka, nemoj trenirati (fallback će pokriti)
+            if (hotelData.Count < 5 || roomData.Count < 5) return;
 
-            
-            var hotel = _context.Hotels
-                .Where(h => h.Id == chosenHotelId)
-                .Include(h => h.HotelImages.Where(img => img.IsMain == true))
-                .Include(h => h.HotelRooms).ThenInclude(hr => hr.Rooms)
-                .Include(h => h.OfferHotels)
-                .FirstOrDefault();
+            // TRAIN (Hotel)
+            var hotelTrain = _ml.Data.LoadFromEnumerable(hotelData);
 
-            return _mapper.Map<Model.model.Hotel>(hotel);
+            var hotelOptions = new MatrixFactorizationTrainer.Options
+            {
+                MatrixColumnIndexColumnName = nameof(UserHotelEntry.UserId),
+                MatrixRowIndexColumnName = nameof(UserHotelEntry.HotelId),
+                LabelColumnName = nameof(UserHotelEntry.Label),
+                LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass,
+                Alpha = 0.01,
+                Lambda = 0.025,
+                NumberOfIterations = 100,
+                ApproximationRank = 32
+            };
+
+            var hotelPipe = _ml.Recommendation().Trainers.MatrixFactorization(hotelOptions);
+            var trainedHotelModel = hotelPipe.Fit(hotelTrain);
+
+            // TRAIN (Room)
+            var roomTrain = _ml.Data.LoadFromEnumerable(roomData);
+
+            var roomOptions = new MatrixFactorizationTrainer.Options
+            {
+                MatrixColumnIndexColumnName = nameof(UserRoomEntry.UserId),
+                MatrixRowIndexColumnName = nameof(UserRoomEntry.RoomId),
+                LabelColumnName = nameof(UserRoomEntry.Label),
+                LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass,
+                Alpha = 0.01,
+                Lambda = 0.025,
+                NumberOfIterations = 100,
+                ApproximationRank = 32
+            };
+
+            var roomPipe = _ml.Recommendation().Trainers.MatrixFactorization(roomOptions);
+            var trainedRoomModel = roomPipe.Fit(roomTrain);
+
+            // Cache
+            lock (_lock)
+            {
+                _hotelModel = trainedHotelModel;
+                _hotelEngine = _ml.Model.CreatePredictionEngine<UserHotelEntry, UserHotelPrediction>(_hotelModel);
+
+                _roomModel = trainedRoomModel;
+                _roomEngine = _ml.Model.CreatePredictionEngine<UserRoomEntry, UserRoomPrediction>(_roomModel);
+
+                _lastTrainUtc = DateTime.UtcNow;
+            }
+        }
+
+        private async Task<RecommendedHotelRoomDto?> FallbackBestHotelRoomForOfferAsync(int offerId, List<int> validHotels)
+        {
+            // 1) Hotel koji ima najviše rezervacija ukupno (među valid hotels)
+            int? bestHotelId = await _context.Reservations
+    .Where(r => validHotels.Contains(r.HotelId))
+    .GroupBy(r => r.HotelId)
+    .OrderByDescending(g => g.Count())
+    .Select(g => g.Key)
+    .FirstOrDefaultAsync();
+
+
+            // Ako nema rezervacija → uzmi prvi valid
+            var chosenHotelId = bestHotelId ?? validHotels.First();
+
+            // 2) Room: uzmi sobu sa najviše RoomsLeft (ili prvu dostupnu)
+            var bestRoomId = await _context.HotelRooms
+                .Where(hr => hr.HotelId == chosenHotelId && hr.RoomsLeft > 0)
+                .OrderByDescending(hr => hr.RoomsLeft)
+                .Select(hr => hr.RoomId)
+                .FirstOrDefaultAsync();
+
+            if (bestRoomId == 0)
+            {
+                // nema dostupnih soba
+                return null;
+            }
+
+            var hotel = await _context.Hotels.FirstOrDefaultAsync(h => h.Id == chosenHotelId);
+            var room = await _context.Rooms.FirstOrDefaultAsync(r => r.Id == bestRoomId);
+
+            return new RecommendedHotelRoomDto
+            {
+                HotelId = chosenHotelId,
+                RoomId = bestRoomId,
+
+            };
         }
 
     }
