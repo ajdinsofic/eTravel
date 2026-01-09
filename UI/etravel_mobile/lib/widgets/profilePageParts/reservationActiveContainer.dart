@@ -4,6 +4,7 @@ import 'package:etravel_app/providers/hotel_room_provider.dart';
 import 'package:etravel_app/providers/offer_hotel_provider.dart';
 import 'package:etravel_app/providers/offer_provider.dart';
 import 'package:etravel_app/providers/reservation_provider.dart';
+import 'package:etravel_app/providers/user_token_provider.dart';
 import 'package:etravel_app/screens/PhasePaymentPage.dart';
 import 'package:etravel_app/utils/session.dart';
 import 'package:etravel_app/widgets/startingPageParts/postaviWidthIHeight.dart';
@@ -23,7 +24,7 @@ class ReservationActiveContainer extends StatefulWidget {
     required this.preview,
     required this.imageUrl,
     required this.price,
-    required this.onCancelled
+    required this.onCancelled,
   });
 
   @override
@@ -36,6 +37,7 @@ class _ReservationActiveContainerState
   late ReservationProvider _reservationProvider;
   late HotelRoomProvider _hotelRoomProvider;
   late OfferProvider _offerProvider;
+  late UserTokenProvider _userTokenProvider;
 
   bool prikaziDetalje = false;
 
@@ -49,14 +51,9 @@ class _ReservationActiveContainerState
       context,
       listen: false,
     );
-    _hotelRoomProvider = Provider.of<HotelRoomProvider>(
-    context,
-    listen: false,
-    );
-    _offerProvider = Provider.of<OfferProvider>(
-  context,
-  listen: false,
-);
+    _hotelRoomProvider = Provider.of<HotelRoomProvider>(context, listen: false);
+    _offerProvider = Provider.of<OfferProvider>(context, listen: false);
+    _userTokenProvider = Provider.of<UserTokenProvider>(context, listen: false);
 
     _loadDates();
   }
@@ -79,96 +76,98 @@ class _ReservationActiveContainerState
   }
 
   Future<void> _confirmAndCancelReservation() async {
-  final bool? confirm = await showDialog<bool>(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text(
-          'Otkazivanje rezervacije',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        content: const Text(
-          'Da li ste sigurni da želite otkazati ovu rezervaciju?',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            style: TextButton.styleFrom(
-              backgroundColor: const Color(0xFF67B1E5),
-            ),
-            child: const Text('Ne', style: TextStyle(color: Colors.white)),
+    final bool? confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text(
+            'Otkazivanje rezervacije',
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context, true),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFD62929),
-            ),
-            child: const Text('Da', style: TextStyle(color: Colors.white)),
+          content: const Text(
+            'Da li ste sigurni da želite otkazati ovu rezervaciju?',
           ),
-        ],
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              style: TextButton.styleFrom(
+                backgroundColor: const Color(0xFF67B1E5),
+              ),
+              child: const Text('Ne', style: TextStyle(color: Colors.white)),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context, true),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFD62929),
+              ),
+              child: const Text('Da', style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (confirm != true) return;
+
+    try {
+      await _reservationProvider.delete(widget.reservation.id!);
+
+      await _offerProvider.decreaseTotalReservation(
+        widget.reservation.offerId!,
       );
-    },
-  );
 
-  if (confirm != true) return;
-
-  try {
-  await _reservationProvider.delete(widget.reservation.id!);
-
-  await _offerProvider.decreaseTotalReservation(
-  widget.reservation.offerId!,
-  );
-
-  _hotelRoomProvider.increaseRoomsLeft(
-    hotelId: widget.reservation.hotelId!,
-    roomId: widget.reservation.roomId!,
-  );
-
-  final bool? shouldRefresh = await showDialog<bool>(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text(
-          'Rezervacija otkazana',
-          style: TextStyle(fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        ),
-        content: const Text(
-          'Iznos koji ste do sada uplatili biće vraćen.\n\n'
-          'Naš tim će vas kontaktirati u najkraćem roku '
-          'kako biste povrat sredstava preuzeli u najbližoj poslovnici.',
-          textAlign: TextAlign.center,
-        ),
-        actions: [
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context, true),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF67B1E5),
-            ),
-            child: const Text(
-              'U redu',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ],
+      _hotelRoomProvider.increaseRoomsLeft(
+        hotelId: widget.reservation.hotelId!,
+        roomId: widget.reservation.roomId!,
       );
-    },
-  );
 
-  if (shouldRefresh == true) {
-    widget.onCancelled();
+      await _userTokenProvider.decreaseTokens(Session.userId!);
+
+      final bool? shouldRefresh = await showDialog<bool>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text(
+              'Rezervacija otkazana',
+              style: TextStyle(fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            content: const Text(
+              'Iznos koji ste do sada uplatili biće vraćen.\n\n'
+              'Napomena: Za otkazivanje rezervacije oduzeto vam je 10 tokena.\n\n'
+              'Naš tim će vas kontaktirati u najkraćem roku '
+              'kako biste povrat sredstava preuzeli u najbližoj poslovnici.',
+              textAlign: TextAlign.center,
+            ),
+
+            actions: [
+              ElevatedButton(
+                onPressed: () => Navigator.pop(context, true),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF67B1E5),
+                ),
+                child: const Text(
+                  'U redu',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+
+      if (shouldRefresh == true) {
+        widget.onCancelled();
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Greška pri otkazivanju rezervacije: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
-} catch (e) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text('Greška pri otkazivanju rezervacije: $e'),
-      backgroundColor: Colors.red,
-    ),
-  );
-}
-
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -309,9 +308,10 @@ class _ReservationActiveContainerState
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => PhasePaymentPage(
-                                  reservation: widget.reservation,
-                                ),
+                                builder:
+                                    (context) => PhasePaymentPage(
+                                      reservation: widget.reservation,
+                                    ),
                               ),
                             );
                           },
@@ -342,17 +342,17 @@ class _ReservationActiveContainerState
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  _uslugaRow('Putovanje', '${widget.price} KM'),
+                  _uslugaRow('Putovanje', '${widget.price}\$'),
 
                   _uslugaRow(
                     'Boravišna taksa',
-                    '${widget.preview.residenceTaxTotal} KM',
+                    '${widget.preview.residenceTaxTotal}\$',
                   ),
 
                   if (widget.reservation.includeInsurance == true)
                     _uslugaRow(
                       'Putničko zdravstveno osiguranje',
-                      '${widget.preview.insurance} KM',
+                      '${widget.preview.insurance}\$',
                     ),
 
                   SizedBox(height: screenHeight * 0.03),
@@ -370,7 +370,7 @@ class _ReservationActiveContainerState
                           ),
                         ),
                         Text(
-                          '${widget.reservation.totalPrice} KM',
+                          '${widget.reservation.totalPrice}\$',
                           style: const TextStyle(
                             color: Color(0xFF67B1E5),
                             fontFamily: 'AROneSans',

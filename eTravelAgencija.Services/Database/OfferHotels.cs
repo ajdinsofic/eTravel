@@ -13,6 +13,8 @@ namespace eTravelAgencija.Services.Database
     [ForeignKey(nameof(Hotel))]
     public int HotelId { get; set; }
     public Hotel Hotel { get; set; }
+    
+    [ForeignKey(nameof(DepartureDate))]
     public DateTime DepartureDate { get; set; }
     public DateTime ReturnDate { get; set; }
 }

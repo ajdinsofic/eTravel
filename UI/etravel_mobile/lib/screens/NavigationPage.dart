@@ -59,7 +59,7 @@ class _NavigationPageState extends State<NavigationPage> {
     for (var cat in categories.items) {
       // Load subcategories for this category
       var subCats = await _subCategoryProvider.get(
-        filter: {"categoryId": cat.id},
+        filter: {"categoryId": cat.id, "retrieveAll": true},
       );
 
       bool hasNoSubcategories =

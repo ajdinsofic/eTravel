@@ -16,6 +16,8 @@ namespace eTravelAgencija.Model.model
         public bool IncludeInsurance { get; set; }
         public bool isFirstRatePaid { get; set; }
         public bool isFullPaid { get; set;}
+        public bool isDiscountUsed {get; set;}
+        public double? DiscountValue {get; set;}
         public decimal TotalPrice { get; set; }
         public decimal PriceLeftToPay { get; set; }
         public DateTime CreatedAt { get; set; }

@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:etravel_desktop/config/api_config.dart';
-import 'package:etravel_desktop/helper/force_exit_wizard.dart';
 import 'package:etravel_desktop/models/hotel_form_data.dart';
 import 'package:etravel_desktop/models/hotel_image_update.dart';
 import 'package:etravel_desktop/providers/hotel_image_provider.dart';

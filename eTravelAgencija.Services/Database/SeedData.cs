@@ -4,8 +4,16 @@ using System;
 
 namespace eTravelAgencija.Services.Database.Seed
 {
+
     public static class SeedData
     {
+        private static string OfferImage(int offerId, int index)
+        => $"https://picsum.photos/seed/offer-{offerId}-{index}/900/600";
+
+        private static string HotelImage(int hotelId, int index)
+        => $"https://picsum.photos/seed/hotel-{hotelId}-{index}/800/500";
+
+
         public static void Seed(ModelBuilder builder)
         {
             // =========================================================================
@@ -488,8 +496,7 @@ namespace eTravelAgencija.Services.Database.Seed
             // =========================================================================
             builder.Entity<UserRole>().HasData(
                 new UserRole { UserId = 1, RoleId = 2 }, // radnik → Radnik
-                new UserRole { UserId = 2, RoleId = 3 }, // direktor → Direktor
-                                                         // KORISNICI (Svi ostali)
+                new UserRole { UserId = 2, RoleId = 3 }, // direktor → Direktor       // KORISNICI (Svi ostali)
                 new UserRole { UserId = 4, RoleId = 1 },
                 new UserRole { UserId = 5, RoleId = 1 },
                 new UserRole { UserId = 6, RoleId = 1 },
@@ -760,282 +767,518 @@ namespace eTravelAgencija.Services.Database.Seed
                 }
             );
 
-            // =========================================================================
-            // 9. OFFER IMAGES (1 glavna + 3 dodatne)
-            // =========================================================================
             builder.Entity<OfferImage>().HasData(
-                new OfferImage { Id = 1, OfferId = 1, ImageUrl = "firenca_main.jpg", isMain = true },
-                new OfferImage { Id = 2, OfferId = 1, ImageUrl = "firenca_1.jpg", isMain = false },
-                new OfferImage { Id = 3, OfferId = 1, ImageUrl = "firenca_2.jpg", isMain = false },
-                new OfferImage { Id = 4, OfferId = 1, ImageUrl = "firenca_3.jpg", isMain = false },
+    // OFFER 1
+    new OfferImage { Id = 1, OfferId = 1, ImageUrl = OfferImage(1, 1), isMain = true },
+    new OfferImage { Id = 2, OfferId = 1, ImageUrl = OfferImage(1, 2), isMain = false },
+    new OfferImage { Id = 3, OfferId = 1, ImageUrl = OfferImage(1, 3), isMain = false },
+    new OfferImage { Id = 4, OfferId = 1, ImageUrl = OfferImage(1, 4), isMain = false },
 
-                new OfferImage { Id = 5, OfferId = 2, ImageUrl = "santorini_main.jpg", isMain = true },
-                new OfferImage { Id = 6, OfferId = 2, ImageUrl = "santorini_1.jpg", isMain = false },
-                new OfferImage { Id = 7, OfferId = 2, ImageUrl = "santorini_2.jpg", isMain = false },
-                new OfferImage { Id = 8, OfferId = 2, ImageUrl = "santorini_3.jpg", isMain = false },
+    // OFFER 2
+    new OfferImage { Id = 5, OfferId = 2, ImageUrl = OfferImage(2, 1), isMain = true },
+    new OfferImage { Id = 6, OfferId = 2, ImageUrl = OfferImage(2, 2), isMain = false },
+    new OfferImage { Id = 7, OfferId = 2, ImageUrl = OfferImage(2, 3), isMain = false },
+    new OfferImage { Id = 8, OfferId = 2, ImageUrl = OfferImage(2, 4), isMain = false },
 
-                new OfferImage { Id = 9, OfferId = 3, ImageUrl = "istanbul_main.jpg", isMain = true },
-                new OfferImage { Id = 10, OfferId = 3, ImageUrl = "istanbul_1.jpg", isMain = false },
-                new OfferImage { Id = 11, OfferId = 3, ImageUrl = "istanbul_2.jpg", isMain = false },
-                new OfferImage { Id = 12, OfferId = 3, ImageUrl = "istanbul_3.jpg", isMain = false },
+    // OFFER 3
+    new OfferImage { Id = 9, OfferId = 3, ImageUrl = OfferImage(3, 1), isMain = true },
+    new OfferImage { Id = 10, OfferId = 3, ImageUrl = OfferImage(3, 2), isMain = false },
+    new OfferImage { Id = 11, OfferId = 3, ImageUrl = OfferImage(3, 3), isMain = false },
+    new OfferImage { Id = 12, OfferId = 3, ImageUrl = OfferImage(3, 4), isMain = false },
 
-                new OfferImage { Id = 1000, OfferId = 4, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1001, OfferId = 5, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1002, OfferId = 6, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1003, OfferId = 7, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1004, OfferId = 8, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1005, OfferId = 9, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1006, OfferId = 10, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1007, OfferId = 11, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1008, OfferId = 12, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1009, OfferId = 13, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1010, OfferId = 14, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1011, OfferId = 15, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1012, OfferId = 16, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1013, OfferId = 17, ImageUrl = "primjer.jpg", isMain = true },
-                new OfferImage { Id = 1014, OfferId = 18, ImageUrl = "primjer.jpg", isMain = true }
+    // OFFER 4
+    new OfferImage { Id = 13, OfferId = 4, ImageUrl = OfferImage(4, 1), isMain = true },
+    new OfferImage { Id = 14, OfferId = 4, ImageUrl = OfferImage(4, 2), isMain = false },
+    new OfferImage { Id = 15, OfferId = 4, ImageUrl = OfferImage(4, 3), isMain = false },
+    new OfferImage { Id = 16, OfferId = 4, ImageUrl = OfferImage(4, 4), isMain = false },
 
-            );
+    // OFFER 5
+    new OfferImage { Id = 17, OfferId = 5, ImageUrl = OfferImage(5, 1), isMain = true },
+    new OfferImage { Id = 18, OfferId = 5, ImageUrl = OfferImage(5, 2), isMain = false },
+    new OfferImage { Id = 19, OfferId = 5, ImageUrl = OfferImage(5, 3), isMain = false },
+    new OfferImage { Id = 20, OfferId = 5, ImageUrl = OfferImage(5, 4), isMain = false },
+
+    // OFFER 6
+    new OfferImage { Id = 21, OfferId = 6, ImageUrl = OfferImage(6, 1), isMain = true },
+    new OfferImage { Id = 22, OfferId = 6, ImageUrl = OfferImage(6, 2), isMain = false },
+    new OfferImage { Id = 23, OfferId = 6, ImageUrl = OfferImage(6, 3), isMain = false },
+    new OfferImage { Id = 24, OfferId = 6, ImageUrl = OfferImage(6, 4), isMain = false },
+
+    // OFFER 7
+    new OfferImage { Id = 25, OfferId = 7, ImageUrl = OfferImage(7, 1), isMain = true },
+    new OfferImage { Id = 26, OfferId = 7, ImageUrl = OfferImage(7, 2), isMain = false },
+    new OfferImage { Id = 27, OfferId = 7, ImageUrl = OfferImage(7, 3), isMain = false },
+    new OfferImage { Id = 28, OfferId = 7, ImageUrl = OfferImage(7, 4), isMain = false },
+
+    // OFFER 8
+    new OfferImage { Id = 29, OfferId = 8, ImageUrl = OfferImage(8, 1), isMain = true },
+    new OfferImage { Id = 30, OfferId = 8, ImageUrl = OfferImage(8, 2), isMain = false },
+    new OfferImage { Id = 31, OfferId = 8, ImageUrl = OfferImage(8, 3), isMain = false },
+    new OfferImage { Id = 32, OfferId = 8, ImageUrl = OfferImage(8, 4), isMain = false },
+
+    // OFFER 9
+    new OfferImage { Id = 33, OfferId = 9, ImageUrl = OfferImage(9, 1), isMain = true },
+    new OfferImage { Id = 34, OfferId = 9, ImageUrl = OfferImage(9, 2), isMain = false },
+    new OfferImage { Id = 35, OfferId = 9, ImageUrl = OfferImage(9, 3), isMain = false },
+    new OfferImage { Id = 36, OfferId = 9, ImageUrl = OfferImage(9, 4), isMain = false },
+
+    // OFFER 10
+    new OfferImage { Id = 37, OfferId = 10, ImageUrl = OfferImage(10, 1), isMain = true },
+    new OfferImage { Id = 38, OfferId = 10, ImageUrl = OfferImage(10, 2), isMain = false },
+    new OfferImage { Id = 39, OfferId = 10, ImageUrl = OfferImage(10, 3), isMain = false },
+    new OfferImage { Id = 40, OfferId = 10, ImageUrl = OfferImage(10, 4), isMain = false },
+
+    // OFFER 11
+    new OfferImage { Id = 41, OfferId = 11, ImageUrl = OfferImage(11, 1), isMain = true },
+    new OfferImage { Id = 42, OfferId = 11, ImageUrl = OfferImage(11, 2), isMain = false },
+    new OfferImage { Id = 43, OfferId = 11, ImageUrl = OfferImage(11, 3), isMain = false },
+    new OfferImage { Id = 44, OfferId = 11, ImageUrl = OfferImage(11, 4), isMain = false },
+
+    // OFFER 12
+    new OfferImage { Id = 45, OfferId = 12, ImageUrl = OfferImage(12, 1), isMain = true },
+    new OfferImage { Id = 46, OfferId = 12, ImageUrl = OfferImage(12, 2), isMain = false },
+    new OfferImage { Id = 47, OfferId = 12, ImageUrl = OfferImage(12, 3), isMain = false },
+    new OfferImage { Id = 48, OfferId = 12, ImageUrl = OfferImage(12, 4), isMain = false },
+
+    // OFFER 13
+    new OfferImage { Id = 49, OfferId = 13, ImageUrl = OfferImage(13, 1), isMain = true },
+    new OfferImage { Id = 50, OfferId = 13, ImageUrl = OfferImage(13, 2), isMain = false },
+    new OfferImage { Id = 51, OfferId = 13, ImageUrl = OfferImage(13, 3), isMain = false },
+    new OfferImage { Id = 52, OfferId = 13, ImageUrl = OfferImage(13, 4), isMain = false },
+
+    // OFFER 14
+    new OfferImage { Id = 53, OfferId = 14, ImageUrl = OfferImage(14, 1), isMain = true },
+    new OfferImage { Id = 54, OfferId = 14, ImageUrl = OfferImage(14, 2), isMain = false },
+    new OfferImage { Id = 55, OfferId = 14, ImageUrl = OfferImage(14, 3), isMain = false },
+    new OfferImage { Id = 56, OfferId = 14, ImageUrl = OfferImage(14, 4), isMain = false },
+
+    // OFFER 15
+    new OfferImage { Id = 57, OfferId = 15, ImageUrl = OfferImage(15, 1), isMain = true },
+    new OfferImage { Id = 58, OfferId = 15, ImageUrl = OfferImage(15, 2), isMain = false },
+    new OfferImage { Id = 59, OfferId = 15, ImageUrl = OfferImage(15, 3), isMain = false },
+    new OfferImage { Id = 60, OfferId = 15, ImageUrl = OfferImage(15, 4), isMain = false },
+
+    // OFFER 16
+    new OfferImage { Id = 61, OfferId = 16, ImageUrl = OfferImage(16, 1), isMain = true },
+    new OfferImage { Id = 62, OfferId = 16, ImageUrl = OfferImage(16, 2), isMain = false },
+    new OfferImage { Id = 63, OfferId = 16, ImageUrl = OfferImage(16, 3), isMain = false },
+    new OfferImage { Id = 64, OfferId = 16, ImageUrl = OfferImage(16, 4), isMain = false },
+
+    // OFFER 17
+    new OfferImage { Id = 65, OfferId = 17, ImageUrl = OfferImage(17, 1), isMain = true },
+    new OfferImage { Id = 66, OfferId = 17, ImageUrl = OfferImage(17, 2), isMain = false },
+    new OfferImage { Id = 67, OfferId = 17, ImageUrl = OfferImage(17, 3), isMain = false },
+    new OfferImage { Id = 68, OfferId = 17, ImageUrl = OfferImage(17, 4), isMain = false },
+
+    // OFFER 18
+    new OfferImage { Id = 69, OfferId = 18, ImageUrl = OfferImage(18, 1), isMain = true },
+    new OfferImage { Id = 70, OfferId = 18, ImageUrl = OfferImage(18, 2), isMain = false },
+    new OfferImage { Id = 71, OfferId = 18, ImageUrl = OfferImage(18, 3), isMain = false },
+    new OfferImage { Id = 72, OfferId = 18, ImageUrl = OfferImage(18, 4), isMain = false }
+);
+
+
+
 
             // =========================================================================
             // 9.1. OFFER PLAN DAYS 
             // =========================================================================
 
-            // Firenca
+            // ======================================================================
+            // OFFER PLAN DAYS
+            // ======================================================================
+
+            // ----------------------
+            // OFFER 1 – FIRENCA (5)
+            // ----------------------
             builder.Entity<OfferPlanDay>().HasData(
                 new OfferPlanDay
                 {
                     OfferDetailsId = 1,
                     DayNumber = 1,
                     DayTitle = "Polazak i dolazak u Firencu",
-                    DayDescription = "Polazak u ranim jutarnjim satima. Pauze tokom puta. Dolazak u Firencu u poslijepodnevnim satima. Smještaj u hotel i slobodno vrijeme za odmor ili šetnju centrom grada."
+                    DayDescription = "Polazak u ranim jutarnjim satima. Pauze tokom puta. Dolazak u Firencu u poslijepodnevnim satima. Smještaj u hotel i slobodno vrijeme."
                 },
                 new OfferPlanDay
                 {
                     OfferDetailsId = 1,
                     DayNumber = 2,
                     DayTitle = "Upoznavanje sa starim gradom",
-                    DayDescription = "Doručak. Organizovano razgledanje: Katedrala Santa Maria del Fiore, Piazza della Signoria, Palazzo Vecchio i Ponte Vecchio. Popodne slobodno vrijeme za individualno istraživanje i kupovinu suvenira."
+                    DayDescription = "Razgledanje: Katedrala Santa Maria del Fiore, Piazza della Signoria, Palazzo Vecchio i Ponte Vecchio."
                 },
                 new OfferPlanDay
                 {
                     OfferDetailsId = 1,
                     DayNumber = 3,
-                    DayTitle = "Galerija Uffizi i slobodno popodne",
-                    DayDescription = "Posjeta čuvenoj galeriji Uffizi – remek-djela renesansnih umjetnika: Botticelli, Michelangelo, Da Vinci. Nakon obilaska, slobodno vrijeme za ručak u lokalnim restoranima i uživanje u talijanskoj kuhinji."
+                    DayTitle = "Galerija Uffizi",
+                    DayDescription = "Posjeta galeriji Uffizi i slobodno vrijeme za individualne aktivnosti."
                 },
                 new OfferPlanDay
                 {
                     OfferDetailsId = 1,
                     DayNumber = 4,
                     DayTitle = "Izlet u Pisu ili slobodan dan",
-                    DayDescription = "Mogućnost fakultativnog izleta u Pisu i posjete Krivom tornju. Alternativno, slobodan dan u Firenci za šoping, obilazak muzeja, degustaciju vina ili šetnju slikovitim ulicama."
+                    DayDescription = "Fakultativni izlet u Pisu ili slobodno vrijeme u Firenci."
                 },
                 new OfferPlanDay
                 {
                     OfferDetailsId = 1,
                     DayNumber = 5,
                     DayTitle = "Povratak kući",
-                    DayDescription = "Check-out iz hotela i polazak prema kući. Pauze tokom puta. Dolazak u kasnim večernjim satima."
+                    DayDescription = "Odjava iz hotela i povratak kući."
                 }
             );
 
-            // Santorini
+            // ----------------------
+            // OFFER 2 – SANTORINI (7)
+            // ----------------------
             builder.Entity<OfferPlanDay>().HasData(
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 2,
-                    DayNumber = 1,
-                    DayTitle = "Dolazak na Santorini",
-                    DayDescription = "Let ili transfer do Santorinija. Smještaj u hotel. Slobodno vrijeme za odmor, kupanje ili večernju šetnju rivom u Firi."
-                },
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 2,
-                    DayNumber = 2,
-                    DayTitle = "Fira – glavni grad ostrva",
-                    DayDescription = "Nakon doručka slijedi obilazak Fire: uske bijele ulice, crkve sa plavim kupolama i prekrasni vidikovci. Popodne slobodno vrijeme za kupovinu ili posjetu lokalnim tavernama."
-                },
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 2,
-                    DayNumber = 3,
-                    DayTitle = "Oia – najljepši zalazak sunca",
-                    DayDescription = "Prijepodnevno slobodno vrijeme za plažu. U poslijepodnevnim satima odlazak u Oiu – najpoznatije mjesto na Santoriniju. Uživanje u fantastičnom zalasku sunca."
-                },
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 2,
-                    DayNumber = 4,
-                    DayTitle = "Crna i crvena plaža",
-                    DayDescription = "Obilazak vulkanskih plaža: Red Beach i Perissa (Black Beach). Slobodno vrijeme za kupanje i sunčanje. Povratak u hotel u večernjim satima."
-                },
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 2,
-                    DayNumber = 5,
-                    DayTitle = "Vulkansko ostrvo i termalni izvori",
-                    DayDescription = "Izlet brodom do vulkanskog ostrva Nea Kameni, šetnja kraterom i kupanje u toplim termalnim izvorima. Povratak brodom u luku."
-                },
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 2,
-                    DayNumber = 6,
-                    DayTitle = "Slobodan dan",
-                    DayDescription = "Dan predviđen za odmor, kupanje ili fakultativne aktivnosti – iznajmljivanje quada, degustacije vina, panoramska vožnja ostrvom."
-                },
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 2,
-                    DayNumber = 7,
-                    DayTitle = "Povratak kući",
-                    DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja."
-                }
+                new OfferPlanDay { OfferDetailsId = 2, DayNumber = 1, DayTitle = "Dolazak na Santorini", DayDescription = "Dolazak i smještaj u hotel." },
+                new OfferPlanDay { OfferDetailsId = 2, DayNumber = 2, DayTitle = "Fira – glavni grad ostrva", DayDescription = "Obilazak Fire i slobodno vrijeme." },
+                new OfferPlanDay { OfferDetailsId = 2, DayNumber = 3, DayTitle = "Oia – zalazak sunca", DayDescription = "Posjeta Oiji i uživanje u zalasku sunca." },
+                new OfferPlanDay { OfferDetailsId = 2, DayNumber = 4, DayTitle = "Vulkanske plaže", DayDescription = "Obilazak crne i crvene plaže." },
+                new OfferPlanDay { OfferDetailsId = 2, DayNumber = 5, DayTitle = "Vulkansko ostrvo", DayDescription = "Izlet brodom i termalni izvori." },
+                new OfferPlanDay { OfferDetailsId = 2, DayNumber = 6, DayTitle = "Slobodan dan", DayDescription = "Odmor ili fakultativne aktivnosti." },
+                new OfferPlanDay { OfferDetailsId = 2, DayNumber = 7, DayTitle = "Povratak kući", DayDescription = "Odjava iz hotela i povratak kući." }
             );
 
-            //Istambul
+            // ----------------------
+            // OFFER 3 – ISTANBUL (4)
+            // ----------------------
             builder.Entity<OfferPlanDay>().HasData(
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 3,
-                    DayNumber = 1,
-                    DayTitle = "Dolazak u Istanbul",
-                    DayDescription = "Dolazak u Istanbul i smještaj u hotel. Slobodno vrijeme za odmor. Uveče mogućnost odlaska na večeru u tradicionalni turski restoran."
-                },
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 3,
-                    DayNumber = 2,
-                    DayTitle = "Stari dio Istanbula – Sultanahmet",
-                    DayDescription = "Obilazak najvećih atrakcija: Aja Sofija, Sultanahmet džamija, Hipodrom i Topkapi palata. Popodne slobodno vrijeme ili posjeta Grand Bazaru."
-                },
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 3,
-                    DayNumber = 3,
-                    DayTitle = "Bosfor krstarenje i Taksim",
-                    DayDescription = "Jutarnje krstarenje Bosforom – pogled na palače, mostove i obalu. U popodnevnim satima odlazak na Taksim trg i šetnja Istiklal ulicom."
-                },
-                new OfferPlanDay
-                {
-                    OfferDetailsId = 3,
-                    DayNumber = 4,
-                    DayTitle = "Povratak kući",
-                    DayDescription = "Slobodno vrijeme do polaska. Odjava iz hotela i povratak kući."
-                }
+                new OfferPlanDay { OfferDetailsId = 3, DayNumber = 1, DayTitle = "Dolazak u Istanbul", DayDescription = "Dolazak i smještaj u hotel." },
+                new OfferPlanDay { OfferDetailsId = 3, DayNumber = 2, DayTitle = "Sultanahmet", DayDescription = "Aja Sofija, Plava džamija i Topkapi palata." },
+                new OfferPlanDay { OfferDetailsId = 3, DayNumber = 3, DayTitle = "Bosfor i Taksim", DayDescription = "Krstarenje Bosforom i šetnja Istiklal ulicom." },
+                new OfferPlanDay { OfferDetailsId = 3, DayNumber = 4, DayTitle = "Povratak kući", DayDescription = "Odjava iz hotela i povratak kući." }
             );
+
+            // ======================================================================
+            // AUTOMATSKI PLANOVI ZA OSTALE OFFERE
+            // ======================================================================
+
+            void AddGenericPlanDays(int offerId, string city, int days)
+            {
+                for (int day = 1; day <= days; day++)
+                {
+                    builder.Entity<OfferPlanDay>().HasData(
+                        new OfferPlanDay
+                        {
+                            OfferDetailsId = offerId,
+                            DayNumber = day,
+                            DayTitle = day switch
+                            {
+                                1 => $"Dolazak u {city}",
+                                var d when d == days => "Povratak kući",
+                                _ => $"Boravak u {city}"
+                            },
+                            DayDescription = day switch
+                            {
+                                1 => $"Dolazak u {city}, smještaj u hotel i slobodno vrijeme.",
+                                var d when d == days => "Odjava iz hotela i povratak kući prema planu putovanja.",
+                                _ => $"Slobodno vrijeme za razgledanje, izlete i uživanje u gradu {city}."
+                            }
+                        }
+                    );
+                }
+            }
+
+            AddGenericPlanDays(4, "Barcelona", 8);
+            AddGenericPlanDays(5, "Paris", 6);
+            AddGenericPlanDays(6, "Prague", 11);
+            AddGenericPlanDays(7, "Vienna", 9);
+            AddGenericPlanDays(8, "Amsterdam", 9);
+            AddGenericPlanDays(9, "London", 4);
+            AddGenericPlanDays(10, "Dubai", 7);
+            AddGenericPlanDays(11, "Cairo", 10);
+            AddGenericPlanDays(12, "Budapest", 7);
+            AddGenericPlanDays(13, "Krakow", 6);
+            AddGenericPlanDays(14, "Zanzibar", 4);
+            AddGenericPlanDays(15, "Hurghada", 6);
+            AddGenericPlanDays(16, "Lisbon", 8);
+            AddGenericPlanDays(17, "Athens", 4);
+            AddGenericPlanDays(18, "Split", 6);
+
 
 
             // =========================================================================
             // 10. HOTELS (3 po ponudi)
             // =========================================================================
             builder.Entity<Hotel>().HasData(
-                // Firenca
-                new Hotel { Id = 100, Name = "Hotel Medici", Address = "Via Roma 12", Stars = 4 },
-                new Hotel { Id = 101, Name = "Hotel Firenze Centro", Address = "Piazza Duomo 2", Stars = 3 },
-                new Hotel { Id = 102, Name = "Hotel Ponte Vecchio", Address = "Ponte Vecchio 5", Stars = 5 },
+    // =========================
+    // FIRENCA (3)
+    // =========================
+    new Hotel { Id = 100, Name = "Hotel Medici", Address = "Via Roma 12", Stars = 4 },
+    new Hotel { Id = 101, Name = "Hotel Firenze Centro", Address = "Piazza Duomo 2", Stars = 3 },
+    new Hotel { Id = 102, Name = "Hotel Ponte Vecchio", Address = "Ponte Vecchio 5", Stars = 5 },
 
-                // Santorini
-                new Hotel { Id = 110, Name = "Blue Dome Resort", Address = "Santorini Beach 9", Stars = 5 },
-                new Hotel { Id = 111, Name = "Aegean View", Address = "Oia Street 44", Stars = 4 },
-                new Hotel { Id = 112, Name = "White Cave Hotel", Address = "Fira 21", Stars = 3 },
+    // =========================
+    // SANTORINI (3)
+    // =========================
+    new Hotel { Id = 110, Name = "Blue Dome Resort", Address = "Santorini Beach 9", Stars = 5 },
+    new Hotel { Id = 111, Name = "Aegean View", Address = "Oia Street 44", Stars = 4 },
+    new Hotel { Id = 112, Name = "White Cave Hotel", Address = "Fira 21", Stars = 3 },
 
-                // Istanbul
-                new Hotel { Id = 120, Name = "Hotel Sultanahmet", Address = "Sultanahmet 1", Stars = 4 },
-                new Hotel { Id = 121, Name = "Galata Inn", Address = "Galata 5", Stars = 3 },
-                new Hotel { Id = 122, Name = "Bosfor Palace Hotel", Address = "Bosfor Blvd 7", Stars = 5 },
-                new Hotel { Id = 200, Name = "Hotel Condal Barcelona", Address = "La Rambla 12", Stars = 3 },
-                new Hotel { Id = 201, Name = "Hotel Louvre Rivoli", Address = "Rue de Rivoli 99", Stars = 4 },
-                new Hotel { Id = 202, Name = "Hotel Charles Bridge Inn", Address = "Mostecká 7", Stars = 4 },
-                new Hotel { Id = 203, Name = "Hotel Kaiserhof Wien", Address = "Frankenberggasse 10", Stars = 4 },
-                new Hotel { Id = 204, Name = "Hotel Amsterdam Canal View", Address = "Keizersgracht 84", Stars = 5 },
-                new Hotel { Id = 205, Name = "Hotel Westminster London", Address = "Victoria Street 22", Stars = 4 },
-                new Hotel { Id = 206, Name = "Dubai Marina Pearl Hotel", Address = "Dubai Marina Walk 5", Stars = 5 },
-                new Hotel { Id = 207, Name = "Cairo Pyramids View Hotel", Address = "Pyramid Street 18", Stars = 4 },
-                new Hotel { Id = 208, Name = "Budapest Royal Center Hotel", Address = "Váci Utca 33", Stars = 3 },
-                new Hotel { Id = 209, Name = "Krakow Old Town Plaza Hotel", Address = "Floriańska 15", Stars = 4 },
-                new Hotel { Id = 210, Name = "Zanzibar Blue Lagoon Resort", Address = "Kendwa Beach 1", Stars = 5 },
-                new Hotel { Id = 211, Name = "Hurghada Golden Sand Resort", Address = "Sheraton Road 55", Stars = 5 },
-                new Hotel { Id = 212, Name = "Lisbon Alfama Boutique Hotel", Address = "Rua dos Remédios 21", Stars = 4 },
-                new Hotel { Id = 213, Name = "Acropolis View Hotel Athens", Address = "Dionysiou Areopagitou 8", Stars = 3 },
-                new Hotel { Id = 214, Name = "Hotel Adriatic Split", Address = "Obala Hrvatskog Narodnog 17", Stars = 4 }
+    // =========================
+    // ISTANBUL (3)
+    // =========================
+    new Hotel { Id = 120, Name = "Hotel Sultanahmet", Address = "Sultanahmet 1", Stars = 4 },
+    new Hotel { Id = 121, Name = "Galata Inn", Address = "Galata 5", Stars = 3 },
+    new Hotel { Id = 122, Name = "Bosfor Palace Hotel", Address = "Bosfor Blvd 7", Stars = 5 },
 
-            );
+    // =========================
+    // BARCELONA (3)
+    // =========================
+    new Hotel { Id = 200, Name = "Hotel Condal Barcelona", Address = "La Rambla 12", Stars = 3 },
+    new Hotel { Id = 215, Name = "Barcelona Central Plaza", Address = "Carrer de Pelai 45", Stars = 4 },
+    new Hotel { Id = 216, Name = "Sagrada Familia View Hotel", Address = "Carrer de Mallorca 401", Stars = 5 },
+
+    // =========================
+    // PARIS (3)
+    // =========================
+    new Hotel { Id = 201, Name = "Hotel Louvre Rivoli", Address = "Rue de Rivoli 99", Stars = 4 },
+    new Hotel { Id = 217, Name = "Eiffel Tower Boutique Hotel", Address = "Avenue de Suffren 22", Stars = 5 },
+    new Hotel { Id = 218, Name = "Montmartre Comfort Inn", Address = "Rue Lepic 88", Stars = 3 },
+
+    // =========================
+    // PRAGUE (3)
+    // =========================
+    new Hotel { Id = 202, Name = "Hotel Charles Bridge Inn", Address = "Mostecká 7", Stars = 4 },
+    new Hotel { Id = 219, Name = "Old Town Square Hotel", Address = "Staroměstské náměstí 15", Stars = 5 },
+    new Hotel { Id = 220, Name = "Prague City Stay", Address = "Vodičkova 12", Stars = 3 },
+
+    // =========================
+    // VIENNA (3)
+    // =========================
+    new Hotel { Id = 203, Name = "Hotel Kaiserhof Wien", Address = "Frankenberggasse 10", Stars = 4 },
+    new Hotel { Id = 221, Name = "Vienna Opera House Hotel", Address = "Opernring 5", Stars = 5 },
+    new Hotel { Id = 222, Name = "Danube Riverside Hotel", Address = "Handelskai 94", Stars = 3 },
+
+    // =========================
+    // AMSTERDAM (3)
+    // =========================
+    new Hotel { Id = 204, Name = "Hotel Amsterdam Canal View", Address = "Keizersgracht 84", Stars = 5 },
+    new Hotel { Id = 223, Name = "Dam Square Boutique Hotel", Address = "Damrak 50", Stars = 4 },
+    new Hotel { Id = 224, Name = "Amsterdam City Budget Hotel", Address = "Leidsekade 70", Stars = 3 },
+
+    // =========================
+    // LONDON (3)
+    // =========================
+    new Hotel { Id = 205, Name = "Hotel Westminster London", Address = "Victoria Street 22", Stars = 4 },
+    new Hotel { Id = 225, Name = "Piccadilly Central Hotel", Address = "Piccadilly 33", Stars = 5 },
+    new Hotel { Id = 226, Name = "London Bridge Inn", Address = "Tooley Street 18", Stars = 3 },
+
+    // =========================
+    // DUBAI (3)
+    // =========================
+    new Hotel { Id = 206, Name = "Dubai Marina Pearl Hotel", Address = "Dubai Marina Walk 5", Stars = 5 },
+    new Hotel { Id = 227, Name = "Burj Khalifa View Hotel", Address = "Downtown Dubai 1", Stars = 5 },
+    new Hotel { Id = 228, Name = "Dubai Creek City Hotel", Address = "Al Seef Street 9", Stars = 4 },
+
+    // =========================
+    // CAIRO (3)
+    // =========================
+    new Hotel { Id = 207, Name = "Cairo Pyramids View Hotel", Address = "Pyramid Street 18", Stars = 4 },
+    new Hotel { Id = 229, Name = "Nile Riverside Palace", Address = "Corniche El Nil 101", Stars = 5 },
+    new Hotel { Id = 230, Name = "Downtown Cairo Hotel", Address = "Tahrir Square 6", Stars = 3 },
+
+    // =========================
+    // BUDAPEST (3)
+    // =========================
+    new Hotel { Id = 208, Name = "Budapest Royal Center Hotel", Address = "Váci Utca 33", Stars = 3 },
+    new Hotel { Id = 231, Name = "Danube Panorama Hotel", Address = "Bem Rakpart 15", Stars = 4 },
+    new Hotel { Id = 232, Name = "Thermal Spa Boutique Hotel", Address = "Andrássy út 45", Stars = 5 },
+
+    // =========================
+    // KRAKOW (3)
+    // =========================
+    new Hotel { Id = 209, Name = "Krakow Old Town Plaza Hotel", Address = "Floriańska 15", Stars = 4 },
+    new Hotel { Id = 233, Name = "Wawel Castle View Hotel", Address = "Kanonicza 8", Stars = 5 },
+    new Hotel { Id = 234, Name = "Krakow City Budget Stay", Address = "Dietla 60", Stars = 3 },
+
+    // =========================
+    // ZANZIBAR (3)
+    // =========================
+    new Hotel { Id = 210, Name = "Zanzibar Blue Lagoon Resort", Address = "Kendwa Beach 1", Stars = 5 },
+    new Hotel { Id = 235, Name = "Stone Town Heritage Hotel", Address = "Mkunazini Street 14", Stars = 4 },
+    new Hotel { Id = 236, Name = "Zanzibar Beach Paradise", Address = "Nungwi Coast 7", Stars = 5 },
+
+    // =========================
+    // HURGHADA (3)
+    // =========================
+    new Hotel { Id = 211, Name = "Hurghada Golden Sand Resort", Address = "Sheraton Road 55", Stars = 5 },
+    new Hotel { Id = 237, Name = "Red Sea Coral Resort", Address = "El Mamsha 22", Stars = 4 },
+    new Hotel { Id = 238, Name = "Hurghada Sunlight Hotel", Address = "Village Road 9", Stars = 3 },
+
+    // =========================
+    // LISBON (3)
+    // =========================
+    new Hotel { Id = 212, Name = "Lisbon Alfama Boutique Hotel", Address = "Rua dos Remédios 21", Stars = 4 },
+    new Hotel { Id = 239, Name = "Belem Riverside Hotel", Address = "Avenida Brasília 78", Stars = 5 },
+    new Hotel { Id = 240, Name = "Lisbon Downtown Stay", Address = "Rua Augusta 120", Stars = 3 },
+
+    // =========================
+    // ATHENS (3)
+    // =========================
+    new Hotel { Id = 213, Name = "Acropolis View Hotel Athens", Address = "Dionysiou Areopagitou 8", Stars = 3 },
+    new Hotel { Id = 241, Name = "Plaka Heritage Hotel", Address = "Adrianou 30", Stars = 4 },
+    new Hotel { Id = 242, Name = "Athens Central Palace", Address = "Syntagma Square 3", Stars = 5 },
+
+    // =========================
+    // SPLIT (3)
+    // =========================
+    new Hotel { Id = 214, Name = "Hotel Adriatic Split", Address = "Obala Hrvatskog Narodnog 17", Stars = 4 },
+    new Hotel { Id = 243, Name = "Diocletian Palace Boutique Hotel", Address = "Peristil 2", Stars = 5 },
+    new Hotel { Id = 244, Name = "Split City Beach Hotel", Address = "Bačvice 14", Stars = 3 }
+);
+
 
             // =========================================================================
             // 11. HOTEL IMAGES (1 main + 3 dodatne)
             // =========================================================================
             int hid = 1;
+
             void AddHotelImages(int hotelId)
             {
                 builder.Entity<HotelImages>().HasData(
-                    new HotelImages { Id = hid++, HotelId = hotelId, ImageUrl = $"hotel{hotelId}_main.jpg", IsMain = true },
-                    new HotelImages { Id = hid++, HotelId = hotelId, ImageUrl = $"hotel{hotelId}_1.jpg", IsMain = false },
-                    new HotelImages { Id = hid++, HotelId = hotelId, ImageUrl = $"hotel{hotelId}_2.jpg", IsMain = false },
-                    new HotelImages { Id = hid++, HotelId = hotelId, ImageUrl = $"hotel{hotelId}_3.jpg", IsMain = false }
-
-
+                    new HotelImages
+                    {
+                        Id = hid++,
+                        HotelId = hotelId,
+                        ImageUrl = HotelImage(hotelId, 1),
+                        IsMain = true
+                    },
+                    new HotelImages
+                    {
+                        Id = hid++,
+                        HotelId = hotelId,
+                        ImageUrl = HotelImage(hotelId, 2),
+                        IsMain = false
+                    },
+                    new HotelImages
+                    {
+                        Id = hid++,
+                        HotelId = hotelId,
+                        ImageUrl = HotelImage(hotelId, 3),
+                        IsMain = false
+                    },
+                    new HotelImages
+                    {
+                        Id = hid++,
+                        HotelId = hotelId,
+                        ImageUrl = HotelImage(hotelId, 4),
+                        IsMain = false
+                    }
                 );
             }
 
-            foreach (var hotelId in new[] { 100, 101, 102, 110, 111, 112, 120, 121, 122 })
-                AddHotelImages(hotelId);
 
-            builder.Entity<HotelImages>().HasData(
-                new HotelImages { Id = 6000, HotelId = 200, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6001, HotelId = 201, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6002, HotelId = 202, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6003, HotelId = 203, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6004, HotelId = 204, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6005, HotelId = 205, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6006, HotelId = 206, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6007, HotelId = 207, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6008, HotelId = 208, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6009, HotelId = 209, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6010, HotelId = 210, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6011, HotelId = 211, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6012, HotelId = 212, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6013, HotelId = 213, ImageUrl = "primjer.jpg", IsMain = true },
-                new HotelImages { Id = 6014, HotelId = 214, ImageUrl = "primjer.jpg", IsMain = true }
-            );
+            foreach (var hotelId in new[]
+            {
+    // Firenca
+    100, 101, 102,
+    // Santorini
+    110, 111, 112,
+    // Istanbul
+    120, 121, 122,
+
+    // Barcelona
+    200, 215, 216,
+    // Paris
+    201, 217, 218,
+    // Prague
+    202, 219, 220,
+    // Vienna
+    203, 221, 222,
+    // Amsterdam
+    204, 223, 224,
+    // London
+    205, 225, 226,
+    // Dubai
+    206, 227, 228,
+    // Cairo
+    207, 229, 230,
+    // Budapest
+    208, 231, 232,
+    // Krakow
+    209, 233, 234,
+    // Zanzibar
+    210, 235, 236,
+    // Hurghada
+    211, 237, 238,
+    // Lisbon
+    212, 239, 240,
+    // Athens
+    213, 241, 242,
+    // Split
+    214, 243, 244
+})
+            {
+                AddHotelImages(hotelId);
+            }
+
 
 
 
             // =========================================================================
             // 12. OFFER → HOTELS (UTC)
             // =========================================================================
-            builder.Entity<OfferHotels>().HasData(
-                // FIRNCA — 5 dana
-                new OfferHotels { OfferDetailsId = 1, HotelId = 100, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, DateTimeKind.Utc) },
-                new OfferHotels { OfferDetailsId = 1, HotelId = 101, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, DateTimeKind.Utc) },
-                new OfferHotels { OfferDetailsId = 1, HotelId = 102, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, DateTimeKind.Utc) },
+            var departures = new[]
+{
+    new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
+    new DateTime(2026, 5, 15, 0, 0, 0, DateTimeKind.Utc),
+    new DateTime(2026, 8, 27, 0, 0, 0, DateTimeKind.Utc)
+};
 
-                // SANTORINI — 7 dana
-                new OfferHotels { OfferDetailsId = 2, HotelId = 110, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, DateTimeKind.Utc) },
-                new OfferHotels { OfferDetailsId = 2, HotelId = 111, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, DateTimeKind.Utc) },
-                new OfferHotels { OfferDetailsId = 2, HotelId = 112, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, DateTimeKind.Utc) },
 
-                // ISTANBUL — 4 dana
-                new OfferHotels { OfferDetailsId = 3, HotelId = 120, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, DateTimeKind.Utc) },
-                new OfferHotels { OfferDetailsId = 3, HotelId = 121, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, DateTimeKind.Utc) },
-                new OfferHotels { OfferDetailsId = 3, HotelId = 122, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, DateTimeKind.Utc) },
-                new OfferHotels { OfferDetailsId = 4, HotelId = 200, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 10, 0, 0, 0, DateTimeKind.Utc) }, // 8 dana
-                new OfferHotels { OfferDetailsId = 5, HotelId = 201, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, DateTimeKind.Utc) },  // 6 dana
-                new OfferHotels { OfferDetailsId = 6, HotelId = 202, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 13, 0, 0, 0, DateTimeKind.Utc) }, // 11 dana
-                new OfferHotels { OfferDetailsId = 7, HotelId = 203, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 11, 0, 0, 0, DateTimeKind.Utc) }, // 9 dana
-                new OfferHotels { OfferDetailsId = 8, HotelId = 204, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 11, 0, 0, 0, DateTimeKind.Utc) }, // 9 dana
-                new OfferHotels { OfferDetailsId = 9, HotelId = 205, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, DateTimeKind.Utc) },  // 4 dana
-                new OfferHotels { OfferDetailsId = 10, HotelId = 206, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, DateTimeKind.Utc) },  // 7 dana
-                new OfferHotels { OfferDetailsId = 11, HotelId = 207, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 12, 0, 0, 0, DateTimeKind.Utc) }, // 10 dana
-                new OfferHotels { OfferDetailsId = 12, HotelId = 208, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, DateTimeKind.Utc) },  // 7 dana
-                new OfferHotels { OfferDetailsId = 13, HotelId = 209, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, DateTimeKind.Utc) },  // 6 dana
-                new OfferHotels { OfferDetailsId = 14, HotelId = 210, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, DateTimeKind.Utc) },  // 4 dana
-                new OfferHotels { OfferDetailsId = 15, HotelId = 211, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, DateTimeKind.Utc) },  // 6 dana
-                new OfferHotels { OfferDetailsId = 16, HotelId = 212, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 10, 0, 0, 0, DateTimeKind.Utc) }, // 8 dana
-                new OfferHotels { OfferDetailsId = 17, HotelId = 213, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, DateTimeKind.Utc) },  // 4 dana
-                new OfferHotels { OfferDetailsId = 18, HotelId = 214, DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc), ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, DateTimeKind.Utc) } // 6 dana
+            var offerHotelMap = new[]
+            {
+    // Firenca (5 dana)
+    new { OfferDetailsId = 1, Days = 5, Hotels = new[] { 100, 101, 102 } },
 
-            );
+    // Santorini (7 dana)
+    new { OfferDetailsId = 2, Days = 7, Hotels = new[] { 110, 111, 112 } },
+
+    // Istanbul (4 dana)
+    new { OfferDetailsId = 3, Days = 4, Hotels = new[] { 120, 121, 122 } },
+
+    // Ostali – po 3 hotela (pretpostavka koju si ranije definisao)
+    new { OfferDetailsId = 4, Days = 6, Hotels = new[] { 200, 215, 216 } },
+    new { OfferDetailsId = 5, Days = 5, Hotels = new[] { 201, 217, 218 } },
+    new { OfferDetailsId = 6, Days = 4, Hotels = new[] { 202, 219, 220 } },
+    new { OfferDetailsId = 7, Days = 3, Hotels = new[] { 203, 221, 222 } },
+    new { OfferDetailsId = 8, Days = 5, Hotels = new[] { 204, 223, 224 } },
+    new { OfferDetailsId = 9, Days = 6, Hotels = new[] { 205, 225, 226 } },
+    new { OfferDetailsId = 10, Days = 7, Hotels = new[] { 206, 227, 228 } },
+    new { OfferDetailsId = 11, Days = 5, Hotels = new[] { 207, 229, 230 } },
+    new { OfferDetailsId = 12, Days = 3, Hotels = new[] { 208, 231, 232 } },
+    new { OfferDetailsId = 13, Days = 4, Hotels = new[] { 209, 233, 234 } },
+    new { OfferDetailsId = 14, Days = 8, Hotels = new[] { 210, 235, 236 } },
+    new { OfferDetailsId = 15, Days = 7, Hotels = new[] { 211, 237, 238 } },
+    new { OfferDetailsId = 16, Days = 6, Hotels = new[] { 212, 239, 240 } },
+    new { OfferDetailsId = 17, Days = 5, Hotels = new[] { 213, 241, 242 } },
+    new { OfferDetailsId = 18, Days = 3, Hotels = new[] { 214, 243, 244 } }
+};
+
+            foreach (var offer in offerHotelMap)
+            {
+                foreach (var hotelId in offer.Hotels)
+                {
+                    foreach (var dep in departures)
+                    {
+                        builder.Entity<OfferHotels>().HasData(
+                            new OfferHotels
+                            {
+                                OfferDetailsId = offer.OfferDetailsId,
+                                HotelId = hotelId,
+                                DepartureDate = dep,
+                                ReturnDate = dep.AddDays(offer.Days)
+                            }
+                        );
+                    }
+                }
+            }
+
+
 
 
             // =========================================================================
@@ -1053,607 +1296,797 @@ namespace eTravelAgencija.Services.Database.Seed
             // 14. HOTEL ROOMS
             // =========================================================================
 
-            builder.Entity<HotelRooms>().HasData(
-                // Hotel 100
-                new HotelRooms { HotelId = 100, RoomId = 1, RoomsLeft = 10 },
-                new HotelRooms { HotelId = 100, RoomId = 2, RoomsLeft = 6 },
-                new HotelRooms { HotelId = 100, RoomId = 3, RoomsLeft = 4 },
-                new HotelRooms { HotelId = 100, RoomId = 4, RoomsLeft = 8 },
+            var roomIds = new[] { 1, 2, 3, 4 };
 
-                // Hotel 101
-                new HotelRooms { HotelId = 101, RoomId = 1, RoomsLeft = 10 },
-                new HotelRooms { HotelId = 101, RoomId = 2, RoomsLeft = 6 },
-                new HotelRooms { HotelId = 101, RoomId = 3, RoomsLeft = 4 },
-                new HotelRooms { HotelId = 101, RoomId = 4, RoomsLeft = 8 },
+            var hotels = new[]
+            {
+    // FIRENCA
+    100, 101, 102,
+    // SANTORINI
+    110, 111, 112,
+    // ISTANBUL
+    120, 121, 122,
 
-                // Hotel 102
-                new HotelRooms { HotelId = 102, RoomId = 1, RoomsLeft = 10 },
-                new HotelRooms { HotelId = 102, RoomId = 2, RoomsLeft = 6 },
-                new HotelRooms { HotelId = 102, RoomId = 3, RoomsLeft = 4 },
-                new HotelRooms { HotelId = 102, RoomId = 4, RoomsLeft = 8 },
+    // BARCELONA
+    200, 215, 216,
+    // PARIS
+    201, 217, 218,
+    // PRAGUE
+    202, 219, 220,
+    // VIENNA
+    203, 221, 222,
+    // AMSTERDAM
+    204, 223, 224,
+    // LONDON
+    205, 225, 226,
+    // DUBAI
+    206, 227, 228,
+    // CAIRO
+    207, 229, 230,
+    // BUDAPEST
+    208, 231, 232,
+    // KRAKOW
+    209, 233, 234,
+    // ZANZIBAR
+    210, 235, 236,
+    // HURGHADA
+    211, 237, 238,
+    // LISBON
+    212, 239, 240,
+    // ATHENS
+    213, 241, 242,
+    // SPLIT
+    214, 243, 244
+};
 
-                // Hotel 110
-                new HotelRooms { HotelId = 110, RoomId = 1, RoomsLeft = 10 },
-                new HotelRooms { HotelId = 110, RoomId = 2, RoomsLeft = 6 },
-                new HotelRooms { HotelId = 110, RoomId = 3, RoomsLeft = 4 },
-                new HotelRooms { HotelId = 110, RoomId = 4, RoomsLeft = 8 },
+            // 🔒 FIXED SEED → uvijek isti “random”
+            var rng = new Random(2026);
 
-                // Hotel 111
-                new HotelRooms { HotelId = 111, RoomId = 1, RoomsLeft = 10 },
-                new HotelRooms { HotelId = 111, RoomId = 2, RoomsLeft = 6 },
-                new HotelRooms { HotelId = 111, RoomId = 3, RoomsLeft = 4 },
-                new HotelRooms { HotelId = 111, RoomId = 4, RoomsLeft = 8 },
+            foreach (var hotelId in hotels)
+            {
+                foreach (var roomId in roomIds)
+                {
+                    // Random 5–15 (5 uključeno, 16 nije)
+                    var roomsLeft = rng.Next(5, 16);
 
-                // Hotel 112
-                new HotelRooms { HotelId = 112, RoomId = 1, RoomsLeft = 10 },
-                new HotelRooms { HotelId = 112, RoomId = 2, RoomsLeft = 6 },
-                new HotelRooms { HotelId = 112, RoomId = 3, RoomsLeft = 4 },
-                new HotelRooms { HotelId = 112, RoomId = 4, RoomsLeft = 8 },
+                    builder.Entity<HotelRooms>().HasData(
+                        new HotelRooms
+                        {
+                            HotelId = hotelId,
+                            RoomId = roomId,
+                            RoomsLeft = roomsLeft
+                        }
+                    );
+                }
+            }
 
-                // Hotel 120
-                new HotelRooms { HotelId = 120, RoomId = 1, RoomsLeft = 10 },
-                new HotelRooms { HotelId = 120, RoomId = 2, RoomsLeft = 6 },
-                new HotelRooms { HotelId = 120, RoomId = 3, RoomsLeft = 4 },
-                new HotelRooms { HotelId = 120, RoomId = 4, RoomsLeft = 8 },
 
-                // Hotel 121
-                new HotelRooms { HotelId = 121, RoomId = 1, RoomsLeft = 10 },
-                new HotelRooms { HotelId = 121, RoomId = 2, RoomsLeft = 6 },
-                new HotelRooms { HotelId = 121, RoomId = 3, RoomsLeft = 4 },
-                new HotelRooms { HotelId = 121, RoomId = 4, RoomsLeft = 8 },
-
-                // Hotel 122
-                new HotelRooms { HotelId = 122, RoomId = 1, RoomsLeft = 10 },
-                new HotelRooms { HotelId = 122, RoomId = 2, RoomsLeft = 6 },
-                new HotelRooms { HotelId = 122, RoomId = 3, RoomsLeft = 4 },
-                new HotelRooms { HotelId = 122, RoomId = 4, RoomsLeft = 8 }
-            );
 
             // =========================================================================
             // 15. RESERVATIONS (UserId 5–24)
             // =========================================================================
 
             builder.Entity<Reservation>().HasData(
-    new Reservation { Id = 2000, UserId = 5, OfferId = 1, HotelId = 100, RoomId = 1, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 450, PriceLeftToPay = 150, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "Vegetarijanski meni" },
-    new Reservation { Id = 2001, UserId = 6, OfferId = 2, HotelId = 110, RoomId = 2, IsActive = true, IncludeInsurance = false, isFirstRatePaid = false, isFullPaid = true, TotalPrice = 900, PriceLeftToPay = 900, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2002, UserId = 7, OfferId = 3, HotelId = 120, RoomId = 1, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 350, PriceLeftToPay = 50, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2003, UserId = 8, OfferId = 2, HotelId = 111, RoomId = 3, IsActive = true, IncludeInsurance = false, isFirstRatePaid = false, isFullPaid = true, TotalPrice = 900, PriceLeftToPay = 0, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2004, UserId = 9, OfferId = 1, HotelId = 101, RoomId = 2, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 450, PriceLeftToPay = 150, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2005, UserId = 10, OfferId = 3, HotelId = 122, RoomId = 1, IsActive = true, IncludeInsurance = false, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 350, PriceLeftToPay = 50, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2006, UserId = 11, OfferId = 1, HotelId = 102, RoomId = 4, IsActive = true, IncludeInsurance = true, isFirstRatePaid = false, isFullPaid = true, TotalPrice = 450, PriceLeftToPay = 0, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2007, UserId = 12, OfferId = 2, HotelId = 112, RoomId = 1, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 900, PriceLeftToPay = 600, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "Pristup teretani" },
-    new Reservation { Id = 2008, UserId = 13, OfferId = 3, HotelId = 120, RoomId = 2, IsActive = true, IncludeInsurance = false, isFirstRatePaid = false, isFullPaid = true, TotalPrice = 350, PriceLeftToPay = 0, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2009, UserId = 14, OfferId = 1, HotelId = 101, RoomId = 3, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 450, PriceLeftToPay = 150, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
 
-    new Reservation { Id = 2010, UserId = 15, OfferId = 2, HotelId = 110, RoomId = 4, IsActive = true, IncludeInsurance = false, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 900, PriceLeftToPay = 600, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2011, UserId = 16, OfferId = 3, HotelId = 121, RoomId = 2, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 350, PriceLeftToPay = 50, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2012, UserId = 17, OfferId = 1, HotelId = 102, RoomId = 2, IsActive = true, IncludeInsurance = false, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 450, PriceLeftToPay = 150, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2013, UserId = 18, OfferId = 2, HotelId = 111, RoomId = 2, IsActive = true, IncludeInsurance = true, isFirstRatePaid = false, isFullPaid = true, TotalPrice = 900, PriceLeftToPay = 0, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "Bez glutena" },
-    new Reservation { Id = 2014, UserId = 19, OfferId = 3, HotelId = 120, RoomId = 3, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 350, PriceLeftToPay = 50, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2015, UserId = 20, OfferId = 1, HotelId = 101, RoomId = 1, IsActive = true, IncludeInsurance = true, isFirstRatePaid = false, isFullPaid = true, TotalPrice = 450, PriceLeftToPay = 0, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2016, UserId = 21, OfferId = 2, HotelId = 112, RoomId = 1, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 900, PriceLeftToPay = 600, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2017, UserId = 22, OfferId = 3, HotelId = 122, RoomId = 1, IsActive = true, IncludeInsurance = true, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 350, PriceLeftToPay = 50, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2018, UserId = 23, OfferId = 1, HotelId = 100, RoomId = 1, IsActive = true, IncludeInsurance = false, isFirstRatePaid = true, isFullPaid = false, TotalPrice = 450, PriceLeftToPay = 150, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation { Id = 2019, UserId = 24, OfferId = 2, HotelId = 111, RoomId = 3, IsActive = true, IncludeInsurance = true, isFirstRatePaid = false, isFullPaid = true, TotalPrice = 900, PriceLeftToPay = 0, CreatedAt = new DateTime(2025, 12, 01, 0, 0, 0, DateTimeKind.Utc), addedNeeds = "" },
-    new Reservation
-    {
-        Id = 3000,
-        UserId = 6,
-        OfferId = 1,
-        HotelId = 100,
-        RoomId = 1,
-        IsActive = true,
-        IncludeInsurance = false,
-        isFirstRatePaid = true,
-        isFullPaid = true,
-        TotalPrice = 0,
-        PriceLeftToPay = 0,
-        CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
-        addedNeeds = ""
-    },
 
-    // ============================
-    // USER 6 — SANTORINI (Offer 2)
-    // ============================
-    new Reservation
-    {
-        Id = 3001,
-        UserId = 6,
-        OfferId = 2,
-        HotelId = 110,
-        RoomId = 2,
-        IsActive = true,
-        IncludeInsurance = false,
-        isFirstRatePaid = true,
-        isFullPaid = true,
-        TotalPrice = 0,
-        PriceLeftToPay = 0,
-        CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
-        addedNeeds = ""
-    },
+        new Reservation
+        {
+            Id = 2000,
+            UserId = 5,
+            OfferId = 1,
+            HotelId = 100,
+            RoomId = 1,
+            IsActive = true,
+            IncludeInsurance = true,
+            isFirstRatePaid = true,
+            isFullPaid = false,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 450,
+            PriceLeftToPay = 150,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = "Vegetarijanski meni"
+        },
 
-    // ============================
-    // USER 6 — ISTANBUL (Offer 3)
-    // ============================
-    new Reservation
-    {
-        Id = 3002,
-        UserId = 6,
-        OfferId = 3,
-        HotelId = 120,
-        RoomId = 1,
-        IsActive = true,
-        IncludeInsurance = false,
-        isFirstRatePaid = true,
-        isFullPaid = true,
-        TotalPrice = 0,
-        PriceLeftToPay = 0,
-        CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
-        addedNeeds = ""
-    }
+        new Reservation
+        {
+            Id = 2001,
+            UserId = 6,
+            OfferId = 2,
+            HotelId = 110,
+            RoomId = 2,
+            IsActive = true,
+            IncludeInsurance = false,
+            isFirstRatePaid = false,
+            isFullPaid = true,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 900,
+            PriceLeftToPay = 900,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 2002,
+            UserId = 7,
+            OfferId = 3,
+            HotelId = 120,
+            RoomId = 1,
+            IsActive = true,
+            IncludeInsurance = true,
+            isFirstRatePaid = true,
+            isFullPaid = false,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 350,
+            PriceLeftToPay = 50,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 2003,
+            UserId = 8,
+            OfferId = 2,
+            HotelId = 111,
+            RoomId = 3,
+            IsActive = true,
+            IncludeInsurance = false,
+            isFirstRatePaid = false,
+            isFullPaid = true,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 900,
+            PriceLeftToPay = 0,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 2004,
+            UserId = 9,
+            OfferId = 1,
+            HotelId = 101,
+            RoomId = 2,
+            IsActive = true,
+            IncludeInsurance = true,
+            isFirstRatePaid = true,
+            isFullPaid = false,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 450,
+            PriceLeftToPay = 150,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 2005,
+            UserId = 10,
+            OfferId = 3,
+            HotelId = 122,
+            RoomId = 1,
+            IsActive = true,
+            IncludeInsurance = false,
+            isFirstRatePaid = true,
+            isFullPaid = false,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 350,
+            PriceLeftToPay = 50,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 2006,
+            UserId = 11,
+            OfferId = 1,
+            HotelId = 102,
+            RoomId = 4,
+            IsActive = true,
+            IncludeInsurance = true,
+            isFirstRatePaid = false,
+            isFullPaid = true,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 450,
+            PriceLeftToPay = 0,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 2007,
+            UserId = 12,
+            OfferId = 2,
+            HotelId = 112,
+            RoomId = 1,
+            IsActive = true,
+            IncludeInsurance = true,
+            isFirstRatePaid = true,
+            isFullPaid = false,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 900,
+            PriceLeftToPay = 600,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = "Pristup teretani"
+        },
+
+        new Reservation
+        {
+            Id = 2008,
+            UserId = 13,
+            OfferId = 3,
+            HotelId = 120,
+            RoomId = 2,
+            IsActive = true,
+            IncludeInsurance = false,
+            isFirstRatePaid = false,
+            isFullPaid = true,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 350,
+            PriceLeftToPay = 0,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 2009,
+            UserId = 14,
+            OfferId = 1,
+            HotelId = 101,
+            RoomId = 3,
+            IsActive = true,
+            IncludeInsurance = true,
+            isFirstRatePaid = true,
+            isFullPaid = false,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 450,
+            PriceLeftToPay = 150,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 2010,
+            UserId = 15,
+            OfferId = 2,
+            HotelId = 110,
+            RoomId = 4,
+            IsActive = true,
+            IncludeInsurance = false,
+            isFirstRatePaid = true,
+            isFullPaid = false,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 900,
+            PriceLeftToPay = 600,
+            CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+new Reservation
+{
+    Id = 2011,
+    UserId = 16,
+    OfferId = 3,
+    HotelId = 121,
+    RoomId = 2,
+    IsActive = true,
+    IncludeInsurance = true,
+    isFirstRatePaid = true,
+    isFullPaid = false,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 350,
+    PriceLeftToPay = 50,
+    CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+},
+
+new Reservation
+{
+    Id = 2012,
+    UserId = 17,
+    OfferId = 1,
+    HotelId = 102,
+    RoomId = 2,
+    IsActive = true,
+    IncludeInsurance = false,
+    isFirstRatePaid = true,
+    isFullPaid = false,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 450,
+    PriceLeftToPay = 150,
+    CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+},
+
+new Reservation
+{
+    Id = 2013,
+    UserId = 18,
+    OfferId = 2,
+    HotelId = 111,
+    RoomId = 2,
+    IsActive = true,
+    IncludeInsurance = true,
+    isFirstRatePaid = false,
+    isFullPaid = true,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 900,
+    PriceLeftToPay = 0,
+    CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = "Bez glutena"
+},
+
+new Reservation
+{
+    Id = 2014,
+    UserId = 19,
+    OfferId = 3,
+    HotelId = 120,
+    RoomId = 3,
+    IsActive = true,
+    IncludeInsurance = true,
+    isFirstRatePaid = true,
+    isFullPaid = false,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 350,
+    PriceLeftToPay = 50,
+    CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+},
+
+new Reservation
+{
+    Id = 2015,
+    UserId = 20,
+    OfferId = 1,
+    HotelId = 101,
+    RoomId = 1,
+    IsActive = true,
+    IncludeInsurance = true,
+    isFirstRatePaid = false,
+    isFullPaid = true,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 450,
+    PriceLeftToPay = 0,
+    CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+},
+
+new Reservation
+{
+    Id = 2016,
+    UserId = 21,
+    OfferId = 2,
+    HotelId = 112,
+    RoomId = 1,
+    IsActive = true,
+    IncludeInsurance = true,
+    isFirstRatePaid = true,
+    isFullPaid = false,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 900,
+    PriceLeftToPay = 600,
+    CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+},
+
+new Reservation
+{
+    Id = 2017,
+    UserId = 22,
+    OfferId = 3,
+    HotelId = 122,
+    RoomId = 1,
+    IsActive = true,
+    IncludeInsurance = true,
+    isFirstRatePaid = true,
+    isFullPaid = false,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 350,
+    PriceLeftToPay = 50,
+    CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+},
+
+new Reservation
+{
+    Id = 2018,
+    UserId = 23,
+    OfferId = 1,
+    HotelId = 100,
+    RoomId = 1,
+    IsActive = true,
+    IncludeInsurance = false,
+    isFirstRatePaid = true,
+    isFullPaid = false,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 450,
+    PriceLeftToPay = 150,
+    CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+},
+
+new Reservation
+{
+    Id = 2019,
+    UserId = 24,
+    OfferId = 2,
+    HotelId = 111,
+    RoomId = 3,
+    IsActive = true,
+    IncludeInsurance = true,
+    isFirstRatePaid = false,
+    isFullPaid = true,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 900,
+    PriceLeftToPay = 0,
+    CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+},
+
+
+        new Reservation
+        {
+            Id = 3000,
+            UserId = 6,
+            OfferId = 1,
+            HotelId = 100,
+            RoomId = 1,
+            IsActive = true,
+            IncludeInsurance = false,
+            isFirstRatePaid = true,
+            isFullPaid = true,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 0,
+            PriceLeftToPay = 0,
+            CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 3001,
+            UserId = 6,
+            OfferId = 2,
+            HotelId = 110,
+            RoomId = 2,
+            IsActive = true,
+            IncludeInsurance = false,
+            isFirstRatePaid = true,
+            isFullPaid = true,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 0,
+            PriceLeftToPay = 0,
+            CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        },
+
+        new Reservation
+        {
+            Id = 3002,
+            UserId = 6,
+            OfferId = 3,
+            HotelId = 120,
+            RoomId = 1,
+            IsActive = true,
+            IncludeInsurance = false,
+            isFirstRatePaid = true,
+            isFullPaid = true,
+            isDiscountUsed = false,
+            DiscountValue = 0,
+            TotalPrice = 0,
+            PriceLeftToPay = 0,
+            CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
+            addedNeeds = ""
+        }
 );
+
 
             builder.Entity<Payment>().HasData(
 
-    // =====================================================
-    // RES 2000 – 1 + 2 + 5 (FULL PAID)
-    // =====================================================
-    new Payment { ReservationId = 2000, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2000, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2000, RateId = 5, Amount = 150, PaymentMethod = "kartica", IsConfirmed = true },
+// =====================================================
+// RES 2000 – 1 + 2 + 5 (FULL PAID)
+// =====================================================
+new Payment { ReservationId = 2000, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2000, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2000, RateId = 5, Amount = 150, PaymentMethod = "kartica", IsConfirmed = true },
 
-    // =====================================================
-    // RES 2001 – 1 + 2 + 5 (FULL PAID)
-    // =====================================================
-    new Payment { ReservationId = 2001, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2001, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2001, RateId = 5, Amount = 600, PaymentMethod = "kartica", IsConfirmed = true },
+// =====================================================
+// RES 2001 – 1 + 2 + 5 (FULL PAID)
+// =====================================================
+new Payment { ReservationId = 2001, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2001, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2001, RateId = 5, Amount = 600, PaymentMethod = "kartica", IsConfirmed = true },
 
-    // =====================================================
-    // RES 2002 – 1 CONFIRMED, 2 PENDING
-    // =====================================================
-    new Payment { ReservationId = 2002, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2002, RateId = 2, Amount = 200, PaymentMethod = "uplatnica", IsConfirmed = false },
+// =====================================================
+// RES 2002 – 1 CONFIRMED, 2 PENDING
+// =====================================================
+new Payment { ReservationId = 2002, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2002, RateId = 2, Amount = 200, PaymentMethod = "uplatnica", IsConfirmed = false },
 
-    // =====================================================
-    // RES 2003 – 1 + 2 CONFIRMED, 5 PENDING
-    // =====================================================
-    new Payment { ReservationId = 2003, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2003, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2003, RateId = 5, Amount = 600, PaymentMethod = "uplatnica", IsConfirmed = false },
+// =====================================================
+// RES 2003 – 1 + 2 CONFIRMED, 5 PENDING
+// =====================================================
+new Payment { ReservationId = 2003, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2003, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2003, RateId = 5, Amount = 600, PaymentMethod = "uplatnica", IsConfirmed = false },
 
-    // =====================================================
-    // RES 2004 – FULL AMOUNT (PENDING)
-    // =====================================================
-    new Payment
-    {
-        ReservationId = 2004,
-        RateId = 4,
-        Amount = 450,
-        PaymentMethod = "uplatnica",
-        IsConfirmed = false
-    },
-
-    // =====================================================
-    // RES 2005 – 1 CONFIRMED + 5 PENDING
-    // =====================================================
-    new Payment { ReservationId = 2005, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2005, RateId = 5, Amount = 400, PaymentMethod = "uplatnica", IsConfirmed = false },
-
-    // =====================================================
-    // RES 2006 – 1 + 2 + 5 (FULL PAID)
-    // =====================================================
-    new Payment { ReservationId = 2006, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2006, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2006, RateId = 5, Amount = 150, PaymentMethod = "kartica", IsConfirmed = true },
-
-    // =====================================================
-    // RES 2007 – 1 + 2 (čekanje 5)
-    // =====================================================
-    new Payment { ReservationId = 2007, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2007, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
-
-    // =====================================================
-    // RES 2008 – 1 + 2 + 5 (FULL PAID)
-    // =====================================================
-    new Payment { ReservationId = 2008, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2008, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2008, RateId = 5, Amount = 50, PaymentMethod = "kartica", IsConfirmed = true },
-
-    // =====================================================
-    // RES 2009 – 1 + 2 + 5 (FULL PAID)
-    // =====================================================
-    new Payment { ReservationId = 2009, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2009, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
-    new Payment { ReservationId = 2009, RateId = 5, Amount = 150, PaymentMethod = "kartica", IsConfirmed = true },
-
-    // =====================================================
-    // RES 2010 – FULL AMOUNT CONFIRMED
-    // =====================================================
-    new Payment
-    {
-        ReservationId = 2010,
-        RateId = 4,
-        Amount = 900,
-        PaymentMethod = "kartica",
-        IsConfirmed = true
-    }
-);
-
-
-            builder.Entity<Comment>().HasData(
-            new Comment
-            {
-                Id = 1,
-                userId = 4,      // Ajdin
-                offerId = 1,     // Firenca
-                comment = "Predivno putovanje! Organizacija odlična, vodič fenomenalan.",
-                starRate = 5
-            },
-            new Comment
-            {
-                Id = 2,
-                userId = 5,
-                offerId = 1,
-                comment = "Sve super osim hotela koji je mogao biti bolji.",
-                starRate = 4
-            },
-            new Comment
-            {
-                Id = 3,
-                userId = 6,
-                offerId = 2,     // Santorini
-                comment = "Santorini je san! Svaka preporuka, ponovo bih išao.",
-                starRate = 5
-            },
-            new Comment
-            {
-                Id = 4,
-                userId = 7,
-                offerId = 2,
-                comment = "Lijepo putovanje, ali dosta gužve.",
-                starRate = 4
-            },
-            new Comment
-            {
-                Id = 5,
-                userId = 8,
-                offerId = 3,     // Istanbul
-                comment = "Veoma interesantna tura, vodič je znao sve detalje.",
-                starRate = 5
-            },
-            new Comment
-            {
-                Id = 6,
-                userId = 9,
-                offerId = 3,
-                comment = "Odlična cijena za ono što se dobije.",
-                starRate = 4
-            },
-            new Comment
-            {
-                Id = 7,
-                userId = 10,
-                offerId = 4,     // Barcelona
-                comment = "Barcelona je bila fantastična! Hotel blizu centra.",
-                starRate = 5
-            },
-            new Comment
-            {
-                Id = 8,
-                userId = 11,
-                offerId = 4,
-                comment = "Predugo putovanje avionom, ali sve ostalo vrhunski.",
-                starRate = 4
-            },
-            new Comment
-            {
-                Id = 9,
-                userId = 12,
-                offerId = 5,     // Pariz
-                comment = "Grad svjetlosti je ispunio sva očekivanja!",
-                starRate = 5
-            },
-            new Comment
-            {
-                Id = 10,
-                userId = 13,
-                offerId = 5,
-                comment = "Skupo, ali vrijedilo je svakog dinara.",
-                starRate = 5
-            },
-            new Comment
-            {
-                Id = 11,
-                userId = 14,
-                offerId = 7,     // Beč
-                comment = "Mirno i ugodno putovanje, savršeno za vikend bijeg.",
-                starRate = 4
-            },
-            new Comment
-            {
-                Id = 12,
-                userId = 15,
-                offerId = 7,
-                comment = "Sve je bilo dobro organizovano.",
-                starRate = 4
-            },
-            new Comment
-            {
-                Id = 13,
-                userId = 16,
-                offerId = 10,    // Dubai
-                comment = "Dubai je nevjerovatno iskustvo! Top organizacija.",
-                starRate = 5
-            },
-            new Comment
-            {
-                Id = 14,
-                userId = 17,
-                offerId = 10,
-                comment = "Hotel vrhunski, vodič odličan. Preporučujem!",
-                starRate = 5
-            },
-            new Comment
-            {
-                Id = 15,
-                userId = 18,
-                offerId = 12,    // Budimpešta
-                comment = "Lijep grad, ali premalo vremena u slobodnoj zoni.",
-                starRate = 3
-            },
-
-new Comment
+// =====================================================
+// RES 2004 – FULL AMOUNT (PENDING)
+// =====================================================
+new Payment
 {
-    Id = 30,
-    userId = 6, // Edin
-    offerId = 1,
-    comment = "Uživao sam u svakom trenutku. Posebno mi se dopala posjeta galeriji Uffizi. Preporučujem!",
-    starRate = 5
+    ReservationId = 2004,
+    RateId = 4,
+    Amount = 450,
+    PaymentMethod = "uplatnica",
+    IsConfirmed = false
 },
 
-new Comment
-{
-    Id = 40,
-    userId = 7, // Lana
-    offerId = 1,
-    comment = "Prelijep grad, ali je bilo dosta gužve. Vodič je bio odličan i puno nam je olakšao obilazak.",
-    starRate = 4
-},
+// =====================================================
+// RES 2005 – 1 CONFIRMED + 5 PENDING
+// =====================================================
+new Payment { ReservationId = 2005, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2005, RateId = 5, Amount = 400, PaymentMethod = "uplatnica", IsConfirmed = false },
 
-new Comment
-{
-    Id = 50,
-    userId = 8, // Haris
-    offerId = 1,
-    comment = "Firenca je idealna destinacija za ljubitelje historije i arhitekture. Sve pohvale eTravel timu!",
-    starRate = 5
-},
+// =====================================================
+// RES 2006 – 1 + 2 + 5 (FULL PAID)
+// =====================================================
+new Payment { ReservationId = 2006, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2006, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2006, RateId = 5, Amount = 150, PaymentMethod = "kartica", IsConfirmed = true },
 
-new Comment
-{
-    Id = 60,
-    userId = 9, // Amira
-    offerId = 1,
-    comment = "Putovanje je bilo divno, ali mislim da je moglo trajati dan duže. Grad nudi previše toga da se vidi.",
-    starRate = 4
-},
+// =====================================================
+// RES 2007 – 1 + 2 (čekanje 5)
+// =====================================================
+new Payment { ReservationId = 2007, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2007, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
 
-new Comment
-{
-    Id = 70,
-    userId = 10, // Tarik
-    offerId = 1,
-    comment = "Odlična organizacija, lijep hotel i savršeno isplanirana tura. Definitivno ponovo putujem preko vas!",
-    starRate = 5
-},
+// =====================================================
+// RES 2008 – 1 + 2 + 5 (FULL PAID)
+// =====================================================
+new Payment { ReservationId = 2008, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2008, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2008, RateId = 5, Amount = 50, PaymentMethod = "kartica", IsConfirmed = true },
 
-new Comment
-{
-    Id = 80,
-    userId = 11, // Selma
-    offerId = 1,
-    comment = "Predivna atmosfera u gradu. Najviše mi se dopao obilazak Duoma. Vrijedi svake marke!",
-    starRate = 5
-},
+// =====================================================
+// RES 2009 – 1 + 2 + 5 (FULL PAID)
+// =====================================================
+new Payment { ReservationId = 2009, RateId = 1, Amount = 100, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2009, RateId = 2, Amount = 200, PaymentMethod = "kartica", IsConfirmed = true },
+new Payment { ReservationId = 2009, RateId = 5, Amount = 150, PaymentMethod = "kartica", IsConfirmed = true },
 
-new Comment
+// =====================================================
+// RES 2010 – FULL AMOUNT CONFIRMED
+// =====================================================
+new Payment
 {
-    Id = 90,
-    userId = 12, // Nedim
-    offerId = 1,
-    comment = "Vrlo profesionalna agencija. Sve je bilo ispoštovano prema planu. Putovanje bez brige!",
-    starRate = 4
-},
-
-new Comment
-{
-    Id = 100,
-    userId = 13, // Alma
-    offerId = 1,
-    comment = "Iznad očekivanja! Hrana u Firenci je savršena, a vodič izuzetno ljubazan i informisan.",
-    starRate = 5
-},
-
-new Comment
-{
-    Id = 110,
-    userId = 14, // Mirza
-    offerId = 1,
-    comment = "Sve je bilo odlično, ali raspored je bio malo pretrpan. Ipak, uživao sam u obilasku grada.",
-    starRate = 3
-},
-
-new Comment
-{
-    Id = 120,
-    userId = 15, // Melisa
-    offerId = 1,
-    comment = "Najbolje putovanje do sada! Preporučujem svakome ko želi spoj kulture, hrane i dobre organizacije.",
-    starRate = 5
-},
-
-new Comment
-{
-    Id = 130,
-    userId = 16, // Almin
-    offerId = 1,
-    comment = "Bilo je super, ali mislim da bi bilo bolje da smo imali više slobodnog vremena za samostalno istraživanje.",
-    starRate = 4
-},
-
-new Comment
-{
-    Id = 140,
-    userId = 17, // Dina
-    offerId = 1,
-    comment = "Savršeno iskustvo! Firenca je čarobna, sve preporuke za ovaj aranžman.",
-    starRate = 5
-},
-
-new Comment
-{
-    Id = 150,
-    userId = 5,
-    offerId = 1,
-    comment = "Putovanje je prošlo bez ikakvih problema. Sve na vrijeme, sve tačno onako kako je opisano.",
-    starRate = 5
-},
-
-new Comment
-{
-    Id = 160,
-    userId = 6,
-    offerId = 1,
-    comment = "Moja druga posjeta Firenci, ali prvi put preko ove agencije. Organizacija vrhunska!",
-    starRate = 5
-},
-
-new Comment
-{
-    Id = 170,
-    userId = 7,
-    offerId = 1,
-    comment = "Uživala sam! Preporučila bih ovo putovanje svima koji žele opuštajuće i edukativno iskustvo.",
-    starRate = 5
-},
-
-new Comment
-{
-    Id = 180,
-    userId = 8,
-    offerId = 1,
-    comment = "Sve preporuke! Jedino što bih promijenio jeste dužina pauza tokom obilaska.",
-    starRate = 4
-},
-
-new Comment
-{
-    Id = 190,
-    userId = 9,
-    offerId = 1,
-    comment = "Perfektno putovanje, odličan vodič i fenomenalne lokacije. Firenca je nevjerovatna!",
-    starRate = 5
-},
-
-new Comment
-{
-    Id = 200,
-    userId = 10,
-    offerId = 1,
-    comment = "Sve je bilo super, ali smještaj bi mogao biti malo bliže centru grada.",
-    starRate = 4
-},
-
-new Comment
-{
-    Id = 210,
-    userId = 11,
-    offerId = 1,
-    comment = "Najbolje organizovan aranžman na kojem sam bila. Svaka čast eTravel timu!",
-    starRate = 5
+    ReservationId = 2010,
+    RateId = 4,
+    Amount = 900,
+    PaymentMethod = "kartica",
+    IsConfirmed = true
 }
-
-);
-
-builder.Entity<Voucher>().HasData(
-    new Voucher
-    {
-        Id = 1,
-        VoucherCode = "ETRAVEL20",
-        Discount = 0.20m,          // 20%
-        priceInTokens = 40
-    },
-    new Voucher
-    {
-        Id = 2,
-        VoucherCode = "ETRAVEL50",
-        Discount = 0.50m,          // 50%
-        priceInTokens = 80
-    },
-    new Voucher
-    {
-        Id = 3,
-        VoucherCode = "ETRAVEL70",
-        Discount = 0.70m,          // 70%
-        priceInTokens = 120
-    }
-);
-
-builder.Entity<UserVoucher>().HasData(
-    // Maja (5)
-    new UserVoucher { UserId = 5, VoucherId = 1, isUsed = false },
-    new UserVoucher { UserId = 5, VoucherId = 2, isUsed = true },
-
-    // Edin (6)
-    new UserVoucher { UserId = 6, VoucherId = 1, isUsed = false },
-
-    // Lana (7)
-    new UserVoucher { UserId = 7, VoucherId = 3, isUsed = false },
-
-    // Haris (8)
-    new UserVoucher { UserId = 8, VoucherId = 2, isUsed = true },
-
-    // Amira (9)
-    new UserVoucher { UserId = 9, VoucherId = 1, isUsed = false },
-    new UserVoucher { UserId = 9, VoucherId = 3, isUsed = true },
-
-    // Tarik (10)
-    new UserVoucher { UserId = 10, VoucherId = 2, isUsed = false },
-
-    // Selma (11)
-    new UserVoucher { UserId = 11, VoucherId = 1, isUsed = false },
-
-    // Nedim (12)
-    new UserVoucher { UserId = 12, VoucherId = 3, isUsed = false }
 );
 
 
+builder.Entity<Comment>().HasData(
 
+    // =====================================================
+    // OFFER 1 – FIRENCA
+    // =====================================================
+    new Comment { Id = 1, userId = 4, offerId = 1, comment = "Predivno putovanje! Organizacija odlična, vodič fenomenalan.", starRate = 5 },
+    new Comment { Id = 2, userId = 5, offerId = 1, comment = "Sve super osim hotela koji je mogao biti bolji.", starRate = 4 },
+    new Comment { Id = 3, userId = 6, offerId = 1, comment = "Firenca je čarobna! Hrana, arhitektura i atmosfera su nevjerovatni.", starRate = 5 },
 
-builder.Entity<UserToken>().HasData(
-    new UserToken { UserId = 4,  Equity = 120 },
-    new UserToken { UserId = 5,  Equity = 340 },
-    new UserToken { UserId = 6,  Equity = 75 },
-    new UserToken { UserId = 7,  Equity = 210 },
-    new UserToken { UserId = 8,  Equity = 500 },
-    new UserToken { UserId = 9,  Equity = 160 },
-    new UserToken { UserId = 10, Equity = 90 },
-    new UserToken { UserId = 11, Equity = 430 },
-    new UserToken { UserId = 12, Equity = 60 },
-    new UserToken { UserId = 13, Equity = 280 },
-    new UserToken { UserId = 14, Equity = 150 },
-    new UserToken { UserId = 15, Equity = 390 },
-    new UserToken { UserId = 16, Equity = 45 },
-    new UserToken { UserId = 17, Equity = 310 },
-    new UserToken { UserId = 18, Equity = 200 },
-    new UserToken { UserId = 19, Equity = 470 },
-    new UserToken { UserId = 20, Equity = 130 },
-    new UserToken { UserId = 21, Equity = 260 },
-    new UserToken { UserId = 22, Equity = 80 },
-    new UserToken { UserId = 23, Equity = 350 },
-    new UserToken { UserId = 24, Equity = 170 }
+    // =====================================================
+    // OFFER 2 – SANTORINI
+    // =====================================================
+    new Comment { Id = 4, userId = 7, offerId = 2, comment = "Santorini je san! Zalazak sunca u Oiji je nešto posebno.", starRate = 5 },
+    new Comment { Id = 5, userId = 8, offerId = 2, comment = "Prelijepo ostrvo, ali dosta turista. Organizacija korektna.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 3 – ISTANBUL
+    // =====================================================
+    new Comment { Id = 6, userId = 9, offerId = 3, comment = "Istanbul nudi spoj istoka i zapada. Tura je bila vrlo zanimljiva.", starRate = 5 },
+    new Comment { Id = 7, userId = 10, offerId = 3, comment = "Dobra cijena za ono što se dobije. Posebno mi se dopao Bosfor.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 4 – BARCELONA
+    // =====================================================
+    new Comment { Id = 8, userId = 11, offerId = 4, comment = "Barcelona je bila fantastična! Hotel blizu centra.", starRate = 5 },
+    new Comment { Id = 9, userId = 12, offerId = 4, comment = "Grad pun energije. Raspored obilazaka dobro isplaniran.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 5 – PARIS
+    // =====================================================
+    new Comment { Id = 10, userId = 13, offerId = 5, comment = "Grad svjetlosti je ispunio sva očekivanja!", starRate = 5 },
+    new Comment { Id = 11, userId = 14, offerId = 5, comment = "Skupo, ali vrijedilo je svakog dinara.", starRate = 5 },
+
+    // =====================================================
+    // OFFER 6 – PRAGUE
+    // =====================================================
+    new Comment { Id = 12, userId = 15, offerId = 6, comment = "Prelijep stari grad i romantična atmosfera.", starRate = 5 },
+    new Comment { Id = 13, userId = 16, offerId = 6, comment = "Odličan omjer cijene i kvaliteta.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 7 – VIENNA
+    // =====================================================
+    new Comment { Id = 14, userId = 17, offerId = 7, comment = "Mirno i ugodno putovanje, savršeno za vikend bijeg.", starRate = 4 },
+    new Comment { Id = 15, userId = 18, offerId = 7, comment = "Beč je elegantan i kulturno bogat grad.", starRate = 5 },
+
+    // =====================================================
+    // OFFER 8 – AMSTERDAM
+    // =====================================================
+    new Comment { Id = 16, userId = 19, offerId = 8, comment = "Kanali i arhitektura su predivni. Preporučujem!", starRate = 5 },
+    new Comment { Id = 17, userId = 20, offerId = 8, comment = "Grad je zanimljiv, ali dosta gužve.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 9 – LONDON
+    // =====================================================
+    new Comment { Id = 18, userId = 21, offerId = 9, comment = "London je impresivan, puno znamenitosti.", starRate = 5 },
+    new Comment { Id = 19, userId = 22, offerId = 9, comment = "Kratko putovanje, ali vrlo sadržajno.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 10 – DUBAI
+    // =====================================================
+    new Comment { Id = 20, userId = 23, offerId = 10, comment = "Dubai je nevjerovatno iskustvo! Top organizacija.", starRate = 5 },
+    new Comment { Id = 21, userId = 24, offerId = 10, comment = "Luksuz na svakom koraku. Hotel vrhunski.", starRate = 5 },
+
+    // =====================================================
+    // OFFER 11 – CAIRO
+    // =====================================================
+    new Comment { Id = 22, userId = 5, offerId = 11, comment = "Piramide su fascinantne. Putovanje vrijedno iskustva.", starRate = 5 },
+    new Comment { Id = 23, userId = 6, offerId = 11, comment = "Zanimljivo, ali dosta naporno zbog vrućine.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 12 – BUDAPEST
+    // =====================================================
+    new Comment { Id = 24, userId = 7, offerId = 12, comment = "Lijep grad i odlična atmosfera.", starRate = 4 },
+    new Comment { Id = 25, userId = 8, offerId = 12, comment = "Termalne banje su pun pogodak.", starRate = 5 },
+
+    // =====================================================
+    // OFFER 13 – KRAKOW
+    // =====================================================
+    new Comment { Id = 26, userId = 9, offerId = 13, comment = "Historijski vrlo zanimljiv grad.", starRate = 5 },
+    new Comment { Id = 27, userId = 10, offerId = 13, comment = "Dobra organizacija i povoljne cijene.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 14 – ZANZIBAR
+    // =====================================================
+    new Comment { Id = 28, userId = 11, offerId = 14, comment = "Rajska destinacija! Plaže su nestvarne.", starRate = 5 },
+    new Comment { Id = 29, userId = 12, offerId = 14, comment = "Savršeno za odmor i opuštanje.", starRate = 5 },
+
+    // =====================================================
+    // OFFER 15 – HURGHADA
+    // =====================================================
+    new Comment { Id = 30, userId = 13, offerId = 15, comment = "More i resort su bili odlični.", starRate = 4 },
+    new Comment { Id = 31, userId = 14, offerId = 15, comment = "Idealan izbor za porodični odmor.", starRate = 5 },
+
+    // =====================================================
+    // OFFER 16 – LISBON
+    // =====================================================
+    new Comment { Id = 32, userId = 15, offerId = 16, comment = "Lisabon je šarmantan i topao grad.", starRate = 5 },
+    new Comment { Id = 33, userId = 16, offerId = 16, comment = "Preporučujem svima koji vole opuštena putovanja.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 17 – ATHENS
+    // =====================================================
+    new Comment { Id = 34, userId = 17, offerId = 17, comment = "Akropolj je nešto što se mora vidjeti.", starRate = 5 },
+    new Comment { Id = 35, userId = 18, offerId = 17, comment = "Dobar balans između obilazaka i slobodnog vremena.", starRate = 4 },
+
+    // =====================================================
+    // OFFER 18 – SPLIT
+    // =====================================================
+    new Comment { Id = 36, userId = 19, offerId = 18, comment = "Predivan grad i odlična atmosfera.", starRate = 5 },
+    new Comment { Id = 37, userId = 20, offerId = 18, comment = "Idealno ljetno putovanje.", starRate = 5 }
 );
+
+            builder.Entity<Voucher>().HasData(
+                new Voucher
+                {
+                    Id = 1,
+                    VoucherCode = "ETRAVEL20",
+                    Discount = 0.20m,          // 20%
+                    priceInTokens = 40
+                },
+                new Voucher
+                {
+                    Id = 2,
+                    VoucherCode = "ETRAVEL50",
+                    Discount = 0.50m,          // 50%
+                    priceInTokens = 80
+                },
+                new Voucher
+                {
+                    Id = 3,
+                    VoucherCode = "ETRAVEL70",
+                    Discount = 0.70m,          // 70%
+                    priceInTokens = 120
+                }
+            );
+
+            builder.Entity<UserVoucher>().HasData(
+                // Maja (5)
+                new UserVoucher { UserId = 5, VoucherId = 1, isUsed = false },
+                new UserVoucher { UserId = 5, VoucherId = 2, isUsed = true },
+
+                // Edin (6)
+                new UserVoucher { UserId = 6, VoucherId = 1, isUsed = false },
+
+                // Lana (7)
+                new UserVoucher { UserId = 7, VoucherId = 3, isUsed = false },
+
+                // Haris (8)
+                new UserVoucher { UserId = 8, VoucherId = 2, isUsed = true },
+
+                // Amira (9)
+                new UserVoucher { UserId = 9, VoucherId = 1, isUsed = false },
+                new UserVoucher { UserId = 9, VoucherId = 3, isUsed = true },
+
+                // Tarik (10)
+                new UserVoucher { UserId = 10, VoucherId = 2, isUsed = false },
+
+                // Selma (11)
+                new UserVoucher { UserId = 11, VoucherId = 1, isUsed = false },
+
+                // Nedim (12)
+                new UserVoucher { UserId = 12, VoucherId = 3, isUsed = false }
+            );
+
+
+
+
+            builder.Entity<UserToken>().HasData(
+                new UserToken { UserId = 4, Equity = 120 },
+                new UserToken { UserId = 5, Equity = 340 },
+                new UserToken { UserId = 6, Equity = 75 },
+                new UserToken { UserId = 7, Equity = 210 },
+                new UserToken { UserId = 8, Equity = 500 },
+                new UserToken { UserId = 9, Equity = 160 },
+                new UserToken { UserId = 10, Equity = 90 },
+                new UserToken { UserId = 11, Equity = 430 },
+                new UserToken { UserId = 12, Equity = 60 },
+                new UserToken { UserId = 13, Equity = 280 },
+                new UserToken { UserId = 14, Equity = 150 },
+                new UserToken { UserId = 15, Equity = 390 },
+                new UserToken { UserId = 16, Equity = 45 },
+                new UserToken { UserId = 17, Equity = 310 },
+                new UserToken { UserId = 18, Equity = 200 },
+                new UserToken { UserId = 19, Equity = 470 },
+                new UserToken { UserId = 20, Equity = 130 },
+                new UserToken { UserId = 21, Equity = 260 },
+                new UserToken { UserId = 22, Equity = 80 },
+                new UserToken { UserId = 23, Equity = 350 },
+                new UserToken { UserId = 24, Equity = 170 }
+            );
 
 
             builder.Entity<WorkApplication>().HasData(
@@ -1826,12 +2259,6 @@ builder.Entity<UserToken>().HasData(
         letter = "Motivisana sam da radim u vašoj firmi jer cijenim vaše vrijednosti i način poslovanja. Vjerujem da bih se idealno uklopila."
     }
 );
-
-
-
-
-
-
 
         }
     }

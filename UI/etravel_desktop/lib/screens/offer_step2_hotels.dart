@@ -74,6 +74,20 @@ class _OfferStep2HotelsState extends State<OfferStep2Hotels> {
       _loadExistingHotels();
     }
   }
+  
+  String resolveImageUrl(String? imageUrl) {
+  if (imageUrl == null || imageUrl.isEmpty) {
+    return "default.jpg";
+  }
+
+  // Ako je već full URL (https)
+  if (imageUrl.startsWith("http")) {
+    return imageUrl;
+  }
+
+  // Lokalna slika sa servera
+  return "${ApiConfig.imagesOffers}/$imageUrl";
+}
 
   void _showSuccessToast() {
   final overlay = Overlay.of(context);
@@ -170,7 +184,7 @@ class _OfferStep2HotelsState extends State<OfferStep2Hotels> {
           return HotelImageInsertRequest(
             id: img.imageId,
             hotelId: hid,
-            imageUrl: "${ApiConfig.imagesHotels}/${img.imageUrl}",
+            imageUrl: resolveImageUrl(img.imageUrl),
             isMain: img.isMain,
           );
         }).toList();

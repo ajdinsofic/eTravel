@@ -30,6 +30,8 @@ namespace eTravelAgencija.Services.Database
         public bool IncludeInsurance { get; set; }
         public bool isFirstRatePaid { get; set; }
         public bool isFullPaid { get; set; }
+        public bool isDiscountUsed {get; set;}
+        public double DiscountValue {get; set;}
         public DateTime CreatedAt { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]

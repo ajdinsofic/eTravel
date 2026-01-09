@@ -356,11 +356,19 @@ namespace eTravelAgencija.Services.Mapping
             CreateMap<eTravelAgencija.Services.Database.WorkApplication, CVDownloadResponse>()
                 .ForMember(dest => dest.fileBytes, opt => opt.Ignore());
 
-            CreateMap<UserToken, Model.model.UserToken>();
+            CreateMap<Database.UserToken, Model.model.UserToken>();
 
             // API ➜ DB (INSERT / UPDATE)
             CreateMap<UserTokenUpsertRequest, UserToken>()
                 .ForMember(dest => dest.User, opt => opt.Ignore());
+
+            CreateMap<Reservation, BillResponse>()
+                .ForMember(dest => dest.ReservationId,
+                    opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.IsDiscountUsed,
+                    opt => opt.MapFrom(src => src.isDiscountUsed))
+                .ForMember(dest => dest.DiscountPercent,
+                    opt => opt.MapFrom(src => src.DiscountValue * 100));
 
         }
     }

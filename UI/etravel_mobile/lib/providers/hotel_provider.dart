@@ -20,7 +20,7 @@ class HotelProvider extends BaseProvider<Hotel> {
     required int userId,
   }) async {
     final url =
-        "${ApiConfig.apiBase}/api/offers/$offerId/recommendedHotel?userId=$userId";
+        "${ApiConfig.apiBase}/api/Hotel/offers/$offerId/recommendedHotel?userId=$userId";
 
     final response = await http.get(
       Uri.parse(url),
@@ -36,7 +36,7 @@ class HotelProvider extends BaseProvider<Hotel> {
     }
 
     if (response.statusCode == 404) {
-      return null; // nema preporuke → fallback logika
+      return null; 
     }
 
     throw Exception(

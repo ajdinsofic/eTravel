@@ -84,7 +84,8 @@ class _SpecijalneDestinacijeKontejnerState
                     AspectRatio(
                       aspectRatio: 16 / 9,
                       child: Image.network(
-                        "${ApiConfig.imagesOffers}/${widget.glavnaslikaPath}",
+                        //"${ApiConfig.imagesOffers}/${widget.glavnaslikaPath}",
+                        widget.glavnaslikaPath,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Image.asset(

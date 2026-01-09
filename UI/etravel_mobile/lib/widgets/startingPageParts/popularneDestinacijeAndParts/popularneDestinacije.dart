@@ -175,7 +175,8 @@ class _PopularDestinationsState extends State<PopularDestinations> {
                             borderRadius: BorderRadius.circular(20),
                             child: mainImage != null
                                 ? Image.network(
-                                    "${ApiConfig.imagesOffers}/$mainImage",
+                                    //"${ApiConfig.imagesOffers}/$mainImage",
+                                    mainImage,
                                     width: screenWidth * 0.8,
                                     height: screenHeight * 0.5,
                                     fit: BoxFit.cover,

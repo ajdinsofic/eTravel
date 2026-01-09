@@ -37,4 +37,23 @@ class WorkApplicationProvider extends BaseProvider<WorkApplication> {
     return null;
   }
 
+  Future<void> inviteToInterview(int applicationId) async {
+  final url = Uri.parse(
+    "${ApiConfig.apiBase}/api/WorkApplication/$applicationId/invite",
+  );
+
+  final response = await http.post(
+    url,
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${Session.token}",
+    },
+  );
+
+  if (response.statusCode != 200) {
+    throw Exception("Greška pri slanju poziva");
+  }
+}
+
+
 }

@@ -12,5 +12,6 @@ namespace eTravelAgencija.Services.Interfaces
     {
         Task<CVDownloadResponse> DownloadCVAsync(int id);
         Task InsertCV(WorkApplicationUpsertRequest request);
+        Task InviteToInterviewAsync(int applicationId);
     }
 }

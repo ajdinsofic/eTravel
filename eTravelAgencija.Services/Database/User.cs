@@ -15,7 +15,9 @@ namespace eTravelAgencija.Services.Database
         public bool isBlocked { get; set; } = false;
         public string ImageUrl {get; set;}  
         public ICollection<UserRole> UserRoles {get; set;} = new List<UserRole>();
-        public ICollection<Reservation> UserReservations { get; set; } = new List<Reservation>();       
+        public ICollection<Reservation> UserReservations { get; set; } = new List<Reservation>(); 
+        public string? PasswordResetToken { get; set; }
+        public DateTime? PasswordResetTokenExpires { get; set; }      
 
     }
 }

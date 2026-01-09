@@ -1,6 +1,7 @@
 import 'package:etravel_app/models/login_request.dart';
 import 'package:etravel_app/providers/auth_provider.dart';
 import 'package:etravel_app/screens/StartingPage.dart';
+import 'package:etravel_app/widgets/loginPage/ForgetPasswordPopup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/SljedecaDestinacijaIMenuBar.dart';
@@ -25,7 +26,6 @@ class _LoginPageState extends State<LoginPage> {
 
   bool isLoading = false;
 
-
   @override
   void dispose() {
     _usernameController.dispose();
@@ -34,13 +34,12 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   bool _isValidUsername(String username) {
-  // final usernameRegex = RegExp(
-  //   r'^(?=.*\d)[A-Za-z\d]{6,}$',
-  // );
-  // return usernameRegex.hasMatch(username);
-  return true;
-}
-
+    // final usernameRegex = RegExp(
+    //   r'^(?=.*\d)[A-Za-z\d]{6,}$',
+    // );
+    // return usernameRegex.hasMatch(username);
+    return true;
+  }
 
   bool _isValidPassword(String password) {
     // 6-10 karaktera, 1 veliko, 1 malo, 1 broj, 1 specijalan
@@ -111,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: const Color(0xFFF2F2F2),
       body: GestureDetector(
-         behavior: HitTestBehavior.translucent,
+        behavior: HitTestBehavior.translucent,
         onTap: () {
           FocusScope.of(context).unfocus();
         },
@@ -119,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
           slivers: [
             /// SLIVER APP BAR (HEADER)
             SljedecaDestinacijaIMenuBar(daLijeKliknuo: false),
-        
+
             /// LOGIN + FOOTER
             SliverFillRemaining(
               hasScrollBody: false,
@@ -145,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-        
+
                   /// FOOTER
                   const eTravelFooter(),
                 ],
@@ -221,7 +220,11 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               TextButton(
                 onPressed: () {
-                  // TODO: forgot password flow
+                  showDialog(
+                    context: context,
+                    barrierDismissible: true,
+                    builder: (_) => const ForgotPasswordPopup(),
+                  );
                 },
                 child: const Text(
                   "zaboravili ste staru lozinku?",
@@ -242,19 +245,20 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   elevation: 0,
                 ),
-                child: isLoading
-                    ? const SizedBox(
-                        width: 18,
-                        height: 18,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Colors.white,
+                child:
+                    isLoading
+                        ? const SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: Colors.white,
+                          ),
+                        )
+                        : const Text(
+                          "login",
+                          style: TextStyle(color: Colors.white),
                         ),
-                      )
-                    : const Text(
-                        "login",
-                        style: TextStyle(color: Colors.white),
-                      ),
               ),
             ],
           ),
@@ -281,7 +285,10 @@ class _LoginPageState extends State<LoginPage> {
         hintText: hint,
         errorText: errorText,
         prefixIcon: Icon(icon, size: 20),
-        contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 14,
+          horizontal: 16,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.black12),

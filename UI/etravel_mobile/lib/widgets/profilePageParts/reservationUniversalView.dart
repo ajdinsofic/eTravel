@@ -165,7 +165,7 @@ class _ReservationUniversalViewState extends State<ReservationUniversalView> {
                             ? ReservationActiveContainer(
                               reservation: reservation,
                               preview: preview,
-                              imageUrl: "${ApiConfig.imagesOffers}/$imageUrl",
+                              imageUrl: imageUrl,
                               price: price,
                               onCancelled: () {
                                 _loadReservations(); // refresh nakon otkazivanja
@@ -174,7 +174,7 @@ class _ReservationUniversalViewState extends State<ReservationUniversalView> {
                             : ReservationEndContainer(
                               reservation: reservation,
                               preview: preview,
-                              imageUrl: "${ApiConfig.imagesOffers}/$imageUrl",
+                              imageUrl: imageUrl,
                               onCommentSent: () {
                                 _loadReservations(); // refresh završenih
                               },

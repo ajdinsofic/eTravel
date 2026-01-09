@@ -1,8 +1,12 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:etravel_desktop/models/payment.dart';
 import 'package:etravel_desktop/models/rate.dart';
 import 'package:etravel_desktop/providers/payment_provider.dart';
 import 'package:etravel_desktop/providers/rate_provider.dart';
 import 'package:etravel_desktop/providers/reservation_provider.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +45,7 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
   late HotelRoomProvider _hotelRoomProvider;
   late PaymentProvider _paymentProvider;
   late RateProvider _rateProvider;
+  late ReservationProvider _reservationProvider;
 
   bool isLoading = true;
 
@@ -66,6 +71,10 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
     _hotelRoomProvider = Provider.of<HotelRoomProvider>(context, listen: false);
     _paymentProvider = Provider.of<PaymentProvider>(context, listen: false);
     _rateProvider = Provider.of<RateProvider>(context, listen: false);
+    _reservationProvider = Provider.of<ReservationProvider>(
+      context,
+      listen: false,
+    );
 
     _loadData();
   }
@@ -107,15 +116,17 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
   }
 
   Future<void> _refreshReservationPrice() async {
-  final reservationProvider = Provider.of<ReservationProvider>(context, listen: false);
+    final reservationProvider = Provider.of<ReservationProvider>(
+      context,
+      listen: false,
+    );
 
-  final updated = await reservationProvider.getById(widget.reservation.id);
+    final updated = await reservationProvider.getById(widget.reservation.id);
 
-  setState(() {
-    refreshedLeftToPay = updated.priceLeftToPay;
-  });
-}
-
+    setState(() {
+      refreshedLeftToPay = updated.priceLeftToPay;
+    });
+  }
 
   Future<void> _confirmPayment() async {
     if (selectedRateId == null) return;
@@ -147,7 +158,6 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
 
       await _loadData(); // osvježi popup kompletno
       await _refreshReservationPrice();
-
 
       showDialog(
         context: context,
@@ -334,25 +344,22 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
     // - confirmed  → TRUE
     // - waiting    → FALSE (admin treba tek čekirati!)
     // - null       → FALSE
-    bool checkValue = confirmed;
+    bool checkValue = confirmed || selectedRateId == r.id;
 
     return Row(
       children: [
         Checkbox(
-          value: isActiveRate ? (selectedRateId == r.id) : checkValue,
+          value: checkValue,
           onChanged:
               (isNext || isActiveRate)
                   ? (value) {
                     setState(() {
-                      if (value == true) {
-                        selectedRateId = r.id;
-                      } else {
-                        selectedRateId = null;
-                      }
+                      selectedRateId = value == true ? r.id : null;
                     });
                   }
                   : null,
         ),
+
         Text(
           r.name,
           style: GoogleFonts.openSans(
@@ -705,36 +712,7 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
 
                     const SizedBox(height: 20),
 
-                    ElevatedButton(
-                      onPressed:
-                          selectedRateId != null
-                              ? () => _confirmPayment()
-                              : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            isFullyPaid()
-                                ? Colors.green
-                                : (selectedRateId != null
-                                    ? const Color(0xff67B1E5)
-                                    : Colors.grey),
-
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 26,
-                          vertical: 14,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: Text(
-                        "potvrdi uplatu",
-                        style: GoogleFonts.openSans(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                    _confirmBillButtons(context),
                   ],
                 ),
               ),
@@ -813,6 +791,64 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
   // CONFIRM/GREEN BUTTON
   // ===========================================================
 
+  Future<void> _generateInvoice() async {
+  try {
+    final reservation = widget.reservation;
+
+    // 1️⃣ Povuci dodatne podatke
+    final offer = await _offerProvider.getById(reservation.offerId);
+    final hotel = await _hotelProvider.getById(reservation.hotelId);
+    final room = await _roomProvider.getById(reservation.roomId);
+
+    // 2️⃣ Poziv API-ja (SADA ŠALJEMO VIŠE PODATAKA)
+    final Uint8List bytes =
+        await _reservationProvider.generateInvoice(
+      {
+        "reservationId": reservation.id,
+
+        "userFullName":
+            "${widget.user.firstName} ${widget.user.lastName}",
+
+        "offerTitle": offer.title,
+
+        "hotelName": hotel.name,
+        "hotelStars": hotel.stars,
+
+        "roomType": room.roomType,
+      },
+    );
+
+    // 3️⃣ Save dialog
+    final String? filePath = await FilePicker.platform.saveFile(
+      dialogTitle: "Sačuvaj račun",
+      fileName: "racun_${reservation.id}.pdf",
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
+
+    if (filePath == null) return;
+
+    final file = File(filePath);
+    await file.writeAsBytes(bytes, flush: true);
+  } catch (e) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("Greška"),
+        content: Text("Generisanje računa nije uspjelo: $e"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("OK"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
   Widget _confirmBillButtons(BuildContext context) {
     final fullyPaid = isFullyPaid();
 
@@ -820,15 +856,19 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: () {
-            if (fullyPaid) {
-              debugPrint("GENERISI RACUN");
-            } else {
-              debugPrint("POTVRDI UPLATU");
-            }
-          },
+          onPressed: fullyPaid
+            ? () async {
+                debugPrint("GENERISI RACUN");
+                await _generateInvoice(); // ⬅️ NOVO
+              }
+            : (selectedRateId != null ? () => _confirmPayment() : null),
           style: ElevatedButton.styleFrom(
-            backgroundColor: fullyPaid ? Colors.green : const Color(0xff67B1E5),
+            backgroundColor:
+                fullyPaid
+                    ? Colors.green
+                    : (selectedRateId != null
+                        ? const Color(0xff67B1E5)
+                        : Colors.grey),
             padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 18),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
@@ -842,20 +882,6 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
               fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-
-        const SizedBox(width: 30),
-
-        ElevatedButton(
-          onPressed: () => Navigator.pop(context),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xffE57373),
-            padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 18),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-          ),
-          child: const Icon(Icons.close, color: Colors.white, size: 26),
         ),
       ],
     );
@@ -912,6 +938,54 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
       child: Text(
         value,
         style: GoogleFonts.openSans(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+
+  Widget _actionButton() {
+    final fullyPaid = isFullyPaid();
+
+    // 🟢 SVE JE PLAĆENO → GENERIŠI RAČUN
+    if (fullyPaid) {
+      return ElevatedButton(
+        onPressed: () {
+          debugPrint("GENERISI RACUN");
+          // TODO: poziv API-ja za generisanje računa
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.green,
+          padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        child: Text(
+          "generiši račun",
+          style: GoogleFonts.openSans(
+            fontSize: 16,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      );
+    }
+
+    // 🔵 NIJE SVE PLAĆENO → POTVRDI UPLATU
+    return ElevatedButton(
+      onPressed: selectedRateId != null ? () => _confirmPayment() : null,
+      style: ElevatedButton.styleFrom(
+        backgroundColor:
+            selectedRateId != null ? const Color(0xff67B1E5) : Colors.grey,
+        padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 14),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+      child: Text(
+        "potvrdi uplatu",
+        style: GoogleFonts.openSans(
+          fontSize: 16,
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }

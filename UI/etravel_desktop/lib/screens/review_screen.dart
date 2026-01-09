@@ -53,6 +53,20 @@ class _ReviewScreenState extends State<ReviewScreen> {
     _loadCategories();
   }
 
+  String resolveImageUrl(String? imageUrl) {
+  if (imageUrl == null || imageUrl.isEmpty) {
+    return "default.jpg";
+  }
+
+  // Ako je već full URL (https)
+  if (imageUrl.startsWith("http")) {
+    return imageUrl;
+  }
+
+  // Lokalna slika sa servera
+  return "${ApiConfig.imagesOffers}/$imageUrl";
+}
+
   // ---------------------------------------------------------------------------
   // LOADERS
   // ---------------------------------------------------------------------------
@@ -351,7 +365,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
               final mainImage =
                   (o.offerImages.isNotEmpty &&
                           o.offerImages.first.imageUrl.isNotEmpty)
-                      ? "${ApiConfig.imagesOffers}/${o.offerImages.first.imageUrl}"
+                      ? resolveImageUrl(o.offerImages.first.imageUrl)
                       : "assets/images/placeholder.jpg";
 
               return _reviewCard(

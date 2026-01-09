@@ -158,63 +158,63 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 3,
-                            comment = "Santorini je san! Svaka preporuka, ponovo bih išao.",
-                            offerId = 2,
+                            comment = "Firenca je čarobna! Hrana, arhitektura i atmosfera su nevjerovatni.",
+                            offerId = 1,
                             starRate = 5,
                             userId = 6
                         },
                         new
                         {
                             Id = 4,
-                            comment = "Lijepo putovanje, ali dosta gužve.",
+                            comment = "Santorini je san! Zalazak sunca u Oiji je nešto posebno.",
                             offerId = 2,
-                            starRate = 4,
+                            starRate = 5,
                             userId = 7
                         },
                         new
                         {
                             Id = 5,
-                            comment = "Veoma interesantna tura, vodič je znao sve detalje.",
-                            offerId = 3,
-                            starRate = 5,
+                            comment = "Prelijepo ostrvo, ali dosta turista. Organizacija korektna.",
+                            offerId = 2,
+                            starRate = 4,
                             userId = 8
                         },
                         new
                         {
                             Id = 6,
-                            comment = "Odlična cijena za ono što se dobije.",
+                            comment = "Istanbul nudi spoj istoka i zapada. Tura je bila vrlo zanimljiva.",
                             offerId = 3,
-                            starRate = 4,
+                            starRate = 5,
                             userId = 9
                         },
                         new
                         {
                             Id = 7,
-                            comment = "Barcelona je bila fantastična! Hotel blizu centra.",
-                            offerId = 4,
-                            starRate = 5,
+                            comment = "Dobra cijena za ono što se dobije. Posebno mi se dopao Bosfor.",
+                            offerId = 3,
+                            starRate = 4,
                             userId = 10
                         },
                         new
                         {
                             Id = 8,
-                            comment = "Predugo putovanje avionom, ali sve ostalo vrhunski.",
+                            comment = "Barcelona je bila fantastična! Hotel blizu centra.",
                             offerId = 4,
-                            starRate = 4,
+                            starRate = 5,
                             userId = 11
                         },
                         new
                         {
                             Id = 9,
-                            comment = "Grad svjetlosti je ispunio sva očekivanja!",
-                            offerId = 5,
-                            starRate = 5,
+                            comment = "Grad pun energije. Raspored obilazaka dobro isplaniran.",
+                            offerId = 4,
+                            starRate = 4,
                             userId = 12
                         },
                         new
                         {
                             Id = 10,
-                            comment = "Skupo, ali vrijedilo je svakog dinara.",
+                            comment = "Grad svjetlosti je ispunio sva očekivanja!",
                             offerId = 5,
                             starRate = 5,
                             userId = 13
@@ -222,194 +222,218 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 11,
-                            comment = "Mirno i ugodno putovanje, savršeno za vikend bijeg.",
-                            offerId = 7,
-                            starRate = 4,
+                            comment = "Skupo, ali vrijedilo je svakog dinara.",
+                            offerId = 5,
+                            starRate = 5,
                             userId = 14
                         },
                         new
                         {
                             Id = 12,
-                            comment = "Sve je bilo dobro organizovano.",
-                            offerId = 7,
-                            starRate = 4,
+                            comment = "Prelijep stari grad i romantična atmosfera.",
+                            offerId = 6,
+                            starRate = 5,
                             userId = 15
                         },
                         new
                         {
                             Id = 13,
-                            comment = "Dubai je nevjerovatno iskustvo! Top organizacija.",
-                            offerId = 10,
-                            starRate = 5,
+                            comment = "Odličan omjer cijene i kvaliteta.",
+                            offerId = 6,
+                            starRate = 4,
                             userId = 16
                         },
                         new
                         {
                             Id = 14,
-                            comment = "Hotel vrhunski, vodič odličan. Preporučujem!",
-                            offerId = 10,
-                            starRate = 5,
+                            comment = "Mirno i ugodno putovanje, savršeno za vikend bijeg.",
+                            offerId = 7,
+                            starRate = 4,
                             userId = 17
                         },
                         new
                         {
                             Id = 15,
-                            comment = "Lijep grad, ali premalo vremena u slobodnoj zoni.",
-                            offerId = 12,
-                            starRate = 3,
+                            comment = "Beč je elegantan i kulturno bogat grad.",
+                            offerId = 7,
+                            starRate = 5,
                             userId = 18
                         },
                         new
                         {
-                            Id = 30,
-                            comment = "Uživao sam u svakom trenutku. Posebno mi se dopala posjeta galeriji Uffizi. Preporučujem!",
-                            offerId = 1,
+                            Id = 16,
+                            comment = "Kanali i arhitektura su predivni. Preporučujem!",
+                            offerId = 8,
                             starRate = 5,
-                            userId = 6
+                            userId = 19
                         },
                         new
                         {
-                            Id = 40,
-                            comment = "Prelijep grad, ali je bilo dosta gužve. Vodič je bio odličan i puno nam je olakšao obilazak.",
-                            offerId = 1,
+                            Id = 17,
+                            comment = "Grad je zanimljiv, ali dosta gužve.",
+                            offerId = 8,
                             starRate = 4,
-                            userId = 7
+                            userId = 20
                         },
                         new
                         {
-                            Id = 50,
-                            comment = "Firenca je idealna destinacija za ljubitelje historije i arhitekture. Sve pohvale eTravel timu!",
-                            offerId = 1,
+                            Id = 18,
+                            comment = "London je impresivan, puno znamenitosti.",
+                            offerId = 9,
                             starRate = 5,
-                            userId = 8
+                            userId = 21
                         },
                         new
                         {
-                            Id = 60,
-                            comment = "Putovanje je bilo divno, ali mislim da je moglo trajati dan duže. Grad nudi previše toga da se vidi.",
-                            offerId = 1,
+                            Id = 19,
+                            comment = "Kratko putovanje, ali vrlo sadržajno.",
+                            offerId = 9,
                             starRate = 4,
-                            userId = 9
+                            userId = 22
                         },
                         new
                         {
-                            Id = 70,
-                            comment = "Odlična organizacija, lijep hotel i savršeno isplanirana tura. Definitivno ponovo putujem preko vas!",
-                            offerId = 1,
+                            Id = 20,
+                            comment = "Dubai je nevjerovatno iskustvo! Top organizacija.",
+                            offerId = 10,
                             starRate = 5,
-                            userId = 10
+                            userId = 23
                         },
                         new
                         {
-                            Id = 80,
-                            comment = "Predivna atmosfera u gradu. Najviše mi se dopao obilazak Duoma. Vrijedi svake marke!",
-                            offerId = 1,
+                            Id = 21,
+                            comment = "Luksuz na svakom koraku. Hotel vrhunski.",
+                            offerId = 10,
                             starRate = 5,
-                            userId = 11
+                            userId = 24
                         },
                         new
                         {
-                            Id = 90,
-                            comment = "Vrlo profesionalna agencija. Sve je bilo ispoštovano prema planu. Putovanje bez brige!",
-                            offerId = 1,
-                            starRate = 4,
-                            userId = 12
-                        },
-                        new
-                        {
-                            Id = 100,
-                            comment = "Iznad očekivanja! Hrana u Firenci je savršena, a vodič izuzetno ljubazan i informisan.",
-                            offerId = 1,
-                            starRate = 5,
-                            userId = 13
-                        },
-                        new
-                        {
-                            Id = 110,
-                            comment = "Sve je bilo odlično, ali raspored je bio malo pretrpan. Ipak, uživao sam u obilasku grada.",
-                            offerId = 1,
-                            starRate = 3,
-                            userId = 14
-                        },
-                        new
-                        {
-                            Id = 120,
-                            comment = "Najbolje putovanje do sada! Preporučujem svakome ko želi spoj kulture, hrane i dobre organizacije.",
-                            offerId = 1,
-                            starRate = 5,
-                            userId = 15
-                        },
-                        new
-                        {
-                            Id = 130,
-                            comment = "Bilo je super, ali mislim da bi bilo bolje da smo imali više slobodnog vremena za samostalno istraživanje.",
-                            offerId = 1,
-                            starRate = 4,
-                            userId = 16
-                        },
-                        new
-                        {
-                            Id = 140,
-                            comment = "Savršeno iskustvo! Firenca je čarobna, sve preporuke za ovaj aranžman.",
-                            offerId = 1,
-                            starRate = 5,
-                            userId = 17
-                        },
-                        new
-                        {
-                            Id = 150,
-                            comment = "Putovanje je prošlo bez ikakvih problema. Sve na vrijeme, sve tačno onako kako je opisano.",
-                            offerId = 1,
+                            Id = 22,
+                            comment = "Piramide su fascinantne. Putovanje vrijedno iskustva.",
+                            offerId = 11,
                             starRate = 5,
                             userId = 5
                         },
                         new
                         {
-                            Id = 160,
-                            comment = "Moja druga posjeta Firenci, ali prvi put preko ove agencije. Organizacija vrhunska!",
-                            offerId = 1,
-                            starRate = 5,
+                            Id = 23,
+                            comment = "Zanimljivo, ali dosta naporno zbog vrućine.",
+                            offerId = 11,
+                            starRate = 4,
                             userId = 6
                         },
                         new
                         {
-                            Id = 170,
-                            comment = "Uživala sam! Preporučila bih ovo putovanje svima koji žele opuštajuće i edukativno iskustvo.",
-                            offerId = 1,
-                            starRate = 5,
+                            Id = 24,
+                            comment = "Lijep grad i odlična atmosfera.",
+                            offerId = 12,
+                            starRate = 4,
                             userId = 7
                         },
                         new
                         {
-                            Id = 180,
-                            comment = "Sve preporuke! Jedino što bih promijenio jeste dužina pauza tokom obilaska.",
-                            offerId = 1,
-                            starRate = 4,
+                            Id = 25,
+                            comment = "Termalne banje su pun pogodak.",
+                            offerId = 12,
+                            starRate = 5,
                             userId = 8
                         },
                         new
                         {
-                            Id = 190,
-                            comment = "Perfektno putovanje, odličan vodič i fenomenalne lokacije. Firenca je nevjerovatna!",
-                            offerId = 1,
+                            Id = 26,
+                            comment = "Historijski vrlo zanimljiv grad.",
+                            offerId = 13,
                             starRate = 5,
                             userId = 9
                         },
                         new
                         {
-                            Id = 200,
-                            comment = "Sve je bilo super, ali smještaj bi mogao biti malo bliže centru grada.",
-                            offerId = 1,
+                            Id = 27,
+                            comment = "Dobra organizacija i povoljne cijene.",
+                            offerId = 13,
                             starRate = 4,
                             userId = 10
                         },
                         new
                         {
-                            Id = 210,
-                            comment = "Najbolje organizovan aranžman na kojem sam bila. Svaka čast eTravel timu!",
-                            offerId = 1,
+                            Id = 28,
+                            comment = "Rajska destinacija! Plaže su nestvarne.",
+                            offerId = 14,
                             starRate = 5,
                             userId = 11
+                        },
+                        new
+                        {
+                            Id = 29,
+                            comment = "Savršeno za odmor i opuštanje.",
+                            offerId = 14,
+                            starRate = 5,
+                            userId = 12
+                        },
+                        new
+                        {
+                            Id = 30,
+                            comment = "More i resort su bili odlični.",
+                            offerId = 15,
+                            starRate = 4,
+                            userId = 13
+                        },
+                        new
+                        {
+                            Id = 31,
+                            comment = "Idealan izbor za porodični odmor.",
+                            offerId = 15,
+                            starRate = 5,
+                            userId = 14
+                        },
+                        new
+                        {
+                            Id = 32,
+                            comment = "Lisabon je šarmantan i topao grad.",
+                            offerId = 16,
+                            starRate = 5,
+                            userId = 15
+                        },
+                        new
+                        {
+                            Id = 33,
+                            comment = "Preporučujem svima koji vole opuštena putovanja.",
+                            offerId = 16,
+                            starRate = 4,
+                            userId = 16
+                        },
+                        new
+                        {
+                            Id = 34,
+                            comment = "Akropolj je nešto što se mora vidjeti.",
+                            offerId = 17,
+                            starRate = 5,
+                            userId = 17
+                        },
+                        new
+                        {
+                            Id = 35,
+                            comment = "Dobar balans između obilazaka i slobodnog vremena.",
+                            offerId = 17,
+                            starRate = 4,
+                            userId = 18
+                        },
+                        new
+                        {
+                            Id = 36,
+                            comment = "Predivan grad i odlična atmosfera.",
+                            offerId = 18,
+                            starRate = 5,
+                            userId = 19
+                        },
+                        new
+                        {
+                            Id = 37,
+                            comment = "Idealno ljetno putovanje.",
+                            offerId = 18,
+                            starRate = 5,
+                            userId = 20
                         });
                 });
 
@@ -522,11 +546,43 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            Id = 215,
+                            Address = "Carrer de Pelai 45",
+                            CalculatedPrice = 0m,
+                            Name = "Barcelona Central Plaza",
+                            Stars = 4
+                        },
+                        new
+                        {
+                            Id = 216,
+                            Address = "Carrer de Mallorca 401",
+                            CalculatedPrice = 0m,
+                            Name = "Sagrada Familia View Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
                             Id = 201,
                             Address = "Rue de Rivoli 99",
                             CalculatedPrice = 0m,
                             Name = "Hotel Louvre Rivoli",
                             Stars = 4
+                        },
+                        new
+                        {
+                            Id = 217,
+                            Address = "Avenue de Suffren 22",
+                            CalculatedPrice = 0m,
+                            Name = "Eiffel Tower Boutique Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 218,
+                            Address = "Rue Lepic 88",
+                            CalculatedPrice = 0m,
+                            Name = "Montmartre Comfort Inn",
+                            Stars = 3
                         },
                         new
                         {
@@ -538,11 +594,43 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            Id = 219,
+                            Address = "Staroměstské náměstí 15",
+                            CalculatedPrice = 0m,
+                            Name = "Old Town Square Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 220,
+                            Address = "Vodičkova 12",
+                            CalculatedPrice = 0m,
+                            Name = "Prague City Stay",
+                            Stars = 3
+                        },
+                        new
+                        {
                             Id = 203,
                             Address = "Frankenberggasse 10",
                             CalculatedPrice = 0m,
                             Name = "Hotel Kaiserhof Wien",
                             Stars = 4
+                        },
+                        new
+                        {
+                            Id = 221,
+                            Address = "Opernring 5",
+                            CalculatedPrice = 0m,
+                            Name = "Vienna Opera House Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 222,
+                            Address = "Handelskai 94",
+                            CalculatedPrice = 0m,
+                            Name = "Danube Riverside Hotel",
+                            Stars = 3
                         },
                         new
                         {
@@ -554,11 +642,43 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            Id = 223,
+                            Address = "Damrak 50",
+                            CalculatedPrice = 0m,
+                            Name = "Dam Square Boutique Hotel",
+                            Stars = 4
+                        },
+                        new
+                        {
+                            Id = 224,
+                            Address = "Leidsekade 70",
+                            CalculatedPrice = 0m,
+                            Name = "Amsterdam City Budget Hotel",
+                            Stars = 3
+                        },
+                        new
+                        {
                             Id = 205,
                             Address = "Victoria Street 22",
                             CalculatedPrice = 0m,
                             Name = "Hotel Westminster London",
                             Stars = 4
+                        },
+                        new
+                        {
+                            Id = 225,
+                            Address = "Piccadilly 33",
+                            CalculatedPrice = 0m,
+                            Name = "Piccadilly Central Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 226,
+                            Address = "Tooley Street 18",
+                            CalculatedPrice = 0m,
+                            Name = "London Bridge Inn",
+                            Stars = 3
                         },
                         new
                         {
@@ -570,11 +690,43 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            Id = 227,
+                            Address = "Downtown Dubai 1",
+                            CalculatedPrice = 0m,
+                            Name = "Burj Khalifa View Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 228,
+                            Address = "Al Seef Street 9",
+                            CalculatedPrice = 0m,
+                            Name = "Dubai Creek City Hotel",
+                            Stars = 4
+                        },
+                        new
+                        {
                             Id = 207,
                             Address = "Pyramid Street 18",
                             CalculatedPrice = 0m,
                             Name = "Cairo Pyramids View Hotel",
                             Stars = 4
+                        },
+                        new
+                        {
+                            Id = 229,
+                            Address = "Corniche El Nil 101",
+                            CalculatedPrice = 0m,
+                            Name = "Nile Riverside Palace",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 230,
+                            Address = "Tahrir Square 6",
+                            CalculatedPrice = 0m,
+                            Name = "Downtown Cairo Hotel",
+                            Stars = 3
                         },
                         new
                         {
@@ -586,6 +738,22 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            Id = 231,
+                            Address = "Bem Rakpart 15",
+                            CalculatedPrice = 0m,
+                            Name = "Danube Panorama Hotel",
+                            Stars = 4
+                        },
+                        new
+                        {
+                            Id = 232,
+                            Address = "Andrássy út 45",
+                            CalculatedPrice = 0m,
+                            Name = "Thermal Spa Boutique Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
                             Id = 209,
                             Address = "Floriańska 15",
                             CalculatedPrice = 0m,
@@ -594,10 +762,42 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            Id = 233,
+                            Address = "Kanonicza 8",
+                            CalculatedPrice = 0m,
+                            Name = "Wawel Castle View Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 234,
+                            Address = "Dietla 60",
+                            CalculatedPrice = 0m,
+                            Name = "Krakow City Budget Stay",
+                            Stars = 3
+                        },
+                        new
+                        {
                             Id = 210,
                             Address = "Kendwa Beach 1",
                             CalculatedPrice = 0m,
                             Name = "Zanzibar Blue Lagoon Resort",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 235,
+                            Address = "Mkunazini Street 14",
+                            CalculatedPrice = 0m,
+                            Name = "Stone Town Heritage Hotel",
+                            Stars = 4
+                        },
+                        new
+                        {
+                            Id = 236,
+                            Address = "Nungwi Coast 7",
+                            CalculatedPrice = 0m,
+                            Name = "Zanzibar Beach Paradise",
                             Stars = 5
                         },
                         new
@@ -610,11 +810,43 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            Id = 237,
+                            Address = "El Mamsha 22",
+                            CalculatedPrice = 0m,
+                            Name = "Red Sea Coral Resort",
+                            Stars = 4
+                        },
+                        new
+                        {
+                            Id = 238,
+                            Address = "Village Road 9",
+                            CalculatedPrice = 0m,
+                            Name = "Hurghada Sunlight Hotel",
+                            Stars = 3
+                        },
+                        new
+                        {
                             Id = 212,
                             Address = "Rua dos Remédios 21",
                             CalculatedPrice = 0m,
                             Name = "Lisbon Alfama Boutique Hotel",
                             Stars = 4
+                        },
+                        new
+                        {
+                            Id = 239,
+                            Address = "Avenida Brasília 78",
+                            CalculatedPrice = 0m,
+                            Name = "Belem Riverside Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 240,
+                            Address = "Rua Augusta 120",
+                            CalculatedPrice = 0m,
+                            Name = "Lisbon Downtown Stay",
+                            Stars = 3
                         },
                         new
                         {
@@ -626,11 +858,43 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            Id = 241,
+                            Address = "Adrianou 30",
+                            CalculatedPrice = 0m,
+                            Name = "Plaka Heritage Hotel",
+                            Stars = 4
+                        },
+                        new
+                        {
+                            Id = 242,
+                            Address = "Syntagma Square 3",
+                            CalculatedPrice = 0m,
+                            Name = "Athens Central Palace",
+                            Stars = 5
+                        },
+                        new
+                        {
                             Id = 214,
                             Address = "Obala Hrvatskog Narodnog 17",
                             CalculatedPrice = 0m,
                             Name = "Hotel Adriatic Split",
                             Stars = 4
+                        },
+                        new
+                        {
+                            Id = 243,
+                            Address = "Peristil 2",
+                            CalculatedPrice = 0m,
+                            Name = "Diocletian Palace Boutique Hotel",
+                            Stars = 5
+                        },
+                        new
+                        {
+                            Id = 244,
+                            Address = "Bačvice 14",
+                            CalculatedPrice = 0m,
+                            Name = "Split City Beach Hotel",
+                            Stars = 3
                         });
                 });
 
@@ -663,358 +927,1513 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 1,
                             HotelId = 100,
-                            ImageUrl = "hotel100_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-100-1/800/500",
                             IsMain = true
                         },
                         new
                         {
                             Id = 2,
                             HotelId = 100,
-                            ImageUrl = "hotel100_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-100-2/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 3,
                             HotelId = 100,
-                            ImageUrl = "hotel100_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-100-3/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 4,
                             HotelId = 100,
-                            ImageUrl = "hotel100_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-100-4/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 5,
                             HotelId = 101,
-                            ImageUrl = "hotel101_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-101-1/800/500",
                             IsMain = true
                         },
                         new
                         {
                             Id = 6,
                             HotelId = 101,
-                            ImageUrl = "hotel101_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-101-2/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 7,
                             HotelId = 101,
-                            ImageUrl = "hotel101_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-101-3/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 8,
                             HotelId = 101,
-                            ImageUrl = "hotel101_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-101-4/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 9,
                             HotelId = 102,
-                            ImageUrl = "hotel102_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-102-1/800/500",
                             IsMain = true
                         },
                         new
                         {
                             Id = 10,
                             HotelId = 102,
-                            ImageUrl = "hotel102_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-102-2/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 11,
                             HotelId = 102,
-                            ImageUrl = "hotel102_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-102-3/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 12,
                             HotelId = 102,
-                            ImageUrl = "hotel102_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-102-4/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 13,
                             HotelId = 110,
-                            ImageUrl = "hotel110_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-110-1/800/500",
                             IsMain = true
                         },
                         new
                         {
                             Id = 14,
                             HotelId = 110,
-                            ImageUrl = "hotel110_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-110-2/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 15,
                             HotelId = 110,
-                            ImageUrl = "hotel110_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-110-3/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 16,
                             HotelId = 110,
-                            ImageUrl = "hotel110_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-110-4/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 17,
                             HotelId = 111,
-                            ImageUrl = "hotel111_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-111-1/800/500",
                             IsMain = true
                         },
                         new
                         {
                             Id = 18,
                             HotelId = 111,
-                            ImageUrl = "hotel111_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-111-2/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 19,
                             HotelId = 111,
-                            ImageUrl = "hotel111_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-111-3/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 20,
                             HotelId = 111,
-                            ImageUrl = "hotel111_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-111-4/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 21,
                             HotelId = 112,
-                            ImageUrl = "hotel112_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-112-1/800/500",
                             IsMain = true
                         },
                         new
                         {
                             Id = 22,
                             HotelId = 112,
-                            ImageUrl = "hotel112_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-112-2/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 23,
                             HotelId = 112,
-                            ImageUrl = "hotel112_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-112-3/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 24,
                             HotelId = 112,
-                            ImageUrl = "hotel112_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-112-4/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 25,
                             HotelId = 120,
-                            ImageUrl = "hotel120_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-120-1/800/500",
                             IsMain = true
                         },
                         new
                         {
                             Id = 26,
                             HotelId = 120,
-                            ImageUrl = "hotel120_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-120-2/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 27,
                             HotelId = 120,
-                            ImageUrl = "hotel120_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-120-3/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 28,
                             HotelId = 120,
-                            ImageUrl = "hotel120_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-120-4/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 29,
                             HotelId = 121,
-                            ImageUrl = "hotel121_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-121-1/800/500",
                             IsMain = true
                         },
                         new
                         {
                             Id = 30,
                             HotelId = 121,
-                            ImageUrl = "hotel121_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-121-2/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 31,
                             HotelId = 121,
-                            ImageUrl = "hotel121_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-121-3/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 32,
                             HotelId = 121,
-                            ImageUrl = "hotel121_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-121-4/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 33,
                             HotelId = 122,
-                            ImageUrl = "hotel122_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-122-1/800/500",
                             IsMain = true
                         },
                         new
                         {
                             Id = 34,
                             HotelId = 122,
-                            ImageUrl = "hotel122_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-122-2/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 35,
                             HotelId = 122,
-                            ImageUrl = "hotel122_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-122-3/800/500",
                             IsMain = false
                         },
                         new
                         {
                             Id = 36,
                             HotelId = 122,
-                            ImageUrl = "hotel122_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-122-4/800/500",
                             IsMain = false
                         },
                         new
                         {
-                            Id = 6000,
+                            Id = 37,
                             HotelId = 200,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-200-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6001,
+                            Id = 38,
+                            HotelId = 200,
+                            ImageUrl = "https://picsum.photos/seed/hotel-200-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 39,
+                            HotelId = 200,
+                            ImageUrl = "https://picsum.photos/seed/hotel-200-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 40,
+                            HotelId = 200,
+                            ImageUrl = "https://picsum.photos/seed/hotel-200-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 41,
+                            HotelId = 215,
+                            ImageUrl = "https://picsum.photos/seed/hotel-215-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 42,
+                            HotelId = 215,
+                            ImageUrl = "https://picsum.photos/seed/hotel-215-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 43,
+                            HotelId = 215,
+                            ImageUrl = "https://picsum.photos/seed/hotel-215-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 44,
+                            HotelId = 215,
+                            ImageUrl = "https://picsum.photos/seed/hotel-215-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 45,
+                            HotelId = 216,
+                            ImageUrl = "https://picsum.photos/seed/hotel-216-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 46,
+                            HotelId = 216,
+                            ImageUrl = "https://picsum.photos/seed/hotel-216-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 47,
+                            HotelId = 216,
+                            ImageUrl = "https://picsum.photos/seed/hotel-216-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 48,
+                            HotelId = 216,
+                            ImageUrl = "https://picsum.photos/seed/hotel-216-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 49,
                             HotelId = 201,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-201-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6002,
+                            Id = 50,
+                            HotelId = 201,
+                            ImageUrl = "https://picsum.photos/seed/hotel-201-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 51,
+                            HotelId = 201,
+                            ImageUrl = "https://picsum.photos/seed/hotel-201-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 52,
+                            HotelId = 201,
+                            ImageUrl = "https://picsum.photos/seed/hotel-201-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 53,
+                            HotelId = 217,
+                            ImageUrl = "https://picsum.photos/seed/hotel-217-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 54,
+                            HotelId = 217,
+                            ImageUrl = "https://picsum.photos/seed/hotel-217-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 55,
+                            HotelId = 217,
+                            ImageUrl = "https://picsum.photos/seed/hotel-217-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 56,
+                            HotelId = 217,
+                            ImageUrl = "https://picsum.photos/seed/hotel-217-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 57,
+                            HotelId = 218,
+                            ImageUrl = "https://picsum.photos/seed/hotel-218-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 58,
+                            HotelId = 218,
+                            ImageUrl = "https://picsum.photos/seed/hotel-218-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 59,
+                            HotelId = 218,
+                            ImageUrl = "https://picsum.photos/seed/hotel-218-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 60,
+                            HotelId = 218,
+                            ImageUrl = "https://picsum.photos/seed/hotel-218-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 61,
                             HotelId = 202,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-202-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6003,
+                            Id = 62,
+                            HotelId = 202,
+                            ImageUrl = "https://picsum.photos/seed/hotel-202-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 63,
+                            HotelId = 202,
+                            ImageUrl = "https://picsum.photos/seed/hotel-202-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 64,
+                            HotelId = 202,
+                            ImageUrl = "https://picsum.photos/seed/hotel-202-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 65,
+                            HotelId = 219,
+                            ImageUrl = "https://picsum.photos/seed/hotel-219-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 66,
+                            HotelId = 219,
+                            ImageUrl = "https://picsum.photos/seed/hotel-219-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 67,
+                            HotelId = 219,
+                            ImageUrl = "https://picsum.photos/seed/hotel-219-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 68,
+                            HotelId = 219,
+                            ImageUrl = "https://picsum.photos/seed/hotel-219-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 69,
+                            HotelId = 220,
+                            ImageUrl = "https://picsum.photos/seed/hotel-220-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 70,
+                            HotelId = 220,
+                            ImageUrl = "https://picsum.photos/seed/hotel-220-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 71,
+                            HotelId = 220,
+                            ImageUrl = "https://picsum.photos/seed/hotel-220-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 72,
+                            HotelId = 220,
+                            ImageUrl = "https://picsum.photos/seed/hotel-220-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 73,
                             HotelId = 203,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-203-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6004,
+                            Id = 74,
+                            HotelId = 203,
+                            ImageUrl = "https://picsum.photos/seed/hotel-203-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 75,
+                            HotelId = 203,
+                            ImageUrl = "https://picsum.photos/seed/hotel-203-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 76,
+                            HotelId = 203,
+                            ImageUrl = "https://picsum.photos/seed/hotel-203-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 77,
+                            HotelId = 221,
+                            ImageUrl = "https://picsum.photos/seed/hotel-221-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 78,
+                            HotelId = 221,
+                            ImageUrl = "https://picsum.photos/seed/hotel-221-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 79,
+                            HotelId = 221,
+                            ImageUrl = "https://picsum.photos/seed/hotel-221-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 80,
+                            HotelId = 221,
+                            ImageUrl = "https://picsum.photos/seed/hotel-221-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 81,
+                            HotelId = 222,
+                            ImageUrl = "https://picsum.photos/seed/hotel-222-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 82,
+                            HotelId = 222,
+                            ImageUrl = "https://picsum.photos/seed/hotel-222-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 83,
+                            HotelId = 222,
+                            ImageUrl = "https://picsum.photos/seed/hotel-222-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 84,
+                            HotelId = 222,
+                            ImageUrl = "https://picsum.photos/seed/hotel-222-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 85,
                             HotelId = 204,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-204-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6005,
+                            Id = 86,
+                            HotelId = 204,
+                            ImageUrl = "https://picsum.photos/seed/hotel-204-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 87,
+                            HotelId = 204,
+                            ImageUrl = "https://picsum.photos/seed/hotel-204-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 88,
+                            HotelId = 204,
+                            ImageUrl = "https://picsum.photos/seed/hotel-204-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 89,
+                            HotelId = 223,
+                            ImageUrl = "https://picsum.photos/seed/hotel-223-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 90,
+                            HotelId = 223,
+                            ImageUrl = "https://picsum.photos/seed/hotel-223-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 91,
+                            HotelId = 223,
+                            ImageUrl = "https://picsum.photos/seed/hotel-223-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 92,
+                            HotelId = 223,
+                            ImageUrl = "https://picsum.photos/seed/hotel-223-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 93,
+                            HotelId = 224,
+                            ImageUrl = "https://picsum.photos/seed/hotel-224-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 94,
+                            HotelId = 224,
+                            ImageUrl = "https://picsum.photos/seed/hotel-224-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 95,
+                            HotelId = 224,
+                            ImageUrl = "https://picsum.photos/seed/hotel-224-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 96,
+                            HotelId = 224,
+                            ImageUrl = "https://picsum.photos/seed/hotel-224-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 97,
                             HotelId = 205,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-205-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6006,
+                            Id = 98,
+                            HotelId = 205,
+                            ImageUrl = "https://picsum.photos/seed/hotel-205-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 99,
+                            HotelId = 205,
+                            ImageUrl = "https://picsum.photos/seed/hotel-205-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 100,
+                            HotelId = 205,
+                            ImageUrl = "https://picsum.photos/seed/hotel-205-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 101,
+                            HotelId = 225,
+                            ImageUrl = "https://picsum.photos/seed/hotel-225-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 102,
+                            HotelId = 225,
+                            ImageUrl = "https://picsum.photos/seed/hotel-225-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 103,
+                            HotelId = 225,
+                            ImageUrl = "https://picsum.photos/seed/hotel-225-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 104,
+                            HotelId = 225,
+                            ImageUrl = "https://picsum.photos/seed/hotel-225-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 105,
+                            HotelId = 226,
+                            ImageUrl = "https://picsum.photos/seed/hotel-226-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 106,
+                            HotelId = 226,
+                            ImageUrl = "https://picsum.photos/seed/hotel-226-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 107,
+                            HotelId = 226,
+                            ImageUrl = "https://picsum.photos/seed/hotel-226-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 108,
+                            HotelId = 226,
+                            ImageUrl = "https://picsum.photos/seed/hotel-226-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 109,
                             HotelId = 206,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-206-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6007,
+                            Id = 110,
+                            HotelId = 206,
+                            ImageUrl = "https://picsum.photos/seed/hotel-206-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 111,
+                            HotelId = 206,
+                            ImageUrl = "https://picsum.photos/seed/hotel-206-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 112,
+                            HotelId = 206,
+                            ImageUrl = "https://picsum.photos/seed/hotel-206-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 113,
+                            HotelId = 227,
+                            ImageUrl = "https://picsum.photos/seed/hotel-227-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 114,
+                            HotelId = 227,
+                            ImageUrl = "https://picsum.photos/seed/hotel-227-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 115,
+                            HotelId = 227,
+                            ImageUrl = "https://picsum.photos/seed/hotel-227-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 116,
+                            HotelId = 227,
+                            ImageUrl = "https://picsum.photos/seed/hotel-227-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 117,
+                            HotelId = 228,
+                            ImageUrl = "https://picsum.photos/seed/hotel-228-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 118,
+                            HotelId = 228,
+                            ImageUrl = "https://picsum.photos/seed/hotel-228-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 119,
+                            HotelId = 228,
+                            ImageUrl = "https://picsum.photos/seed/hotel-228-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 120,
+                            HotelId = 228,
+                            ImageUrl = "https://picsum.photos/seed/hotel-228-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 121,
                             HotelId = 207,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-207-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6008,
+                            Id = 122,
+                            HotelId = 207,
+                            ImageUrl = "https://picsum.photos/seed/hotel-207-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 123,
+                            HotelId = 207,
+                            ImageUrl = "https://picsum.photos/seed/hotel-207-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 124,
+                            HotelId = 207,
+                            ImageUrl = "https://picsum.photos/seed/hotel-207-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 125,
+                            HotelId = 229,
+                            ImageUrl = "https://picsum.photos/seed/hotel-229-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 126,
+                            HotelId = 229,
+                            ImageUrl = "https://picsum.photos/seed/hotel-229-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 127,
+                            HotelId = 229,
+                            ImageUrl = "https://picsum.photos/seed/hotel-229-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 128,
+                            HotelId = 229,
+                            ImageUrl = "https://picsum.photos/seed/hotel-229-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 129,
+                            HotelId = 230,
+                            ImageUrl = "https://picsum.photos/seed/hotel-230-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 130,
+                            HotelId = 230,
+                            ImageUrl = "https://picsum.photos/seed/hotel-230-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 131,
+                            HotelId = 230,
+                            ImageUrl = "https://picsum.photos/seed/hotel-230-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 132,
+                            HotelId = 230,
+                            ImageUrl = "https://picsum.photos/seed/hotel-230-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 133,
                             HotelId = 208,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-208-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6009,
+                            Id = 134,
+                            HotelId = 208,
+                            ImageUrl = "https://picsum.photos/seed/hotel-208-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 135,
+                            HotelId = 208,
+                            ImageUrl = "https://picsum.photos/seed/hotel-208-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 136,
+                            HotelId = 208,
+                            ImageUrl = "https://picsum.photos/seed/hotel-208-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 137,
+                            HotelId = 231,
+                            ImageUrl = "https://picsum.photos/seed/hotel-231-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 138,
+                            HotelId = 231,
+                            ImageUrl = "https://picsum.photos/seed/hotel-231-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 139,
+                            HotelId = 231,
+                            ImageUrl = "https://picsum.photos/seed/hotel-231-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 140,
+                            HotelId = 231,
+                            ImageUrl = "https://picsum.photos/seed/hotel-231-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 141,
+                            HotelId = 232,
+                            ImageUrl = "https://picsum.photos/seed/hotel-232-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 142,
+                            HotelId = 232,
+                            ImageUrl = "https://picsum.photos/seed/hotel-232-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 143,
+                            HotelId = 232,
+                            ImageUrl = "https://picsum.photos/seed/hotel-232-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 144,
+                            HotelId = 232,
+                            ImageUrl = "https://picsum.photos/seed/hotel-232-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 145,
                             HotelId = 209,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-209-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6010,
+                            Id = 146,
+                            HotelId = 209,
+                            ImageUrl = "https://picsum.photos/seed/hotel-209-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 147,
+                            HotelId = 209,
+                            ImageUrl = "https://picsum.photos/seed/hotel-209-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 148,
+                            HotelId = 209,
+                            ImageUrl = "https://picsum.photos/seed/hotel-209-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 149,
+                            HotelId = 233,
+                            ImageUrl = "https://picsum.photos/seed/hotel-233-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 150,
+                            HotelId = 233,
+                            ImageUrl = "https://picsum.photos/seed/hotel-233-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 151,
+                            HotelId = 233,
+                            ImageUrl = "https://picsum.photos/seed/hotel-233-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 152,
+                            HotelId = 233,
+                            ImageUrl = "https://picsum.photos/seed/hotel-233-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 153,
+                            HotelId = 234,
+                            ImageUrl = "https://picsum.photos/seed/hotel-234-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 154,
+                            HotelId = 234,
+                            ImageUrl = "https://picsum.photos/seed/hotel-234-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 155,
+                            HotelId = 234,
+                            ImageUrl = "https://picsum.photos/seed/hotel-234-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 156,
+                            HotelId = 234,
+                            ImageUrl = "https://picsum.photos/seed/hotel-234-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 157,
                             HotelId = 210,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-210-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6011,
+                            Id = 158,
+                            HotelId = 210,
+                            ImageUrl = "https://picsum.photos/seed/hotel-210-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 159,
+                            HotelId = 210,
+                            ImageUrl = "https://picsum.photos/seed/hotel-210-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 160,
+                            HotelId = 210,
+                            ImageUrl = "https://picsum.photos/seed/hotel-210-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 161,
+                            HotelId = 235,
+                            ImageUrl = "https://picsum.photos/seed/hotel-235-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 162,
+                            HotelId = 235,
+                            ImageUrl = "https://picsum.photos/seed/hotel-235-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 163,
+                            HotelId = 235,
+                            ImageUrl = "https://picsum.photos/seed/hotel-235-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 164,
+                            HotelId = 235,
+                            ImageUrl = "https://picsum.photos/seed/hotel-235-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 165,
+                            HotelId = 236,
+                            ImageUrl = "https://picsum.photos/seed/hotel-236-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 166,
+                            HotelId = 236,
+                            ImageUrl = "https://picsum.photos/seed/hotel-236-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 167,
+                            HotelId = 236,
+                            ImageUrl = "https://picsum.photos/seed/hotel-236-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 168,
+                            HotelId = 236,
+                            ImageUrl = "https://picsum.photos/seed/hotel-236-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 169,
                             HotelId = 211,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-211-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6012,
+                            Id = 170,
+                            HotelId = 211,
+                            ImageUrl = "https://picsum.photos/seed/hotel-211-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 171,
+                            HotelId = 211,
+                            ImageUrl = "https://picsum.photos/seed/hotel-211-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 172,
+                            HotelId = 211,
+                            ImageUrl = "https://picsum.photos/seed/hotel-211-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 173,
+                            HotelId = 237,
+                            ImageUrl = "https://picsum.photos/seed/hotel-237-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 174,
+                            HotelId = 237,
+                            ImageUrl = "https://picsum.photos/seed/hotel-237-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 175,
+                            HotelId = 237,
+                            ImageUrl = "https://picsum.photos/seed/hotel-237-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 176,
+                            HotelId = 237,
+                            ImageUrl = "https://picsum.photos/seed/hotel-237-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 177,
+                            HotelId = 238,
+                            ImageUrl = "https://picsum.photos/seed/hotel-238-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 178,
+                            HotelId = 238,
+                            ImageUrl = "https://picsum.photos/seed/hotel-238-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 179,
+                            HotelId = 238,
+                            ImageUrl = "https://picsum.photos/seed/hotel-238-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 180,
+                            HotelId = 238,
+                            ImageUrl = "https://picsum.photos/seed/hotel-238-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 181,
                             HotelId = 212,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-212-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6013,
+                            Id = 182,
+                            HotelId = 212,
+                            ImageUrl = "https://picsum.photos/seed/hotel-212-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 183,
+                            HotelId = 212,
+                            ImageUrl = "https://picsum.photos/seed/hotel-212-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 184,
+                            HotelId = 212,
+                            ImageUrl = "https://picsum.photos/seed/hotel-212-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 185,
+                            HotelId = 239,
+                            ImageUrl = "https://picsum.photos/seed/hotel-239-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 186,
+                            HotelId = 239,
+                            ImageUrl = "https://picsum.photos/seed/hotel-239-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 187,
+                            HotelId = 239,
+                            ImageUrl = "https://picsum.photos/seed/hotel-239-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 188,
+                            HotelId = 239,
+                            ImageUrl = "https://picsum.photos/seed/hotel-239-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 189,
+                            HotelId = 240,
+                            ImageUrl = "https://picsum.photos/seed/hotel-240-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 190,
+                            HotelId = 240,
+                            ImageUrl = "https://picsum.photos/seed/hotel-240-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 191,
+                            HotelId = 240,
+                            ImageUrl = "https://picsum.photos/seed/hotel-240-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 192,
+                            HotelId = 240,
+                            ImageUrl = "https://picsum.photos/seed/hotel-240-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 193,
                             HotelId = 213,
-                            ImageUrl = "primjer.jpg",
+                            ImageUrl = "https://picsum.photos/seed/hotel-213-1/800/500",
                             IsMain = true
                         },
                         new
                         {
-                            Id = 6014,
-                            HotelId = 214,
-                            ImageUrl = "primjer.jpg",
+                            Id = 194,
+                            HotelId = 213,
+                            ImageUrl = "https://picsum.photos/seed/hotel-213-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 195,
+                            HotelId = 213,
+                            ImageUrl = "https://picsum.photos/seed/hotel-213-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 196,
+                            HotelId = 213,
+                            ImageUrl = "https://picsum.photos/seed/hotel-213-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 197,
+                            HotelId = 241,
+                            ImageUrl = "https://picsum.photos/seed/hotel-241-1/800/500",
                             IsMain = true
+                        },
+                        new
+                        {
+                            Id = 198,
+                            HotelId = 241,
+                            ImageUrl = "https://picsum.photos/seed/hotel-241-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 199,
+                            HotelId = 241,
+                            ImageUrl = "https://picsum.photos/seed/hotel-241-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 200,
+                            HotelId = 241,
+                            ImageUrl = "https://picsum.photos/seed/hotel-241-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 201,
+                            HotelId = 242,
+                            ImageUrl = "https://picsum.photos/seed/hotel-242-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 202,
+                            HotelId = 242,
+                            ImageUrl = "https://picsum.photos/seed/hotel-242-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 203,
+                            HotelId = 242,
+                            ImageUrl = "https://picsum.photos/seed/hotel-242-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 204,
+                            HotelId = 242,
+                            ImageUrl = "https://picsum.photos/seed/hotel-242-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 205,
+                            HotelId = 214,
+                            ImageUrl = "https://picsum.photos/seed/hotel-214-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 206,
+                            HotelId = 214,
+                            ImageUrl = "https://picsum.photos/seed/hotel-214-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 207,
+                            HotelId = 214,
+                            ImageUrl = "https://picsum.photos/seed/hotel-214-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 208,
+                            HotelId = 214,
+                            ImageUrl = "https://picsum.photos/seed/hotel-214-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 209,
+                            HotelId = 243,
+                            ImageUrl = "https://picsum.photos/seed/hotel-243-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 210,
+                            HotelId = 243,
+                            ImageUrl = "https://picsum.photos/seed/hotel-243-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 211,
+                            HotelId = 243,
+                            ImageUrl = "https://picsum.photos/seed/hotel-243-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 212,
+                            HotelId = 243,
+                            ImageUrl = "https://picsum.photos/seed/hotel-243-4/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 213,
+                            HotelId = 244,
+                            ImageUrl = "https://picsum.photos/seed/hotel-244-1/800/500",
+                            IsMain = true
+                        },
+                        new
+                        {
+                            Id = 214,
+                            HotelId = 244,
+                            ImageUrl = "https://picsum.photos/seed/hotel-244-2/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 215,
+                            HotelId = 244,
+                            ImageUrl = "https://picsum.photos/seed/hotel-244-3/800/500",
+                            IsMain = false
+                        },
+                        new
+                        {
+                            Id = 216,
+                            HotelId = 244,
+                            ImageUrl = "https://picsum.photos/seed/hotel-244-4/800/500",
+                            IsMain = false
                         });
                 });
 
@@ -1040,91 +2459,91 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             HotelId = 100,
                             RoomId = 1,
-                            RoomsLeft = 10
-                        },
-                        new
-                        {
-                            HotelId = 100,
-                            RoomId = 2,
                             RoomsLeft = 6
                         },
                         new
                         {
                             HotelId = 100,
+                            RoomId = 2,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 100,
                             RoomId = 3,
-                            RoomsLeft = 4
+                            RoomsLeft = 15
                         },
                         new
                         {
                             HotelId = 100,
                             RoomId = 4,
-                            RoomsLeft = 8
+                            RoomsLeft = 15
                         },
                         new
                         {
                             HotelId = 101,
                             RoomId = 1,
-                            RoomsLeft = 10
+                            RoomsLeft = 15
                         },
                         new
                         {
                             HotelId = 101,
                             RoomId = 2,
-                            RoomsLeft = 6
+                            RoomsLeft = 5
                         },
                         new
                         {
                             HotelId = 101,
                             RoomId = 3,
-                            RoomsLeft = 4
+                            RoomsLeft = 12
                         },
                         new
                         {
                             HotelId = 101,
                             RoomId = 4,
-                            RoomsLeft = 8
+                            RoomsLeft = 14
                         },
                         new
                         {
                             HotelId = 102,
                             RoomId = 1,
-                            RoomsLeft = 10
+                            RoomsLeft = 11
                         },
                         new
                         {
                             HotelId = 102,
                             RoomId = 2,
-                            RoomsLeft = 6
+                            RoomsLeft = 8
                         },
                         new
                         {
                             HotelId = 102,
                             RoomId = 3,
-                            RoomsLeft = 4
+                            RoomsLeft = 14
                         },
                         new
                         {
                             HotelId = 102,
                             RoomId = 4,
-                            RoomsLeft = 8
+                            RoomsLeft = 7
                         },
                         new
                         {
                             HotelId = 110,
                             RoomId = 1,
-                            RoomsLeft = 10
+                            RoomsLeft = 9
                         },
                         new
                         {
                             HotelId = 110,
                             RoomId = 2,
-                            RoomsLeft = 6
+                            RoomsLeft = 10
                         },
                         new
                         {
                             HotelId = 110,
                             RoomId = 3,
-                            RoomsLeft = 4
+                            RoomsLeft = 6
                         },
                         new
                         {
@@ -1148,109 +2567,1189 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             HotelId = 111,
                             RoomId = 3,
-                            RoomsLeft = 4
+                            RoomsLeft = 10
                         },
                         new
                         {
                             HotelId = 111,
                             RoomId = 4,
-                            RoomsLeft = 8
+                            RoomsLeft = 13
                         },
                         new
                         {
                             HotelId = 112,
                             RoomId = 1,
-                            RoomsLeft = 10
+                            RoomsLeft = 5
                         },
                         new
                         {
                             HotelId = 112,
                             RoomId = 2,
-                            RoomsLeft = 6
+                            RoomsLeft = 14
                         },
                         new
                         {
                             HotelId = 112,
                             RoomId = 3,
-                            RoomsLeft = 4
+                            RoomsLeft = 9
                         },
                         new
                         {
                             HotelId = 112,
                             RoomId = 4,
-                            RoomsLeft = 8
+                            RoomsLeft = 13
                         },
                         new
                         {
                             HotelId = 120,
                             RoomId = 1,
-                            RoomsLeft = 10
+                            RoomsLeft = 7
                         },
                         new
                         {
                             HotelId = 120,
                             RoomId = 2,
-                            RoomsLeft = 6
+                            RoomsLeft = 11
                         },
                         new
                         {
                             HotelId = 120,
                             RoomId = 3,
-                            RoomsLeft = 4
+                            RoomsLeft = 13
                         },
                         new
                         {
                             HotelId = 120,
                             RoomId = 4,
-                            RoomsLeft = 8
+                            RoomsLeft = 5
                         },
                         new
                         {
                             HotelId = 121,
                             RoomId = 1,
-                            RoomsLeft = 10
-                        },
-                        new
-                        {
-                            HotelId = 121,
-                            RoomId = 2,
                             RoomsLeft = 6
                         },
                         new
                         {
                             HotelId = 121,
+                            RoomId = 2,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 121,
                             RoomId = 3,
-                            RoomsLeft = 4
+                            RoomsLeft = 6
                         },
                         new
                         {
                             HotelId = 121,
                             RoomId = 4,
-                            RoomsLeft = 8
+                            RoomsLeft = 6
                         },
                         new
                         {
                             HotelId = 122,
                             RoomId = 1,
-                            RoomsLeft = 10
+                            RoomsLeft = 5
                         },
                         new
                         {
                             HotelId = 122,
                             RoomId = 2,
-                            RoomsLeft = 6
+                            RoomsLeft = 13
                         },
                         new
                         {
                             HotelId = 122,
                             RoomId = 3,
-                            RoomsLeft = 4
+                            RoomsLeft = 5
                         },
                         new
                         {
                             HotelId = 122,
                             RoomId = 4,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 200,
+                            RoomId = 1,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 200,
+                            RoomId = 2,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 200,
+                            RoomId = 3,
                             RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 200,
+                            RoomId = 4,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 215,
+                            RoomId = 1,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 215,
+                            RoomId = 2,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 215,
+                            RoomId = 3,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 215,
+                            RoomId = 4,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 216,
+                            RoomId = 1,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 216,
+                            RoomId = 2,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 216,
+                            RoomId = 3,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 216,
+                            RoomId = 4,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 201,
+                            RoomId = 1,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 201,
+                            RoomId = 2,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 201,
+                            RoomId = 3,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 201,
+                            RoomId = 4,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 217,
+                            RoomId = 1,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 217,
+                            RoomId = 2,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 217,
+                            RoomId = 3,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 217,
+                            RoomId = 4,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 218,
+                            RoomId = 1,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 218,
+                            RoomId = 2,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 218,
+                            RoomId = 3,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 218,
+                            RoomId = 4,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 202,
+                            RoomId = 1,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 202,
+                            RoomId = 2,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 202,
+                            RoomId = 3,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 202,
+                            RoomId = 4,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 219,
+                            RoomId = 1,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 219,
+                            RoomId = 2,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 219,
+                            RoomId = 3,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 219,
+                            RoomId = 4,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 220,
+                            RoomId = 1,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 220,
+                            RoomId = 2,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 220,
+                            RoomId = 3,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 220,
+                            RoomId = 4,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 203,
+                            RoomId = 1,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 203,
+                            RoomId = 2,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 203,
+                            RoomId = 3,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 203,
+                            RoomId = 4,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 221,
+                            RoomId = 1,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 221,
+                            RoomId = 2,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 221,
+                            RoomId = 3,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 221,
+                            RoomId = 4,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 222,
+                            RoomId = 1,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 222,
+                            RoomId = 2,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 222,
+                            RoomId = 3,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 222,
+                            RoomId = 4,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 204,
+                            RoomId = 1,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 204,
+                            RoomId = 2,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 204,
+                            RoomId = 3,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 204,
+                            RoomId = 4,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 223,
+                            RoomId = 1,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 223,
+                            RoomId = 2,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 223,
+                            RoomId = 3,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 223,
+                            RoomId = 4,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 224,
+                            RoomId = 1,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 224,
+                            RoomId = 2,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 224,
+                            RoomId = 3,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 224,
+                            RoomId = 4,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 205,
+                            RoomId = 1,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 205,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 205,
+                            RoomId = 3,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 205,
+                            RoomId = 4,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 225,
+                            RoomId = 1,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 225,
+                            RoomId = 2,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 225,
+                            RoomId = 3,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 225,
+                            RoomId = 4,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 226,
+                            RoomId = 1,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 226,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 226,
+                            RoomId = 3,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 226,
+                            RoomId = 4,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 206,
+                            RoomId = 1,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 206,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 206,
+                            RoomId = 3,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 206,
+                            RoomId = 4,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 227,
+                            RoomId = 1,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 227,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 227,
+                            RoomId = 3,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 227,
+                            RoomId = 4,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 228,
+                            RoomId = 1,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 228,
+                            RoomId = 2,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 228,
+                            RoomId = 3,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 228,
+                            RoomId = 4,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 207,
+                            RoomId = 1,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 207,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 207,
+                            RoomId = 3,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 207,
+                            RoomId = 4,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 229,
+                            RoomId = 1,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 229,
+                            RoomId = 2,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 229,
+                            RoomId = 3,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 229,
+                            RoomId = 4,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 230,
+                            RoomId = 1,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 230,
+                            RoomId = 2,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 230,
+                            RoomId = 3,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 230,
+                            RoomId = 4,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 208,
+                            RoomId = 1,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 208,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 208,
+                            RoomId = 3,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 208,
+                            RoomId = 4,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 231,
+                            RoomId = 1,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 231,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 231,
+                            RoomId = 3,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 231,
+                            RoomId = 4,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 232,
+                            RoomId = 1,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 232,
+                            RoomId = 2,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 232,
+                            RoomId = 3,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 232,
+                            RoomId = 4,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 209,
+                            RoomId = 1,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 209,
+                            RoomId = 2,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 209,
+                            RoomId = 3,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 209,
+                            RoomId = 4,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 233,
+                            RoomId = 1,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 233,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 233,
+                            RoomId = 3,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 233,
+                            RoomId = 4,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 234,
+                            RoomId = 1,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 234,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 234,
+                            RoomId = 3,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 234,
+                            RoomId = 4,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 210,
+                            RoomId = 1,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 210,
+                            RoomId = 2,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 210,
+                            RoomId = 3,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 210,
+                            RoomId = 4,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 235,
+                            RoomId = 1,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 235,
+                            RoomId = 2,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 235,
+                            RoomId = 3,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 235,
+                            RoomId = 4,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 236,
+                            RoomId = 1,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 236,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 236,
+                            RoomId = 3,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 236,
+                            RoomId = 4,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 211,
+                            RoomId = 1,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 211,
+                            RoomId = 2,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 211,
+                            RoomId = 3,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 211,
+                            RoomId = 4,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 237,
+                            RoomId = 1,
+                            RoomsLeft = 8
+                        },
+                        new
+                        {
+                            HotelId = 237,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 237,
+                            RoomId = 3,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 237,
+                            RoomId = 4,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 238,
+                            RoomId = 1,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 238,
+                            RoomId = 2,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 238,
+                            RoomId = 3,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 238,
+                            RoomId = 4,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 212,
+                            RoomId = 1,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 212,
+                            RoomId = 2,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 212,
+                            RoomId = 3,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 212,
+                            RoomId = 4,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 239,
+                            RoomId = 1,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 239,
+                            RoomId = 2,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 239,
+                            RoomId = 3,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 239,
+                            RoomId = 4,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 240,
+                            RoomId = 1,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 240,
+                            RoomId = 2,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 240,
+                            RoomId = 3,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 240,
+                            RoomId = 4,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 213,
+                            RoomId = 1,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 213,
+                            RoomId = 2,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 213,
+                            RoomId = 3,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 213,
+                            RoomId = 4,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 241,
+                            RoomId = 1,
+                            RoomsLeft = 10
+                        },
+                        new
+                        {
+                            HotelId = 241,
+                            RoomId = 2,
+                            RoomsLeft = 14
+                        },
+                        new
+                        {
+                            HotelId = 241,
+                            RoomId = 3,
+                            RoomsLeft = 11
+                        },
+                        new
+                        {
+                            HotelId = 241,
+                            RoomId = 4,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 242,
+                            RoomId = 1,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 242,
+                            RoomId = 2,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 242,
+                            RoomId = 3,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 242,
+                            RoomId = 4,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 214,
+                            RoomId = 1,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 214,
+                            RoomId = 2,
+                            RoomsLeft = 7
+                        },
+                        new
+                        {
+                            HotelId = 214,
+                            RoomId = 3,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 214,
+                            RoomId = 4,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 243,
+                            RoomId = 1,
+                            RoomsLeft = 13
+                        },
+                        new
+                        {
+                            HotelId = 243,
+                            RoomId = 2,
+                            RoomsLeft = 6
+                        },
+                        new
+                        {
+                            HotelId = 243,
+                            RoomId = 3,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 243,
+                            RoomId = 4,
+                            RoomsLeft = 5
+                        },
+                        new
+                        {
+                            HotelId = 244,
+                            RoomId = 1,
+                            RoomsLeft = 12
+                        },
+                        new
+                        {
+                            HotelId = 244,
+                            RoomId = 2,
+                            RoomsLeft = 9
+                        },
+                        new
+                        {
+                            HotelId = 244,
+                            RoomId = 3,
+                            RoomsLeft = 15
+                        },
+                        new
+                        {
+                            HotelId = 244,
+                            RoomId = 4,
+                            RoomsLeft = 7
                         });
                 });
 
@@ -1732,7 +4231,7 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("OfferDetailsId", "HotelId");
+                    b.HasKey("OfferDetailsId", "HotelId", "DepartureDate");
 
                     b.HasIndex("HotelId");
 
@@ -1749,6 +4248,20 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             OfferDetailsId = 1,
+                            HotelId = 100,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            HotelId = 100,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
                             HotelId = 101,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
@@ -1756,9 +4269,37 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             OfferDetailsId = 1,
+                            HotelId = 101,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            HotelId = 101,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
                             HotelId = 102,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            HotelId = 102,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 1,
+                            HotelId = 102,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
@@ -1770,6 +4311,20 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             OfferDetailsId = 2,
+                            HotelId = 110,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            HotelId = 110,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
                             HotelId = 111,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc)
@@ -1777,9 +4332,37 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             OfferDetailsId = 2,
+                            HotelId = 111,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            HotelId = 111,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
                             HotelId = 112,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            HotelId = 112,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 2,
+                            HotelId = 112,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
@@ -1791,9 +4374,37 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             OfferDetailsId = 3,
+                            HotelId = 120,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            HotelId = 120,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
                             HotelId = 121,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            HotelId = 121,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            HotelId = 121,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
@@ -1804,45 +4415,395 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            OfferDetailsId = 3,
+                            HotelId = 122,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 3,
+                            HotelId = 122,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
                             OfferDetailsId = 4,
                             HotelId = 200,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            HotelId = 200,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 21, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            HotelId = 200,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            HotelId = 215,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            HotelId = 215,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 21, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            HotelId = 215,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            HotelId = 216,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            HotelId = 216,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 21, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            HotelId = 216,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 5,
                             HotelId = 201,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            HotelId = 201,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            HotelId = 201,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            HotelId = 217,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            HotelId = 217,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            HotelId = 217,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            HotelId = 218,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            HotelId = 218,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            HotelId = 218,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 6,
                             HotelId = 202,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 13, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            HotelId = 202,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            HotelId = 202,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            HotelId = 219,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            HotelId = 219,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            HotelId = 219,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            HotelId = 220,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            HotelId = 220,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            HotelId = 220,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 7,
                             HotelId = 203,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 11, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            HotelId = 203,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 18, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            HotelId = 203,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 30, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            HotelId = 221,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            HotelId = 221,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 18, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            HotelId = 221,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 30, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            HotelId = 222,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            HotelId = 222,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 18, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            HotelId = 222,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 30, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 8,
                             HotelId = 204,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 11, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            HotelId = 204,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            HotelId = 204,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            HotelId = 223,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            HotelId = 223,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            HotelId = 223,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            HotelId = 224,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            HotelId = 224,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            HotelId = 224,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 9,
                             HotelId = 205,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            HotelId = 205,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 21, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            HotelId = 205,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            HotelId = 225,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            HotelId = 225,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 21, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            HotelId = 225,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            HotelId = 226,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            HotelId = 226,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 21, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            HotelId = 226,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
@@ -1853,36 +4814,379 @@ namespace eTravelAgencija.Services.Migrations
                         },
                         new
                         {
+                            OfferDetailsId = 10,
+                            HotelId = 206,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            HotelId = 206,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            HotelId = 227,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            HotelId = 227,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            HotelId = 227,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            HotelId = 228,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            HotelId = 228,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            HotelId = 228,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
                             OfferDetailsId = 11,
                             HotelId = 207,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 12, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            HotelId = 207,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            HotelId = 207,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            HotelId = 229,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            HotelId = 229,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            HotelId = 229,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            HotelId = 230,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            HotelId = 230,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            HotelId = 230,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 12,
                             HotelId = 208,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            HotelId = 208,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 18, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            HotelId = 208,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 30, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            HotelId = 231,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            HotelId = 231,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 18, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            HotelId = 231,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 30, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            HotelId = 232,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            HotelId = 232,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 18, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            HotelId = 232,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 30, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 13,
                             HotelId = 209,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            HotelId = 209,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            HotelId = 209,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            HotelId = 233,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            HotelId = 233,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            HotelId = 233,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            HotelId = 234,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            HotelId = 234,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            HotelId = 234,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 31, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 14,
                             HotelId = 210,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            HotelId = 210,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 23, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            HotelId = 210,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 4, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            HotelId = 235,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            HotelId = 235,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 23, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            HotelId = 235,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 4, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            HotelId = 236,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            HotelId = 236,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 23, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            HotelId = 236,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 4, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 15,
                             HotelId = 211,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            HotelId = 211,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            HotelId = 211,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            HotelId = 237,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            HotelId = 237,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            HotelId = 237,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            HotelId = 238,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 9, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            HotelId = 238,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 22, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            HotelId = 238,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            HotelId = 212,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
@@ -1890,22 +5194,183 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             OfferDetailsId = 16,
                             HotelId = 212,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 21, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            HotelId = 212,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            HotelId = 239,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            HotelId = 239,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 21, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            HotelId = 239,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            HotelId = 240,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            HotelId = 240,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 21, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            HotelId = 240,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 2, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 17,
                             HotelId = 213,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            HotelId = 213,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            HotelId = 213,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            HotelId = 241,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            HotelId = 241,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            HotelId = 241,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            HotelId = 242,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            HotelId = 242,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 20, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            HotelId = 242,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 9, 1, 0, 0, 0, 0, DateTimeKind.Utc)
                         },
                         new
                         {
                             OfferDetailsId = 18,
                             HotelId = 214,
                             DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            ReturnDate = new DateTime(2026, 3, 8, 0, 0, 0, 0, DateTimeKind.Utc)
+                            ReturnDate = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            HotelId = 214,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 18, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            HotelId = 214,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 30, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            HotelId = 243,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            HotelId = 243,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 18, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            HotelId = 243,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 30, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            HotelId = 244,
+                            DepartureDate = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            HotelId = 244,
+                            DepartureDate = new DateTime(2026, 5, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 5, 18, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            HotelId = 244,
+                            DepartureDate = new DateTime(2026, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            ReturnDate = new DateTime(2026, 8, 30, 0, 0, 0, 0, DateTimeKind.Utc)
                         });
                 });
 
@@ -1937,191 +5402,506 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 1,
-                            ImageUrl = "firenca_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-1-1/900/600",
                             OfferId = 1,
                             isMain = true
                         },
                         new
                         {
                             Id = 2,
-                            ImageUrl = "firenca_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-1-2/900/600",
                             OfferId = 1,
                             isMain = false
                         },
                         new
                         {
                             Id = 3,
-                            ImageUrl = "firenca_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-1-3/900/600",
                             OfferId = 1,
                             isMain = false
                         },
                         new
                         {
                             Id = 4,
-                            ImageUrl = "firenca_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-1-4/900/600",
                             OfferId = 1,
                             isMain = false
                         },
                         new
                         {
                             Id = 5,
-                            ImageUrl = "santorini_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-2-1/900/600",
                             OfferId = 2,
                             isMain = true
                         },
                         new
                         {
                             Id = 6,
-                            ImageUrl = "santorini_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-2-2/900/600",
                             OfferId = 2,
                             isMain = false
                         },
                         new
                         {
                             Id = 7,
-                            ImageUrl = "santorini_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-2-3/900/600",
                             OfferId = 2,
                             isMain = false
                         },
                         new
                         {
                             Id = 8,
-                            ImageUrl = "santorini_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-2-4/900/600",
                             OfferId = 2,
                             isMain = false
                         },
                         new
                         {
                             Id = 9,
-                            ImageUrl = "istanbul_main.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-3-1/900/600",
                             OfferId = 3,
                             isMain = true
                         },
                         new
                         {
                             Id = 10,
-                            ImageUrl = "istanbul_1.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-3-2/900/600",
                             OfferId = 3,
                             isMain = false
                         },
                         new
                         {
                             Id = 11,
-                            ImageUrl = "istanbul_2.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-3-3/900/600",
                             OfferId = 3,
                             isMain = false
                         },
                         new
                         {
                             Id = 12,
-                            ImageUrl = "istanbul_3.jpg",
+                            ImageUrl = "https://picsum.photos/seed/offer-3-4/900/600",
                             OfferId = 3,
                             isMain = false
                         },
                         new
                         {
-                            Id = 1000,
-                            ImageUrl = "primjer.jpg",
+                            Id = 13,
+                            ImageUrl = "https://picsum.photos/seed/offer-4-1/900/600",
                             OfferId = 4,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1001,
-                            ImageUrl = "primjer.jpg",
+                            Id = 14,
+                            ImageUrl = "https://picsum.photos/seed/offer-4-2/900/600",
+                            OfferId = 4,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ImageUrl = "https://picsum.photos/seed/offer-4-3/900/600",
+                            OfferId = 4,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ImageUrl = "https://picsum.photos/seed/offer-4-4/900/600",
+                            OfferId = 4,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ImageUrl = "https://picsum.photos/seed/offer-5-1/900/600",
                             OfferId = 5,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1002,
-                            ImageUrl = "primjer.jpg",
+                            Id = 18,
+                            ImageUrl = "https://picsum.photos/seed/offer-5-2/900/600",
+                            OfferId = 5,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ImageUrl = "https://picsum.photos/seed/offer-5-3/900/600",
+                            OfferId = 5,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ImageUrl = "https://picsum.photos/seed/offer-5-4/900/600",
+                            OfferId = 5,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 21,
+                            ImageUrl = "https://picsum.photos/seed/offer-6-1/900/600",
                             OfferId = 6,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1003,
-                            ImageUrl = "primjer.jpg",
+                            Id = 22,
+                            ImageUrl = "https://picsum.photos/seed/offer-6-2/900/600",
+                            OfferId = 6,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 23,
+                            ImageUrl = "https://picsum.photos/seed/offer-6-3/900/600",
+                            OfferId = 6,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 24,
+                            ImageUrl = "https://picsum.photos/seed/offer-6-4/900/600",
+                            OfferId = 6,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 25,
+                            ImageUrl = "https://picsum.photos/seed/offer-7-1/900/600",
                             OfferId = 7,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1004,
-                            ImageUrl = "primjer.jpg",
+                            Id = 26,
+                            ImageUrl = "https://picsum.photos/seed/offer-7-2/900/600",
+                            OfferId = 7,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 27,
+                            ImageUrl = "https://picsum.photos/seed/offer-7-3/900/600",
+                            OfferId = 7,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 28,
+                            ImageUrl = "https://picsum.photos/seed/offer-7-4/900/600",
+                            OfferId = 7,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 29,
+                            ImageUrl = "https://picsum.photos/seed/offer-8-1/900/600",
                             OfferId = 8,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1005,
-                            ImageUrl = "primjer.jpg",
+                            Id = 30,
+                            ImageUrl = "https://picsum.photos/seed/offer-8-2/900/600",
+                            OfferId = 8,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 31,
+                            ImageUrl = "https://picsum.photos/seed/offer-8-3/900/600",
+                            OfferId = 8,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 32,
+                            ImageUrl = "https://picsum.photos/seed/offer-8-4/900/600",
+                            OfferId = 8,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 33,
+                            ImageUrl = "https://picsum.photos/seed/offer-9-1/900/600",
                             OfferId = 9,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1006,
-                            ImageUrl = "primjer.jpg",
+                            Id = 34,
+                            ImageUrl = "https://picsum.photos/seed/offer-9-2/900/600",
+                            OfferId = 9,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 35,
+                            ImageUrl = "https://picsum.photos/seed/offer-9-3/900/600",
+                            OfferId = 9,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 36,
+                            ImageUrl = "https://picsum.photos/seed/offer-9-4/900/600",
+                            OfferId = 9,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 37,
+                            ImageUrl = "https://picsum.photos/seed/offer-10-1/900/600",
                             OfferId = 10,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1007,
-                            ImageUrl = "primjer.jpg",
+                            Id = 38,
+                            ImageUrl = "https://picsum.photos/seed/offer-10-2/900/600",
+                            OfferId = 10,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 39,
+                            ImageUrl = "https://picsum.photos/seed/offer-10-3/900/600",
+                            OfferId = 10,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 40,
+                            ImageUrl = "https://picsum.photos/seed/offer-10-4/900/600",
+                            OfferId = 10,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 41,
+                            ImageUrl = "https://picsum.photos/seed/offer-11-1/900/600",
                             OfferId = 11,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1008,
-                            ImageUrl = "primjer.jpg",
+                            Id = 42,
+                            ImageUrl = "https://picsum.photos/seed/offer-11-2/900/600",
+                            OfferId = 11,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 43,
+                            ImageUrl = "https://picsum.photos/seed/offer-11-3/900/600",
+                            OfferId = 11,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 44,
+                            ImageUrl = "https://picsum.photos/seed/offer-11-4/900/600",
+                            OfferId = 11,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 45,
+                            ImageUrl = "https://picsum.photos/seed/offer-12-1/900/600",
                             OfferId = 12,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1009,
-                            ImageUrl = "primjer.jpg",
+                            Id = 46,
+                            ImageUrl = "https://picsum.photos/seed/offer-12-2/900/600",
+                            OfferId = 12,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 47,
+                            ImageUrl = "https://picsum.photos/seed/offer-12-3/900/600",
+                            OfferId = 12,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 48,
+                            ImageUrl = "https://picsum.photos/seed/offer-12-4/900/600",
+                            OfferId = 12,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 49,
+                            ImageUrl = "https://picsum.photos/seed/offer-13-1/900/600",
                             OfferId = 13,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1010,
-                            ImageUrl = "primjer.jpg",
+                            Id = 50,
+                            ImageUrl = "https://picsum.photos/seed/offer-13-2/900/600",
+                            OfferId = 13,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 51,
+                            ImageUrl = "https://picsum.photos/seed/offer-13-3/900/600",
+                            OfferId = 13,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 52,
+                            ImageUrl = "https://picsum.photos/seed/offer-13-4/900/600",
+                            OfferId = 13,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 53,
+                            ImageUrl = "https://picsum.photos/seed/offer-14-1/900/600",
                             OfferId = 14,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1011,
-                            ImageUrl = "primjer.jpg",
+                            Id = 54,
+                            ImageUrl = "https://picsum.photos/seed/offer-14-2/900/600",
+                            OfferId = 14,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 55,
+                            ImageUrl = "https://picsum.photos/seed/offer-14-3/900/600",
+                            OfferId = 14,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 56,
+                            ImageUrl = "https://picsum.photos/seed/offer-14-4/900/600",
+                            OfferId = 14,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 57,
+                            ImageUrl = "https://picsum.photos/seed/offer-15-1/900/600",
                             OfferId = 15,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1012,
-                            ImageUrl = "primjer.jpg",
+                            Id = 58,
+                            ImageUrl = "https://picsum.photos/seed/offer-15-2/900/600",
+                            OfferId = 15,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 59,
+                            ImageUrl = "https://picsum.photos/seed/offer-15-3/900/600",
+                            OfferId = 15,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 60,
+                            ImageUrl = "https://picsum.photos/seed/offer-15-4/900/600",
+                            OfferId = 15,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 61,
+                            ImageUrl = "https://picsum.photos/seed/offer-16-1/900/600",
                             OfferId = 16,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1013,
-                            ImageUrl = "primjer.jpg",
+                            Id = 62,
+                            ImageUrl = "https://picsum.photos/seed/offer-16-2/900/600",
+                            OfferId = 16,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 63,
+                            ImageUrl = "https://picsum.photos/seed/offer-16-3/900/600",
+                            OfferId = 16,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 64,
+                            ImageUrl = "https://picsum.photos/seed/offer-16-4/900/600",
+                            OfferId = 16,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 65,
+                            ImageUrl = "https://picsum.photos/seed/offer-17-1/900/600",
                             OfferId = 17,
                             isMain = true
                         },
                         new
                         {
-                            Id = 1014,
-                            ImageUrl = "primjer.jpg",
+                            Id = 66,
+                            ImageUrl = "https://picsum.photos/seed/offer-17-2/900/600",
+                            OfferId = 17,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 67,
+                            ImageUrl = "https://picsum.photos/seed/offer-17-3/900/600",
+                            OfferId = 17,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 68,
+                            ImageUrl = "https://picsum.photos/seed/offer-17-4/900/600",
+                            OfferId = 17,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 69,
+                            ImageUrl = "https://picsum.photos/seed/offer-18-1/900/600",
                             OfferId = 18,
                             isMain = true
+                        },
+                        new
+                        {
+                            Id = 70,
+                            ImageUrl = "https://picsum.photos/seed/offer-18-2/900/600",
+                            OfferId = 18,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 71,
+                            ImageUrl = "https://picsum.photos/seed/offer-18-3/900/600",
+                            OfferId = 18,
+                            isMain = false
+                        },
+                        new
+                        {
+                            Id = 72,
+                            ImageUrl = "https://picsum.photos/seed/offer-18-4/900/600",
+                            OfferId = 18,
+                            isMain = false
                         });
                 });
 
@@ -2150,112 +5930,847 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             OfferDetailsId = 1,
                             DayNumber = 1,
-                            DayDescription = "Polazak u ranim jutarnjim satima. Pauze tokom puta. Dolazak u Firencu u poslijepodnevnim satima. Smještaj u hotel i slobodno vrijeme za odmor ili šetnju centrom grada.",
+                            DayDescription = "Polazak u ranim jutarnjim satima. Pauze tokom puta. Dolazak u Firencu u poslijepodnevnim satima. Smještaj u hotel i slobodno vrijeme.",
                             DayTitle = "Polazak i dolazak u Firencu"
                         },
                         new
                         {
                             OfferDetailsId = 1,
                             DayNumber = 2,
-                            DayDescription = "Doručak. Organizovano razgledanje: Katedrala Santa Maria del Fiore, Piazza della Signoria, Palazzo Vecchio i Ponte Vecchio. Popodne slobodno vrijeme za individualno istraživanje i kupovinu suvenira.",
+                            DayDescription = "Razgledanje: Katedrala Santa Maria del Fiore, Piazza della Signoria, Palazzo Vecchio i Ponte Vecchio.",
                             DayTitle = "Upoznavanje sa starim gradom"
                         },
                         new
                         {
                             OfferDetailsId = 1,
                             DayNumber = 3,
-                            DayDescription = "Posjeta čuvenoj galeriji Uffizi – remek-djela renesansnih umjetnika: Botticelli, Michelangelo, Da Vinci. Nakon obilaska, slobodno vrijeme za ručak u lokalnim restoranima i uživanje u talijanskoj kuhinji.",
-                            DayTitle = "Galerija Uffizi i slobodno popodne"
+                            DayDescription = "Posjeta galeriji Uffizi i slobodno vrijeme za individualne aktivnosti.",
+                            DayTitle = "Galerija Uffizi"
                         },
                         new
                         {
                             OfferDetailsId = 1,
                             DayNumber = 4,
-                            DayDescription = "Mogućnost fakultativnog izleta u Pisu i posjete Krivom tornju. Alternativno, slobodan dan u Firenci za šoping, obilazak muzeja, degustaciju vina ili šetnju slikovitim ulicama.",
+                            DayDescription = "Fakultativni izlet u Pisu ili slobodno vrijeme u Firenci.",
                             DayTitle = "Izlet u Pisu ili slobodan dan"
                         },
                         new
                         {
                             OfferDetailsId = 1,
                             DayNumber = 5,
-                            DayDescription = "Check-out iz hotela i polazak prema kući. Pauze tokom puta. Dolazak u kasnim večernjim satima.",
+                            DayDescription = "Odjava iz hotela i povratak kući.",
                             DayTitle = "Povratak kući"
                         },
                         new
                         {
                             OfferDetailsId = 2,
                             DayNumber = 1,
-                            DayDescription = "Let ili transfer do Santorinija. Smještaj u hotel. Slobodno vrijeme za odmor, kupanje ili večernju šetnju rivom u Firi.",
+                            DayDescription = "Dolazak i smještaj u hotel.",
                             DayTitle = "Dolazak na Santorini"
                         },
                         new
                         {
                             OfferDetailsId = 2,
                             DayNumber = 2,
-                            DayDescription = "Nakon doručka slijedi obilazak Fire: uske bijele ulice, crkve sa plavim kupolama i prekrasni vidikovci. Popodne slobodno vrijeme za kupovinu ili posjetu lokalnim tavernama.",
+                            DayDescription = "Obilazak Fire i slobodno vrijeme.",
                             DayTitle = "Fira – glavni grad ostrva"
                         },
                         new
                         {
                             OfferDetailsId = 2,
                             DayNumber = 3,
-                            DayDescription = "Prijepodnevno slobodno vrijeme za plažu. U poslijepodnevnim satima odlazak u Oiu – najpoznatije mjesto na Santoriniju. Uživanje u fantastičnom zalasku sunca.",
-                            DayTitle = "Oia – najljepši zalazak sunca"
+                            DayDescription = "Posjeta Oiji i uživanje u zalasku sunca.",
+                            DayTitle = "Oia – zalazak sunca"
                         },
                         new
                         {
                             OfferDetailsId = 2,
                             DayNumber = 4,
-                            DayDescription = "Obilazak vulkanskih plaža: Red Beach i Perissa (Black Beach). Slobodno vrijeme za kupanje i sunčanje. Povratak u hotel u večernjim satima.",
-                            DayTitle = "Crna i crvena plaža"
+                            DayDescription = "Obilazak crne i crvene plaže.",
+                            DayTitle = "Vulkanske plaže"
                         },
                         new
                         {
                             OfferDetailsId = 2,
                             DayNumber = 5,
-                            DayDescription = "Izlet brodom do vulkanskog ostrva Nea Kameni, šetnja kraterom i kupanje u toplim termalnim izvorima. Povratak brodom u luku.",
-                            DayTitle = "Vulkansko ostrvo i termalni izvori"
+                            DayDescription = "Izlet brodom i termalni izvori.",
+                            DayTitle = "Vulkansko ostrvo"
                         },
                         new
                         {
                             OfferDetailsId = 2,
                             DayNumber = 6,
-                            DayDescription = "Dan predviđen za odmor, kupanje ili fakultativne aktivnosti – iznajmljivanje quada, degustacije vina, panoramska vožnja ostrvom.",
+                            DayDescription = "Odmor ili fakultativne aktivnosti.",
                             DayTitle = "Slobodan dan"
                         },
                         new
                         {
                             OfferDetailsId = 2,
                             DayNumber = 7,
-                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayDescription = "Odjava iz hotela i povratak kući.",
                             DayTitle = "Povratak kući"
                         },
                         new
                         {
                             OfferDetailsId = 3,
                             DayNumber = 1,
-                            DayDescription = "Dolazak u Istanbul i smještaj u hotel. Slobodno vrijeme za odmor. Uveče mogućnost odlaska na večeru u tradicionalni turski restoran.",
+                            DayDescription = "Dolazak i smještaj u hotel.",
                             DayTitle = "Dolazak u Istanbul"
                         },
                         new
                         {
                             OfferDetailsId = 3,
                             DayNumber = 2,
-                            DayDescription = "Obilazak najvećih atrakcija: Aja Sofija, Sultanahmet džamija, Hipodrom i Topkapi palata. Popodne slobodno vrijeme ili posjeta Grand Bazaru.",
-                            DayTitle = "Stari dio Istanbula – Sultanahmet"
+                            DayDescription = "Aja Sofija, Plava džamija i Topkapi palata.",
+                            DayTitle = "Sultanahmet"
                         },
                         new
                         {
                             OfferDetailsId = 3,
                             DayNumber = 3,
-                            DayDescription = "Jutarnje krstarenje Bosforom – pogled na palače, mostove i obalu. U popodnevnim satima odlazak na Taksim trg i šetnja Istiklal ulicom.",
-                            DayTitle = "Bosfor krstarenje i Taksim"
+                            DayDescription = "Krstarenje Bosforom i šetnja Istiklal ulicom.",
+                            DayTitle = "Bosfor i Taksim"
                         },
                         new
                         {
                             OfferDetailsId = 3,
                             DayNumber = 4,
-                            DayDescription = "Slobodno vrijeme do polaska. Odjava iz hotela i povratak kući.",
+                            DayDescription = "Odjava iz hotela i povratak kući.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Barcelona, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Barcelona"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Barcelona.",
+                            DayTitle = "Boravak u Barcelona"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Barcelona.",
+                            DayTitle = "Boravak u Barcelona"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Barcelona.",
+                            DayTitle = "Boravak u Barcelona"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Barcelona.",
+                            DayTitle = "Boravak u Barcelona"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            DayNumber = 6,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Barcelona.",
+                            DayTitle = "Boravak u Barcelona"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            DayNumber = 7,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Barcelona.",
+                            DayTitle = "Boravak u Barcelona"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 4,
+                            DayNumber = 8,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Paris, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Paris"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Paris.",
+                            DayTitle = "Boravak u Paris"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Paris.",
+                            DayTitle = "Boravak u Paris"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Paris.",
+                            DayTitle = "Boravak u Paris"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Paris.",
+                            DayTitle = "Boravak u Paris"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 5,
+                            DayNumber = 6,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Prague, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Prague.",
+                            DayTitle = "Boravak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Prague.",
+                            DayTitle = "Boravak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Prague.",
+                            DayTitle = "Boravak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Prague.",
+                            DayTitle = "Boravak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 6,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Prague.",
+                            DayTitle = "Boravak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 7,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Prague.",
+                            DayTitle = "Boravak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 8,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Prague.",
+                            DayTitle = "Boravak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 9,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Prague.",
+                            DayTitle = "Boravak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 10,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Prague.",
+                            DayTitle = "Boravak u Prague"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 6,
+                            DayNumber = 11,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Vienna, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Vienna"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Vienna.",
+                            DayTitle = "Boravak u Vienna"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Vienna.",
+                            DayTitle = "Boravak u Vienna"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Vienna.",
+                            DayTitle = "Boravak u Vienna"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Vienna.",
+                            DayTitle = "Boravak u Vienna"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            DayNumber = 6,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Vienna.",
+                            DayTitle = "Boravak u Vienna"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            DayNumber = 7,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Vienna.",
+                            DayTitle = "Boravak u Vienna"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            DayNumber = 8,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Vienna.",
+                            DayTitle = "Boravak u Vienna"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 7,
+                            DayNumber = 9,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Amsterdam, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Amsterdam"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Amsterdam.",
+                            DayTitle = "Boravak u Amsterdam"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Amsterdam.",
+                            DayTitle = "Boravak u Amsterdam"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Amsterdam.",
+                            DayTitle = "Boravak u Amsterdam"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Amsterdam.",
+                            DayTitle = "Boravak u Amsterdam"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            DayNumber = 6,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Amsterdam.",
+                            DayTitle = "Boravak u Amsterdam"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            DayNumber = 7,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Amsterdam.",
+                            DayTitle = "Boravak u Amsterdam"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            DayNumber = 8,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Amsterdam.",
+                            DayTitle = "Boravak u Amsterdam"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 8,
+                            DayNumber = 9,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u London, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u London"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu London.",
+                            DayTitle = "Boravak u London"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu London.",
+                            DayTitle = "Boravak u London"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 9,
+                            DayNumber = 4,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Dubai, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Dubai"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Dubai.",
+                            DayTitle = "Boravak u Dubai"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Dubai.",
+                            DayTitle = "Boravak u Dubai"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Dubai.",
+                            DayTitle = "Boravak u Dubai"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Dubai.",
+                            DayTitle = "Boravak u Dubai"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            DayNumber = 6,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Dubai.",
+                            DayTitle = "Boravak u Dubai"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 10,
+                            DayNumber = 7,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Cairo, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Cairo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Cairo.",
+                            DayTitle = "Boravak u Cairo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Cairo.",
+                            DayTitle = "Boravak u Cairo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Cairo.",
+                            DayTitle = "Boravak u Cairo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Cairo.",
+                            DayTitle = "Boravak u Cairo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 6,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Cairo.",
+                            DayTitle = "Boravak u Cairo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 7,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Cairo.",
+                            DayTitle = "Boravak u Cairo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 8,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Cairo.",
+                            DayTitle = "Boravak u Cairo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 9,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Cairo.",
+                            DayTitle = "Boravak u Cairo"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 11,
+                            DayNumber = 10,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Budapest, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Budapest"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Budapest.",
+                            DayTitle = "Boravak u Budapest"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Budapest.",
+                            DayTitle = "Boravak u Budapest"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Budapest.",
+                            DayTitle = "Boravak u Budapest"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Budapest.",
+                            DayTitle = "Boravak u Budapest"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            DayNumber = 6,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Budapest.",
+                            DayTitle = "Boravak u Budapest"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 12,
+                            DayNumber = 7,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Krakow, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Krakow"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Krakow.",
+                            DayTitle = "Boravak u Krakow"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Krakow.",
+                            DayTitle = "Boravak u Krakow"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Krakow.",
+                            DayTitle = "Boravak u Krakow"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Krakow.",
+                            DayTitle = "Boravak u Krakow"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 13,
+                            DayNumber = 6,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Zanzibar, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Zanzibar"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Zanzibar.",
+                            DayTitle = "Boravak u Zanzibar"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Zanzibar.",
+                            DayTitle = "Boravak u Zanzibar"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 14,
+                            DayNumber = 4,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Hurghada, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Hurghada"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Hurghada.",
+                            DayTitle = "Boravak u Hurghada"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Hurghada.",
+                            DayTitle = "Boravak u Hurghada"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Hurghada.",
+                            DayTitle = "Boravak u Hurghada"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Hurghada.",
+                            DayTitle = "Boravak u Hurghada"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 15,
+                            DayNumber = 6,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Lisbon, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Lisbon"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Lisbon.",
+                            DayTitle = "Boravak u Lisbon"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Lisbon.",
+                            DayTitle = "Boravak u Lisbon"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Lisbon.",
+                            DayTitle = "Boravak u Lisbon"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Lisbon.",
+                            DayTitle = "Boravak u Lisbon"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            DayNumber = 6,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Lisbon.",
+                            DayTitle = "Boravak u Lisbon"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            DayNumber = 7,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Lisbon.",
+                            DayTitle = "Boravak u Lisbon"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 16,
+                            DayNumber = 8,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Athens, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Athens"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Athens.",
+                            DayTitle = "Boravak u Athens"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Athens.",
+                            DayTitle = "Boravak u Athens"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 17,
+                            DayNumber = 4,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
+                            DayTitle = "Povratak kući"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            DayNumber = 1,
+                            DayDescription = "Dolazak u Split, smještaj u hotel i slobodno vrijeme.",
+                            DayTitle = "Dolazak u Split"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            DayNumber = 2,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Split.",
+                            DayTitle = "Boravak u Split"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            DayNumber = 3,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Split.",
+                            DayTitle = "Boravak u Split"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            DayNumber = 4,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Split.",
+                            DayTitle = "Boravak u Split"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            DayNumber = 5,
+                            DayDescription = "Slobodno vrijeme za razgledanje, izlete i uživanje u gradu Split.",
+                            DayTitle = "Boravak u Split"
+                        },
+                        new
+                        {
+                            OfferDetailsId = 18,
+                            DayNumber = 6,
+                            DayDescription = "Odjava iz hotela i povratak kući prema planu putovanja.",
                             DayTitle = "Povratak kući"
                         });
                 });
@@ -2765,6 +7280,9 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<double>("DiscountValue")
+                        .HasColumnType("double precision");
+
                     b.Property<int>("HotelId")
                         .HasColumnType("integer");
 
@@ -2793,6 +7311,9 @@ namespace eTravelAgencija.Services.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("isDiscountUsed")
+                        .HasColumnType("boolean");
+
                     b.Property<bool>("isFirstRatePaid")
                         .HasColumnType("boolean");
 
@@ -2816,6 +7337,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2000,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 100,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -2825,6 +7347,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 450m,
                             UserId = 5,
                             addedNeeds = "Vegetarijanski meni",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -2832,6 +7355,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2001,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 110,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -2841,6 +7365,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 900m,
                             UserId = 6,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = false,
                             isFullPaid = true
                         },
@@ -2848,6 +7373,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2002,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 120,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -2857,6 +7383,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 350m,
                             UserId = 7,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -2864,6 +7391,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2003,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 111,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -2873,6 +7401,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 900m,
                             UserId = 8,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = false,
                             isFullPaid = true
                         },
@@ -2880,6 +7409,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2004,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 101,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -2889,6 +7419,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 450m,
                             UserId = 9,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -2896,6 +7427,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2005,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 122,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -2905,6 +7437,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 350m,
                             UserId = 10,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -2912,6 +7445,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2006,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 102,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -2921,6 +7455,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 450m,
                             UserId = 11,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = false,
                             isFullPaid = true
                         },
@@ -2928,6 +7463,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2007,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 112,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -2937,6 +7473,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 900m,
                             UserId = 12,
                             addedNeeds = "Pristup teretani",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -2944,6 +7481,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2008,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 120,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -2953,6 +7491,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 350m,
                             UserId = 13,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = false,
                             isFullPaid = true
                         },
@@ -2960,6 +7499,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2009,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 101,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -2969,6 +7509,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 450m,
                             UserId = 14,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -2976,6 +7517,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2010,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 110,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -2985,6 +7527,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 900m,
                             UserId = 15,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -2992,6 +7535,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2011,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 121,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -3001,6 +7545,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 350m,
                             UserId = 16,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -3008,6 +7553,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2012,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 102,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -3017,6 +7563,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 450m,
                             UserId = 17,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -3024,6 +7571,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2013,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 111,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -3033,6 +7581,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 900m,
                             UserId = 18,
                             addedNeeds = "Bez glutena",
+                            isDiscountUsed = false,
                             isFirstRatePaid = false,
                             isFullPaid = true
                         },
@@ -3040,6 +7589,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2014,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 120,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -3049,6 +7599,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 350m,
                             UserId = 19,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -3056,6 +7607,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2015,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 101,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -3065,6 +7617,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 450m,
                             UserId = 20,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = false,
                             isFullPaid = true
                         },
@@ -3072,6 +7625,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2016,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 112,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -3081,6 +7635,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 900m,
                             UserId = 21,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -3088,6 +7643,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2017,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 122,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -3097,6 +7653,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 350m,
                             UserId = 22,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -3104,6 +7661,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2018,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 100,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -3113,6 +7671,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 450m,
                             UserId = 23,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = false
                         },
@@ -3120,6 +7679,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2019,
                             CreatedAt = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 111,
                             IncludeInsurance = true,
                             IsActive = true,
@@ -3129,6 +7689,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 900m,
                             UserId = 24,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = false,
                             isFullPaid = true
                         },
@@ -3136,6 +7697,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 3000,
                             CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 100,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -3145,6 +7707,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 0m,
                             UserId = 6,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = true
                         },
@@ -3152,6 +7715,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 3001,
                             CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 110,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -3161,6 +7725,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 0m,
                             UserId = 6,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = true
                         },
@@ -3168,6 +7733,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 3002,
                             CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DiscountValue = 0.0,
                             HotelId = 120,
                             IncludeInsurance = false,
                             IsActive = true,
@@ -3177,6 +7743,7 @@ namespace eTravelAgencija.Services.Migrations
                             TotalPrice = 0m,
                             UserId = 6,
                             addedNeeds = "",
+                            isDiscountUsed = false,
                             isFirstRatePaid = true,
                             isFullPaid = true
                         });
@@ -3337,6 +7904,12 @@ namespace eTravelAgencija.Services.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("text");
 
+                    b.Property<string>("PasswordResetToken")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("PasswordResetTokenExpires")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("text");
 
@@ -3372,8 +7945,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c069849e-f9dd-431d-86f5-05ab70beba8d",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 15, 508, DateTimeKind.Utc).AddTicks(9658),
+                            ConcurrencyStamp = "1d6c2450-13d6-426a-9161-f6c37c90b0dc",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 12, 726, DateTimeKind.Utc).AddTicks(7420),
                             DateBirth = new DateTime(1990, 5, 10, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "radnik@etravel.com",
                             EmailConfirmed = true,
@@ -3383,7 +7956,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "RADNIK@ETRAVEL.COM",
                             NormalizedUserName = "RADNIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAfg4af6Q8D7B80KpNxJhEr27PRM9888PbO0P10RxEVMRpie1knJYMTqGC5AGY3kww==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGsvY9qh6eP5MEnbS4iljrYPRpP3abZfXyTxaR8mfZCbewXnaOAqfgoFHwIdlROxQw==",
                             PhoneNumber = "+38761111111",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3394,8 +7967,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "30899324-2d0c-4612-bc2a-a272c7392d5a",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 15, 594, DateTimeKind.Utc).AddTicks(9873),
+                            ConcurrencyStamp = "880eb383-1c40-4e52-942a-1db105d528a2",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 12, 796, DateTimeKind.Utc).AddTicks(2254),
                             DateBirth = new DateTime(1985, 3, 20, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "direktor@etravel.com",
                             EmailConfirmed = true,
@@ -3405,7 +7978,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "DIREKTOR@ETRAVEL.COM",
                             NormalizedUserName = "DIREKTOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKTDCGYIDWKJ7ld5Gk5Oe3WGHXwr609gVtf7j99NzK69/fnpAKkN2lw13iT1nn8Ocg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN7yLxbr5aCz+RNAtIMMCSe0PTNfJAZde44gPb0DkDRhNw1M0ead5izf45LZA/nbiA==",
                             PhoneNumber = "+38762222222",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3416,8 +7989,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 4,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0aa13be6-5333-4b5e-a983-2fac1746bdf6",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 15, 662, DateTimeKind.Utc).AddTicks(270),
+                            ConcurrencyStamp = "e8d4d7fe-2c41-4026-9d1b-c10d584deaf4",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 12, 867, DateTimeKind.Utc).AddTicks(4508),
                             DateBirth = new DateTime(2002, 11, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "korisnik@etravel.com",
                             EmailConfirmed = true,
@@ -3427,7 +8000,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KORISNIK@ETRAVEL.COM",
                             NormalizedUserName = "KORISNIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ8pDlcEKosPltQagHcfB7NR73D2gK9YhjeQxQb9d0walVueViGW/PKejrPDPzAM8w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEF7/D1/Y+8M5Sicpj27CblHnfEi0NdWoStTaxyoEzlpSiDLLY7H9HwsSoIgbk+SRuA==",
                             PhoneNumber = "+38763333333",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3438,8 +8011,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 5,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e532d22d-d4c5-4132-92b3-c298dd9f8592",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 15, 729, DateTimeKind.Utc).AddTicks(7404),
+                            ConcurrencyStamp = "c9200a49-e7c3-4df6-ae45-d018f73e4bc4",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 12, 932, DateTimeKind.Utc).AddTicks(694),
                             DateBirth = new DateTime(1998, 4, 12, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "maja.petrovic@etravel.com",
                             EmailConfirmed = true,
@@ -3449,7 +8022,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MAJA.PETROVIC@ETRAVEL.COM",
                             NormalizedUserName = "MAJA.PETROVIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHQCul9wi3PBNWQlTdrNqCj6ty+IgAwhmDpgqBk/bGP39JjHNVrgw/60UUK+gVMzJQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKrZJPZ/F/kqUbj00V9ZT+fkn2q8DKtVmX/knOXsO1J2eoqbqpKSi8VGgBUzXfUtiQ==",
                             PhoneNumber = "+38761555111",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3460,8 +8033,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 6,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "666d0569-ed04-43d8-9bfc-855adaa42aaa",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 15, 797, DateTimeKind.Utc).AddTicks(8918),
+                            ConcurrencyStamp = "55c4a623-5aca-48fb-b349-590f3350b192",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 12, 997, DateTimeKind.Utc).AddTicks(8773),
                             DateBirth = new DateTime(1995, 9, 8, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "edin.mesic@etravel.com",
                             EmailConfirmed = true,
@@ -3471,7 +8044,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EDIN.MESIC@ETRAVEL.COM",
                             NormalizedUserName = "EDIN.MESIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEzMw2jVp+UrNAnh6J0OxQcRCFy3qxt/PL0neFNqH/+NB63Kt6YbI44ieZVi5RUpoA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAfUMHxKwA0FGvXEjj0lYrCRgktJzJ7O7i0YYVlEI+z0oPvbYa1T8gVGaUv225a1oQ==",
                             PhoneNumber = "+38761666123",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3482,8 +8055,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 7,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e7430115-865e-4c4f-ada6-9946eeb38845",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 15, 870, DateTimeKind.Utc).AddTicks(7148),
+                            ConcurrencyStamp = "e650112c-483d-4135-b45b-6c117193d844",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 69, DateTimeKind.Utc).AddTicks(278),
                             DateBirth = new DateTime(2000, 1, 22, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "lana.kovac@etravel.com",
                             EmailConfirmed = true,
@@ -3493,7 +8066,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "LANA.KOVAC@ETRAVEL.COM",
                             NormalizedUserName = "LANA.KOVAC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC0WPJNpb2ncMJteZjZ2rdEsgQJ1wQZR2yb/mQezI0na5cE7U6BfDducVYgGpokI0A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN0ACIKMTi54YBcUFc0DLcCRt+OEhBNVgCrn6snek9DvJTHHr4paGDk/F+sDeTfYIQ==",
                             PhoneNumber = "+38761777141",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3504,8 +8077,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 8,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a52624b0-5a57-48fb-b08e-cfd26b0463d0",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 15, 951, DateTimeKind.Utc).AddTicks(3786),
+                            ConcurrencyStamp = "1fbe7bc7-e7f6-4931-8a8c-426ef905f7fe",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 137, DateTimeKind.Utc).AddTicks(2929),
                             DateBirth = new DateTime(1993, 6, 30, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "haris.becirovic@etravel.com",
                             EmailConfirmed = true,
@@ -3515,7 +8088,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "HARIS.BECIROVIC@ETRAVEL.COM",
                             NormalizedUserName = "HARIS.BECIROVIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEO4iM3cvqDR4sevwraVHUrD4PZ3LURYDMy5QXHUNdP50/wquenjrE8bcVtLmlwyjBw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDXlqveoLfs1swsgoebwg03C/aFur/BEN5Rj4WZlHl6zDrLGKh6iJ9UrrC46SPjz0w==",
                             PhoneNumber = "+38761888222",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3526,8 +8099,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 9,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1c4e9f0a-f8e0-494a-ac2e-6296972a7072",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 56, DateTimeKind.Utc).AddTicks(9221),
+                            ConcurrencyStamp = "39bd67ab-6a51-47ba-a928-9db1c50619ae",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 203, DateTimeKind.Utc).AddTicks(9991),
                             DateBirth = new DateTime(1999, 2, 14, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "amira.karic@etravel.com",
                             EmailConfirmed = true,
@@ -3537,7 +8110,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AMIRA.KARIC@ETRAVEL.COM",
                             NormalizedUserName = "AMIRA.KARIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAxozcirE9e5mlLBbxjAo62xubifPElX2mBUZNMFM0cBwiVfbftT3fg2dDTW0n4HSg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENqsyoXgb5qZXqJpunY2mmCmF70s+retGZpR2l2jxJtQ2qb7ui/tSMeO8OQ2lCVF/g==",
                             PhoneNumber = "+38761999444",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3548,8 +8121,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 10,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3dfdc0da-cfc5-4eca-99e5-f070d073e27d",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 124, DateTimeKind.Utc).AddTicks(6593),
+                            ConcurrencyStamp = "93c07501-b22b-48c9-ab7e-1363bd7e40b5",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 261, DateTimeKind.Utc).AddTicks(2920),
                             DateBirth = new DateTime(1997, 5, 19, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "tarik.suljic@etravel.com",
                             EmailConfirmed = true,
@@ -3559,7 +8132,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TARIK.SULJIC@ETRAVEL.COM",
                             NormalizedUserName = "TARIK.SULJIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMgFqaShPqhZW3rXRNDXwyuncNyA1GHMf1vU9TlE3L/GYmKxq9zxv2KhP5NkOcSiMQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIB2BTObUfPB8kEGRx38FJwP5CmLhWG61TboODc5DN3OrU8mjTqFl3ZenqNyChMxgA==",
                             PhoneNumber = "+38762011223",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3570,8 +8143,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 11,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "94180b6a-1fdb-47c5-86c7-97f862fa2948",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 194, DateTimeKind.Utc).AddTicks(5882),
+                            ConcurrencyStamp = "2832c4db-f595-47d9-a0e2-8bc65f6d8483",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 322, DateTimeKind.Utc).AddTicks(6381),
                             DateBirth = new DateTime(2001, 10, 11, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "selma.babic@etravel.com",
                             EmailConfirmed = true,
@@ -3581,7 +8154,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SELMA.BABIC@ETRAVEL.COM",
                             NormalizedUserName = "SELMA.BABIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDTuKMsqLM0OAu/Ls8ht8MXNGHFkW3krRycF1LavdnyJ3KByOIhpNT6SX4UDHYnN8g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOqRtXjIR+Utlzu1kPeCPT6msSbKopb5PUun3R93Ymxq1j7KQdOOoQrmrR9h+QUDmA==",
                             PhoneNumber = "+38762044321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3592,8 +8165,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 12,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "92d31bab-151d-4c0f-b8cc-61eed433e9ab",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 272, DateTimeKind.Utc).AddTicks(6746),
+                            ConcurrencyStamp = "a627a657-af0c-4091-9df6-e4a17083eefd",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 382, DateTimeKind.Utc).AddTicks(6747),
                             DateBirth = new DateTime(1994, 12, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "nedim.ceric@etravel.com",
                             EmailConfirmed = true,
@@ -3603,7 +8176,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NEDIM.CERIC@ETRAVEL.COM",
                             NormalizedUserName = "NEDIM.CERIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFBaQ3TgFMjfgTDF7RCwC6dvVlzv8MhBNe7AbQPvPW5EVYleUjVYdEqDs82Ud0Wz1g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJUS1+vjm/My2dzBF1LbS7wyGyTV6b1tNpuY3rmxqhaBCVOtY30PIxYe/LBLqsM0Ug==",
                             PhoneNumber = "+38762077311",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3614,8 +8187,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 13,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "92512a16-b9f0-46c5-bb03-0474a05a3f9f",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 379, DateTimeKind.Utc).AddTicks(6479),
+                            ConcurrencyStamp = "baacd044-aa6b-48d7-925e-939d91fdcdf2",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 442, DateTimeKind.Utc).AddTicks(2599),
                             DateBirth = new DateTime(1996, 11, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "alma.vujic@etravel.com",
                             EmailConfirmed = true,
@@ -3625,7 +8198,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ALMA.VUJIC@ETRAVEL.COM",
                             NormalizedUserName = "ALMA.VUJIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBjRaeH95zxNsvYHUctUXmf2Q0Qu6o2EhmmuGl5cxs8W0oBjf9DEUIgidjtETJieNQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAED+OnVXVBpjECuI4YlJXG5Vlvm7AVbN+GsHgMOmIopebWEvTCW3v6HwfznmDa/01sg==",
                             PhoneNumber = "+38762111333",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3636,8 +8209,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 14,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6d72df08-b234-4865-a29a-e1fd6367b67f",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 460, DateTimeKind.Utc).AddTicks(2730),
+                            ConcurrencyStamp = "8cd1bfa6-8d81-4859-a0be-b76897a1a4c0",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 504, DateTimeKind.Utc).AddTicks(9690),
                             DateBirth = new DateTime(1992, 7, 4, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "mirza.drace@etravel.com",
                             EmailConfirmed = true,
@@ -3647,7 +8220,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MIRZA.DRACE@ETRAVEL.COM",
                             NormalizedUserName = "MIRZA.DRACE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJaUqmug7jMKDnNv06bktAmyUKaB5hW6QJnJSbMcWg05uTmIQAFlricMKET6sUmGeQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBI0yD4+mjdDXu3DuwdoEVDcjBT2qqbbVei6ZsCXupY25896RwxXqQN06t4GUkfJPQ==",
                             PhoneNumber = "+38762144555",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3658,8 +8231,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 15,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5e213739-74cd-4653-92e4-9b3dae1fd406",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 561, DateTimeKind.Utc).AddTicks(5308),
+                            ConcurrencyStamp = "68a4bd03-0f11-4f2d-8361-76909d14fc11",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 566, DateTimeKind.Utc).AddTicks(2228),
                             DateBirth = new DateTime(2000, 6, 17, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "melisa.nuhanovic@etravel.com",
                             EmailConfirmed = true,
@@ -3669,7 +8242,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MELISA.NUHANOVIC@ETRAVEL.COM",
                             NormalizedUserName = "MELISA.NUHANOVIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHIFwL2Jtqo3AKdkWXZ//6nRl6w5CkA71/NMaWL4jdiRNxM8Ijw01YTRKVIcWYdsAw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJeeQi4rh3dXv+9i3qlEYvW2z1R4pptCtAfcFZi4OQyBK6Ds8m3FP7EI6lXKRdNW5g==",
                             PhoneNumber = "+38762200333",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3680,8 +8253,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 16,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a170f0f5-9787-4abd-87c3-10cc3d38c9b6",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 642, DateTimeKind.Utc).AddTicks(7469),
+                            ConcurrencyStamp = "61ec2961-bfe2-4b27-ba26-acff4fed9a64",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 690, DateTimeKind.Utc).AddTicks(1543),
                             DateBirth = new DateTime(1991, 3, 29, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "almin.kosuta@etravel.com",
                             EmailConfirmed = true,
@@ -3691,7 +8264,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ALMIN.KOSUTA@ETRAVEL.COM",
                             NormalizedUserName = "ALMIN.KOSUTA",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOVSD5tAmoE2pqQuIaklHWyZoJ7TKl1j8iJa1Ce11H7+m+nF8oQuE4IFkhoZT6kn7Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJEImTKS5eaWPMinqsjzsvbMN+mVi6E3I7jmDuQ0fLIeT/ArxXGiWHx3n7s7XqQ+gQ==",
                             PhoneNumber = "+38762255677",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3702,8 +8275,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 17,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "80149eb2-7eac-4edf-983d-929942135b95",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 719, DateTimeKind.Utc).AddTicks(3184),
+                            ConcurrencyStamp = "e760d706-97b8-49d1-b01a-cef5258710c0",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 761, DateTimeKind.Utc).AddTicks(4654),
                             DateBirth = new DateTime(1998, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "dina.hodzic@etravel.com",
                             EmailConfirmed = true,
@@ -3713,7 +8286,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "DINA.HODZIC@ETRAVEL.COM",
                             NormalizedUserName = "DINA.HODZIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPfoFJGiNrHhSpxOf5zb7DCujghE7qXSHa6usFvcIJFvYVTSnZIyahgSAToXqZ2xKA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBvV6uAf5MwcUABoh00vBWIZiC+KvrwpqcgrbJXY8jxVqaLAAGZt8S9ZtIwJh9qkNQ==",
                             PhoneNumber = "+38762277991",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3724,8 +8297,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 18,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "93b8fea5-a835-4bcd-9341-1ddde003517b",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 779, DateTimeKind.Utc).AddTicks(8079),
+                            ConcurrencyStamp = "b4021f64-3f92-4384-b4ee-ff631c235cae",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 831, DateTimeKind.Utc).AddTicks(3737),
                             DateBirth = new DateTime(1997, 2, 8, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "alem.celik@etravel.com",
                             EmailConfirmed = true,
@@ -3735,7 +8308,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ALEM.CELIK@ETRAVEL.COM",
                             NormalizedUserName = "ALEM.CELIK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEF1g/32XWQu2vIBKKpIGIIJrZqFl96j9wmscfgr/fmzZgJafRbYiX+3XWJ6tWwuxmQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECPSCNBwJUMaLyNSITh3YmiboBy/GC9cFmS09EMiaZFBDf+UC9wsVms10MpQi7rYMQ==",
                             PhoneNumber = "+38762300990",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3746,8 +8319,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 19,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bd94269c-d4ee-4a48-8558-d697d2becca4",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 844, DateTimeKind.Utc).AddTicks(237),
+                            ConcurrencyStamp = "ddfcbec5-0e7e-4d02-aad8-78c4f3c7c39f",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 898, DateTimeKind.Utc).AddTicks(1920),
                             DateBirth = new DateTime(2001, 1, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "lejla.avdic@etravel.com",
                             EmailConfirmed = true,
@@ -3757,7 +8330,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "LEJLA.AVDIC@ETRAVEL.COM",
                             NormalizedUserName = "LEJLA.AVDIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPVvHw0EH33efGnHeSI9CJRKQZAYJJu7dyoO/tMTYIZUQLJ2OzQhB3usq0a4M9va0w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK4/Ftctehlt0aD6ofV5wJGBdEDrd/n4bO44Hg2Ll5f2E0Yg+LJ2SU5pHZ+EHxbd2w==",
                             PhoneNumber = "+38762355123",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3768,8 +8341,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 20,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1e3ba736-eb4b-4d1c-b45d-eefe31f46450",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 909, DateTimeKind.Utc).AddTicks(7319),
+                            ConcurrencyStamp = "2fd5af14-f78c-4251-995c-3ab28ef035f9",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 13, 979, DateTimeKind.Utc).AddTicks(2112),
                             DateBirth = new DateTime(1999, 9, 3, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "adnan.pasalic@etravel.com",
                             EmailConfirmed = true,
@@ -3779,7 +8352,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADNAN.PASALIC@ETRAVEL.COM",
                             NormalizedUserName = "ADNAN.PASALIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBpDYAKtxbxQ0Jgi3Hw8Dmsd/wJi+gWE/zfcTIZz6kf0YV0xpZxTAE5qplNzonvqvg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEI+bMovbXNJPwvgVfRqJ1IosC94vSvT6fnPF3yn9rRGtFxrIsg08glpzVzFYftBxyQ==",
                             PhoneNumber = "+38762388321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3790,8 +8363,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 21,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f3fee1c0-ac96-4999-a58e-c66981e1bcc4",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 16, 975, DateTimeKind.Utc).AddTicks(2303),
+                            ConcurrencyStamp = "5f807300-e3de-4737-b5b4-162ff330bbea",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 50, DateTimeKind.Utc).AddTicks(8471),
                             DateBirth = new DateTime(1996, 4, 14, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "inez.kantic@etravel.com",
                             EmailConfirmed = true,
@@ -3801,7 +8374,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "INEZ.KANTIC@ETRAVEL.COM",
                             NormalizedUserName = "INEZ.KANTIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHyKSswvUebAWq9WaNEDlGDlUOlh6c2FANRXZfVYQcuf5WqtjNo45H93MPJtIGAGrQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEO9Vwi+0muwOeCuMYiZJsabTsvbyKxkjZ+Ocd2cgFnA51I6kP61qf+MWugW7HMoMEw==",
                             PhoneNumber = "+38762444123",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3812,8 +8385,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 22,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b9c0b974-fa90-42c4-a8a0-7b12d44e14d6",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 51, DateTimeKind.Utc).AddTicks(8212),
+                            ConcurrencyStamp = "73cfebb6-d956-4bc4-949d-ccf31054144a",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 118, DateTimeKind.Utc).AddTicks(8907),
                             DateBirth = new DateTime(1993, 11, 19, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "amir.halilovic@etravel.com",
                             EmailConfirmed = true,
@@ -3823,7 +8396,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "AMIR.HALILOVIC@ETRAVEL.COM",
                             NormalizedUserName = "AMIR.HALILOVIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHwMaDb6SgUs76NKBD9rmmv8/mxlr/6bY+RnK5wHi4c1Mf4IOjwhLp5OdH40elIGVg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGFImPWVOnac/EMWvxu8/wUSCn4K1/PhqipOjCk/DNVMBG67ggU4IXZJ7RwlhY53Kw==",
                             PhoneNumber = "+38762477331",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3834,8 +8407,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 23,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "035e94d9-c584-4961-8452-62e62e3b1623",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 125, DateTimeKind.Utc).AddTicks(1155),
+                            ConcurrencyStamp = "eab517d1-336b-4ae1-b2b4-fddd290028e9",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 186, DateTimeKind.Utc).AddTicks(9028),
                             DateBirth = new DateTime(2002, 12, 21, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "lamija.kreso@etravel.com",
                             EmailConfirmed = true,
@@ -3845,7 +8418,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "LAMIJA.KRESO@ETRAVEL.COM",
                             NormalizedUserName = "LAMIJA.KRESO",
-                            PasswordHash = "AQAAAAIAAYagAAAAEACMMOz8X7gXqt16SIPPvvfl5375aRtqsE0BSJCb/ImeIBqxQQ2EcdeU8VijZ//zbA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJjrJbgEvrAq1oIKEz7DtREYzIOh6F8yLFNTvh/qDKCHxa8jYAaWXUhHBGx3QyK7VA==",
                             PhoneNumber = "+38762555991",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3856,8 +8429,8 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             Id = 24,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "65c87448-94de-445c-81cf-c6d1be9b37a0",
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 189, DateTimeKind.Utc).AddTicks(5155),
+                            ConcurrencyStamp = "3d0a9c90-615c-453b-acde-327aa4c51070",
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 253, DateTimeKind.Utc).AddTicks(9126),
                             DateBirth = new DateTime(1998, 7, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "omer.smajic@etravel.com",
                             EmailConfirmed = true,
@@ -3867,7 +8440,7 @@ namespace eTravelAgencija.Services.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "OMER.SMAJIC@ETRAVEL.COM",
                             NormalizedUserName = "OMER.SMAJIC",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPzOMcisKjdBY43jIB0HXSx+p6vmtJgbznDMkAJ8gkQYYF7jGj54ki1KtG2EVSv7xA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGCL6c7uHv+Ks//0klQ57FD+aEr5uvbAUC0fcjHzI4iZwKcX054E92HWByzvjLYZ5g==",
                             PhoneNumber = "+38762666112",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -3905,7 +8478,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 1,
                             RoleId = 2,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5213),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7222),
                             Description = "",
                             IsActive = true
                         },
@@ -3913,7 +8486,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 2,
                             RoleId = 3,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5225),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7234),
                             Description = "",
                             IsActive = true
                         },
@@ -3921,7 +8494,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 4,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5292),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7235),
                             Description = "",
                             IsActive = true
                         },
@@ -3929,7 +8502,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 5,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5293),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7292),
                             Description = "",
                             IsActive = true
                         },
@@ -3937,7 +8510,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 6,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5293),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7293),
                             Description = "",
                             IsActive = true
                         },
@@ -3945,7 +8518,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 7,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5294),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7294),
                             Description = "",
                             IsActive = true
                         },
@@ -3953,7 +8526,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 8,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5296),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7295),
                             Description = "",
                             IsActive = true
                         },
@@ -3961,7 +8534,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 9,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5296),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7296),
                             Description = "",
                             IsActive = true
                         },
@@ -3969,7 +8542,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 10,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5297),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7297),
                             Description = "",
                             IsActive = true
                         },
@@ -3977,7 +8550,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 11,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5298),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7298),
                             Description = "",
                             IsActive = true
                         },
@@ -3985,7 +8558,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 12,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5299),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7299),
                             Description = "",
                             IsActive = true
                         },
@@ -3993,7 +8566,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 13,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5300),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7300),
                             Description = "",
                             IsActive = true
                         },
@@ -4001,7 +8574,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 14,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5301),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7331),
                             Description = "",
                             IsActive = true
                         },
@@ -4009,7 +8582,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 15,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5301),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7332),
                             Description = "",
                             IsActive = true
                         },
@@ -4017,7 +8590,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 16,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5302),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7333),
                             Description = "",
                             IsActive = true
                         },
@@ -4025,7 +8598,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 17,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5303),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7333),
                             Description = "",
                             IsActive = true
                         },
@@ -4033,7 +8606,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 18,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5304),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7334),
                             Description = "",
                             IsActive = true
                         },
@@ -4041,7 +8614,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 19,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5305),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7335),
                             Description = "",
                             IsActive = true
                         },
@@ -4049,7 +8622,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 20,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5306),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7337),
                             Description = "",
                             IsActive = true
                         },
@@ -4057,7 +8630,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 21,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5307),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7338),
                             Description = "",
                             IsActive = true
                         },
@@ -4065,7 +8638,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 22,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5307),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7338),
                             Description = "",
                             IsActive = true
                         },
@@ -4073,7 +8646,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 23,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5308),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7339),
                             Description = "",
                             IsActive = true
                         },
@@ -4081,7 +8654,7 @@ namespace eTravelAgencija.Services.Migrations
                         {
                             UserId = 24,
                             RoleId = 1,
-                            CreatedAt = new DateTime(2025, 12, 22, 18, 29, 17, 256, DateTimeKind.Utc).AddTicks(5309),
+                            CreatedAt = new DateTime(2025, 12, 29, 20, 48, 14, 319, DateTimeKind.Utc).AddTicks(7340),
                             Description = "",
                             IsActive = true
                         });
@@ -4365,7 +8938,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 1,
-                            AppliedAt = new DateTime(2025, 12, 20, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(468),
+                            AppliedAt = new DateTime(2025, 12, 27, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8241),
                             CvFileName = "test.pdf",
                             UserId = 4,
                             letter = "Smisleno me motiviše vaša moderna organizacija i želja da radim na projektima koji imaju stvarni utjecaj. Vjerujem da mogu doprinijeti svojim radnim navikama i voljom za učenjem."
@@ -4373,7 +8946,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 2,
-                            AppliedAt = new DateTime(2025, 12, 18, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(480),
+                            AppliedAt = new DateTime(2025, 12, 25, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8244),
                             CvFileName = "test.pdf",
                             UserId = 5,
                             letter = "Privukla me prilika da radim u dinamičnom okruženju gdje se cijeni timski rad i napredak. Želim biti dio profesionalne i pozitivne radne zajednice."
@@ -4381,7 +8954,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 3,
-                            AppliedAt = new DateTime(2025, 12, 15, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(482),
+                            AppliedAt = new DateTime(2025, 12, 22, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8245),
                             CvFileName = "test.pdf",
                             UserId = 6,
                             letter = "Vaša kompanija je prepoznata po kvalitetnom radu i inovacijama. Smatram da mogu mnogo naučiti i istovremeno doprinijeti svojim iskustvom i posvećenošću."
@@ -4389,7 +8962,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 4,
-                            AppliedAt = new DateTime(2025, 12, 12, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(484),
+                            AppliedAt = new DateTime(2025, 12, 19, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8246),
                             CvFileName = "test.pdf",
                             UserId = 7,
                             letter = "Želim raditi u sredini koja podstiče razvoj i podržava kreativnost. Vaša firma upravo to nudi, i zato bih voljela biti dio vašeg tima."
@@ -4397,7 +8970,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 5,
-                            AppliedAt = new DateTime(2025, 12, 10, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(485),
+                            AppliedAt = new DateTime(2025, 12, 17, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8248),
                             CvFileName = "test.pdf",
                             UserId = 8,
                             letter = "Vašu kompaniju vidim kao mjesto gdje se talenat i rad cijene. Motivisan sam da se usavršavam i doprinosim vašem rastu."
@@ -4405,7 +8978,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 6,
-                            AppliedAt = new DateTime(2025, 12, 8, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(486),
+                            AppliedAt = new DateTime(2025, 12, 15, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8249),
                             CvFileName = "test.pdf",
                             UserId = 9,
                             letter = "Tražim priliku da radim u profesionalnoj sredini gdje mogu napredovati. Posebno me privlači vaša organizacijska kultura i pristup radu."
@@ -4413,7 +8986,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 7,
-                            AppliedAt = new DateTime(2025, 12, 5, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(488),
+                            AppliedAt = new DateTime(2025, 12, 12, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8251),
                             CvFileName = "test.pdf",
                             UserId = 10,
                             letter = "Motiviše me želja da učim nove tehnologije i doprinesem timskim rezultatima. Vjerujem da bih se dobro uklopio u vaše okruženje."
@@ -4421,7 +8994,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 8,
-                            AppliedAt = new DateTime(2025, 12, 4, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(490),
+                            AppliedAt = new DateTime(2025, 12, 11, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8252),
                             CvFileName = "test.pdf",
                             UserId = 11,
                             letter = "Smatram da je vaša kompanija idealno mjesto za profesionalni rast. Cijenim vaš pristup organizaciji i inovativnosti."
@@ -4429,7 +9002,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 9,
-                            AppliedAt = new DateTime(2025, 12, 2, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(491),
+                            AppliedAt = new DateTime(2025, 12, 9, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8253),
                             CvFileName = "test.pdf",
                             UserId = 12,
                             letter = "Zainteresovana sam za rad kod vas jer nudite stabilno i ugodno radno okruženje u kojem se prepoznaje trud i zalaganje."
@@ -4437,7 +9010,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 10,
-                            AppliedAt = new DateTime(2025, 11, 30, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(493),
+                            AppliedAt = new DateTime(2025, 12, 7, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8255),
                             CvFileName = "test.pdf",
                             UserId = 13,
                             letter = "Želim biti dio tima koji teži kvaliteti i rastu. Vaša firma mi djeluje kao pravo mjesto za to."
@@ -4445,7 +9018,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 11,
-                            AppliedAt = new DateTime(2025, 11, 29, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(494),
+                            AppliedAt = new DateTime(2025, 12, 6, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8256),
                             CvFileName = "test.pdf",
                             UserId = 14,
                             letter = "Motivisan sam mogućnošću da radim u kompaniji koja cijeni profesionalizam i timski rad. Spreman sam da dam svoj maksimum."
@@ -4453,7 +9026,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 12,
-                            AppliedAt = new DateTime(2025, 11, 28, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(495),
+                            AppliedAt = new DateTime(2025, 12, 5, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8257),
                             CvFileName = "test.pdf",
                             UserId = 15,
                             letter = "Privlači me prilika da radim sa stručnim i kreativnim timom. Vaš način rada me posebno inspiriše."
@@ -4461,7 +9034,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 13,
-                            AppliedAt = new DateTime(2025, 11, 27, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(497),
+                            AppliedAt = new DateTime(2025, 12, 4, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8258),
                             CvFileName = "test.pdf",
                             UserId = 16,
                             letter = "Vaša kompanija nudi odlične mogućnosti za rast i razvoj, što je glavni razlog moje prijave."
@@ -4469,7 +9042,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 14,
-                            AppliedAt = new DateTime(2025, 11, 26, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(498),
+                            AppliedAt = new DateTime(2025, 12, 3, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8259),
                             CvFileName = "test.pdf",
                             UserId = 17,
                             letter = "Motivisan sam da učim, radim i napredujem. Vjerujem da bih bio odličan dodatak vašem timu."
@@ -4477,7 +9050,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 15,
-                            AppliedAt = new DateTime(2025, 11, 25, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(501),
+                            AppliedAt = new DateTime(2025, 12, 2, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8261),
                             CvFileName = "test.pdf",
                             UserId = 18,
                             letter = "Želim raditi u okruženju gdje se cijeni inicijativa, kreativnost i kvalitetan rad. Vaša firma ispunjava sve te kriterije."
@@ -4485,7 +9058,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 16,
-                            AppliedAt = new DateTime(2025, 11, 24, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(502),
+                            AppliedAt = new DateTime(2025, 12, 1, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8267),
                             CvFileName = "test.pdf",
                             UserId = 19,
                             letter = "Vidim veliku vrijednost u vašim projektima i načinu rada. Želim biti dio tima koji radi sa strašću."
@@ -4493,7 +9066,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 17,
-                            AppliedAt = new DateTime(2025, 11, 23, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(503),
+                            AppliedAt = new DateTime(2025, 11, 30, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8268),
                             CvFileName = "test.pdf",
                             UserId = 20,
                             letter = "Prijavljujem se jer vjerujem da bih u vašoj kompaniji mogao postići veliki profesionalni iskorak."
@@ -4501,7 +9074,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 18,
-                            AppliedAt = new DateTime(2025, 11, 22, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(504),
+                            AppliedAt = new DateTime(2025, 11, 29, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8269),
                             CvFileName = "test.pdf",
                             UserId = 21,
                             letter = "Motiviše me želja da radim u stabilnoj i ozbiljnoj organizaciji koja nudi perspektivu i razvoj."
@@ -4509,7 +9082,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 19,
-                            AppliedAt = new DateTime(2025, 11, 21, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(506),
+                            AppliedAt = new DateTime(2025, 11, 28, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8271),
                             CvFileName = "test.pdf",
                             UserId = 22,
                             letter = "Vaša kompanija mi djeluje kao pravo mjesto da pokažem svoje vještine i dodatno ih unaprijedim."
@@ -4517,7 +9090,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 20,
-                            AppliedAt = new DateTime(2025, 11, 20, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(507),
+                            AppliedAt = new DateTime(2025, 11, 27, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8272),
                             CvFileName = "test.pdf",
                             UserId = 23,
                             letter = "Privlači me vaš profesionalan pristup, moderna organizacija i atmosfera koja podstiče učenje."
@@ -4525,7 +9098,7 @@ namespace eTravelAgencija.Services.Migrations
                         new
                         {
                             Id = 21,
-                            AppliedAt = new DateTime(2025, 11, 19, 18, 29, 17, 257, DateTimeKind.Utc).AddTicks(508),
+                            AppliedAt = new DateTime(2025, 11, 26, 20, 48, 14, 321, DateTimeKind.Utc).AddTicks(8273),
                             CvFileName = "test.pdf",
                             UserId = 24,
                             letter = "Motivisana sam da radim u vašoj firmi jer cijenim vaše vrijednosti i način poslovanja. Vjerujem da bih se idealno uklopila."
