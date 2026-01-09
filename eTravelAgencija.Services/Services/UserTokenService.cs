@@ -42,15 +42,60 @@ namespace eTravelAgencija.Services.Services
         }
 
         public override IQueryable<UserToken> ApplyFilter(
-    IQueryable<UserToken> query,
-    UserTokenSearchObject search)
+        IQueryable<UserToken> query,
+        UserTokenSearchObject search)
         {
             if (search?.UserId != null)
             {
                 query = query.Where(x => x.UserId == search.UserId);
             }
-
             return base.ApplyFilter(query, search);
+        }
+
+        public async Task<Model.model.UserToken> IncreaseTokensToUserAsync(int userId)
+        {
+            var entity = await _context.UserTokens
+                .FirstOrDefaultAsync(x => x.UserId == userId);
+
+            if (entity == null)
+            {
+                entity = new Database.UserToken
+                {
+                    UserId = userId,
+                    Equity = 10
+                };
+
+                _context.UserTokens.Add(entity);
+            }
+            else
+            {
+                entity.Equity += 10;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.model.UserToken>(entity);
+        }
+
+        /// =========================
+        /// −10 TOKENA (NE IDE ISPOD 0)
+        /// =========================
+        public async Task<Model.model.UserToken> DecreaseTokensToUserAsync(int userId)
+        {
+            var entity = await _context.UserTokens
+                .FirstOrDefaultAsync(x => x.UserId == userId);
+
+            if (entity == null)
+                throw new Exception("User nema token zapis.");
+
+            if (entity.Equity < 10)
+                throw new Exception("Nedovoljno tokena.");
+
+            entity.Equity -= 10;
+
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.model.UserToken>(entity);
         }
 
     }

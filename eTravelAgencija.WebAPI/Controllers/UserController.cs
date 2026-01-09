@@ -76,10 +76,10 @@ namespace eTravelAgencija.WebAPI.Controllers
         public async Task<ActionResult<string>> GetUserImage(int userId)
         {
             var imageName = await _userService.GetUserImage(userId);
-        
+
             if (imageName == null)
                 return NotFound();
-        
+
             return Ok(imageName);
         }
 
@@ -119,5 +119,16 @@ namespace eTravelAgencija.WebAPI.Controllers
 
             return Ok(new { message = "Password uspješno promijenjen." });
         }
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(
+        [FromBody] ForgotPasswordRequest request)
+        {
+            await _userService.ForgotPasswordAsync(request.Email);
+
+            // uvijek ista poruka (security)
+            return Ok("Ako email postoji, poslan je link za reset lozinke.");
+        }
+
     }
 }

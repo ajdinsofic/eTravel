@@ -60,7 +60,7 @@ public class eTravelAgencijaDbContext
         });
 
         builder.Entity<OfferHotels>()
-        .HasKey(oh => new { oh.OfferDetailsId, oh.HotelId });
+        .HasKey(oh => new { oh.OfferDetailsId, oh.HotelId, oh.DepartureDate });
 
         builder.Entity<OfferPlanDay>()
     .HasKey(opd => new { opd.OfferDetailsId, opd.DayNumber });

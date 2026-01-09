@@ -1,5 +1,6 @@
 import 'package:etravel_desktop/models/login_request.dart';
 import 'package:etravel_desktop/providers/auth_provider.dart';
+import 'package:etravel_desktop/screens/forgot_password_popup.dart';
 import 'package:etravel_desktop/screens/offer_screen.dart';
 import 'package:etravel_desktop/widgets/master_screen.dart';
 import 'package:flutter/material.dart';
@@ -227,7 +228,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   // Forgot password
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                  showDialog(
+                    context: context,
+                    barrierDismissible: true,
+                    builder: (_) => const ForgotPasswordPopup(),
+                  );
+                },
                     child: const Text(
                       'Forgot password?',
                       style: TextStyle(

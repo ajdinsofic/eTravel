@@ -142,15 +142,29 @@ Future<bool> updateNewPassword(dynamic request) async {
   return true;
 }
 
+Future<bool> forgotPassword(String email) async {
+  final url = Uri.parse(
+    "${ApiConfig.apiBase}/api/User/forgot-password",
+  );
 
+  final response = await http.post(
+    url,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: jsonEncode({
+      "email": email,
+    }),
+  );
 
+  // Backend uvijek vraća 200 (security razlog)
+  if (response.statusCode != 200) {
+    throw Exception(
+      "Greška pri slanju reset emaila: ${response.body}",
+    );
+  }
 
-
-
-
-
-
-
-
+  return true;
+}
 
 }

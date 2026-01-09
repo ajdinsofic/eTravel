@@ -5,13 +5,16 @@ namespace eTravelAgencija.Services.Recommendations.MLModels
 
     public class UserHotelEntry
     {
-        [KeyType]
+        [LoadColumn(0)]
         public uint UserId { get; set; }
 
-        [KeyType]
+        [LoadColumn(1)]
         public uint HotelId { get; set; }
 
-        // One-class implicit feedback
-        public float Label { get; set; } = 1f;
+        [LoadColumn(2)]
+        public float Label { get; set; } = 1;
     }
 }
+
+
+

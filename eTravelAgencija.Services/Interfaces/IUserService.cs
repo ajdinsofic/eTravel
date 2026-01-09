@@ -18,6 +18,7 @@ namespace eTravelAgencija.Services.Interfaces
         Task<bool> DeleteUserImageAsync(int id);
         Task<bool> CheckPasswordAsync(CheckPasswordRequest request);
         Task<bool> UpdateNewPasswordAsync(UpdateNewPasswordRequest request);
+         Task ForgotPasswordAsync(string email);
         Task<string?> GetUserImage(int userId);
         
 

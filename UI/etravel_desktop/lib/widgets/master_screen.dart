@@ -147,7 +147,7 @@ class _MasterScreenState extends State<MasterScreen> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  loggedUser!.username ?? "Korisnik",
+                  loggedUser?.username ?? "Korisnik",
                   style: const TextStyle(color: Colors.white),
                 ),
                 const Icon(Icons.keyboard_arrow_down, color: Colors.white),

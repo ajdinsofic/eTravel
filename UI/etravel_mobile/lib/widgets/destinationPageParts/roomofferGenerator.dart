@@ -14,12 +14,14 @@ class Roomoffergenerator extends StatefulWidget {
   final int OfferId;
   final String? selectedDate;
   final int? roomId;
+  final int? forceHotelId;
 
   const Roomoffergenerator({
     super.key,
     required this.OfferId,
     required this.selectedDate,
     required this.roomId,
+    this.forceHotelId,
   });
 
   @override
@@ -94,6 +96,11 @@ class _RoomoffergeneratorState extends State<Roomoffergenerator> {
       },
     );
 
+    final hotels =
+        widget.forceHotelId != null
+            ? result.items.where((h) => h.id == widget.forceHotelId).toList()
+            : result.items;
+
     _totalPages = (result.items.length / _pageSize).ceil();
   }
 
@@ -121,6 +128,11 @@ class _RoomoffergeneratorState extends State<Roomoffergenerator> {
           "pageSize": _pageSize,
         },
       );
+
+      final filtered =
+          widget.forceHotelId != null
+              ? result.items.where((h) => h.id == widget.forceHotelId).toList()
+              : result.items;
 
       if (result.items.isEmpty) {
         setState(() => isLoading = false);
@@ -275,7 +287,8 @@ class _RoomoffergeneratorState extends State<Roomoffergenerator> {
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
             child: Image.network(
-              "${ApiConfig.imagesHotels}/${mainImage.imageUrl}",
+              //"${ApiConfig.imagesHotels}/${mainImage.imageUrl}",
+              mainImage.imageUrl,
               height: screenHeight * 0.25,
               width: double.infinity,
               fit: BoxFit.cover,

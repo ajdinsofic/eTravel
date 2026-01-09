@@ -292,9 +292,11 @@ namespace eTravelAgencija.Services.Database
                 .ToList();
 
             var offers = _context.Offers
-                .Include(o => o.Details)
-                .Where(o => recommendedIds.Contains(o.Id))
-                .ToList();
+    .Include(o => o.Details)
+        .ThenInclude(d => d.OfferImages)
+    .Where(o => recommendedIds.Contains(o.Id))
+    .ToList();
+
 
             return _mapper.Map<List<Model.model.Offer>>(offers);
         }

@@ -20,6 +20,8 @@ namespace eTravelAgencija.Model.RequestObjects
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "TotalPrice mora biti veći od 0.")]
         public decimal TotalPrice { get; set; }
+        public bool isDiscountUsed {get; set;}
+        public double? DiscountValue {get; set;}
 
         public string AddedNeeds { get; set; } 
 

@@ -1,0 +1,86 @@
+networks:
+  etravelnet:
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: etravel-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    networks:
+      - etravelnet
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  etravel-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+      - RABBITMQ_HOST=etravel-rabbitmq
+      - RABBITMQ_USERNAME=${RABBITMQ_USER}
+      - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}
+      - RABBITMQ_VIRTUALHOST=/
+      - RABBITMQ_PORT=5672
+    ports:
+      - 5265:8080
+    depends_on:
+      - postgres
+    networks:
+      - etravelnet
+    volumes:
+      - ./data/wwwroot:/app/wwwroot
+
+  etravel-rabbitmq:
+    image: rabbitmq:3-management-alpine
+    hostname: etravel-rabbitmq
+    restart: unless-stopped
+    ports:
+      - 5672:5672  
+      - 8080:15672
+      - 15692:15692
+    expose:
+      - 5672
+      - 8080
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+    networks:
+      - etravelnet
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  etravel-mailingservice:
+    restart: unless-stopped
+    container_name: etravel-mailingservice
+    build:
+      context: .
+      dockerfile: eTravelAgencija.EmailConsumer/Dockerfile
+    environment:
+      - RABBITMQ_HOST=etravel-rabbitmq
+      - RABBITMQ_USERNAME=${RABBITMQ_USER}
+      - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}
+      - RABBITMQ_VIRTUALHOST=/
+      - RABBITMQ_PORT=5672
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - FROM_EMAIL=${FROM_EMAIL}
+    depends_on:
+      etravel-rabbitmq:
+        condition: service_healthy
+    networks:
+      - etravelnet
+
+volumes:
+  postgres_data:

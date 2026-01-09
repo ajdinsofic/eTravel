@@ -658,7 +658,33 @@ class _WorkApplicationsScreenState extends State<WorkApplicationsScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () async {
+                                    try {
+                                      // 1️⃣ pošalji mail + označi poziv
+                                      await _workApplicationProvider
+                                          .inviteToInterview(app.id);
+
+                                      // 2️⃣ HARD DELETE prijave
+                                      await _workApplicationProvider.delete(
+                                        app.id,
+                                      );
+
+                                      // 3️⃣ zatvori popup
+                                      Navigator.pop(context);
+
+                                      // 4️⃣ REFRESH LISTE
+                                      await _loadTotal();
+
+                                      _showSuccessToast(
+                                        "Poziv na sastanak je poslan.",
+                                      );
+
+                                    } catch (e) {
+                                      _showErrorToast(
+                                        "Greška pri slanju poziva.",
+                                      );
+                                    }
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xff67B1E5),
                                     padding: const EdgeInsets.symmetric(
@@ -682,7 +708,18 @@ class _WorkApplicationsScreenState extends State<WorkApplicationsScreen> {
                                 const SizedBox(width: 20),
 
                                 ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () async {
+                                    await _workApplicationProvider.delete(
+                                        app.id,
+                                      );
+                                      // 3️⃣ zatvori popup
+                                      Navigator.pop(context);
+
+                                      _loadTotal();
+
+                                      _showErrorToast("Prijava odbijena");
+
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xffE26D8A),
                                     padding: const EdgeInsets.symmetric(

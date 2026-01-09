@@ -27,7 +27,7 @@ namespace eTravelAgencija.WebAPI.Controllers
             
         }
 
-        [HttpGet("offers/{offerId}/hotel-room")]
+        [HttpGet("offers/{offerId}/recommendedHotel")]
         public async Task<ActionResult<RecommendedHotelRoomDto>> GetRecommendedHotelRoomForOffer(
             int offerId,
             [FromQuery] int userId)

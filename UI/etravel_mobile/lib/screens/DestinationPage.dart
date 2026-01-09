@@ -1,12 +1,17 @@
 import 'package:etravel_app/config/api_config.dart';
 import 'package:etravel_app/models/hotel_room.dart';
 import 'package:etravel_app/models/offer.dart';
+import 'package:etravel_app/models/recommended_hotel.dart';
 import 'package:etravel_app/models/room.dart';
+import 'package:etravel_app/providers/hotel_provider.dart';
 import 'package:etravel_app/providers/hotel_room_provider.dart';
 import 'package:etravel_app/providers/offer_hotel_provider.dart';
+import 'package:etravel_app/providers/offer_provider.dart';
 import 'package:etravel_app/providers/room_provider.dart';
+import 'package:etravel_app/utils/session.dart';
 import 'package:etravel_app/widgets/destinationPageParts/AllLists.dart';
 import 'package:etravel_app/widgets/destinationPageParts/KomentariKontejner.dart';
+import 'package:etravel_app/widgets/destinationPageParts/recommendedHotelGenerator.dart';
 import 'package:etravel_app/widgets/destinationPageParts/roomofferGenerator.dart';
 import 'package:etravel_app/widgets/destinationPageParts/travelingPlanDays.dart';
 import 'package:etravel_app/widgets/headerIFooterAplikacije/eTravelFooter.dart';
@@ -48,6 +53,10 @@ class _DestinationPageState extends State<destinationPage> {
   late OfferHotelProvider _offerHotelProvider;
   late HotelRoomProvider _hotelRoomProvider;
   late RoomProvider _roomProvider;
+  late HotelProvider _hotelProvider;
+
+  RecommendedHotel? _recommendedHotel;
+  bool _loadingRecommendedHotel = false;
 
   int hotelPage = 0;
   int hotelPageSize = 3;
@@ -74,12 +83,34 @@ class _DestinationPageState extends State<destinationPage> {
     );
     _hotelRoomProvider = Provider.of<HotelRoomProvider>(context, listen: false);
     _roomProvider = Provider.of<RoomProvider>(context, listen: false);
+    _hotelProvider = Provider.of<HotelProvider>(context, listen: false);
   }
 
   @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  Future<void> _loadRecommendedHotel() async {
+    if (Session.userId == null) return;
+
+    try {
+      setState(() => _loadingRecommendedHotel = true);
+
+      final result = await _hotelProvider.getRecommendedHotelRoomForOffer(
+        offerId: widget.offerId,
+        userId: Session.userId!,
+      );
+
+      setState(() {
+        _recommendedHotel = result;
+      });
+    } catch (e) {
+      debugPrint("ML hotel nije dostupan: $e");
+    } finally {
+      setState(() => _loadingRecommendedHotel = false);
+    }
   }
 
   Future<List<Room>> _ucitajTipoveSoba(int offerId) async {
@@ -503,6 +534,8 @@ class _DestinationPageState extends State<destinationPage> {
                                     }
                                     hotelPage = 0;
                                   });
+
+                                  _loadRecommendedHotel();
                                 },
 
                                 items:
@@ -534,6 +567,33 @@ class _DestinationPageState extends State<destinationPage> {
                         selectedDate: selectedDate,
                         roomId: roomId,
                       ),
+
+                      if (Session.userId != null &&
+                          _recommendedHotel != null &&
+                          !_loadingRecommendedHotel) ...[
+                        SizedBox(height: screenHeight * 0.05),
+
+                        /// 🧠 NASLOV
+                        Text(
+                          "Hotel po vašoj mjeri",
+                          style: TextStyle(
+                            fontFamily: 'AROneSans',
+                            fontSize: screenWidth * 0.06,
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFFDAB400),
+                          ),
+                        ),
+
+                        SizedBox(height: screenHeight * 0.02),
+
+                        /// ⭐ ML HOTEL (BEZ PAGINGA)
+                        RecommendedHotelGenerator(
+                          offerId: widget.offerId,
+                          selectedDate: selectedDate!,
+                          hotelId: _recommendedHotel!.hotelId,
+                          roomId: _recommendedHotel!.roomId,
+                        ),
+                      ],
                     ],
                   ),
                   Container(
@@ -551,9 +611,7 @@ class _DestinationPageState extends State<destinationPage> {
                   ),
                   SizedBox(
                     height: screenHeight * 0.4, // Adjust this as needed
-                    child: PlanPutovanja(
-                      offerId: widget.offerId,
-                    ),
+                    child: PlanPutovanja(offerId: widget.offerId),
                   ),
                   Container(
                     width: screenWidth,
@@ -671,38 +729,7 @@ class _DestinationPageState extends State<destinationPage> {
                       }),
                     ),
                   ),
-                  SizedBox(
-                    width: screenWidth,
-                    height: screenHeight * 1.8, // Povećaj visinu da sve stane
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        // Container(
-                        //   width: screenWidth,
-                        //   height: screenHeight * 0.2,
-                        //   alignment: Alignment.center,
-                        //   child: Text(
-                        //     'Putovanja koja bi Vam se mogla svidjeti',
-                        //     style: TextStyle(
-                        //       fontSize: 21,
-                        //       fontWeight: FontWeight.bold,
-                        //     ),
-                        //     textAlign: TextAlign.center,
-                        //   ),
-                        // ),
-                        // ...destinations.map((destinacija) {
-                        //   return destinationContainers(
-                        //     naziv: destinacija["naziv"].toString(),
-                        //     slikaPath: destinacija["slika"].toString(),
-                        //     cijena: destinacija["cijena"].toString(),
-                        //     detalji: Map<String, String>.from(
-                        //       destinacija["detalji"] as Map,
-                        //     ),
-                        //   );
-                        // }),
-                      ],
-                    ),
-                  ),
+                  
                   SizedBox(
                     width: screenWidth,
                     height: screenHeight * 0.7, // Povećaj visinu da sve stane
@@ -722,7 +749,7 @@ class _DestinationPageState extends State<destinationPage> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        KomentariKontejner(offerId: widget.offerId)
+                        KomentariKontejner(offerId: widget.offerId),
                       ],
                     ),
                   ),

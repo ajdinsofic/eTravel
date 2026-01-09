@@ -5,8 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
+using eTravelAgencija.EmailConsumer.Messages;
 using eTravelAgencija.Model;
 using eTravelAgencija.Model.RequestObjects;
 using eTravelAgencija.Model.Requests;
@@ -21,6 +23,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using RabbitMQ.Client;
 
 namespace eTravelAgencija.Services.Services
 {
@@ -28,10 +31,12 @@ namespace eTravelAgencija.Services.Services
     {
         private readonly IConfiguration _config;
         private readonly UserManager<User> _userManager;
-        public UserService(eTravelAgencijaDbContext context, IMapper mapper, UserManager<User> userManager, IConfiguration config, IUserRoleService userRoleService) : base(context, mapper)
+        private readonly IConnection _rabbitConnection;
+        public UserService(eTravelAgencijaDbContext context, IMapper mapper, UserManager<User> userManager, IConfiguration config, IUserRoleService userRoleService, IConnection rabbitConnection) : base(context, mapper)
         {
             _userManager = userManager;
             _config = config;
+            _rabbitConnection = rabbitConnection;
         }
 
         public override IQueryable<User> ApplyFilter(IQueryable<User> query, UserSearchObject search)
@@ -332,5 +337,77 @@ namespace eTravelAgencija.Services.Services
 
             return result.Succeeded;
         }
+
+        private string GenerateRandomPassword()
+        {
+            return $"Et@{Guid.NewGuid().ToString("N")[..8]}!";
+        }
+
+
+        public async Task ForgotPasswordAsync(string email)
+        {
+            // 1️⃣ Pronađi korisnika po emailu
+            var user = await _userManager.Users
+                .FirstOrDefaultAsync(x => x.Email == email);
+
+            // 2️⃣ Ako ne postoji → GREŠKA
+            if (user == null)
+                throw new Exception("Email nije povezan ni sa jednim nalogom.");
+
+            // 3️⃣ SecurityStamp fix (za stare korisnike)
+            if (string.IsNullOrEmpty(user.SecurityStamp))
+            {
+                user.SecurityStamp = Guid.NewGuid().ToString();
+                await _userManager.UpdateAsync(user);
+            }
+
+            // 4️⃣ Generiši novu lozinku
+            var newPassword = GenerateRandomPassword();
+
+            // 5️⃣ Resetuj lozinku (Identity način)
+            var resetToken =
+                await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            var result = await _userManager.ResetPasswordAsync(
+                user,
+                resetToken,
+                newPassword
+            );
+
+            if (!result.Succeeded)
+                throw new Exception(
+                    string.Join(", ", result.Errors.Select(e => e.Description))
+                );
+
+            // 6️⃣ Pošalji novu lozinku preko RabbitMQ
+            var channel = await _rabbitConnection.CreateChannelAsync();
+
+            await channel.QueueDeclareAsync(
+                queue: "email.reset-password",
+                durable: true,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null
+            );
+
+            var message = new ResetPasswordEmailMessage
+            {
+                To = user.Email!,
+                UserName = user.FirstName,
+                NewPassword = newPassword
+            };
+
+            var body = Encoding.UTF8.GetBytes(
+                JsonSerializer.Serialize(message)
+            );
+
+            await channel.BasicPublishAsync(
+                exchange: "",
+                routingKey: "email.reset-password",
+                body: body
+            );
+        }
+
+
     }
 }

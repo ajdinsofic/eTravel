@@ -2,17 +2,17 @@ using eTravelAgencija.WebAPI.Authentication;
 using eTravelAgencija.Services.Database;
 using eTravelAgencija.Services.Mapping;
 using eTravelAgencija.Services.Services;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using eTravelAgencija.Services.Interfaces;
 using Microsoft.Extensions.FileProviders;
 using eTravelAgencija.Model.model;
+using eTravelAgencija.EmailConsumer.Configuration;
+using eTravelAgencija.EmailConsumer.DependencyInjection;
+using eTravelAgencija.EmailConsumer.Consumers;
+using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -105,11 +105,38 @@ builder.Services.AddIdentity<eTravelAgencija.Services.Database.User, eTravelAgen
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
 
+builder.Services.AddSingleton<IConnection>(_ =>
+{
+    var host = Environment.GetEnvironmentVariable("RABBITMQ_HOST") ?? "localhost";
+    var port = int.Parse(Environment.GetEnvironmentVariable("RABBITMQ_PORT") ?? "5672");
+    var user = Environment.GetEnvironmentVariable("RABBITMQ_USERNAME") ?? "guest";
+    var pass = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD") ?? "guest";
+    var vhost = Environment.GetEnvironmentVariable("RABBITMQ_VIRTUALHOST") ?? "/";
+
+    var factory = new ConnectionFactory
+    {
+        HostName = host,
+        Port = port,
+        UserName = user,
+        Password = pass,
+        VirtualHost = vhost
+    };
+
+    return factory.CreateConnectionAsync().GetAwaiter().GetResult();
+});
+
 builder.Services.AddJwtAuthentication(builder.Configuration);
 
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<eTravelAgencijaDbContext>();
+    db.Database.Migrate();
+}
+
 
 if (app.Environment.IsDevelopment())
 {

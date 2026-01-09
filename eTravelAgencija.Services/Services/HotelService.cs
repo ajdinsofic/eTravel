@@ -235,24 +235,33 @@ namespace eTravelAgencija.Services.Services
         private async Task EnsureModelsTrainedAsync()
         {
             // retrain na X minuta (ili kad prvi put pozove)
-            if (_hotelModel != null && _roomModel != null && DateTime.UtcNow - _lastTrainUtc < _retrainEvery)
+            if (_hotelModel != null &&
+                _roomModel != null &&
+                DateTime.UtcNow - _lastTrainUtc < _retrainEvery)
                 return;
 
-            // zaključavanje da se ne trenira paralelno
             lock (_lock)
             {
-                if (_hotelModel != null && _roomModel != null && DateTime.UtcNow - _lastTrainUtc < _retrainEvery)
+                if (_hotelModel != null &&
+                    _roomModel != null &&
+                    DateTime.UtcNow - _lastTrainUtc < _retrainEvery)
                     return;
             }
 
-            // Napravi training data iz cijele baze rezervacija
+            // ===============================
+            // 1️⃣ UČITAJ REZERVACIJE
+            // ===============================
             var allReservations = await _context.Reservations
                 .AsNoTracking()
                 .Select(r => new { r.UserId, r.HotelId, r.RoomId })
                 .ToListAsync();
 
-            if (allReservations.Count == 0) return;
+            if (allReservations.Count == 0)
+                return;
 
+            // ===============================
+            // 2️⃣ HOTEL TRAINING DATA
+            // ===============================
             var hotelData = allReservations
                 .Where(x => x.HotelId != null)
                 .Select(x => new UserHotelEntry
@@ -263,6 +272,9 @@ namespace eTravelAgencija.Services.Services
                 })
                 .ToList();
 
+            // ===============================
+            // 3️⃣ ROOM TRAINING DATA
+            // ===============================
             var roomData = allReservations
                 .Where(x => x.RoomId != null)
                 .Select(x => new UserRoomEntry
@@ -273,57 +285,89 @@ namespace eTravelAgencija.Services.Services
                 })
                 .ToList();
 
-            // Ako nema dovoljno podataka, nemoj trenirati (fallback će pokriti)
-            if (hotelData.Count < 5 || roomData.Count < 5) return;
+            // Ako nema dovoljno podataka → nema ML
+            if (hotelData.Count < 5 || roomData.Count < 5)
+                return;
 
-            // TRAIN (Hotel)
+            // ===============================
+            // 4️⃣ HOTEL MODEL
+            // ===============================
             var hotelTrain = _ml.Data.LoadFromEnumerable(hotelData);
 
-            var hotelOptions = new MatrixFactorizationTrainer.Options
-            {
-                MatrixColumnIndexColumnName = nameof(UserHotelEntry.UserId),
-                MatrixRowIndexColumnName = nameof(UserHotelEntry.HotelId),
-                LabelColumnName = nameof(UserHotelEntry.Label),
-                LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass,
-                Alpha = 0.01,
-                Lambda = 0.025,
-                NumberOfIterations = 100,
-                ApproximationRank = 32
-            };
+            var hotelPipeline =
+                _ml.Transforms.Conversion.MapValueToKey(
+                    outputColumnName: "UserId",
+                    inputColumnName: nameof(UserHotelEntry.UserId))
+                .Append(
+                _ml.Transforms.Conversion.MapValueToKey(
+                    outputColumnName: "HotelId",
+                    inputColumnName: nameof(UserHotelEntry.HotelId)))
+                .Append(
+                    _ml.Recommendation().Trainers.MatrixFactorization(
+                        new MatrixFactorizationTrainer.Options
+                        {
+                            MatrixColumnIndexColumnName = "UserId",
+                            MatrixRowIndexColumnName = "HotelId",
+                            LabelColumnName = nameof(UserHotelEntry.Label),
+                            LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass,
+                            Alpha = 0.01,
+                            Lambda = 0.025,
+                            NumberOfIterations = 100,
+                            ApproximationRank = 32
+                        }
+                    )
+                );
 
-            var hotelPipe = _ml.Recommendation().Trainers.MatrixFactorization(hotelOptions);
-            var trainedHotelModel = hotelPipe.Fit(hotelTrain);
+            var trainedHotelModel = hotelPipeline.Fit(hotelTrain);
 
-            // TRAIN (Room)
+            // ===============================
+            // 5️⃣ ROOM MODEL
+            // ===============================
             var roomTrain = _ml.Data.LoadFromEnumerable(roomData);
 
-            var roomOptions = new MatrixFactorizationTrainer.Options
-            {
-                MatrixColumnIndexColumnName = nameof(UserRoomEntry.UserId),
-                MatrixRowIndexColumnName = nameof(UserRoomEntry.RoomId),
-                LabelColumnName = nameof(UserRoomEntry.Label),
-                LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass,
-                Alpha = 0.01,
-                Lambda = 0.025,
-                NumberOfIterations = 100,
-                ApproximationRank = 32
-            };
+            var roomPipeline =
+                _ml.Transforms.Conversion.MapValueToKey(
+                    outputColumnName: "UserId",
+                    inputColumnName: nameof(UserRoomEntry.UserId))
+                .Append(
+                _ml.Transforms.Conversion.MapValueToKey(
+                    outputColumnName: "RoomId",
+                    inputColumnName: nameof(UserRoomEntry.RoomId)))
+                .Append(
+                    _ml.Recommendation().Trainers.MatrixFactorization(
+                        new MatrixFactorizationTrainer.Options
+                        {
+                            MatrixColumnIndexColumnName = "UserId",
+                            MatrixRowIndexColumnName = "RoomId",
+                            LabelColumnName = nameof(UserRoomEntry.Label),
+                            LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass,
+                            Alpha = 0.01,
+                            Lambda = 0.025,
+                            NumberOfIterations = 100,
+                            ApproximationRank = 32
+                        }
+                    )
+                );
 
-            var roomPipe = _ml.Recommendation().Trainers.MatrixFactorization(roomOptions);
-            var trainedRoomModel = roomPipe.Fit(roomTrain);
+            var trainedRoomModel = roomPipeline.Fit(roomTrain);
 
-            // Cache
+            // ===============================
+            // 6️⃣ CACHE + ENGINE
+            // ===============================
             lock (_lock)
             {
                 _hotelModel = trainedHotelModel;
-                _hotelEngine = _ml.Model.CreatePredictionEngine<UserHotelEntry, UserHotelPrediction>(_hotelModel);
+                _hotelEngine =
+                    _ml.Model.CreatePredictionEngine<UserHotelEntry, UserHotelPrediction>(_hotelModel);
 
                 _roomModel = trainedRoomModel;
-                _roomEngine = _ml.Model.CreatePredictionEngine<UserRoomEntry, UserRoomPrediction>(_roomModel);
+                _roomEngine =
+                    _ml.Model.CreatePredictionEngine<UserRoomEntry, UserRoomPrediction>(_roomModel);
 
                 _lastTrainUtc = DateTime.UtcNow;
             }
         }
+
 
         private async Task<RecommendedHotelRoomDto?> FallbackBestHotelRoomForOfferAsync(int offerId, List<int> validHotels)
         {

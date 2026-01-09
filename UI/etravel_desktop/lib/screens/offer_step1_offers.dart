@@ -117,6 +117,21 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
     super.dispose();
   }
 
+  String resolveImageUrl(String? imageUrl) {
+  if (imageUrl == null || imageUrl.isEmpty) {
+    return "default.jpg";
+  }
+
+  // Ako je već full URL (https)
+  if (imageUrl.startsWith("http")) {
+    return imageUrl;
+  }
+
+  // Lokalna slika sa servera
+  return "${ApiConfig.imagesOffers}/$imageUrl";
+}
+
+
   void markAsChanged() {
     if (widget.isViewOrEditButton) {
       if (!hasChanges) {
@@ -215,7 +230,7 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
             OfferImageDisplay(
               id: img.id,
               isMain: img.isMain,
-              path: "${ApiConfig.imagesOffers}/${img.imageUrl}",
+              path: resolveImageUrl(img.imageUrl),
               isNetwork: true,
             ),
           );
@@ -280,7 +295,7 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
       images.add(
         OfferImageDisplay(
           id: img.id,
-          path: "${ApiConfig.imagesOffers}/${img.imageUrl}",
+          path: resolveImageUrl(img.imageUrl),
           isMain: img.isMain,
           isNetwork: true,
         ),
@@ -526,7 +541,7 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
           images.add(
             OfferImageDisplay(
               id: img.id,
-              path: "${ApiConfig.imagesOffers}/${img.imageUrl}",
+              path: resolveImageUrl(img.imageUrl),
               isMain: img.isMain,
               isNetwork: true,
             ),

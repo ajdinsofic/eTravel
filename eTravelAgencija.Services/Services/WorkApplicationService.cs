@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
 using eTravelAgencija.Model.RequestObjects;
@@ -11,15 +13,18 @@ using eTravelAgencija.Services.Database;
 using eTravelAgencija.Services.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using RabbitMQ.Client;
 
 namespace eTravelAgencija.Services.Services
 {
     public class WorkApplicationService : BaseCRUDService<Model.model.WorkApplication, WorkApplicationSearchObject, Database.WorkApplication, WorkApplicationUpsertRequest, WorkApplicationUpsertRequest>, IWorkApplicationService
     {
+        private readonly IConnection _rabbitConnection;
         private readonly IWebHostEnvironment _env;
-        public WorkApplicationService(eTravelAgencijaDbContext context, IMapper mapper, IWebHostEnvironment env) : base(context, mapper)
+        public WorkApplicationService(eTravelAgencijaDbContext context, IMapper mapper, IWebHostEnvironment env, IConnection rb) : base(context, mapper)
         {
             _env = env;
+            _rabbitConnection = rb;
         }
 
         public override IQueryable<Database.WorkApplication> ApplyFilter(IQueryable<Database.WorkApplication> query, WorkApplicationSearchObject? search = null)
@@ -98,6 +103,49 @@ namespace eTravelAgencija.Services.Services
             response.fileBytes = await File.ReadAllBytesAsync(fullPath);
 
             return response;
+        }
+
+        public async Task InviteToInterviewAsync(int applicationId)
+        {
+            var application = await _context.WorkApplications
+                .Include(x => x.User)
+                .FirstOrDefaultAsync(x => x.Id == applicationId);
+
+            if (application == null)
+                throw new Exception("Prijava ne postoji.");
+
+            await _context.SaveChangesAsync();
+
+            await SendInterviewInvitationEmail(application);
+        }
+
+        private async Task SendInterviewInvitationEmail(WorkApplication app)
+        {
+            var channel = await _rabbitConnection.CreateChannelAsync();
+
+            await channel.QueueDeclareAsync(
+                queue: "email.interview-invitation",
+                durable: true,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null
+            );
+
+            var message = new
+            {
+                To = app.User.Email,
+                FullName = $"{app.User.FirstName} {app.User.LastName}",
+                Phone = "☎ +387 61 123 456", // agencija
+                AgencyName = "eTravel",
+            };
+
+            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(message));
+
+            await channel.BasicPublishAsync(
+                exchange: "",
+                routingKey: "email.interview-invitation",
+                body: body
+            );
         }
     }
 }

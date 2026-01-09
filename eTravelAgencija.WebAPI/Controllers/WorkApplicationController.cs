@@ -15,14 +15,14 @@ namespace eTravelAgencija.WebAPI.Controllers
     {
         public WorkApplicationController(ILogger<BaseCRUDController<Model.model.WorkApplication, WorkApplicationSearchObject, WorkApplicationUpsertRequest, WorkApplicationUpsertRequest>> logger, IWorkApplicationService workApplicationService) : base(logger, workApplicationService)
         {
-            
+
         }
 
         [HttpGet("{id}/download-cv")]
         public async Task<IActionResult> DownloadCV(int id)
         {
             var result = await (_service as IWorkApplicationService).DownloadCVAsync(id);
-        
+
             return File(
                 result.fileBytes,
                 FileHelper.GetMimeType(result.CvFileName),
@@ -31,12 +31,20 @@ namespace eTravelAgencija.WebAPI.Controllers
         }
 
         [HttpPost("insertCV")]
-    public async Task<IActionResult> InsertCV(
+        public async Task<IActionResult> InsertCV(
         [FromForm] WorkApplicationUpsertRequest request)
-    {
-        await (_service as IWorkApplicationService).InsertCV(request);
-        return Ok();
-    }
+        {
+            await (_service as IWorkApplicationService).InsertCV(request);
+            return Ok();
+        }
+
+        [HttpPost("{id}/invite")]
+        public async Task<IActionResult> InviteToInterview(int id)
+        {
+            await (_service as IWorkApplicationService).InviteToInterviewAsync(id);
+            return Ok();
+        }
+
 
     }
 }

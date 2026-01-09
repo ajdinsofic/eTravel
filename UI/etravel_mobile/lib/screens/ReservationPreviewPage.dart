@@ -8,6 +8,7 @@ import 'package:etravel_app/providers/paypal_provider.dart';
 import 'package:etravel_app/providers/reservation_preview_provider.dart';
 import 'package:etravel_app/providers/reservation_provider.dart';
 import 'package:etravel_app/providers/user_provider.dart';
+import 'package:etravel_app/providers/user_token_provider.dart';
 import 'package:etravel_app/providers/user_voucher_provider.dart';
 import 'package:etravel_app/providers/voucher_provider.dart';
 import 'package:etravel_app/screens/PayPalWebViewPage.dart';
@@ -51,7 +52,7 @@ class _ReservationPreviewScreenState extends State<ReservationPreviewScreen> {
   late ReservationProvider _reservationProvider;
   late PaymentProvider _paymentProvider;
   late OfferProvider _offerProvider;
-
+  late UserTokenProvider _userTokenProvider;
 
   ReservationPreview? preview;
   bool isPreviewLoading = true;
@@ -92,6 +93,8 @@ class _ReservationPreviewScreenState extends State<ReservationPreviewScreen> {
     );
     _paymentProvider = Provider.of<PaymentProvider>(context, listen: false);
     _offerProvider = Provider.of<OfferProvider>(context, listen: false);
+
+    _userTokenProvider = Provider.of<UserTokenProvider>(context, listen: false);
 
     _loadPreview();
     _loadUser();
@@ -166,20 +169,29 @@ class _ReservationPreviewScreenState extends State<ReservationPreviewScreen> {
 
     // 1️⃣ SNIMI REZERVACIJU
     final reservation = await _reservationProvider.insert({
-      "userId": Session.userId,
-      "offerId": widget.offerId,
-      "hotelId": widget.hotelId,
-      "roomId": widget.roomId,
-      "isActive": true,
-      "includeInsurance": includeInsurance,
-      "isFirstRatePaid": isConfirmed && rateId == 1,
-      "isFullPaid": isConfirmed && rateId == 4,
-      "totalPrice": discountedTotalPrice ?? preview!.totalPrice,
-      "priceLeftToPay":
-          isConfirmed ? 0 : (discountedTotalPrice ?? preview!.totalPrice),
-      "createdAt": DateConverter.toUtcIsoFromDate(DateTime.now()),
-      "addedNeeds": "", // ili iz TextField-a
-    });
+  "userId": Session.userId,
+  "offerId": widget.offerId,
+  "hotelId": widget.hotelId,
+  "roomId": widget.roomId,
+  "isActive": true,
+  "includeInsurance": includeInsurance,
+  "isFirstRatePaid": isConfirmed && rateId == 1,
+  "isFullPaid": isConfirmed && rateId == 4,
+
+  // 👇 POPUST – INLINE LOGIKA
+  "isDiscountUsed": appliedDiscount != null && appliedDiscount! > 0,
+  "discountValue":
+      (appliedDiscount != null && appliedDiscount! > 0)
+          ? appliedDiscount!
+          : 0,
+
+  "totalPrice": discountedTotalPrice ?? preview!.totalPrice,
+  "priceLeftToPay":
+      isConfirmed ? 0 : (discountedTotalPrice ?? preview!.totalPrice),
+  "createdAt": DateConverter.toUtcIsoFromDate(DateTime.now()),
+  "addedNeeds": "",
+});
+
 
     // 2️⃣ SNIMI PAYMENT
     await _paymentProvider.insert({
@@ -205,6 +217,14 @@ class _ReservationPreviewScreenState extends State<ReservationPreviewScreen> {
         listen: false,
       ).markAsUsed(appliedVoucherId!);
     }
+
+    await _userTokenProvider.increaseTokens(Session.userId!);
+    await _reservationProvider.confirmReservation({
+  "reservationId": reservation.id,
+  "departureDate": DateConverter.toUtcIsoFromDate(widget.departureDate),
+  "returnDate": DateConverter.toUtcIsoFromDate(widget.returnDate),
+});
+
   }
 
   void _showVoucherWarning() {
@@ -217,9 +237,12 @@ class _ReservationPreviewScreenState extends State<ReservationPreviewScreen> {
             content: Text(
               appliedVoucherId != null
                   ? "Rezervacija je uspješno izvršena.\n\n"
+                      "Kao nagradu za izvršenu rezervaciju dobili ste +10 tokena.\n\n"
                       "Napomena: Iskorišteni vaučer neće biti refundiran u slučaju otkazivanja rezervacije."
-                  : "Rezervacija je uspješno izvršena.",
+                  : "Rezervacija je uspješno izvršena.\n\n"
+                      "Kao nagradu za izvršenu rezervaciju dobili ste +10 tokena.",
             ),
+
             actions: [
               TextButton(
                 onPressed: () {
@@ -487,7 +510,8 @@ class _ReservationPreviewScreenState extends State<ReservationPreviewScreen> {
                 top: Radius.circular(16),
               ),
               child: Image.network(
-                "${ApiConfig.imagesHotels}/${widget.imageUrl}",
+                //"${ApiConfig.imagesHotels}/${widget.imageUrl}",
+                widget.imageUrl,
                 height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,
