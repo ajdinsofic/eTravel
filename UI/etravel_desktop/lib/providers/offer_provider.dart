@@ -14,4 +14,23 @@ class OfferProvider extends BaseProvider<Offer> {
   Offer fromJson(dynamic data) {
     return Offer.fromJson(data);
   }
+
+  Future<void> decreaseTotalReservation(int offerId) async {
+  final url =
+      "${ApiConfig.apiBase}/api/Offer/$offerId/decreaseTotalReservation";
+
+  final response = await http.put(
+    Uri.parse(url),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${Session.token}",
+    },
+  );
+
+  if (response.statusCode != 200) {
+    throw Exception(
+      "Greška pri smanjenju broja rezervacija: ${response.body}",
+    );
+  }
+}
 }

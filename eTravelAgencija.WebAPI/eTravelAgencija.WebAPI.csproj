@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\eTravelAgencija.Services\eTravelAgencija.Services.csproj" />
     <ProjectReference Include="..\eTravelAgencija.Model\eTravelAgencija.Model.csproj" />
-    <ProjectReference Include="..\eTravelAgencija.EmailConsumer\eTravelAgencija.EmailConsumer.csproj" />
   </ItemGroup>
 
 </Project>

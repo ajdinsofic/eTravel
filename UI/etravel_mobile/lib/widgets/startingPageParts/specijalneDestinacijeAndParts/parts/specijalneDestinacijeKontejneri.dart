@@ -1,4 +1,5 @@
 import 'package:etravel_app/config/api_config.dart';
+import 'package:etravel_app/helper/image_helper.dart';
 import 'package:etravel_app/providers/offer_hotel_provider.dart';
 import 'package:etravel_app/providers/offer_provider.dart';
 import 'package:etravel_app/screens/DestinationPage.dart';
@@ -84,8 +85,7 @@ class _SpecijalneDestinacijeKontejnerState
                     AspectRatio(
                       aspectRatio: 16 / 9,
                       child: Image.network(
-                        //"${ApiConfig.imagesOffers}/${widget.glavnaslikaPath}",
-                        widget.glavnaslikaPath,
+                        resolveOfferImageUrl(widget.glavnaslikaPath),
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Image.asset(

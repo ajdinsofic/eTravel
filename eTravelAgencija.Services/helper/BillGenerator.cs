@@ -64,12 +64,12 @@ namespace eTravelAgencija.Services.Utils.Pdf
                         // ===== FINANSIJE =====
                         col.Item().Text("Obračun").Bold();
 
-                        BuildRow(col, "Putovanje", $"{bill.TravelPrice:F2} KM");
-                        BuildRow(col, "Boravišna taksa", $"{bill.ResidenceTax:F2} KM");
+                        BuildRow(col, "Putovanje", $"{bill.TravelPrice:F2}$");
+                        BuildRow(col, "Boravišna taksa", $"{bill.ResidenceTax:F2}$");
 
                         if (bill.Insurance > 0)
                         {
-                            BuildRow(col, "Putničko osiguranje", $"{bill.Insurance:F2} KM");
+                            BuildRow(col, "Putničko osiguranje", $"{bill.Insurance:F2}$");
                         }
 
                         if (bill.IsDiscountUsed)
@@ -86,7 +86,7 @@ namespace eTravelAgencija.Services.Utils.Pdf
 
                         col.Item()
                             .AlignRight()
-                            .Text($"UKUPNO: {bill.Total:F2} KM")
+                            .Text($"UKUPNO: {bill.Total:F2}$")
                             .FontSize(16)
                             .Bold();
                     });

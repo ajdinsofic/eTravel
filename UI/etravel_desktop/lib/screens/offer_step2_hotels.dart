@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:etravel_desktop/config/api_config.dart';
 import 'package:etravel_desktop/helper/date_picker.dart';
+import 'package:etravel_desktop/helper/image_helper.dart';
 import 'package:etravel_desktop/helper/update_helper.dart';
 import 'package:etravel_desktop/models/hotel_form_data.dart';
 import 'package:etravel_desktop/models/hotel_image_insert.dart';
@@ -75,19 +76,7 @@ class _OfferStep2HotelsState extends State<OfferStep2Hotels> {
     }
   }
   
-  String resolveImageUrl(String? imageUrl) {
-  if (imageUrl == null || imageUrl.isEmpty) {
-    return "default.jpg";
-  }
-
-  // Ako je već full URL (https)
-  if (imageUrl.startsWith("http")) {
-    return imageUrl;
-  }
-
-  // Lokalna slika sa servera
-  return "${ApiConfig.imagesOffers}/$imageUrl";
-}
+ 
 
   void _showSuccessToast() {
   final overlay = Overlay.of(context);
@@ -184,7 +173,7 @@ class _OfferStep2HotelsState extends State<OfferStep2Hotels> {
           return HotelImageInsertRequest(
             id: img.imageId,
             hotelId: hid,
-            imageUrl: resolveImageUrl(img.imageUrl),
+            imageUrl: resolveHotelsImageUrl(img.imageUrl),
             isMain: img.isMain,
           );
         }).toList();

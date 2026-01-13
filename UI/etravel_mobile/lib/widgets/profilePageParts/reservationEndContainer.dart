@@ -1,3 +1,4 @@
+import 'package:etravel_app/helper/image_helper.dart';
 import 'package:etravel_app/models/reservation_preview.dart';
 import 'package:etravel_app/models/reservations.dart';
 import 'package:etravel_app/providers/comment_provider.dart';
@@ -193,7 +194,7 @@ class _ReservationEndContainerState extends State<ReservationEndContainer> {
             children: [
               CircleAvatar(
                 radius: screenWidth * 0.08,
-                backgroundImage: NetworkImage(widget.imageUrl),
+                backgroundImage: NetworkImage(resolveOfferImageUrl(widget.imageUrl)),
               ),
               SizedBox(
                 width: screenWidth * 0.38,

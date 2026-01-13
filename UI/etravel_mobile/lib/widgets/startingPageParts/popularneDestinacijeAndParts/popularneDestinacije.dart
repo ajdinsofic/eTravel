@@ -1,4 +1,5 @@
 import 'package:etravel_app/config/api_config.dart';
+import 'package:etravel_app/helper/image_helper.dart';
 import 'package:etravel_app/models/offer.dart';
 import 'package:etravel_app/providers/offer_hotel_provider.dart';
 import 'package:etravel_app/providers/offer_provider.dart';
@@ -175,8 +176,7 @@ class _PopularDestinationsState extends State<PopularDestinations> {
                             borderRadius: BorderRadius.circular(20),
                             child: mainImage != null
                                 ? Image.network(
-                                    //"${ApiConfig.imagesOffers}/$mainImage",
-                                    mainImage,
+                                    resolveOfferImageUrl(mainImage),
                                     width: screenWidth * 0.8,
                                     height: screenHeight * 0.5,
                                     fit: BoxFit.cover,

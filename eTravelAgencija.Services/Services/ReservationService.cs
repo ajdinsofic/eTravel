@@ -14,6 +14,7 @@ using eTravelAgencija.Models.Requests;
 using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;
+using eTravelAgencija.EmailConsumer.Messages;
 
 namespace eTravelAgencija.Services.Services
 {
@@ -218,5 +219,59 @@ namespace eTravelAgencija.Services.Services
                 body: body
             );
         }
+
+        public async Task<bool> CancelReservation(int reservationId, string? emailOverride = null)
+    {
+        // 1) Učitaj sve što treba
+        var res = await _context.Reservations
+            .Include(r => r.User)
+            .Include(r => r.OfferDetails).ThenInclude(r => r.Offer)
+            .FirstOrDefaultAsync(r => r.Id == reservationId);
+
+        if (res == null) return false;
+
+        // 2) Pripremi podatke za mail
+        var toEmail = emailOverride ?? res.User?.Email;
+        if (string.IsNullOrWhiteSpace(toEmail)) return false;
+
+        var msg = new ReservationCancelledEmailMessage
+        {
+            To = toEmail,
+            FullName = $"{res.User!.FirstName} {res.User!.LastName}",
+            ReservationId = res.Id,
+            DestinationName = res.OfferDetails?.Offer?.Title ?? "Vaše putovanje",
+            CancelReason = "Premalog broja prijavljenih putnika",
+            VoucherUsed = res.isDiscountUsed,
+            PaidAmount = res.TotalPrice - res.PriceLeftToPay,
+            AgencyName = "eTravel",
+            Phone = "☎ +387 61 123 456"
+        };
+
+        // 3) Publish u RabbitMQ
+        await PublishReservationCancelledAsync(msg);
+
+        return true;
+    }
+
+    private async Task PublishReservationCancelledAsync(ReservationCancelledEmailMessage msg)
+    {
+        var channel = await _rabbitConnection.CreateChannelAsync();
+
+        await channel.QueueDeclareAsync(
+            queue: "email.reservation-cancelled",
+            durable: true,
+            exclusive: false,
+            autoDelete: false,
+            arguments: null
+        );
+
+        var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(msg));
+
+        await channel.BasicPublishAsync(
+            exchange: "",
+            routingKey: "email.reservation-cancelled",
+            body: body
+        );
+    }
     }
 }

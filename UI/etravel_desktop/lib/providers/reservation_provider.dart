@@ -34,6 +34,33 @@ class ReservationProvider extends BaseProvider<Reservation> {
   return response.bodyBytes;
 }
 
+Future<void> cancelReservationSendEmail({
+  required int reservationId,
+  required String email,
+}) async {
+  final url = Uri.parse(
+    "${ApiConfig.apiBase}/api/Reservation/$reservationId/cancel-email",
+  );
+
+  final response = await http.post(
+    url,
+    headers: {
+      "Authorization": "Bearer ${Session.token}",
+      "Content-Type": "application/json",
+    },
+    body: jsonEncode({
+      "email": email,
+    }),
+  );
+
+  if (response.statusCode < 200 || response.statusCode >= 300) {
+    throw Exception(
+      "Neuspješno slanje emaila: ${response.statusCode} ${response.body}",
+    );
+  }
+}
+
+
 
 
 }

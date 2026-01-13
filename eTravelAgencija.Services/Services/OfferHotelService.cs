@@ -22,8 +22,8 @@ namespace eTravelAgencija.Services.Database
         }
 
         public override IQueryable<OfferHotels> ApplyFilter(
-    IQueryable<OfferHotels> query,
-    OfferHotelSearchObject search)
+        IQueryable<OfferHotels> query,
+        OfferHotelSearchObject search)
         {
             if (search.offerDetailsId.HasValue)
             {

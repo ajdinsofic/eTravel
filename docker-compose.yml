@@ -22,6 +22,7 @@ services:
     restart: unless-stopped
     build:
       context: .
+      dockerfile: DockerFile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
@@ -31,13 +32,13 @@ services:
       - RABBITMQ_VIRTUALHOST=/
       - RABBITMQ_PORT=5672
     ports:
-      - 5265:8080
+      - 5265:5265
     depends_on:
       - postgres
     networks:
       - etravelnet
     volumes:
-      - ./data/wwwroot:/app/wwwroot
+      - ./eTravelAgencija.WebAPI/data/wwwroot:/app/wwwroot
 
   etravel-rabbitmq:
     image: rabbitmq:3-management-alpine
@@ -66,7 +67,7 @@ services:
     container_name: etravel-mailingservice
     build:
       context: .
-      dockerfile: eTravelAgencija.EmailConsumer/Dockerfile
+      dockerfile: eTravelAgencija.EmailConsumer/DockerFile
     environment:
       - RABBITMQ_HOST=etravel-rabbitmq
       - RABBITMQ_USERNAME=${RABBITMQ_USER}

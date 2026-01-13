@@ -9,9 +9,6 @@ using System.IdentityModel.Tokens.Jwt;
 using eTravelAgencija.Services.Interfaces;
 using Microsoft.Extensions.FileProviders;
 using eTravelAgencija.Model.model;
-using eTravelAgencija.EmailConsumer.Configuration;
-using eTravelAgencija.EmailConsumer.DependencyInjection;
-using eTravelAgencija.EmailConsumer.Consumers;
 using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);

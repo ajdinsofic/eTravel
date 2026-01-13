@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:etravel_app/config/api_config.dart';
 import 'package:etravel_app/helper/date_converter.dart';
+import 'package:etravel_app/helper/image_helper.dart';
 import 'package:etravel_app/models/user.dart';
 import 'package:etravel_app/models/user_image_request.dart';
 import 'package:etravel_app/providers/user_provider.dart';
@@ -526,7 +527,7 @@ class _profilePageState extends State<profilePage> {
                         newImage != null
                             ? FileImage(newImage!)
                             : NetworkImage(
-                                  "${ApiConfig.imagesUsers}/${user!.imageUrl}",
+                                  resolveUsersImageUrl(user!.imageUrl)
                                 )
                                 as ImageProvider,
                   ),

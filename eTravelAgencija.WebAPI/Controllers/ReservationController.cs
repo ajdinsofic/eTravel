@@ -49,5 +49,14 @@ namespace eTravelAgencija.WebAPI.Controllers
             return Ok();
         }
 
+        [HttpPost("{id:int}/cancel-email")]
+        public async Task<IActionResult> SendCancelEmail(int id, [FromBody] CancelReservationEmailRequest req)
+        {
+            var ok = await (_service as IReservationService).CancelReservation(id, req.Email);
+            if (!ok) return BadRequest("Ne mogu poslati email (rezervacija ili email ne postoji).");
+
+            return Ok();
+        }
+
     }
 }

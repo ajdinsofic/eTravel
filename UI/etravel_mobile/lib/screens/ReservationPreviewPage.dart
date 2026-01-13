@@ -1,5 +1,6 @@
 import 'package:etravel_app/config/api_config.dart';
 import 'package:etravel_app/helper/date_converter.dart';
+import 'package:etravel_app/helper/image_helper.dart';
 import 'package:etravel_app/models/reservation_preview.dart';
 import 'package:etravel_app/models/user.dart';
 import 'package:etravel_app/providers/offer_provider.dart';
@@ -510,8 +511,7 @@ class _ReservationPreviewScreenState extends State<ReservationPreviewScreen> {
                 top: Radius.circular(16),
               ),
               child: Image.network(
-                //"${ApiConfig.imagesHotels}/${widget.imageUrl}",
-                widget.imageUrl,
+                resolveOfferImageUrl(widget.imageUrl),
                 height: 200,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -922,7 +922,7 @@ class _ReservationPreviewScreenState extends State<ReservationPreviewScreen> {
                               ? const AssetImage("assets/images/default.jpg")
                               : (_user?.imageUrl != null
                                       ? NetworkImage(
-                                        "${ApiConfig.imagesUsers}/${_user!.imageUrl}",
+                                        resolveUsersImageUrl(_user!.imageUrl),
                                       )
                                       : const AssetImage(
                                         "assets/images/default.jpg",

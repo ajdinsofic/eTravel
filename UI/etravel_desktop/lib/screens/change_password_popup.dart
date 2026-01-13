@@ -92,7 +92,8 @@ class _ChangePasswordPopupState extends State<ChangePasswordPopup> {
         newError = "Server nije prihvatio novu lozinku.";
       }
     } catch (e) {
-      currentError = "Greška na serveru.";
+      debugPrint("$e");
+      currentError = "Greška na serveru";
     }
 
     setState(() => isSaving = false);

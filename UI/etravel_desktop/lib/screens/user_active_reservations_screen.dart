@@ -1,6 +1,10 @@
+import 'package:etravel_desktop/helper/image_helper.dart';
 import 'package:etravel_desktop/models/reservations.dart';
 import 'package:etravel_desktop/models/user_active_reservations.dart';
+import 'package:etravel_desktop/providers/hotel_room_provider.dart';
+import 'package:etravel_desktop/providers/user_token_provider.dart';
 import 'package:etravel_desktop/screens/reservation_popup.dart';
+import 'package:etravel_desktop/utils/session.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +29,8 @@ class _UserActiveReservationsScreenState
     extends State<UserActiveReservationsScreen> {
   late ReservationProvider _reservationProvider;
   late OfferProvider _offerProvider;
+  late HotelRoomProvider _hotelRoomProvider;
+  late UserTokenProvider _userTokenProvider;
 
   bool isLoading = true;
 
@@ -36,6 +42,8 @@ class _UserActiveReservationsScreenState
 
     _offerProvider = Provider.of<OfferProvider>(context, listen: false);
     _reservationProvider = Provider.of<ReservationProvider>(context, listen: false);
+    _hotelRoomProvider = Provider.of<HotelRoomProvider>(context, listen: false);
+    _userTokenProvider = Provider.of<UserTokenProvider>(context, listen: false);
 
     _loadData();
   }
@@ -91,6 +99,104 @@ class _UserActiveReservationsScreenState
       setState(() => isLoading = false);
     }
   }
+
+  Future<void> _confirmAndCancelReservation(Reservation reservation) async {
+  final bool? confirm = await showDialog<bool>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text(
+          'Otkazivanje rezervacije',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        content: const Text(
+          'Da li ste sigurni da želite otkazati ovu rezervaciju?',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            style: TextButton.styleFrom(
+              backgroundColor: const Color(0xFF67B1E5),
+              foregroundColor: Colors.white,
+            ),
+            child: const Text('Ne'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFD62929),
+              foregroundColor: Colors.white,
+            ),
+            child: const Text('Da'),
+          ),
+        ],
+      );
+    },
+  );
+
+  if (confirm != true) return;
+
+  try {
+    await _reservationProvider.cancelReservationSendEmail(
+      reservationId: reservation.id!,
+      email: widget.user.email!, 
+   );
+   
+    await _reservationProvider.delete(reservation.id!);
+
+
+    await _offerProvider.decreaseTotalReservation(reservation.offerId!);
+
+
+    _hotelRoomProvider.increaseRoomsLeft(
+      hotelId: reservation.hotelId!,
+      roomId: reservation.roomId!,
+    );
+
+    await _userTokenProvider.decreaseTokens(widget.user.id!);
+
+
+    // 5) Obavijesti korisnika
+    final bool? shouldRefresh = await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text(
+            'Rezervacija otkazana',
+            style: TextStyle(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          content: const Text(
+            'Korisnik je ce dobiti email sa detaljima otkazivanja rezervacije.',
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context, true),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF67B1E5),
+                foregroundColor: Colors.white,
+              ),
+              child: const Text('U redu'),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (shouldRefresh == true) {
+      _loadData(); 
+    }
+  } catch (e) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Greška pri otkazivanju rezervacije: $e'),
+        backgroundColor: Colors.red,
+      ),
+    );
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +297,7 @@ class _UserActiveReservationsScreenState
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: Image.network(
-              "${ApiConfig.imagesOffers}/${item.imageUrl}",
+              resolveOfferImageUrl(item.imageUrl),
               width: 70,
               height: 70,
               fit: BoxFit.cover,
@@ -241,7 +347,7 @@ class _UserActiveReservationsScreenState
           // OTKAŽI REZ.
           ElevatedButton(
             onPressed: () async {
-              // TODO: logika otkazivanja
+              await _confirmAndCancelReservation(item.reservation);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xffE57373),

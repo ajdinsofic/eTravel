@@ -726,14 +726,14 @@ class _ReservationDetailsDialogState extends State<ReservationDetailsDialog> {
               Expanded(
                 child: _labelValue(
                   "Ukupan iznos",
-                  "${widget.reservation.totalPrice} KM",
+                  "${widget.reservation.totalPrice}\$",
                 ),
               ),
               const SizedBox(width: 40),
               Expanded(
                 child: _labelValue(
                   "Preostali iznos",
-                  "${refreshedLeftToPay ?? widget.reservation.priceLeftToPay} KM",
+                  "${refreshedLeftToPay ?? widget.reservation.priceLeftToPay}\$",
                 ),
               ),
             ],

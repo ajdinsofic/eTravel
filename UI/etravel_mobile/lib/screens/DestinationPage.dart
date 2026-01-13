@@ -413,12 +413,12 @@ class _DestinationPageState extends State<destinationPage> {
                               setState(() {
                                 selectedDate = datum;
 
-                                if (!firstSelectionDone) {
-                                  roomId = null; // reset samo prvi put
-                                }
+                                // if (!firstSelectionDone) {
+                                //   roomId = null; // reset samo prvi put
+                                // }
 
                                 hotelPage = 0;
-                                firstSelectionDone = false;
+                                //firstSelectionDone = false;
                               });
                             },
 
@@ -524,7 +524,7 @@ class _DestinationPageState extends State<destinationPage> {
                                   style: TextStyle(color: Color(0xFFC7C7C7)),
                                 ),
                                 value: roomId,
-                                onChanged: (value) {
+                                onChanged: (value) async {
                                   setState(() {
                                     roomId = value;
 
@@ -535,7 +535,7 @@ class _DestinationPageState extends State<destinationPage> {
                                     hotelPage = 0;
                                   });
 
-                                  _loadRecommendedHotel();
+                                  await _loadRecommendedHotel();
                                 },
 
                                 items:

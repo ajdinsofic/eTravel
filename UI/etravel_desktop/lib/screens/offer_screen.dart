@@ -1,4 +1,5 @@
 import 'package:etravel_desktop/config/api_config.dart';
+import 'package:etravel_desktop/helper/image_helper.dart';
 import 'package:etravel_desktop/models/offer_category.dart';
 import 'package:etravel_desktop/models/offer_sub_category.dart';
 import 'package:etravel_desktop/models/search_provider.dart';
@@ -61,19 +62,6 @@ class _OfferScreenState extends State<OfferScreen> {
     _loadCategories();
   }
 
-  String resolveImageUrl(String? imageUrl) {
-  if (imageUrl == null || imageUrl.isEmpty) {
-    return "default.jpg";
-  }
-
-  // Ako je već full URL (https)
-  if (imageUrl.startsWith("http")) {
-    return imageUrl;
-  }
-
-  // Lokalna slika sa servera
-  return "${ApiConfig.imagesOffers}/$imageUrl";
-}
 
   // ---------------------------------------------------------------------------
   // LOADERS
@@ -122,11 +110,10 @@ class _OfferScreenState extends State<OfferScreen> {
 
   Future<void> _deleteFullOffer(int offerId) async {
     try {
-
       final hotels = await _offerHotelProvider.get(
         filter: {"offerDetailsId": offerId},
       );
-      
+
       await _offerProvider.delete(offerId);
       debugPrint("Offer $offerId obrisan.");
 
@@ -501,7 +488,7 @@ class _OfferScreenState extends State<OfferScreen> {
             final mainImage =
                 (o.offerImages.isNotEmpty &&
                         o.offerImages.first.imageUrl.isNotEmpty)
-                    ? resolveImageUrl(o.offerImages.first.imageUrl)
+                    ? resolveOfferImageUrl(o.offerImages.first.imageUrl)
                     : "assets/images/placeholder.jpg";
 
             return _offerCard(
@@ -644,7 +631,7 @@ class _OfferScreenState extends State<OfferScreen> {
                     IconButton(
                       icon: const Icon(Icons.visibility_outlined),
                       onPressed: () async {
-                        await showDialog(
+                        final bool? refresh = await showDialog<bool>(
                           context: context,
                           barrierDismissible: false,
                           builder:
@@ -660,12 +647,20 @@ class _OfferScreenState extends State<OfferScreen> {
                                 ),
                               ),
                         );
+
+                        if (refresh == true) {
+                          await _loadOffers({
+                            "subCategoryId": selectedSubCategory?.id ?? -1,
+                            "isMainImage": true,
+                          });
+                        }
                       },
                     ),
+
                     IconButton(
                       icon: const Icon(Icons.edit_outlined),
                       onPressed: () async {
-                        await showDialog(
+                        final bool? refresh = await showDialog<bool>(
                           context: context,
                           barrierDismissible: false,
                           builder:
@@ -681,8 +676,16 @@ class _OfferScreenState extends State<OfferScreen> {
                                 ),
                               ),
                         );
+
+                        if (refresh == true) {
+                          await _loadOffers({
+                            "subCategoryId": selectedSubCategory?.id ?? -1,
+                            "isMainImage": true,
+                          });
+                        }
                       },
                     ),
+
                     IconButton(
                       icon: const Icon(Icons.delete_outline),
                       onPressed: () async {

@@ -373,11 +373,11 @@ namespace eTravelAgencija.Services.Services
         {
             // 1) Hotel koji ima najviše rezervacija ukupno (među valid hotels)
             int? bestHotelId = await _context.Reservations
-    .Where(r => validHotels.Contains(r.HotelId))
-    .GroupBy(r => r.HotelId)
-    .OrderByDescending(g => g.Count())
-    .Select(g => g.Key)
-    .FirstOrDefaultAsync();
+                 .Where(r => validHotels.Contains(r.HotelId))
+                 .GroupBy(r => r.HotelId)
+                 .OrderByDescending(g => g.Count())
+                 .Select(g => g.Key)
+                 .FirstOrDefaultAsync();
 
 
             // Ako nema rezervacija → uzmi prvi valid

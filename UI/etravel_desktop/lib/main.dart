@@ -17,6 +17,7 @@ import 'package:etravel_desktop/providers/room_provider.dart';
 import 'package:etravel_desktop/providers/sub_category_provider.dart';
 import 'package:etravel_desktop/providers/user_provider.dart';
 import 'package:etravel_desktop/providers/user_role_provider.dart';
+import 'package:etravel_desktop/providers/user_token_provider.dart';
 import 'package:etravel_desktop/providers/work_application_provider.dart';
 import 'package:etravel_desktop/screens/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => ReportProvider()),
         ChangeNotifierProvider(create: (_) => CommentProvider()),
         ChangeNotifierProvider(create: (_) => UserRoleProvider()),
-        ChangeNotifierProvider(create: (_) => WorkApplicationProvider()) 
+        ChangeNotifierProvider(create: (_) => WorkApplicationProvider()),
+        ChangeNotifierProvider(create: (_) => UserTokenProvider()),
       ],
       child: const MyApp(),
     ),);

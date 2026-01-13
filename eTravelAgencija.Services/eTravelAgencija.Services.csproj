@@ -29,7 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\eTravelAgencija.Model\eTravelAgencija.Model.csproj" />
-    <ProjectReference Include="..\eTravelAgencija.EmailConsumer\eTravelAgencija.EmailConsumer.csproj" />
+    <ProjectReference Include="..\eTravelAgencija.EmailConsumer\eTravelAgencija.EmailConsumer.csproj" ExcludeAssets="contentFiles" />
   </ItemGroup>
 
 </Project>
