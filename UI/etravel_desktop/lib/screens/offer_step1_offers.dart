@@ -118,19 +118,18 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
   }
 
   String resolveImageUrl(String? imageUrl) {
-  if (imageUrl == null || imageUrl.isEmpty) {
-    return "default.jpg";
+    if (imageUrl == null || imageUrl.isEmpty) {
+      return "default.jpg";
+    }
+
+    // Ako je već full URL (https)
+    if (imageUrl.startsWith("http")) {
+      return imageUrl;
+    }
+
+    // Lokalna slika sa servera
+    return "${ApiConfig.imagesOffers}/$imageUrl";
   }
-
-  // Ako je već full URL (https)
-  if (imageUrl.startsWith("http")) {
-    return imageUrl;
-  }
-
-  // Lokalna slika sa servera
-  return "${ApiConfig.imagesOffers}/$imageUrl";
-}
-
 
   void markAsChanged() {
     if (widget.isViewOrEditButton) {
@@ -200,9 +199,9 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
         selectedWayOfTravel = existingOffer.wayOfTravel;
         minimalPriceController.text = existingOffer.minimalPrice.toString();
         insuranceController.text =
-        existingOffer.travelInsuranceTotal.toString();
+            existingOffer.travelInsuranceTotal.toString();
         residenceTaxController.text =
-        existingOffer.residenceTaxPerDay.toString();
+            existingOffer.residenceTaxPerDay.toString();
         residenceTotalController.text = existingOffer.residenceTotal.toString();
         descriptionController.text = existingOffer.description;
         countryController.text = existingOffer.country;
@@ -288,61 +287,93 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
   }
 
   Future<void> loadExistingImages(List<OfferImage> serverImages) async {
-    images.clear();
-    imagesForUpdate.clear();
+  images.clear();
+  imagesForUpdate.clear();
 
-    for (var img in serverImages) {
-      images.add(
-        OfferImageDisplay(
-          id: img.id,
-          path: resolveImageUrl(img.imageUrl),
-          isMain: img.isMain,
-          isNetwork: true,
-        ),
-      );
+  for (var img in serverImages) {
+    images.add(
+      OfferImageDisplay(
+        id: img.id,
+        path: resolveImageUrl(img.imageUrl),
+        isMain: img.isMain,
+        isNetwork: true,
+      ),
+    );
 
-      imagesForUpdate.add(
-        OfferImageUpdateRequest(
-          id: img.id,
-          offerId: img.offerId,
-          isMain: img.isMain,
-          isUpdated: false,
-        ),
-      );
-    }
-
-    if (!images.any((e) => e.isMain) && images.isNotEmpty) {
-      images.first.isMain = true;
-    }
-
-    setState(() {});
+    imagesForUpdate.add(
+      OfferImageUpdateRequest(
+        id: img.id,
+        offerId: img.offerId,
+        isMain: img.isMain,
+        isUpdated: false,
+      ),
+    );
   }
+
+  // osiguraj main
+  if (images.isNotEmpty && !images.any((e) => e.isMain)) {
+    images.first.isMain = true;
+    final u = imagesForUpdate.firstWhere((x) => x.id == images.first.id, orElse: () => imagesForUpdate.first);
+    u.isMain = true;
+  }
+
+  // ✅ ključna stvar
+  _fixSelectedPreviewIndex(preferMain: true);
+
+  if (mounted) setState(() {});
+}
+
 
   // ==========================================================
   // REMOVE IMAGE (DISABLED IN READONLY)
   // ==========================================================
   void _removeImage(int index) async {
-    if (widget.isReadOnly) return;
+  if (widget.isReadOnly) return;
 
-    final img = images[index];
+  // ✅ zaštita od RangeError
+  if (index < 0 || index >= images.length) {
+    debugPrint("⛔ Remove skipped – index out of range: $index");
+    return;
+  }
 
-    if (img.id != null && currentOfferId > 0) {
-      try {
-        await _offerImageProvider.delete(img.id!);
-      } catch (_) {}
+  final img = images[index];
+
+  // ===============================
+  // SERVER IMAGE (postoji u bazi)
+  // ===============================
+  if (img.id != null && currentOfferId > 0) {
+    try {
+      await _offerImageProvider.delete(img.id!);
+    } catch (_) {}
+
+    if (imagesForUpdate.isNotEmpty) {
       imagesForUpdate.removeWhere((e) => e.id == img.id);
     }
-
-    imagesForInsert.removeWhere((e) => e.image.path == img.path);
-    images.removeAt(index);
-
-    if (images.isNotEmpty && !images.any((e) => e.isMain)) {
-      images.first.isMain = true;
-    }
-
-    markAsChanged();
-    setState(() {});
   }
+
+  // ===============================
+  // LOCAL IMAGE (još nije uploadovana)
+  // ===============================
+  if (imagesForInsert.isNotEmpty) {
+    imagesForInsert.removeWhere((e) => e.image.path == img.path);
+  }
+
+  // ===============================
+  // REMOVE FROM DISPLAY LIST
+  // ===============================
+  images.removeAt(index);
+
+  // ===============================
+  // FIX PREVIEW INDEX (bez auto-main)
+  // ===============================
+  if (selectedPreviewIndex >= images.length) {
+    selectedPreviewIndex = images.isEmpty ? 0 : images.length - 1;
+  }
+
+  markAsChanged();
+  setState(() {});
+}
+
 
   // ==========================================================
   // VALIDACIJA
@@ -389,6 +420,11 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
 
     if (imagesForInsert.isEmpty && images.isEmpty) {
       errors["images"] = "Morate dodati barem jednu sliku.";
+    } else {
+      final hasMain = images.any((img) => img.isMain == true);
+      if (!hasMain) {
+        errors["images"] = "Morate označiti jednu sliku kao glavnu.";
+      }
     }
 
     setState(() {});
@@ -498,99 +534,7 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
     setState(() {});
   }
 
-  // ==========================================================
-  // SUBMIT — CREATE OFFER + SAVE IMAGES
-  // ==========================================================
-  Future<void> _submit(bool? isNext) async {
-    if (!_validate()) return;
-
-    try {
-      int currentId = widget.existingOfferId ?? 0;
-
-      var request = {
-        "title": titleController.text.trim(),
-        "daysInTotal": int.tryParse(daysController.text) ?? 0,
-        "wayOfTravel": selectedWayOfTravel,
-        "subCategoryId": widget.selectedSubCategoryId ?? -1,
-        "minimalPrice": double.tryParse(minimalPriceController.text) ?? 0,
-        "travelInsuranceTotal": double.tryParse(insuranceController.text) ?? 0,
-        "residenceTotal": double.tryParse(residenceTotalController.text) ?? 0,
-        "residenceTaxPerDay": double.tryParse(residenceTaxController.text) ?? 0,
-        "description": descriptionController.text.trim(),
-        "country": countryController.text.trim(),
-        "city": cityController.text.trim(),
-      }; // tvoja ponuda
-
-      // UPDATE MODE
-      if (currentId > 0) {
-        await _offerProvider.update(currentId, request);
-
-        // univerzalna funkcija koja ce raditi za svaki update bilo prvi put ili da se vracamo
-        var uploaded = await uploadAllImages(currentId);
-
-        for (var img in uploaded) {
-          imagesForUpdate.add(
-            OfferImageUpdateRequest(
-              id: img.id,
-              offerId: img.offerId,
-              isMain: img.isMain,
-              isUpdated: false,
-            ),
-          );
-
-          images.add(
-            OfferImageDisplay(
-              id: img.id,
-              path: resolveImageUrl(img.imageUrl),
-              isMain: img.isMain,
-              isNetwork: true,
-            ),
-          );
-        }
-
-        imagesForInsert.clear();
-
-        // 1️⃣ Resetujemo state izmjena
-        final bool shouldShowToast = hasChanges; // <— ZAPAMTIMO PRVO
-        setState(() => hasChanges = false);
-        widget.onChanged(false);
-
-        // 2️⃣ Ako je korisnik stvarno mijenjao nešto → prikaži toast
-        if (shouldShowToast) {
-          _showSuccessToast();
-        }
-
-        if(isNext == true){
-          widget.onStepComplete(currentId, int.parse(daysController.text));
-        }
-        return;
-      }
-
-      // CREATE MODE
-      var offer = await _offerProvider.insert(request);
-
-      var uploaded = await uploadAllImages(offer.offerId);
-
-      // refresh update list
-      imagesForUpdate.clear();
-      for (var img in uploaded) {
-        imagesForUpdate.add(
-          OfferImageUpdateRequest(
-            id: img.id,
-            offerId: offer.offerId,
-            isMain: img.isMain,
-            isUpdated: false,
-          ),
-        );
-      }
-
-      widget.onStepComplete(offer.offerId, int.parse(daysController.text));
-      setState(() => hasChanges = false);
-      widget.onChanged(false); // 🔥 javimo wizardu
-    } catch (e) {
-      print("Greška: $e");
-    }
-  }
+  
 
   // ==========================================================
   // AUTORACUN BORAVIŠNE TAKSE
@@ -607,6 +551,89 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
 
     setState(() {});
   }
+
+  Future<void> _submit(bool? isNext) async {
+  if (!_validate()) return;
+
+  try {
+    final int currentId = widget.existingOfferId ?? 0;
+
+    final request = {
+      "title": titleController.text.trim(),
+      "daysInTotal": int.tryParse(daysController.text) ?? 0,
+      "wayOfTravel": selectedWayOfTravel,
+      "subCategoryId": widget.selectedSubCategoryId ?? -1,
+      "minimalPrice": double.tryParse(minimalPriceController.text) ?? 0,
+      "travelInsuranceTotal": double.tryParse(insuranceController.text) ?? 0,
+      "residenceTotal": double.tryParse(residenceTotalController.text) ?? 0,
+      "residenceTaxPerDay": double.tryParse(residenceTaxController.text) ?? 0,
+      "description": descriptionController.text.trim(),
+      "country": countryController.text.trim(),
+      "city": cityController.text.trim(),
+    };
+
+    // ======================================================
+    // UPDATE MODE
+    // ======================================================
+    if (currentId > 0) {
+      await _offerProvider.update(currentId, request);
+
+      // 1) upload (insert + update main flag)
+      await uploadAllImages(currentId);
+
+      // 2) očisti lokalne insert liste jer su sad na serveru
+      imagesForInsert.clear();
+
+      // 3) ✅ refresh sa servera (ovo rješava duplikate: local + server)
+      final refreshed = await _offerImageProvider.get(
+        filter: {"offerId": currentId},
+      );
+      await loadExistingImages(refreshed.items);
+
+      // 4) reset izmjena + toast
+      final bool shouldShowToast = hasChanges;
+      if (mounted) setState(() => hasChanges = false);
+      widget.onChanged(false);
+
+      if (shouldShowToast) {
+        _showSuccessToast();
+      }
+
+      // 5) ako ide dalje na next step
+      if (isNext == true) {
+        widget.onStepComplete(currentId, int.parse(daysController.text));
+      }
+
+      return;
+    }
+
+    // ======================================================
+    // CREATE MODE
+    // ======================================================
+    final offer = await _offerProvider.insert(request);
+
+    // upload slika
+    await uploadAllImages(offer.offerId);
+
+    // očisti lokalne inserte
+    imagesForInsert.clear();
+
+    // ✅ refresh sa servera da UI pokaže realno stanje
+    final refreshed = await _offerImageProvider.get(
+      filter: {"offerId": offer.offerId},
+    );
+    await loadExistingImages(refreshed.items);
+
+    // nastavi wizard
+    widget.onStepComplete(offer.offerId, int.parse(daysController.text));
+
+    if (mounted) setState(() => hasChanges = false);
+    widget.onChanged(false);
+  } catch (e) {
+    debugPrint("Greška: $e");
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -630,320 +657,373 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
           // SUBMIT BUTTONS SECTION (Ažuriraj + Nastavi)
           // ==========================================================
           Padding(
-  padding: const EdgeInsets.all(20),
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // ======================================================
+                // 1) EDIT MODE — samo ako si došao iz "uredi" dugmeta
+                //    isViewOrEditButton = true AND isReadOnly = false
+                // ======================================================
+                if (widget.isViewOrEditButton && !widget.isReadOnly)
+                  SizedBox(
+                    width: 220,
+                    height: 48,
+                    child: ElevatedButton(
+                      onPressed:
+                          hasChanges
+                              ? () async {
+                                await _submit(false); // samo azurira
+                              }
+                              : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            hasChanges ? Colors.green : Colors.grey.shade400,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text("Ažuriraj"),
+                    ),
+                  ),
 
-      // ======================================================
-      // 1) EDIT MODE — samo ako si došao iz "uredi" dugmeta
-      //    isViewOrEditButton = true AND isReadOnly = false
-      // ======================================================
-      if (widget.isViewOrEditButton && !widget.isReadOnly)
-        SizedBox(
-          width: 220,
-          height: 48,
-          child: ElevatedButton(
-            onPressed: hasChanges
-                ? () async {
-                    await _submit(false); // samo azurira
-                  }
-                : null,
-            style: ElevatedButton.styleFrom(
-              backgroundColor:
-                  hasChanges ? Colors.green : Colors.grey.shade400,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
+                if (widget.isViewOrEditButton && !widget.isReadOnly)
+                  const SizedBox(width: 12),
+
+                // ======================================================
+                // 2) VIEW MODE — samo detalji ekran
+                //    isViewOrEditButton = true AND isReadOnly = true
+                // ======================================================
+                if (widget.isViewOrEditButton && widget.isReadOnly)
+                  SizedBox(
+                    width: 220,
+                    height: 48,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        widget.onStepComplete(
+                          widget.existingOfferId,
+                          int.parse(daysController.text),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text("Nastavi"),
+                    ),
+                  ),
+
+                // ======================================================
+                // 3) CREATE MODE — samo kada kreiraš offer
+                //    isViewOrEditButton = false
+                // ======================================================
+                if (!widget.isViewOrEditButton)
+                  SizedBox(
+                    width: 220,
+                    height: 48,
+                    child: ElevatedButton(
+                      onPressed:
+                          () => _submit(true), // normalni submit za create
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text("Nastavi"),
+                    ),
+                  ),
+              ],
             ),
-            child: const Text("Ažuriraj"),
           ),
-        ),
-
-      if (widget.isViewOrEditButton && !widget.isReadOnly)
-        const SizedBox(width: 12),
-
-
-      // ======================================================
-      // 2) VIEW MODE — samo detalji ekran
-      //    isViewOrEditButton = true AND isReadOnly = true
-      // ======================================================
-      if (widget.isViewOrEditButton && widget.isReadOnly)
-        SizedBox(
-          width: 220,
-          height: 48,
-          child: ElevatedButton(
-            onPressed: () {
-              widget.onStepComplete(
-                widget.existingOfferId,
-                int.parse(daysController.text),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blueAccent,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            child: const Text("Nastavi"),
-          ),
-        ),
-
-
-      // ======================================================
-      // 3) CREATE MODE — samo kada kreiraš offer
-      //    isViewOrEditButton = false
-      // ======================================================
-      if (!widget.isViewOrEditButton)
-        SizedBox(
-          width: 220,
-          height: 48,
-          child: ElevatedButton(
-            onPressed: () => _submit(true), // normalni submit za create
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blueAccent,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            child: const Text("Nastavi"),
-          ),
-        ),
-
-    ],
-  ),
-)
-
         ],
       ),
     );
   }
 
+  void _fixSelectedPreviewIndex({bool preferMain = true}) {
+  if (images.isEmpty) {
+    selectedPreviewIndex = 0;
+    return;
+  }
+
+  if (preferMain) {
+    final mainIndex = images.indexWhere((x) => x.isMain == true);
+    if (mainIndex >= 0) {
+      selectedPreviewIndex = mainIndex;
+      return;
+    }
+  }
+
+  if (selectedPreviewIndex < 0) selectedPreviewIndex = 0;
+  if (selectedPreviewIndex >= images.length) {
+    selectedPreviewIndex = images.length - 1;
+  }
+}
+
+
   // ==========================================================
   // IMAGE SECTION (MAIN + THUMBNAILS)
   // ==========================================================
   Widget _imageSection() {
-    if (images.isEmpty) {
-      return Column(
-        children: [
-          DottedBorder(
-            color: Colors.grey,
-            dashPattern: const [8, 6],
-            borderType: BorderType.RRect,
-            radius: const Radius.circular(16),
-            strokeWidth: 2,
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 60),
-              color: const Color(0xffF5F5F5),
-              child: Column(
-                children: [
-                  Text(
-                    "dodaj sliku ponude",
-                    style: GoogleFonts.openSans(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 25),
+  final bool showImageError = errors.containsKey("images");
 
-                  GestureDetector(
-                    onTap:
-                        widget.isReadOnly
-                            ? null
-                            : () async {
-                              await _pickImages();
-                              markAsChanged();
-                            },
-                    child: Container(
-                      width: 70,
-                      height: 70,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey, width: 2),
-                      ),
-                      child: const Icon(
-                        Icons.add,
-                        size: 38,
-                        color: Colors.grey,
-                      ),
-                    ),
+  // ==========================================================
+  // 1) NEMA SLIKA
+  // ==========================================================
+  if (images.isEmpty) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DottedBorder(
+          color: showImageError ? Colors.red : Colors.grey,
+          dashPattern: const [8, 6],
+          borderType: BorderType.RRect,
+          radius: const Radius.circular(16),
+          strokeWidth: 2,
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 60),
+            color: const Color(0xffF5F5F5),
+            child: Column(
+              children: [
+                Text(
+                  "dodaj sliku ponude",
+                  style: GoogleFonts.openSans(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 25),
+                GestureDetector(
+                  onTap: widget.isReadOnly
+                      ? null
+                      : () async {
+                          await _pickImages();
+                          markAsChanged();
+                        },
+                  child: Container(
+                    width: 70,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey, width: 2),
+                    ),
+                    child: const Icon(Icons.add, size: 38, color: Colors.grey),
+                  ),
+                ),
+              ],
             ),
           ),
-          if (errors.containsKey("images"))
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(
-                errors["images"]!,
-                style: const TextStyle(color: Colors.red),
-              ),
+        ),
+
+        // ✅ error ispod (radi kad nema slika)
+        if (showImageError)
+          Padding(
+            padding: const EdgeInsets.only(top: 8, left: 6),
+            child: Text(
+              errors["images"]!,
+              style: const TextStyle(color: Colors.red),
             ),
-        ],
-      );
-    }
+          ),
+      ],
+    );
+  }
 
-    final mainImage = images[selectedPreviewIndex];
+  // ==========================================================
+  // 2) IMA SLIKA
+  // ==========================================================
+  final mainImage = images[selectedPreviewIndex];
 
-    return DottedBorder(
-      dashPattern: const [8, 6],
-      color: Colors.grey,
-      strokeWidth: 2,
-      borderType: BorderType.RRect,
-      radius: const Radius.circular(16),
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        color: const Color(0xffF5F5F5),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // ======================================================
-            // MAIN IMAGE LEFT
-            // ======================================================
-            Expanded(
-              flex: 2,
-              child: MouseRegion(
-                onEnter:
-                    widget.isReadOnly
-                        ? null
-                        : (_) => setState(() => _showOverlay = true),
-                onExit:
-                    widget.isReadOnly
-                        ? null
-                        : (_) => setState(() => _showOverlay = false),
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 320,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image:
-                              mainImage.isNetwork
-                                  ? NetworkImage(mainImage.path)
-                                  : FileImage(File(mainImage.path))
-                                      as ImageProvider,
-                        ),
-                      ),
-                    ),
-
-                    // ======================================================
-                    // MAIN IMAGE OVERLAY (ADD IMAGE BUTTON)
-                    // ======================================================
-                    AnimatedOpacity(
-                      opacity: _showOverlay ? 1 : 0,
-                      duration: const Duration(milliseconds: 200),
-                      child: Container(
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      DottedBorder(
+        dashPattern: const [8, 6],
+        color: showImageError ? Colors.red : Colors.grey,
+        strokeWidth: 2,
+        borderType: BorderType.RRect,
+        radius: const Radius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          color: const Color(0xffF5F5F5),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // ======================================================
+              // MAIN IMAGE LEFT
+              // ======================================================
+              Expanded(
+                flex: 2,
+                child: MouseRegion(
+                  onEnter: widget.isReadOnly
+                      ? null
+                      : (_) => setState(() => _showOverlay = true),
+                  onExit: widget.isReadOnly
+                      ? null
+                      : (_) => setState(() => _showOverlay = false),
+                  child: Stack(
+                    children: [
+                      Container(
                         height: 320,
                         decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.45),
                           borderRadius: BorderRadius.circular(16),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: mainImage.isNetwork
+                                ? NetworkImage(mainImage.path)
+                                : FileImage(File(mainImage.path))
+                                    as ImageProvider,
+                          ),
                         ),
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              // 🔵 OZNAČI KAO GLAVNU
-                              ElevatedButton.icon(
-                                onPressed:
-                                    widget.isReadOnly
-                                        ? null
-                                        : () async {
+                      ),
+
+                      // ======================================================
+                      // MAIN IMAGE OVERLAY
+                      // ======================================================
+                      AnimatedOpacity(
+                        opacity: _showOverlay ? 1 : 0,
+                        duration: const Duration(milliseconds: 200),
+                        child: Container(
+                          height: 320,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.45),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                // 🔵 OZNAČI KAO GLAVNU
+                                ElevatedButton.icon(
+                                  onPressed: widget.isReadOnly
+                                      ? null
+                                      : () async {
                                           await _setMainImage(
                                             images.indexOf(mainImage),
                                           );
                                           markAsChanged();
                                         },
-                                icon: const Icon(Icons.star),
-                                label: const Text(
-                                  "Označi kao glavnu sliku",
-                                  style: TextStyle(color: Colors.black),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.white,
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 22,
-                                    vertical: 16,
+                                  icon: const Icon(Icons.star),
+                                  label: const Text(
+                                    "Označi kao glavnu sliku",
+                                    style: TextStyle(color: Colors.black),
                                   ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 22,
+                                      vertical: 16,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
                                   ),
                                 ),
-                              ),
 
-                              const SizedBox(height: 15),
+                                const SizedBox(height: 15),
 
-                              // 🟦 DODAJ SLIKU
-                              ElevatedButton.icon(
-                                onPressed:
-                                    widget.isReadOnly
-                                        ? null
-                                        : () async {
+                                // 🟦 DODAJ SLIKU
+                                ElevatedButton.icon(
+                                  onPressed: widget.isReadOnly
+                                      ? null
+                                      : () async {
                                           await _pickImages();
                                           markAsChanged();
                                         },
-                                icon: const Icon(Icons.add_photo_alternate),
-                                label: const Text("Dodaj sliku"),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(0xFF64B5F6),
-                                  foregroundColor: Colors.white,
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 22,
-                                    vertical: 16,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
+                                  icon: const Icon(Icons.add_photo_alternate),
+                                  label: const Text("Dodaj sliku"),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFF64B5F6),
+                                    foregroundColor: Colors.white,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 22,
+                                      vertical: 16,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(width: 30),
+
+              // ======================================================
+              // RIGHT LIST OF IMAGES
+              // ======================================================
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Dodane slike",
+                      style: GoogleFonts.openSans(
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    const SizedBox(height: 14),
+
+                    ...(() {
+                      final sortedImages = [...images];
+                      sortedImages.sort((a, b) {
+                        if (a.isMain && !b.isMain) return -1;
+                        if (!a.isMain && b.isMain) return 1;
+                        return 0;
+                      });
+                      return sortedImages.map((img) => _imageItem(img)).toList();
+                    })(),
                   ],
                 ),
               ),
-            ),
+            ],
+          ),
+        ),
+      ),
 
-            const SizedBox(width: 30),
+      // ✅ error ispod (radi kad IMA slika)
+      if (showImageError)
+        Padding(
+          padding: const EdgeInsets.only(top: 8, left: 6),
+          child: Text(
+            errors["images"]!,
+            style: const TextStyle(color: Colors.red),
+          ),
+        ),
+    ],
+  );
+}
 
-            // RIGHT LIST OF IMAGES
-            Expanded(
-              flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Dodane slike",
-                    style: GoogleFonts.openSans(
-                      fontSize: 19,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 14),
 
-                  // sortiranje unutar anonimne funkcije
-                  ...(() {
-                    final sortedImages = [...images];
-                    sortedImages.sort((a, b) {
-                      if (a.isMain && !b.isMain) return -1;
-                      if (!a.isMain && b.isMain) return 1;
-                      return 0;
-                    });
-                    return sortedImages.map((img) => _imageItem(img)).toList();
-                  })(),
-                ],
-              ),
-            ),
-          ],
+  Widget _mainBadge() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(
+        color: const Color(0xFF64B5F6), // ista plava koju koristiš
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: const Text(
+        "Glavna",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 11,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
@@ -990,6 +1070,9 @@ class _OfferStep1BasicInfoState extends State<OfferStep1Offers> {
             ),
 
             const SizedBox(width: 10),
+
+            // ✅ Badge "Glavna" (samo ako je ova slika main)
+            if (img.isMain) ...[_mainBadge(), const SizedBox(width: 8)],
 
             if (!widget.isReadOnly)
               GestureDetector(

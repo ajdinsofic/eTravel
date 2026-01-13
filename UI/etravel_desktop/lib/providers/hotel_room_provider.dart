@@ -52,4 +52,30 @@ class HotelRoomProvider extends BaseProvider<HotelRoom> {
       throw Exception("Failed to update hotel room: ${response.body}");
     }
   }
+
+  Future<bool> increaseRoomsLeft({
+  required int hotelId,
+  required int roomId,
+}) async {
+  final url =
+      "${ApiConfig.apiBase}/api/HotelRoom/increase-rooms-left"
+      "?hotelId=$hotelId&roomId=$roomId";
+
+  final response = await http.put(
+    Uri.parse(url),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${Session.token}",
+    },
+  );
+
+  if (response.statusCode != 200) {
+    throw Exception(
+      "Greška pri vraćanju sobe (hotelId=$hotelId, roomId=$roomId). "
+      "Status: ${response.statusCode}",
+    );
+  }
+
+  return true;
+}
 }

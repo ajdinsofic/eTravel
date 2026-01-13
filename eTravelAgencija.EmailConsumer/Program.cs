@@ -23,7 +23,7 @@ var smtpSettings = new SmtpSettings
     Port = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT") ?? "465"),
     User = Environment.GetEnvironmentVariable("SMTP_USER") ?? "ajdinsofa@gmail.com",
     Password = Environment.GetEnvironmentVariable("SMTP_PASS") ?? "upycgyjgzkzczgau",
-    FromEmail = Environment.GetEnvironmentVariable("FROM_EMAIL") ?? "ajdinsofa@gmail.com",
+    FromEmail = Environment.GetEnvironmentVariable("FROM_EMAIL") ?? "etravelagencija@gmail.com",
     FromName = Environment.GetEnvironmentVariable("FROM_NAME") ?? "eTravel",
     UseSsl = bool.Parse(Environment.GetEnvironmentVariable("SMTP_SSL") ?? "true")
 };

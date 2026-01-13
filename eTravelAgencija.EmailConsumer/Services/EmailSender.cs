@@ -175,6 +175,63 @@ public async Task SendInterviewInvitationAsync(
     await client.DisconnectAsync(true);
 }
 
+public async Task SendReservationCancelledEmailAsync(ReservationCancelledEmailMessage data)
+{
+    var message = new MimeMessage();
+    message.From.Add(new MailboxAddress(_settings.FromName, _settings.FromEmail));
+    message.To.Add(MailboxAddress.Parse(data.To));
+
+    message.Subject = $"Otkazana rezervacija #{data.ReservationId} – eTravel";
+
+    var voucherBlock = data.VoucherUsed
+        ? $"""
+            <p><b>Vaučer:</b> Primijetili smo da je prilikom rezervacije korišten vaučer.
+            Molimo Vas da nas kontaktirate kako bismo izvršili povrat/reaktivaciju vaučera.</p>
+           """
+        : "";
+
+    message.Body = new TextPart("html")
+    {
+        Text = $"""
+        <h2>Poštovani/poštovana {data.FullName},</h2>
+
+        <p>
+          Obavještavamo Vas da je Vaša rezervacija broj <b>#{data.ReservationId}</b> za destinaciju
+          <b>{data.DestinationName}</b> otkazana zbog: <b>{data.CancelReason}</b>.
+        </p>
+
+        <p><b>Povrat sredstava:</b> Iznos koji ste do sada uplatili biće vraćen u skladu sa procedurom povrata.</p>
+
+        {voucherBlock}
+
+        <p>
+          Naš tim će Vas kontaktirati u najkraćem roku sa dodatnim informacijama.
+        </p>
+
+        <p>
+          <b>{data.AgencyName}</b><br/>
+          Kontakt: {data.Phone}
+        </p>
+
+        <br/>
+        <small>Ovo je automatska poruka.</small>
+        """
+    };
+
+    using var client = new SmtpClient();
+    await client.ConnectAsync(
+        _settings.Host,
+        _settings.Port,
+        _settings.UseSsl ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTls
+    );
+
+    await client.AuthenticateAsync(_settings.User, _settings.Password);
+
+    await client.SendAsync(message);
+    await client.DisconnectAsync(true);
+}
+
+
 
     
 }

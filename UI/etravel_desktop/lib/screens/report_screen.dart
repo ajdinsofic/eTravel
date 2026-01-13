@@ -125,28 +125,15 @@ class _ReportScreenState extends State<ReportScreen> {
 }
 
 
-  // ----------------------------------------------------------
-  // AGE REPORT
   Widget _ageReportCard() {
-  if (loadingAges) {
-    return Center(child: CircularProgressIndicator());
-  }
-
-  if (ageGroups.isEmpty) {
-    return Center(child: Text("Nema podataka za odabrani period."));
-  }
-
-  // izračun širine bara (dinamično)
-  double maxPercent = ageGroups.map((e) => e.percentage).reduce((a, b) => a > b ? a : b);
-
   return Center(
-    child: Container(
+    child: SizedBox(
       width: 700,
       child: _card(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // HEADER
+            // ✅ HEADER se uvijek prikazuje
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -157,17 +144,18 @@ class _ReportScreenState extends State<ReportScreen> {
                     fontSize: 24,
                   ),
                 ),
-
                 DropdownButton<String>(
                   value: selectedRange,
                   onChanged: (value) {
-                    setState(() => selectedRange = value!);
+                    if (value == null) return;
+                    setState(() => selectedRange = value);
                     _loadAgeReport();
                   },
                   items: const [
                     DropdownMenuItem(value: "dan", child: Text("dan")),
                     DropdownMenuItem(value: "sedmica", child: Text("sedmica")),
                     DropdownMenuItem(value: "mjesec", child: Text("mjesec")),
+                    DropdownMenuItem(value: "godina", child: Text("godina")), // ✅ dodaj
                   ],
                 ),
               ],
@@ -175,55 +163,78 @@ class _ReportScreenState extends State<ReportScreen> {
 
             const SizedBox(height: 35),
 
-            // GRAF
-            Column(
-              children: ageGroups.map((item) {
-                final double widthValue = (item.percentage / maxPercent) * 390;
-
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 26),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 90,
-                        child: Text(
-                          item.ageGroup,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-
-                      Container(
-                        height: 26,
-                        width: widthValue,
-                        decoration: BoxDecoration(
-                          color: Color(0xff67B1E5),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-
-                      const SizedBox(width: 18),
-
-                      Text(
-                        "${item.percentage}%",
-                        style: const TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+            // ✅ SAD samo mijenjaš sadržaj ispod headera
+            if (loadingAges)
+              const Center(child: CircularProgressIndicator())
+            else if (ageGroups.isEmpty)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Text(
+                  "Nema podataka za odabrani period.",
+                  style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
                   ),
-                );
-              }).toList(),
-            ),
+                ),
+              )
+            else
+              _ageBars(), // ✅ izdvojeno radi čitljivosti
           ],
         ),
       ),
     ),
   );
 }
+
+Widget _ageBars() {
+  final maxPercent = ageGroups
+      .map((e) => e.percentage)
+      .reduce((a, b) => a > b ? a : b);
+
+  return Column(
+    children: ageGroups.map((item) {
+      final widthValue = maxPercent == 0
+          ? 0
+          : (item.percentage / maxPercent) * 390;
+
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 26),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 90,
+              child: Text(
+                item.ageGroup,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            Container(
+              height: 26,
+              width: (item.percentage / maxPercent) * 390,
+              decoration: BoxDecoration(
+                color: const Color(0xff67B1E5),
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            const SizedBox(width: 18),
+            Text(
+              "${item.percentage}%",
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      );
+    }).toList(),
+  );
+}
+
 
 
 

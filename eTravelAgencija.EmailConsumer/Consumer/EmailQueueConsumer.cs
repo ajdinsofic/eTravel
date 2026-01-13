@@ -38,6 +38,24 @@ public class EmailQueueConsumer
             arguments: null
         ).Wait();
 
+        // 💼 Interview invitation queue
+        _channel.QueueDeclareAsync(
+            queue: "email.interview-invitation",
+            durable: true,
+            exclusive: false,
+            autoDelete: false,
+            arguments: null
+        ).Wait();
+
+        _channel.QueueDeclareAsync(
+            queue: "email.reservation-cancelled",
+            durable: true,
+            exclusive: false,
+            autoDelete: false,
+            arguments: null
+        ).Wait();
+
+
         _channel.BasicQosAsync(0, 1, false).Wait();
     }
 
@@ -154,6 +172,39 @@ public class EmailQueueConsumer
             autoAck: false,
             consumer: interviewConsumer
         );
+
+        // ===============================
+// RESERVATION CANCELLED CONSUMER
+// ===============================
+var cancelConsumer = new AsyncEventingBasicConsumer(_channel);
+
+cancelConsumer.ReceivedAsync += async (sender, e) =>
+{
+    try
+    {
+        var json = Encoding.UTF8.GetString(e.Body.ToArray());
+
+        var message =
+            JsonSerializer.Deserialize<ReservationCancelledEmailMessage>(json)
+            ?? throw new Exception("Nevalidna poruka");
+
+        await _emailSender.SendReservationCancelledEmailAsync(message);
+
+        await _channel.BasicAckAsync(e.DeliveryTag, false);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"[CANCEL RESERVATION EMAIL ERROR] {ex.Message}");
+        await _channel.BasicNackAsync(e.DeliveryTag, false, requeue: false);
+    }
+};
+
+await _channel.BasicConsumeAsync(
+    queue: "email.reservation-cancelled",
+    autoAck: false,
+    consumer: cancelConsumer
+);
+
 
     }
 }

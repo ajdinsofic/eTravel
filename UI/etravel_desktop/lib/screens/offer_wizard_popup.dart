@@ -303,7 +303,7 @@ class _OfferWizardPopupState extends State<OfferWizardPopup> {
           GestureDetector(
             onTap: () async {
               if (widget.isViewOrEditButton == true) {
-                Navigator.pop(context);
+                Navigator.pop(context, true);
                 return;
               } else {}
 

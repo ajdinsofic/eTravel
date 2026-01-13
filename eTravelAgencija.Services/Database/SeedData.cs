@@ -89,8 +89,10 @@ namespace eTravelAgencija.Services.Database.Seed
                     LastName = "Radnik",
                     PhoneNumber = "+38761111111",
                     isBlocked = false,
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    ConcurrencyStamp = Guid.NewGuid().ToString(),
                     DateBirth = new DateTime(1990, 5, 10, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Radnik123!")
                 },
@@ -106,8 +108,10 @@ namespace eTravelAgencija.Services.Database.Seed
                     LastName = "Direktor",
                     PhoneNumber = "+38762222222",
                     isBlocked = false,
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    ConcurrencyStamp = Guid.NewGuid().ToString(),
                     DateBirth = new DateTime(1985, 3, 20, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Direktor123!")
                 },
@@ -124,7 +128,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38763333333",
                     isBlocked = false,
                     DateBirth = new DateTime(2002, 11, 5, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -132,8 +136,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 5,
-                    UserName = "maja.petrovic",
-                    NormalizedUserName = "MAJA.PETROVIC",
+                    UserName = "majapetrovic55",
+                    NormalizedUserName = "MAJAPETROVIC55",
                     Email = "maja.petrovic@etravel.com",
                     NormalizedEmail = "MAJA.PETROVIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -142,7 +146,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761555111",
                     isBlocked = false,
                     DateBirth = new DateTime(1998, 4, 12, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -150,9 +154,9 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 6,
-                    UserName = "edin.mesic",
-                    NormalizedUserName = "EDIN.MESIC",
-                    Email = "edin.mesic@etravel.com",
+                    UserName = "edinmesic55",
+                    NormalizedUserName = "EDINMESIC55",
+                    Email = "edinmesic5566@gmail.com",
                     NormalizedEmail = "EDIN.MESIC@ETRAVEL.COM",
                     EmailConfirmed = true,
                     FirstName = "Edin",
@@ -160,7 +164,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761666123",
                     isBlocked = false,
                     DateBirth = new DateTime(1995, 9, 8, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -168,8 +172,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 7,
-                    UserName = "lana.kovac",
-                    NormalizedUserName = "LANA.KOVAC",
+                    UserName = "lanakovac55",
+                    NormalizedUserName = "LANAKOVAC55",
                     Email = "lana.kovac@etravel.com",
                     NormalizedEmail = "LANA.KOVAC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -178,7 +182,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761777141",
                     isBlocked = false,
                     DateBirth = new DateTime(2000, 1, 22, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -186,8 +190,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 8,
-                    UserName = "haris.becirovic",
-                    NormalizedUserName = "HARIS.BECIROVIC",
+                    UserName = "harisbecirovic55",
+                    NormalizedUserName = "HARISBECIROVIC55",
                     Email = "haris.becirovic@etravel.com",
                     NormalizedEmail = "HARIS.BECIROVIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -196,7 +200,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761888222",
                     isBlocked = false,
                     DateBirth = new DateTime(1993, 6, 30, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -204,8 +208,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 9,
-                    UserName = "amira.karic",
-                    NormalizedUserName = "AMIRA.KARIC",
+                    UserName = "amirakaric55",
+                    NormalizedUserName = "AMIRAKARIC55",
                     Email = "amira.karic@etravel.com",
                     NormalizedEmail = "AMIRA.KARIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -214,7 +218,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38761999444",
                     isBlocked = false,
                     DateBirth = new DateTime(1999, 2, 14, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -222,8 +226,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 10,
-                    UserName = "tarik.suljic",
-                    NormalizedUserName = "TARIK.SULJIC",
+                    UserName = "tariksuljic55",
+                    NormalizedUserName = "TARIKSULJIC55",
                     Email = "tarik.suljic@etravel.com",
                     NormalizedEmail = "TARIK.SULJIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -232,7 +236,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762011223",
                     isBlocked = false,
                     DateBirth = new DateTime(1997, 5, 19, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -240,8 +244,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 11,
-                    UserName = "selma.babic",
-                    NormalizedUserName = "SELMA.BABIC",
+                    UserName = "selmababic55",
+                    NormalizedUserName = "SELMABABIC55",
                     Email = "selma.babic@etravel.com",
                     NormalizedEmail = "SELMA.BABIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -250,7 +254,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762044321",
                     isBlocked = false,
                     DateBirth = new DateTime(2001, 10, 11, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -258,8 +262,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 12,
-                    UserName = "nedim.ceric",
-                    NormalizedUserName = "NEDIM.CERIC",
+                    UserName = "nedimceric55",
+                    NormalizedUserName = "NEDIMCERIC55",
                     Email = "nedim.ceric@etravel.com",
                     NormalizedEmail = "NEDIM.CERIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -268,7 +272,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762077311",
                     isBlocked = false,
                     DateBirth = new DateTime(1994, 12, 2, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -276,8 +280,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 13,
-                    UserName = "alma.vujic",
-                    NormalizedUserName = "ALMA.VUJIC",
+                    UserName = "almavujic55",
+                    NormalizedUserName = "ALMAVUJIC55",
                     Email = "alma.vujic@etravel.com",
                     NormalizedEmail = "ALMA.VUJIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -286,7 +290,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762111333",
                     isBlocked = false,
                     DateBirth = new DateTime(1996, 11, 9, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -294,8 +298,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 14,
-                    UserName = "mirza.drace",
-                    NormalizedUserName = "MIRZA.DRACE",
+                    UserName = "mirzadrace55",
+                    NormalizedUserName = "MIRZADRACE55",
                     Email = "mirza.drace@etravel.com",
                     NormalizedEmail = "MIRZA.DRACE@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -304,7 +308,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762144555",
                     isBlocked = false,
                     DateBirth = new DateTime(1992, 7, 4, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -312,8 +316,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 15,
-                    UserName = "melisa.nuhanovic",
-                    NormalizedUserName = "MELISA.NUHANOVIC",
+                    UserName = "melisanuhanovic55",
+                    NormalizedUserName = "MELISANUHANOVIC55",
                     Email = "melisa.nuhanovic@etravel.com",
                     NormalizedEmail = "MELISA.NUHANOVIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -322,7 +326,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762200333",
                     isBlocked = false,
                     DateBirth = new DateTime(2000, 6, 17, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -330,8 +334,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 16,
-                    UserName = "almin.kosuta",
-                    NormalizedUserName = "ALMIN.KOSUTA",
+                    UserName = "alminkosuta55",
+                    NormalizedUserName = "ALMINKOSUTA55",
                     Email = "almin.kosuta@etravel.com",
                     NormalizedEmail = "ALMIN.KOSUTA@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -340,7 +344,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762255677",
                     isBlocked = false,
                     DateBirth = new DateTime(1991, 3, 29, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -348,8 +352,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 17,
-                    UserName = "dina.hodzic",
-                    NormalizedUserName = "DINA.HODZIC",
+                    UserName = "dinahodzic55",
+                    NormalizedUserName = "DINAHODZIC55",
                     Email = "dina.hodzic@etravel.com",
                     NormalizedEmail = "DINA.HODZIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -358,7 +362,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762277991",
                     isBlocked = false,
                     DateBirth = new DateTime(1998, 8, 27, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -366,8 +370,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 18,
-                    UserName = "alem.celik",
-                    NormalizedUserName = "ALEM.CELIK",
+                    UserName = "alemcelik55",
+                    NormalizedUserName = "ALEMCELIK55",
                     Email = "alem.celik@etravel.com",
                     NormalizedEmail = "ALEM.CELIK@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -376,7 +380,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762300990",
                     isBlocked = false,
                     DateBirth = new DateTime(1997, 2, 8, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -384,8 +388,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 19,
-                    UserName = "lejla.avdic",
-                    NormalizedUserName = "LEJLA.AVDIC",
+                    UserName = "lejlaavdic55",
+                    NormalizedUserName = "LEJLAAVDIC55",
                     Email = "lejla.avdic@etravel.com",
                     NormalizedEmail = "LEJLA.AVDIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -394,7 +398,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762355123",
                     isBlocked = false,
                     DateBirth = new DateTime(2001, 1, 5, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -402,8 +406,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 20,
-                    UserName = "adnan.pasalic",
-                    NormalizedUserName = "ADNAN.PASALIC",
+                    UserName = "adnanpasalic55",
+                    NormalizedUserName = "ADNANPASALIC55",
                     Email = "adnan.pasalic@etravel.com",
                     NormalizedEmail = "ADNAN.PASALIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -412,7 +416,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762388321",
                     isBlocked = false,
                     DateBirth = new DateTime(1999, 9, 3, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -420,8 +424,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 21,
-                    UserName = "inez.kantic",
-                    NormalizedUserName = "INEZ.KANTIC",
+                    UserName = "inezkantic55",
+                    NormalizedUserName = "INEZKANTIC55",
                     Email = "inez.kantic@etravel.com",
                     NormalizedEmail = "INEZ.KANTIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -430,7 +434,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762444123",
                     isBlocked = false,
                     DateBirth = new DateTime(1996, 4, 14, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -438,8 +442,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 22,
-                    UserName = "amir.halilovic",
-                    NormalizedUserName = "AMIR.HALILOVIC",
+                    UserName = "amirhalilovic55",
+                    NormalizedUserName = "AMIRHALILOVIC55",
                     Email = "amir.halilovic@etravel.com",
                     NormalizedEmail = "AMIR.HALILOVIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -448,7 +452,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762477331",
                     isBlocked = false,
                     DateBirth = new DateTime(1993, 11, 19, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -456,8 +460,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 23,
-                    UserName = "lamija.kreso",
-                    NormalizedUserName = "LAMIJA.KRESO",
+                    UserName = "lamijakreso55",
+                    NormalizedUserName = "LAMIJAKRESO55",
                     Email = "lamija.kreso@etravel.com",
                     NormalizedEmail = "LAMIJA.KRESO@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -466,7 +470,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762555991",
                     isBlocked = false,
                     DateBirth = new DateTime(2002, 12, 21, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 },
@@ -474,8 +478,8 @@ namespace eTravelAgencija.Services.Database.Seed
                 new User
                 {
                     Id = 24,
-                    UserName = "omer.smajic",
-                    NormalizedUserName = "OMER.SMAJIC",
+                    UserName = "omersmajic55",
+                    NormalizedUserName = "OMERSMAJIC55",
                     Email = "omer.smajic@etravel.com",
                     NormalizedEmail = "OMER.SMAJIC@ETRAVEL.COM",
                     EmailConfirmed = true,
@@ -484,7 +488,7 @@ namespace eTravelAgencija.Services.Database.Seed
                     PhoneNumber = "+38762666112",
                     isBlocked = false,
                     DateBirth = new DateTime(1998, 7, 1, 0, 0, 0, DateTimeKind.Utc),
-                    ImageUrl = "test.jpg",
+                    ImageUrl = "testing.jpg",
                     CreatedAt = DateTime.UtcNow,
                     PasswordHash = hasher.HashPassword(null, "Korisnik123!")
                 }
@@ -1004,132 +1008,266 @@ namespace eTravelAgencija.Services.Database.Seed
             // 10. HOTELS (3 po ponudi)
             // =========================================================================
             builder.Entity<Hotel>().HasData(
-    // =========================
-    // FIRENCA (3)
-    // =========================
-    new Hotel { Id = 100, Name = "Hotel Medici", Address = "Via Roma 12", Stars = 4 },
-    new Hotel { Id = 101, Name = "Hotel Firenze Centro", Address = "Piazza Duomo 2", Stars = 3 },
-    new Hotel { Id = 102, Name = "Hotel Ponte Vecchio", Address = "Ponte Vecchio 5", Stars = 5 },
+    /* =====================================================
+   FIRENCA (9)
+   ===================================================== */
+new Hotel { Id = 100, Name = "Hotel Medici", Address = "Via Roma 12", Stars = 4 },
+new Hotel { Id = 101, Name = "Hotel Firenze Centro", Address = "Piazza Duomo 2", Stars = 3 },
+new Hotel { Id = 102, Name = "Hotel Ponte Vecchio", Address = "Ponte Vecchio 5", Stars = 5 },
 
-    // =========================
-    // SANTORINI (3)
-    // =========================
-    new Hotel { Id = 110, Name = "Blue Dome Resort", Address = "Santorini Beach 9", Stars = 5 },
-    new Hotel { Id = 111, Name = "Aegean View", Address = "Oia Street 44", Stars = 4 },
-    new Hotel { Id = 112, Name = "White Cave Hotel", Address = "Fira 21", Stars = 3 },
+new Hotel { Id = 103, Name = "Florence Art Boutique", Address = "Via Dante 18", Stars = 3 },
+new Hotel { Id = 104, Name = "Arno River Grand Hotel", Address = "Lungarno Acciaiuoli 10", Stars = 4 },
+new Hotel { Id = 105, Name = "Palazzo Renaissance Luxury", Address = "Via Tornabuoni 7", Stars = 5 },
 
-    // =========================
-    // ISTANBUL (3)
-    // =========================
-    new Hotel { Id = 120, Name = "Hotel Sultanahmet", Address = "Sultanahmet 1", Stars = 4 },
-    new Hotel { Id = 121, Name = "Galata Inn", Address = "Galata 5", Stars = 3 },
-    new Hotel { Id = 122, Name = "Bosfor Palace Hotel", Address = "Bosfor Blvd 7", Stars = 5 },
+new Hotel { Id = 106, Name = "Tuscan Comfort Inn", Address = "Via Nazionale 44", Stars = 3 },
+new Hotel { Id = 107, Name = "Florence Heritage Plaza", Address = "Via dei Calzaiuoli 21", Stars = 4 },
+new Hotel { Id = 108, Name = "Duomo Crown Luxury Hotel", Address = "Via dei Servi 9", Stars = 5 },
 
-    // =========================
-    // BARCELONA (3)
-    // =========================
-    new Hotel { Id = 200, Name = "Hotel Condal Barcelona", Address = "La Rambla 12", Stars = 3 },
-    new Hotel { Id = 215, Name = "Barcelona Central Plaza", Address = "Carrer de Pelai 45", Stars = 4 },
-    new Hotel { Id = 216, Name = "Sagrada Familia View Hotel", Address = "Carrer de Mallorca 401", Stars = 5 },
+/* =====================================================
+   SANTORINI (9)
+   ===================================================== */
+new Hotel { Id = 110, Name = "Blue Dome Resort", Address = "Santorini Beach 9", Stars = 5 },
+new Hotel { Id = 111, Name = "Aegean View", Address = "Oia Street 44", Stars = 4 },
+new Hotel { Id = 112, Name = "White Cave Hotel", Address = "Fira 21", Stars = 3 },
 
-    // =========================
-    // PARIS (3)
-    // =========================
-    new Hotel { Id = 201, Name = "Hotel Louvre Rivoli", Address = "Rue de Rivoli 99", Stars = 4 },
-    new Hotel { Id = 217, Name = "Eiffel Tower Boutique Hotel", Address = "Avenue de Suffren 22", Stars = 5 },
-    new Hotel { Id = 218, Name = "Montmartre Comfort Inn", Address = "Rue Lepic 88", Stars = 3 },
+new Hotel { Id = 113, Name = "Sunset Caldera Suites", Address = "Oia Cliffs 3", Stars = 3 },
+new Hotel { Id = 114, Name = "Santorini Horizon Resort", Address = "Imerovigli 19", Stars = 4 },
+new Hotel { Id = 115, Name = "Volcano View Luxury Villas", Address = "Caldera Rim 1", Stars = 5 },
 
-    // =========================
-    // PRAGUE (3)
-    // =========================
-    new Hotel { Id = 202, Name = "Hotel Charles Bridge Inn", Address = "Mostecká 7", Stars = 4 },
-    new Hotel { Id = 219, Name = "Old Town Square Hotel", Address = "Staroměstské náměstí 15", Stars = 5 },
-    new Hotel { Id = 220, Name = "Prague City Stay", Address = "Vodičkova 12", Stars = 3 },
+new Hotel { Id = 116, Name = "Cyclades Budget Stay", Address = "Kamari 11", Stars = 3 },
+new Hotel { Id = 117, Name = "Aegean Pearl Hotel", Address = "Perissa 6", Stars = 4 },
+new Hotel { Id = 118, Name = "Santorini Royal Infinity", Address = "Oia Heights 1", Stars = 5 },
 
-    // =========================
-    // VIENNA (3)
-    // =========================
-    new Hotel { Id = 203, Name = "Hotel Kaiserhof Wien", Address = "Frankenberggasse 10", Stars = 4 },
-    new Hotel { Id = 221, Name = "Vienna Opera House Hotel", Address = "Opernring 5", Stars = 5 },
-    new Hotel { Id = 222, Name = "Danube Riverside Hotel", Address = "Handelskai 94", Stars = 3 },
+/* =====================================================
+   ISTANBUL (9)
+   ===================================================== */
+new Hotel { Id = 120, Name = "Hotel Sultanahmet", Address = "Sultanahmet 1", Stars = 4 },
+new Hotel { Id = 121, Name = "Galata Inn", Address = "Galata 5", Stars = 3 },
+new Hotel { Id = 122, Name = "Bosfor Palace Hotel", Address = "Bosfor Blvd 7", Stars = 5 },
 
-    // =========================
-    // AMSTERDAM (3)
-    // =========================
-    new Hotel { Id = 204, Name = "Hotel Amsterdam Canal View", Address = "Keizersgracht 84", Stars = 5 },
-    new Hotel { Id = 223, Name = "Dam Square Boutique Hotel", Address = "Damrak 50", Stars = 4 },
-    new Hotel { Id = 224, Name = "Amsterdam City Budget Hotel", Address = "Leidsekade 70", Stars = 3 },
+new Hotel { Id = 123, Name = "Golden Horn City Hotel", Address = "Eminönü 14", Stars = 3 },
+new Hotel { Id = 124, Name = "Istanbul Grand Bazaar Hotel", Address = "Kapalıçarşı 8", Stars = 4 },
+new Hotel { Id = 125, Name = "Ottoman Imperial Luxury", Address = "Dolmabahçe 2", Stars = 5 },
 
-    // =========================
-    // LONDON (3)
-    // =========================
-    new Hotel { Id = 205, Name = "Hotel Westminster London", Address = "Victoria Street 22", Stars = 4 },
-    new Hotel { Id = 225, Name = "Piccadilly Central Hotel", Address = "Piccadilly 33", Stars = 5 },
-    new Hotel { Id = 226, Name = "London Bridge Inn", Address = "Tooley Street 18", Stars = 3 },
+new Hotel { Id = 126, Name = "Bosphorus Comfort Stay", Address = "Üsküdar 19", Stars = 3 },
+new Hotel { Id = 127, Name = "Historic Pera Plaza", Address = "Beyoğlu 6", Stars = 4 },
+new Hotel { Id = 128, Name = "Golden Minaret Palace", Address = "Sultanahmet 22", Stars = 5 },
 
-    // =========================
-    // DUBAI (3)
-    // =========================
-    new Hotel { Id = 206, Name = "Dubai Marina Pearl Hotel", Address = "Dubai Marina Walk 5", Stars = 5 },
-    new Hotel { Id = 227, Name = "Burj Khalifa View Hotel", Address = "Downtown Dubai 1", Stars = 5 },
-    new Hotel { Id = 228, Name = "Dubai Creek City Hotel", Address = "Al Seef Street 9", Stars = 4 },
+/* =====================================================
+   BARCELONA (9)
+   ===================================================== */
+new Hotel { Id = 200, Name = "Hotel Condal Barcelona", Address = "La Rambla 12", Stars = 3 },
+new Hotel { Id = 215, Name = "Barcelona Central Plaza", Address = "Carrer de Pelai 45", Stars = 4 },
+new Hotel { Id = 216, Name = "Sagrada Familia View Hotel", Address = "Carrer de Mallorca 401", Stars = 5 },
 
-    // =========================
-    // CAIRO (3)
-    // =========================
-    new Hotel { Id = 207, Name = "Cairo Pyramids View Hotel", Address = "Pyramid Street 18", Stars = 4 },
-    new Hotel { Id = 229, Name = "Nile Riverside Palace", Address = "Corniche El Nil 101", Stars = 5 },
-    new Hotel { Id = 230, Name = "Downtown Cairo Hotel", Address = "Tahrir Square 6", Stars = 3 },
+new Hotel { Id = 217, Name = "Gothic Quarter Stay", Address = "Carrer Ferran 18", Stars = 3 },
+new Hotel { Id = 218, Name = "Barcelona Marina Hotel", Address = "Port Olímpic 5", Stars = 4 },
+new Hotel { Id = 219, Name = "Catalonia Grand Luxury", Address = "Passeig de Gràcia 12", Stars = 5 },
 
-    // =========================
-    // BUDAPEST (3)
-    // =========================
-    new Hotel { Id = 208, Name = "Budapest Royal Center Hotel", Address = "Váci Utca 33", Stars = 3 },
-    new Hotel { Id = 231, Name = "Danube Panorama Hotel", Address = "Bem Rakpart 15", Stars = 4 },
-    new Hotel { Id = 232, Name = "Thermal Spa Boutique Hotel", Address = "Andrássy út 45", Stars = 5 },
+new Hotel { Id = 220, Name = "Barcelona City Budget", Address = "Gran Via 90", Stars = 3 },
+new Hotel { Id = 221, Name = "Mediterranean Plaza Hotel", Address = "Diagonal 110", Stars = 4 },
+new Hotel { Id = 222, Name = "Royal Ramblas Palace", Address = "La Rambla 1", Stars = 5 },
 
-    // =========================
-    // KRAKOW (3)
-    // =========================
-    new Hotel { Id = 209, Name = "Krakow Old Town Plaza Hotel", Address = "Floriańska 15", Stars = 4 },
-    new Hotel { Id = 233, Name = "Wawel Castle View Hotel", Address = "Kanonicza 8", Stars = 5 },
-    new Hotel { Id = 234, Name = "Krakow City Budget Stay", Address = "Dietla 60", Stars = 3 },
+    /* =====================================================
+   PARIS – SET B & C
+   ===================================================== */
+new Hotel { Id = 245, Name = "Paris City Budget Hotel", Address = "Rue Saint-Denis 45", Stars = 3 },
+new Hotel { Id = 246, Name = "Seine Riverside Hotel", Address = "Quai de la Seine 12", Stars = 4 },
+new Hotel { Id = 247, Name = "Champs-Élysées Luxury Palace", Address = "Avenue Montaigne 8", Stars = 5 },
 
-    // =========================
-    // ZANZIBAR (3)
-    // =========================
-    new Hotel { Id = 210, Name = "Zanzibar Blue Lagoon Resort", Address = "Kendwa Beach 1", Stars = 5 },
-    new Hotel { Id = 235, Name = "Stone Town Heritage Hotel", Address = "Mkunazini Street 14", Stars = 4 },
-    new Hotel { Id = 236, Name = "Zanzibar Beach Paradise", Address = "Nungwi Coast 7", Stars = 5 },
+new Hotel { Id = 248, Name = "Montparnasse Comfort Stay", Address = "Boulevard du Montparnasse 60", Stars = 3 },
+new Hotel { Id = 249, Name = "Paris Opera Grand Hotel", Address = "Rue Auber 18", Stars = 4 },
+new Hotel { Id = 250, Name = "Royal Louvre Prestige", Address = "Place du Louvre 1", Stars = 5 },
 
-    // =========================
-    // HURGHADA (3)
-    // =========================
-    new Hotel { Id = 211, Name = "Hurghada Golden Sand Resort", Address = "Sheraton Road 55", Stars = 5 },
-    new Hotel { Id = 237, Name = "Red Sea Coral Resort", Address = "El Mamsha 22", Stars = 4 },
-    new Hotel { Id = 238, Name = "Hurghada Sunlight Hotel", Address = "Village Road 9", Stars = 3 },
+new Hotel { Id = 550, Name = "Hotel Eiffel Panorama", Address = "Avenue de Suffren 18", Stars = 4 },
+new Hotel { Id = 551, Name = "Montmartre Boutique Stay", Address = "Rue Lepic 52", Stars = 3 },
+new Hotel { Id = 552, Name = "Seine Royal Collection", Address = "Quai Voltaire 7", Stars = 5 },
+/* =====================================================
+   PRAGUE – SET B & C
+   ===================================================== */
+new Hotel { Id = 251, Name = "Prague Old Town Budget", Address = "Karlova 22", Stars = 3 },
+new Hotel { Id = 252, Name = "Vltava Riverside Hotel", Address = "Smetanovo nábřeží 14", Stars = 4 },
+new Hotel { Id = 253, Name = "Bohemian Crown Palace", Address = "Pařížská 5", Stars = 5 },
 
-    // =========================
-    // LISBON (3)
-    // =========================
-    new Hotel { Id = 212, Name = "Lisbon Alfama Boutique Hotel", Address = "Rua dos Remédios 21", Stars = 4 },
-    new Hotel { Id = 239, Name = "Belem Riverside Hotel", Address = "Avenida Brasília 78", Stars = 5 },
-    new Hotel { Id = 240, Name = "Lisbon Downtown Stay", Address = "Rua Augusta 120", Stars = 3 },
+new Hotel { Id = 254, Name = "New Town Comfort Inn", Address = "Jindřišská 33", Stars = 3 },
+new Hotel { Id = 255, Name = "Prague Heritage Plaza", Address = "Na Příkopě 19", Stars = 4 },
+new Hotel { Id = 256, Name = "Charles Bridge Royal Suites", Address = "Kampa 1", Stars = 5 },
 
-    // =========================
-    // ATHENS (3)
-    // =========================
-    new Hotel { Id = 213, Name = "Acropolis View Hotel Athens", Address = "Dionysiou Areopagitou 8", Stars = 3 },
-    new Hotel { Id = 241, Name = "Plaka Heritage Hotel", Address = "Adrianou 30", Stars = 4 },
-    new Hotel { Id = 242, Name = "Athens Central Palace", Address = "Syntagma Square 3", Stars = 5 },
+new Hotel { Id = 553, Name = "Old Town Astronomical Hotel", Address = "Staroměstské náměstí 8", Stars = 4 },
+new Hotel { Id = 554, Name = "Prague Castle View Inn", Address = "Nerudova 15", Stars = 3 },
+new Hotel { Id = 555, Name = "Bohemian Luxury Riverside", Address = "Malá Strana 2", Stars = 5 },
+/* =====================================================
+   VIENNA – SET B & C
+   ===================================================== */
+new Hotel { Id = 257, Name = "Vienna City Budget Stay", Address = "Favoritenstraße 80", Stars = 3 },
+new Hotel { Id = 258, Name = "Ringstrasse Classic Hotel", Address = "Schottenring 6", Stars = 4 },
+new Hotel { Id = 259, Name = "Imperial Vienna Palace", Address = "Kärntner Ring 16", Stars = 5 },
 
-    // =========================
-    // SPLIT (3)
-    // =========================
-    new Hotel { Id = 214, Name = "Hotel Adriatic Split", Address = "Obala Hrvatskog Narodnog 17", Stars = 4 },
-    new Hotel { Id = 243, Name = "Diocletian Palace Boutique Hotel", Address = "Peristil 2", Stars = 5 },
-    new Hotel { Id = 244, Name = "Split City Beach Hotel", Address = "Bačvice 14", Stars = 3 }
+new Hotel { Id = 260, Name = "Danube Comfort Inn", Address = "Praterstraße 28", Stars = 3 },
+new Hotel { Id = 261, Name = "Vienna Historic Grand Hotel", Address = "Herrengasse 12", Stars = 4 },
+new Hotel { Id = 262, Name = "Schonbrunn Royal Luxury", Address = "Schönbrunner Straße 1", Stars = 5 },
+
+new Hotel { Id = 556, Name = "Vienna Imperial Ring Hotel", Address = "Opernring 11", Stars = 4 },
+new Hotel { Id = 557, Name = "Museum Quarter City Stay", Address = "Museumsplatz 6", Stars = 3 },
+new Hotel { Id = 558, Name = "Danube Crown Prestige", Address = "Donaukanal 4", Stars = 5 },
+/* =====================================================
+   AMSTERDAM – SET B & C
+   ===================================================== */
+new Hotel { Id = 263, Name = "Amsterdam Central Budget", Address = "Nieuwendijk 55", Stars = 3 },
+new Hotel { Id = 264, Name = "Canal House Boutique Hotel", Address = "Prinsengracht 90", Stars = 4 },
+new Hotel { Id = 265, Name = "Royal Dam Palace", Address = "Dam Square 1", Stars = 5 },
+
+new Hotel { Id = 266, Name = "Museum Quarter Comfort Stay", Address = "Van Baerlestraat 20", Stars = 3 },
+new Hotel { Id = 267, Name = "Amsterdam Heritage Plaza", Address = "Kalverstraat 130", Stars = 4 },
+new Hotel { Id = 268, Name = "Golden Tulip Luxury Suites", Address = "Herengracht 2", Stars = 5 },
+
+
+new Hotel { Id = 560, Name = "Amsterdam River View Hotel", Address = "Amstel 32", Stars = 4 },
+new Hotel { Id = 561, Name = "Jordaan Cozy Stay", Address = "Lindengracht 85", Stars = 3 },
+new Hotel { Id = 562, Name = "Royal Canal Crown", Address = "Keizersgracht 10", Stars = 5 },
+/* =====================================================
+   LONDON – SET B & C
+   ===================================================== */
+new Hotel { Id = 269, Name = "London City Budget Hotel", Address = "Paddington Street 40", Stars = 3 },
+new Hotel { Id = 270, Name = "Thames Riverside Hotel", Address = "South Bank 15", Stars = 4 },
+new Hotel { Id = 271, Name = "Royal Westminster Palace", Address = "Whitehall 1", Stars = 5 },
+
+new Hotel { Id = 272, Name = "Camden Comfort Stay", Address = "Camden Road 22", Stars = 3 },
+new Hotel { Id = 273, Name = "Covent Garden Grand Hotel", Address = "Long Acre 9", Stars = 4 },
+new Hotel { Id = 274, Name = "Buckingham Crown Luxury", Address = "The Mall 3", Stars = 5 },
+
+new Hotel { Id = 563, Name = "London Bridge View Hotel", Address = "Tooley Street 18", Stars = 4 },
+new Hotel { Id = 564, Name = "Soho Urban Comfort", Address = "Dean Street 41", Stars = 3 },
+new Hotel { Id = 565, Name = "Hyde Park Royal Suites", Address = "Park Lane 7", Stars = 5 },
+/* =====================================================
+   DUBAI – SET B & C
+   ===================================================== */
+new Hotel { Id = 275, Name = "Dubai City Budget Inn", Address = "Deira Street 12", Stars = 3 },
+new Hotel { Id = 276, Name = "Palm Jumeirah Resort", Address = "Palm Crescent 5", Stars = 4 },
+new Hotel { Id = 277, Name = "Arabian Royal Palace", Address = "Sheikh Zayed Road 1", Stars = 5 },
+
+new Hotel { Id = 278, Name = "Dubai Creek Comfort Hotel", Address = "Creek Road 30", Stars = 3 },
+new Hotel { Id = 279, Name = "JBR Beach Grand Hotel", Address = "Jumeirah Beach Walk 8", Stars = 4 },
+new Hotel { Id = 280, Name = "Burj Al Arab Prestige Suites", Address = "Umm Suqeim 1", Stars = 5 },
+
+new Hotel { Id = 566, Name = "Dubai Marina Skyline Hotel", Address = "Marina Walk 22", Stars = 4 },
+new Hotel { Id = 567, Name = "Downtown Dubai City Stay", Address = "Business Bay 14", Stars = 3 },
+new Hotel { Id = 568, Name = "Palm Crown Elite Resort", Address = "Palm Jumeirah West", Stars = 5 },
+/* =====================================================
+   CAIRO – SET B & C
+   ===================================================== */
+new Hotel { Id = 281, Name = "Cairo City Budget Stay", Address = "Giza Road 22", Stars = 3 },
+new Hotel { Id = 282, Name = "Nile View Classic Hotel", Address = "Zamalek 14", Stars = 4 },
+new Hotel { Id = 283, Name = "Pharaoh Royal Palace", Address = "Pyramid Plateau 1", Stars = 5 },
+
+new Hotel { Id = 284, Name = "Downtown Cairo Comfort", Address = "Ramses Street 33", Stars = 3 },
+new Hotel { Id = 285, Name = "Cairo Heritage Grand Hotel", Address = "Garden City 10", Stars = 4 },
+new Hotel { Id = 286, Name = "Golden Nile Luxury Suites", Address = "Corniche El Nil 5", Stars = 5 },
+
+new Hotel { Id = 570, Name = "Cairo Pyramids View Hotel", Address = "Al Haram Street 55", Stars = 4 },
+new Hotel { Id = 571, Name = "Nile Sunset Budget Stay", Address = "Dokki 18", Stars = 3 },
+new Hotel { Id = 572, Name = "Cairo Royal Heritage Palace", Address = "Tahrir Square 1", Stars = 5 },
+/* =====================================================
+   BUDAPEST – SET B & C
+   ===================================================== */
+new Hotel { Id = 287, Name = "Budapest City Budget Hotel", Address = "Erzsébet Körút 21", Stars = 3 },
+new Hotel { Id = 288, Name = "Danube Classic Stay", Address = "Margit Rakpart 9", Stars = 4 },
+new Hotel { Id = 289, Name = "Royal Thermal Palace", Address = "Széchenyi tér 1", Stars = 5 },
+
+new Hotel { Id = 290, Name = "Pest Comfort Inn", Address = "Rákóczi út 44", Stars = 3 },
+new Hotel { Id = 291, Name = "Buda Castle Grand Hotel", Address = "Castle Hill 3", Stars = 4 },
+new Hotel { Id = 292, Name = "Hungarian Crown Luxury", Address = "Andrássy út 2", Stars = 5 },
+
+new Hotel { Id = 573, Name = "Budapest Riverside View", Address = "Belgrád Rakpart 12", Stars = 4 },
+new Hotel { Id = 574, Name = "City Center Budget Stay", Address = "Király utca 29", Stars = 3 },
+new Hotel { Id = 575, Name = "Danube Crown Luxury Hotel", Address = "Chain Bridge Road 1", Stars = 5 },
+/* =====================================================
+   KRAKOW – SET B & C
+   ===================================================== */
+new Hotel { Id = 293, Name = "Krakow City Budget Inn", Address = "Grodzka 30", Stars = 3 },
+new Hotel { Id = 294, Name = "Vistula Riverside Hotel", Address = "Bulwar Czerwieński 6", Stars = 4 },
+new Hotel { Id = 295, Name = "Royal Wawel Palace", Address = "Wawel Hill 1", Stars = 5 },
+
+new Hotel { Id = 296, Name = "Kazimierz Comfort Stay", Address = "Szeroka 18", Stars = 3 },
+new Hotel { Id = 297, Name = "Krakow Heritage Plaza", Address = "Rynek Główny 10", Stars = 4 },
+new Hotel { Id = 298, Name = "Golden Dragon Luxury Suites", Address = "Floriańska 1", Stars = 5 },
+
+new Hotel { Id = 576, Name = "Krakow Old Town View", Address = "Świętego Jana 8", Stars = 4 },
+new Hotel { Id = 577, Name = "Historic Market Budget Inn", Address = "Szewska 14", Stars = 3 },
+new Hotel { Id = 578, Name = "Vistula Royal Prestige", Address = "Bulwar Inflancki 1", Stars = 5 },
+/* =====================================================
+   ZANZIBAR – SET B & C
+   ===================================================== */
+new Hotel { Id = 299, Name = "Zanzibar Budget Beach Stay", Address = "Pwani Road 7", Stars = 3 },
+new Hotel { Id = 300, Name = "Indian Ocean View Hotel", Address = "Kiwengwa Beach 4", Stars = 4 },
+new Hotel { Id = 301, Name = "Sultan Sands Royal Resort", Address = "Michamvi Peninsula 1", Stars = 5 },
+
+new Hotel { Id = 302, Name = "Stone Town Comfort Inn", Address = "Malindi Road 9", Stars = 3 },
+new Hotel { Id = 303, Name = "Zanzibar Heritage Grand Hotel", Address = "Forodhani Gardens 2", Stars = 4 },
+new Hotel { Id = 304, Name = "Royal Zanzibar Infinity Villas", Address = "Nungwi Point 1", Stars = 5 },
+
+new Hotel { Id = 579, Name = "Zanzibar Sunset Beach Hotel", Address = "Kendwa Beach 3", Stars = 4 },
+new Hotel { Id = 580, Name = "Stone Town Budget Lodge", Address = "Shangani Street 11", Stars = 3 },
+new Hotel { Id = 581, Name = "Indian Ocean Crown Resort", Address = "Mnemba Island", Stars = 5 },
+/* =====================================================
+   HURGHADA – SET B & C
+   ===================================================== */
+new Hotel { Id = 305, Name = "Hurghada City Budget Hotel", Address = "Airport Road 12", Stars = 3 },
+new Hotel { Id = 306, Name = "Red Sea View Resort", Address = "El Gouna Road 5", Stars = 4 },
+new Hotel { Id = 307, Name = "Pharaoh Beach Luxury Palace", Address = "Makadi Bay 1", Stars = 5 },
+
+new Hotel { Id = 308, Name = "Hurghada Comfort Inn", Address = "Village Road 44", Stars = 3 },
+new Hotel { Id = 309, Name = "Coral Bay Grand Hotel", Address = "Sahl Hasheesh 8", Stars = 4 },
+new Hotel { Id = 310, Name = "Golden Red Sea Prestige", Address = "Safaga Road 2", Stars = 5 },
+
+new Hotel { Id = 600, Name = "Hurghada Sunrise Beach Hotel", Address = "Sheraton Road 18", Stars = 4 },
+new Hotel { Id = 601, Name = "Red Sea Budget Lodge", Address = "Downtown Hurghada 7", Stars = 3 },
+new Hotel { Id = 602, Name = "Coral Reef Royal Resort", Address = "Makadi Bay Coastline", Stars = 5 },
+/* =====================================================
+   LISBON – SET B & C
+   ===================================================== */
+new Hotel { Id = 311, Name = "Lisbon City Budget Stay", Address = "Alcântara 22", Stars = 3 },
+new Hotel { Id = 312, Name = "Tagus Riverside Hotel", Address = "Cais do Sodré 9", Stars = 4 },
+new Hotel { Id = 313, Name = "Belem Royal Palace", Address = "Mosteiro dos Jerónimos 1", Stars = 5 },
+
+new Hotel { Id = 314, Name = "Bairro Alto Comfort Inn", Address = "Rua da Rosa 33", Stars = 3 },
+new Hotel { Id = 315, Name = "Lisbon Heritage Grand Hotel", Address = "Avenida da Liberdade 18", Stars = 4 },
+new Hotel { Id = 316, Name = "Atlantic Crown Luxury Suites", Address = "Praça do Comércio 1", Stars = 5 },
+
+new Hotel { Id = 603, Name = "Lisbon Hills View Hotel", Address = "Graça 21", Stars = 4 },
+new Hotel { Id = 604, Name = "Alfama Budget Stay", Address = "Rua dos Remédios 14", Stars = 3 },
+new Hotel { Id = 605, Name = "Lisbon Atlantic Royal", Address = "Belém Riverside 1", Stars = 5 },
+/* =====================================================
+   ATHENS – SET B & C
+   ===================================================== */
+new Hotel { Id = 317, Name = "Athens City Budget Hotel", Address = "Omonia Square 12", Stars = 3 },
+new Hotel { Id = 318, Name = "Acropolis Classic Stay", Address = "Makrygianni 10", Stars = 4 },
+new Hotel { Id = 319, Name = "Olympian Royal Palace", Address = "Syntagma Avenue 1", Stars = 5 },
+
+new Hotel { Id = 320, Name = "Plaka Comfort Inn", Address = "Kidathineon 22", Stars = 3 },
+new Hotel { Id = 321, Name = "Athens Heritage Plaza", Address = "Ermou Street 9", Stars = 4 },
+new Hotel { Id = 322, Name = "Golden Acropolis Luxury Suites", Address = "Dionysiou Areopagitou 1", Stars = 5 },
+
+new Hotel { Id = 606, Name = "Athens Panorama View", Address = "Lycabettus Hill 6", Stars = 4 },
+new Hotel { Id = 607, Name = "Monastiraki Budget Inn", Address = "Ifestou Street 11", Stars = 3 },
+new Hotel { Id = 608, Name = "Aegean Crown Palace", Address = "Poseidonos Avenue 1", Stars = 5 },
+/* =====================================================
+   SPLIT – SET B & C
+   ===================================================== */
+new Hotel { Id = 323, Name = "Split City Budget Hotel", Address = "Poljička Cesta 40", Stars = 3 },
+new Hotel { Id = 324, Name = "Adriatic Coastline Resort", Address = "Žnjan Beach 7", Stars = 4 },
+new Hotel { Id = 325, Name = "Dalmatian Royal Palace", Address = "Riva 1", Stars = 5 },
+
+new Hotel { Id = 326, Name = "Old Town Comfort Stay", Address = "Radunica 22", Stars = 3 },
+new Hotel { Id = 327, Name = "Split Heritage Grand Hotel", Address = "Marmontova 10", Stars = 4 },
+new Hotel { Id = 328, Name = "Golden Adriatic Luxury Suites", Address = "Marjan Hill 1", Stars = 5 },
+
+new Hotel { Id = 609, Name = "Split Seaside View Hotel", Address = "Bačvice Beach 9", Stars = 4 },
+new Hotel { Id = 610, Name = "Diocletian Budget Stay", Address = "Bosanska 4", Stars = 3 },
+new Hotel { Id = 611, Name = "Adriatic Crown Luxury Resort", Address = "Kašjuni Bay 1", Stars = 5 }
 );
+
+
 
 
             // =========================================================================
@@ -1172,111 +1310,300 @@ namespace eTravelAgencija.Services.Database.Seed
             }
 
 
-            foreach (var hotelId in new[]
-            {
-    // Firenca
-    100, 101, 102,
-    // Santorini
-    110, 111, 112,
-    // Istanbul
-    120, 121, 122,
-
-    // Barcelona
-    200, 215, 216,
-    // Paris
-    201, 217, 218,
-    // Prague
-    202, 219, 220,
-    // Vienna
-    203, 221, 222,
-    // Amsterdam
-    204, 223, 224,
-    // London
-    205, 225, 226,
-    // Dubai
-    206, 227, 228,
-    // Cairo
-    207, 229, 230,
-    // Budapest
-    208, 231, 232,
-    // Krakow
-    209, 233, 234,
-    // Zanzibar
-    210, 235, 236,
-    // Hurghada
-    211, 237, 238,
-    // Lisbon
-    212, 239, 240,
-    // Athens
-    213, 241, 242,
-    // Split
-    214, 243, 244
-})
-            {
-                AddHotelImages(hotelId);
-            }
-
-
-
-
-            // =========================================================================
-            // 12. OFFER → HOTELS (UTC)
-            // =========================================================================
-            var departures = new[]
+          foreach (var hotelId in new[]
 {
-    new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
-    new DateTime(2026, 5, 15, 0, 0, 0, DateTimeKind.Utc),
-    new DateTime(2026, 8, 27, 0, 0, 0, DateTimeKind.Utc)
+    // =========================
+    // FIRENCA (9)
+    // =========================
+    100, 101, 102,
+    103, 104, 105,
+    106, 107, 108,
+
+    // =========================
+    // SANTORINI (9)
+    // =========================
+    110, 111, 112,
+    113, 114, 115,
+    116, 117, 118,
+
+    // =========================
+    // ISTANBUL (9)
+    // =========================
+    120, 121, 122,
+    123, 124, 125,
+    126, 127, 128,
+
+    // =========================
+    // BARCELONA (9)
+    // =========================
+    200, 215, 216,
+    217, 218, 219,
+    220, 221, 222,
+
+    // =========================
+    // PARIS (9)
+    // =========================
+    245, 246, 247,
+    248, 249, 250,
+    550, 551, 552,
+
+    // =========================
+    // PRAGUE (9)
+    // =========================
+    251, 252, 253,
+    254, 255, 256,
+    553, 554, 555,
+
+    // =========================
+    // VIENNA (9)
+    // =========================
+    257, 258, 259,
+    260, 261, 262,
+    556, 557, 558,
+
+    // =========================
+    // AMSTERDAM (9)
+    // =========================
+    263, 264, 265,
+    266, 267, 268,
+    560, 561, 562,
+
+    // =========================
+    // LONDON (9)
+    // =========================
+    269, 270, 271,
+    272, 273, 274,
+    563, 564, 565,
+
+    // =========================
+    // DUBAI (9)
+    // =========================
+    275, 276, 277,
+    278, 279, 280,
+    566, 567, 568,
+
+    // =========================
+    // CAIRO (9)
+    // =========================
+    281, 282, 283,
+    284, 285, 286,
+    570, 571, 572,
+
+    // =========================
+    // BUDAPEST (9)
+    // =========================
+    287, 288, 289,
+    290, 291, 292,
+    573, 574, 575,
+
+    // =========================
+    // KRAKOW (9)
+    // =========================
+    293, 294, 295,
+    296, 297, 298,
+    576, 577, 578,
+
+    // =========================
+    // ZANZIBAR (9)
+    // =========================
+    299, 300, 301,
+    302, 303, 304,
+    579, 580, 581,
+
+    // =========================
+    // HURGHADA (9)
+    // =========================
+    305, 306, 307,
+    308, 309, 310,
+    600, 601, 602,
+
+    // =========================
+    // LISBON (9)
+    // =========================
+    311, 312, 313,
+    314, 315, 316,
+    603, 604, 605,
+
+    // =========================
+    // ATHENS (9)
+    // =========================
+    317, 318, 319,
+    320, 321, 322,
+    606, 607, 608,
+
+    // =========================
+    // SPLIT (9)
+    // =========================
+    323, 324, 325,
+    326, 327, 328,
+    609, 610, 611
+})
+{
+    AddHotelImages(hotelId);
+}
+
+
+
+
+
+           // =========================================================================
+// 12. OFFER → HOTELS (UTC)  [SET A=depA, SET B=depB, SET C=depC]
+// =========================================================================
+var depA = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc);
+var depB = new DateTime(2026, 5, 15, 0, 0, 0, DateTimeKind.Utc);
+var depC = new DateTime(2026, 8, 27, 0, 0, 0, DateTimeKind.Utc);
+
+var offerHotelMap = new[]
+{
+    // Firenca (5)
+    new { OfferDetailsId = 1, Days = 5,
+        SetA = new[] { 100, 101, 102 },
+        SetB = new[] { 103, 104, 105 },
+        SetC = new[] { 106, 107, 108 }
+    },
+
+    // Santorini (7)
+    new { OfferDetailsId = 2, Days = 7,
+        SetA = new[] { 110, 111, 112 },
+        SetB = new[] { 113, 114, 115 },
+        SetC = new[] { 116, 117, 118 }
+    },
+
+    // Istanbul (4)
+    new { OfferDetailsId = 3, Days = 4,
+        SetA = new[] { 120, 121, 122 },
+        SetB = new[] { 123, 124, 125 },
+        SetC = new[] { 126, 127, 128 }
+    },
+
+    // Barcelona (6)
+    new { OfferDetailsId = 4, Days = 6,
+        SetA = new[] { 200, 215, 216 },
+        SetB = new[] { 217, 218, 219 },
+        SetC = new[] { 220, 221, 222 }
+    },
+
+    // Paris (5)
+    new { OfferDetailsId = 5, Days = 5,
+        SetA = new[] { 550, 551, 552 },
+        SetB = new[] { 245, 246, 247 },
+        SetC = new[] { 248, 249, 250 }
+    },
+
+    // Prague (4)
+    new { OfferDetailsId = 6, Days = 4,
+        SetA = new[] { 553, 554, 555 },
+        SetB = new[] { 251, 252, 253 },
+        SetC = new[] { 254, 255, 256 }
+    },
+
+    // Vienna (3)
+    new { OfferDetailsId = 7, Days = 3,
+        SetA = new[] { 556, 557, 558 },
+        SetB = new[] { 257, 258, 259 },
+        SetC = new[] { 260, 261, 262 }
+    },
+
+    // Amsterdam (5)
+    new { OfferDetailsId = 8, Days = 5,
+        SetA = new[] { 560, 561, 562 },
+        SetB = new[] { 263, 264, 265 },
+        SetC = new[] { 266, 267, 268 }
+    },
+
+    // London (6)
+    new { OfferDetailsId = 9, Days = 6,
+        SetA = new[] { 563, 564, 565 },
+        SetB = new[] { 269, 270, 271 },
+        SetC = new[] { 272, 273, 274 }
+    },
+
+    // Dubai (7)
+    new { OfferDetailsId = 10, Days = 7,
+        SetA = new[] { 566, 567, 568 },
+        SetB = new[] { 275, 276, 277 },
+        SetC = new[] { 278, 279, 280 }
+    },
+
+    // Cairo (5)
+    new { OfferDetailsId = 11, Days = 5,
+        SetA = new[] { 570, 571, 572 },
+        SetB = new[] { 281, 282, 283 },
+        SetC = new[] { 284, 285, 286 }
+    },
+
+    // Budapest (3)
+    new { OfferDetailsId = 12, Days = 3,
+        SetA = new[] { 573, 574, 575 },
+        SetB = new[] { 287, 288, 289 },
+        SetC = new[] { 290, 291, 292 }
+    },
+
+    // Krakow (4)
+    new { OfferDetailsId = 13, Days = 4,
+        SetA = new[] { 576, 577, 578 },
+        SetB = new[] { 293, 294, 295 },
+        SetC = new[] { 296, 297, 298 }
+    },
+
+    // Zanzibar (8)
+    new { OfferDetailsId = 14, Days = 8,
+        SetA = new[] { 579, 580, 581 },
+        SetB = new[] { 299, 300, 301 },
+        SetC = new[] { 302, 303, 304 }
+    },
+
+    // Hurghada (7)
+    new { OfferDetailsId = 15, Days = 7,
+        SetA = new[] { 600, 601, 602 },
+        SetB = new[] { 305, 306, 307 },
+        SetC = new[] { 308, 309, 310 }
+    },
+
+    // Lisbon (6)
+    new { OfferDetailsId = 16, Days = 6,
+        SetA = new[] { 603, 604, 605 },
+        SetB = new[] { 311, 312, 313 },
+        SetC = new[] { 314, 315, 316 }
+    },
+
+    // Athens (5)
+    new { OfferDetailsId = 17, Days = 5,
+        SetA = new[] { 606, 607, 608 },
+        SetB = new[] { 317, 318, 319 },
+        SetC = new[] { 320, 321, 322 }
+    },
+
+    // Split (3)
+    new { OfferDetailsId = 18, Days = 3,
+        SetA = new[] { 609, 610, 611 },
+        SetB = new[] { 323, 324, 325 },
+        SetC = new[] { 326, 327, 328 }
+    }
 };
 
-
-            var offerHotelMap = new[]
+void SeedForSet(int offerDetailsId, int days, int[] hotels, DateTime dep)
+{
+    foreach (var hotelId in hotels)
+    {
+        builder.Entity<OfferHotels>().HasData(
+            new OfferHotels
             {
-    // Firenca (5 dana)
-    new { OfferDetailsId = 1, Days = 5, Hotels = new[] { 100, 101, 102 } },
-
-    // Santorini (7 dana)
-    new { OfferDetailsId = 2, Days = 7, Hotels = new[] { 110, 111, 112 } },
-
-    // Istanbul (4 dana)
-    new { OfferDetailsId = 3, Days = 4, Hotels = new[] { 120, 121, 122 } },
-
-    // Ostali – po 3 hotela (pretpostavka koju si ranije definisao)
-    new { OfferDetailsId = 4, Days = 6, Hotels = new[] { 200, 215, 216 } },
-    new { OfferDetailsId = 5, Days = 5, Hotels = new[] { 201, 217, 218 } },
-    new { OfferDetailsId = 6, Days = 4, Hotels = new[] { 202, 219, 220 } },
-    new { OfferDetailsId = 7, Days = 3, Hotels = new[] { 203, 221, 222 } },
-    new { OfferDetailsId = 8, Days = 5, Hotels = new[] { 204, 223, 224 } },
-    new { OfferDetailsId = 9, Days = 6, Hotels = new[] { 205, 225, 226 } },
-    new { OfferDetailsId = 10, Days = 7, Hotels = new[] { 206, 227, 228 } },
-    new { OfferDetailsId = 11, Days = 5, Hotels = new[] { 207, 229, 230 } },
-    new { OfferDetailsId = 12, Days = 3, Hotels = new[] { 208, 231, 232 } },
-    new { OfferDetailsId = 13, Days = 4, Hotels = new[] { 209, 233, 234 } },
-    new { OfferDetailsId = 14, Days = 8, Hotels = new[] { 210, 235, 236 } },
-    new { OfferDetailsId = 15, Days = 7, Hotels = new[] { 211, 237, 238 } },
-    new { OfferDetailsId = 16, Days = 6, Hotels = new[] { 212, 239, 240 } },
-    new { OfferDetailsId = 17, Days = 5, Hotels = new[] { 213, 241, 242 } },
-    new { OfferDetailsId = 18, Days = 3, Hotels = new[] { 214, 243, 244 } }
-};
-
-            foreach (var offer in offerHotelMap)
-            {
-                foreach (var hotelId in offer.Hotels)
-                {
-                    foreach (var dep in departures)
-                    {
-                        builder.Entity<OfferHotels>().HasData(
-                            new OfferHotels
-                            {
-                                OfferDetailsId = offer.OfferDetailsId,
-                                HotelId = hotelId,
-                                DepartureDate = dep,
-                                ReturnDate = dep.AddDays(offer.Days)
-                            }
-                        );
-                    }
-                }
+                OfferDetailsId = offerDetailsId,
+                HotelId = hotelId,
+                DepartureDate = dep,
+                ReturnDate = dep.AddDays(days)
             }
+        );
+    }
+}
+
+foreach (var offer in offerHotelMap)
+{
+    SeedForSet(offer.OfferDetailsId, offer.Days, offer.SetA, depA);
+    SeedForSet(offer.OfferDetailsId, offer.Days, offer.SetB, depB);
+    SeedForSet(offer.OfferDetailsId, offer.Days, offer.SetC, depC);
+}
 
 
 
@@ -1292,73 +1619,138 @@ namespace eTravelAgencija.Services.Database.Seed
             new Rooms { Id = 4, RoomType = "Cetverokrevetna" }
             );
 
-            // =========================================================================
-            // 14. HOTEL ROOMS
-            // =========================================================================
+           // =========================================================================
+// 14. HOTEL ROOMS (bez Id – composite key)
+// =========================================================================
 
-            var roomIds = new[] { 1, 2, 3, 4 };
+var roomIds = new[] { 1, 2, 3, 4 };
 
-            var hotels = new[]
-            {
+var hotels = new[]
+{
+    // =========================
     // FIRENCA
-    100, 101, 102,
-    // SANTORINI
-    110, 111, 112,
-    // ISTANBUL
-    120, 121, 122,
+    // =========================
+    100,101,102,103,104,105,106,107,108,
 
+    // =========================
+    // SANTORINI
+    // =========================
+    110,111,112,113,114,115,116,117,118,
+
+    // =========================
+    // ISTANBUL
+    // =========================
+    120,121,122,123,124,125,126,127,128,
+
+    // =========================
     // BARCELONA
-    200, 215, 216,
+    // =========================
+    200,215,216,217,218,219,220,221,222,
+
+    // =========================
     // PARIS
-    201, 217, 218,
+    // =========================
+    245,246,247,248,249,250,
+    550,551,552,
+
+    // =========================
     // PRAGUE
-    202, 219, 220,
+    // =========================
+    251,252,253,254,255,256,
+    553,554,555,
+
+    // =========================
     // VIENNA
-    203, 221, 222,
+    // =========================
+    257,258,259,260,261,262,
+    556,557,558,
+
+    // =========================
     // AMSTERDAM
-    204, 223, 224,
+    // =========================
+    263,264,265,266,267,268,
+    560,561,562,
+
+    // =========================
     // LONDON
-    205, 225, 226,
+    // =========================
+    269,270,271,272,273,274,
+    563,564,565,
+
+    // =========================
     // DUBAI
-    206, 227, 228,
+    // =========================
+    275,276,277,278,279,280,
+    566,567,568,
+
+    // =========================
     // CAIRO
-    207, 229, 230,
+    // =========================
+    281,282,283,284,285,286,
+    570,571,572,
+
+    // =========================
     // BUDAPEST
-    208, 231, 232,
+    // =========================
+    287,288,289,290,291,292,
+    573,574,575,
+
+    // =========================
     // KRAKOW
-    209, 233, 234,
+    // =========================
+    293,294,295,296,297,298,
+    576,577,578,
+
+    // =========================
     // ZANZIBAR
-    210, 235, 236,
+    // =========================
+    299,300,301,302,303,304,
+    579,580,581,
+
+    // =========================
     // HURGHADA
-    211, 237, 238,
+    // =========================
+    305,306,307,308,309,310,
+    600,601,602,
+
+    // =========================
     // LISBON
-    212, 239, 240,
+    // =========================
+    311,312,313,314,315,316,
+    603,604,605,
+
+    // =========================
     // ATHENS
-    213, 241, 242,
+    // =========================
+    317,318,319,320,321,322,
+    606,607,608,
+
+    // =========================
     // SPLIT
-    214, 243, 244
+    // =========================
+    323,324,325,326,327,328,
+    609,610,611
 };
 
-            // 🔒 FIXED SEED → uvijek isti “random”
-            var rng = new Random(2026);
+// 🔒 stabilni "random" (uvijek isti rezultati)
+var rng = new Random(2026);
 
-            foreach (var hotelId in hotels)
+foreach (var hotelId in hotels)
+{
+    foreach (var roomId in roomIds)
+    {
+        builder.Entity<HotelRooms>().HasData(
+            new HotelRooms
             {
-                foreach (var roomId in roomIds)
-                {
-                    // Random 5–15 (5 uključeno, 16 nije)
-                    var roomsLeft = rng.Next(5, 16);
-
-                    builder.Entity<HotelRooms>().HasData(
-                        new HotelRooms
-                        {
-                            HotelId = hotelId,
-                            RoomId = roomId,
-                            RoomsLeft = roomsLeft
-                        }
-                    );
-                }
+                HotelId = hotelId,
+                RoomId = roomId,
+                RoomsLeft = rng.Next(3, 21) // 3–20 soba
             }
+        );
+    }
+}
+
+
 
 
 
@@ -1695,7 +2087,7 @@ new Reservation
 new Reservation
 {
     Id = 2017,
-    UserId = 22,
+    UserId = 6,
     OfferId = 3,
     HotelId = 122,
     RoomId = 1,
@@ -1714,7 +2106,7 @@ new Reservation
 new Reservation
 {
     Id = 2018,
-    UserId = 23,
+    UserId = 6,
     OfferId = 1,
     HotelId = 100,
     RoomId = 1,
@@ -1733,7 +2125,7 @@ new Reservation
 new Reservation
 {
     Id = 2019,
-    UserId = 24,
+    UserId = 6,
     OfferId = 2,
     HotelId = 111,
     RoomId = 3,
@@ -1805,7 +2197,45 @@ new Reservation
             PriceLeftToPay = 0,
             CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
             addedNeeds = ""
-        }
+        },
+
+        new Reservation
+{
+    Id = 3003,
+    UserId = 6,
+    OfferId = 9,
+    HotelId = 282,
+    RoomId = 2,
+    IsActive = false,
+    IncludeInsurance = false,
+    isFirstRatePaid = true,
+    isFullPaid = true,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 0,
+    PriceLeftToPay = 0,
+    CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+},
+new Reservation
+{
+    Id = 3004,
+    UserId = 6,
+    OfferId = 10,
+    HotelId = 288,
+    RoomId = 2,
+    IsActive = false,
+    IncludeInsurance = false,
+    isFirstRatePaid = true,
+    isFullPaid = true,
+    isDiscountUsed = false,
+    DiscountValue = 0,
+    TotalPrice = 0,
+    PriceLeftToPay = 0,
+    CreatedAt = new DateTime(2026, 3, 2, 0, 0, 0, DateTimeKind.Utc),
+    addedNeeds = ""
+}
+
 );
 
 

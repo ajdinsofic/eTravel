@@ -20,5 +20,9 @@ namespace eTravelAgencija.Services.Interfaces
           int reservationId,
           DateTime departureDate,
           DateTime returnDate);
+
+        Task<bool> CancelReservation(int reservationId, string? emailOverride = null);
+
+        
     }
 }

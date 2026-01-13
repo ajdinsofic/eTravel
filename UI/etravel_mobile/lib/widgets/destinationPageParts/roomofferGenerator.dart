@@ -1,5 +1,6 @@
 import 'package:etravel_app/config/api_config.dart';
 import 'package:etravel_app/helper/date_converter.dart';
+import 'package:etravel_app/helper/image_helper.dart';
 import 'package:etravel_app/models/hotel.dart';
 import 'package:etravel_app/providers/hotel_provider.dart';
 import 'package:etravel_app/providers/hotel_room_provider.dart';
@@ -287,8 +288,7 @@ class _RoomoffergeneratorState extends State<Roomoffergenerator> {
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
             child: Image.network(
-              //"${ApiConfig.imagesHotels}/${mainImage.imageUrl}",
-              mainImage.imageUrl,
+              resolveHotelsImageUrl(mainImage.imageUrl),
               height: screenHeight * 0.25,
               width: double.infinity,
               fit: BoxFit.cover,
