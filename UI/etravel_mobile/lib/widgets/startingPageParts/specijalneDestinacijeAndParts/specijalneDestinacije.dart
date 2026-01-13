@@ -203,6 +203,7 @@ class _UniversalDestinationsState extends State<UniversalDestinations> {
                       children: [
                         destinationContainers(
                           naziv: offer.title,
+                          opis: offer.description,
                           glavnaslikaPath: _getMainImage(offer),
                           slike: _getOtherImages(offer),
                           cijena: "${offer.minimalPrice.toInt()}\$",

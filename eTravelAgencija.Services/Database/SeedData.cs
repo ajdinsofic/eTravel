@@ -553,223 +553,224 @@ namespace eTravelAgencija.Services.Database.Seed
             // 8. OFFER DETAILS
             // =========================================================================
             builder.Entity<OfferDetails>().HasData(
-                new OfferDetails
-                {
-                    OfferId = 1,
-                    MinimalPrice = 450,
-                    Description = "Putovanje u prekrasnu Firencu.",
-                    City = "Firenca",
-                    Country = "Italija",
-                    ResidenceTaxPerDay = 2.00m,
-                    ResidenceTotal = 10m,
-                    TravelInsuranceTotal = 15m,
-                    TotalCountOfReservations = 98
-                },
-                new OfferDetails
-                {
-                    OfferId = 2,
-                    MinimalPrice = 900,
-                    Description = "Santorini – raj na zemlji.",
-                    City = "Santorini",
-                    Country = "Grčka",
-                    ResidenceTaxPerDay = 3.00m,
-                    ResidenceTotal = 21m,
-                    TravelInsuranceTotal = 25m,
-                    TotalCountOfReservations = 65
-                },
-                new OfferDetails
-                {
-                    OfferId = 3,
-                    MinimalPrice = 350,
-                    Description = "Istanbul – čarolija dva kontinenta.",
-                    City = "Istanbul",
-                    Country = "Turska",
-                    ResidenceTaxPerDay = 1.50m,
-                    ResidenceTotal = 6m,
-                    TravelInsuranceTotal = 12m,
-                    TotalCountOfReservations = 53
-                },
-                new OfferDetails
-                {
-                    OfferId = 4,
-                    MinimalPrice = 750,
-                    Description = "Barcelona – vibrantan grad umjetnosti i mora.",
-                    City = "Barcelona",
-                    Country = "Španija",
-                    ResidenceTaxPerDay = 3.50m,
-                    ResidenceTotal = 21m,
-                    TravelInsuranceTotal = 20m,
-                    TotalCountOfReservations = 91
-                },
-                new OfferDetails
-                {
-                    OfferId = 5,
-                    MinimalPrice = 820,
-                    Description = "Pariz – grad svjetlosti i romantike.",
-                    City = "Pariz",
-                    Country = "Francuska",
-                    ResidenceTaxPerDay = 2.50m,
-                    ResidenceTotal = 12.5m,
-                    TravelInsuranceTotal = 18m,
-                    TotalCountOfReservations = 140
-                },
-                new OfferDetails
-                {
-                    OfferId = 6,
-                    MinimalPrice = 390,
-                    Description = "Prag – grad stotinu tornjeva.",
-                    City = "Prag",
-                    Country = "Češka",
-                    ResidenceTaxPerDay = 1.20m,
-                    ResidenceTotal = 4.8m,
-                    TravelInsuranceTotal = 10m,
-                    TotalCountOfReservations = 67
-                },
-                new OfferDetails
-                {
-                    OfferId = 7,
-                    MinimalPrice = 250,
-                    Description = "Beč – istorija, umjetnost i kraljevska arhitektura.",
-                    City = "Beč",
-                    Country = "Austrija",
-                    ResidenceTaxPerDay = 1.80m,
-                    ResidenceTotal = 5.4m,
-                    TravelInsuranceTotal = 10m,
-                    TotalCountOfReservations = 102
-                },
-                new OfferDetails
-                {
-                    OfferId = 8,
-                    MinimalPrice = 860,
-                    Description = "Amsterdam – kanali, muzeji i jedinstvena atmosfera.",
-                    City = "Amsterdam",
-                    Country = "Nizozemska",
-                    ResidenceTaxPerDay = 3.00m,
-                    ResidenceTotal = 15m,
-                    TravelInsuranceTotal = 22m,
-                    TotalCountOfReservations = 119
-                },
-                new OfferDetails
-                {
-                    OfferId = 9,
-                    MinimalPrice = 950,
-                    Description = "London – tradicija i moderna kultura.",
-                    City = "London",
-                    Country = "Ujedinjeno Kraljevstvo",
-                    ResidenceTaxPerDay = 3.20m,
-                    ResidenceTotal = 19.2m,
-                    TravelInsuranceTotal = 24m,
-                    TotalCountOfReservations = 155
-                },
-                new OfferDetails
-                {
-                    OfferId = 10,
-                    MinimalPrice = 1300,
-                    Description = "Dubai – luksuz, pustinja i avantura.",
-                    City = "Dubai",
-                    Country = "UAE",
-                    ResidenceTaxPerDay = 5.00m,
-                    ResidenceTotal = 35m,
-                    TravelInsuranceTotal = 30m,
-                    TotalCountOfReservations = 174
-                },
-                new OfferDetails
-                {
-                    OfferId = 11,
-                    MinimalPrice = 780,
-                    Description = "Kairo – drevne piramide i Nil.",
-                    City = "Kairo",
-                    Country = "Egipat",
-                    ResidenceTaxPerDay = 2.20m,
-                    ResidenceTotal = 11m,
-                    TravelInsuranceTotal = 20m,
-                    TotalCountOfReservations = 94
-                },
-                new OfferDetails
-                {
-                    OfferId = 12,
-                    MinimalPrice = 230,
-                    Description = "Budimpešta – čuvena termalna oaza.",
-                    City = "Budimpešta",
-                    Country = "Mađarska",
-                    ResidenceTaxPerDay = 1.50m,
-                    ResidenceTotal = 4.5m,
-                    TravelInsuranceTotal = 9m,
-                    TotalCountOfReservations = 88
-                },
-                new OfferDetails
-                {
-                    OfferId = 13,
-                    MinimalPrice = 310,
-                    Description = "Krakow – historijski dragulj Poljske.",
-                    City = "Krakow",
-                    Country = "Poljska",
-                    ResidenceTaxPerDay = 1.40m,
-                    ResidenceTotal = 5.6m,
-                    TravelInsuranceTotal = 11m,
-                    TotalCountOfReservations = 73
-                },
-                new OfferDetails
-                {
-                    OfferId = 14,
-                    MinimalPrice = 1600,
-                    Description = "Zanzibar – egzotični raj u Indijskom okeanu.",
-                    City = "Zanzibar",
-                    Country = "Tanzanija",
-                    ResidenceTaxPerDay = 4.00m,
-                    ResidenceTotal = 32m,
-                    TravelInsuranceTotal = 35m,
-                    TotalCountOfReservations = 61
-                },
-                new OfferDetails
-                {
-                    OfferId = 15,
-                    MinimalPrice = 1100,
-                    Description = "Hurgada – idealan izbor za all inclusive odmor.",
-                    City = "Hurgada",
-                    Country = "Egipat",
-                    ResidenceTaxPerDay = 3.00m,
-                    ResidenceTotal = 21m,
-                    TravelInsuranceTotal = 25m,
-                    TotalCountOfReservations = 108
-                },
-                new OfferDetails
-                {
-                    OfferId = 16,
-                    MinimalPrice = 780,
-                    Description = "Lisabon – šarmantni grad na obali Atlantika.",
-                    City = "Lisabon",
-                    Country = "Portugal",
-                    ResidenceTaxPerDay = 2.50m,
-                    ResidenceTotal = 15m,
-                    TravelInsuranceTotal = 22m,
-                    TotalCountOfReservations = 97
-                },
-                new OfferDetails
-                {
-                    OfferId = 17,
-                    MinimalPrice = 520,
-                    Description = "Atina – kolijevka civilizacije.",
-                    City = "Atina",
-                    Country = "Grčka",
-                    ResidenceTaxPerDay = 2.00m,
-                    ResidenceTotal = 10m,
-                    TravelInsuranceTotal = 16m,
-                    TotalCountOfReservations = 121
-                },
-                new OfferDetails
-                {
-                    OfferId = 18,
-                    MinimalPrice = 180,
-                    Description = "Split – uživanje na jadranskoj obali.",
-                    City = "Split",
-                    Country = "Hrvatska",
-                    ResidenceTaxPerDay = 1.00m,
-                    ResidenceTotal = 3m,
-                    TravelInsuranceTotal = 8m,
-                    TotalCountOfReservations = 112
-                }
-            );
+    new OfferDetails
+    {
+        OfferId = 1,
+        MinimalPrice = 450,
+        Description = "Firenca je jedno od najljepših kulturnih središta Evrope i kolijevka renesanse. Grad obiluje historijskim znamenitostima, muzejima i umjetničkim djelima svjetskog značaja. Posjetioci imaju priliku uživati u šetnjama starim gradskim ulicama i trgovima. Posebnu čar pružaju rijeka Arno i čuveni most Ponte Vecchio. Firenca je poznata i po vrhunskoj italijanskoj kuhinji i lokalnim vinima. Ovo putovanje idealno je za ljubitelje kulture, umjetnosti i istorije.",
+        City = "Firenca",
+        Country = "Italija",
+        ResidenceTaxPerDay = 2.00m,
+        ResidenceTotal = 10m,
+        TravelInsuranceTotal = 15m,
+        TotalCountOfReservations = 98
+    },
+    new OfferDetails
+    {
+        OfferId = 2,
+        MinimalPrice = 900,
+        Description = "Santorini je jedno od najromantičnijih ostrva na Mediteranu, poznato po bijelim kućama i plavim kupolama. Ostrvo pruža spektakularne zalaske sunca koji ostavljaju bez daha. Kristalno čisto more i vulkanske plaže čine ga jedinstvenim. Posjetioci mogu uživati u mirnoj atmosferi i luksuznim smještajima. Lokalna kuhinja i vina dodatno obogaćuju iskustvo boravka. Santorini je savršen izbor za opuštanje i romantična putovanja.",
+        City = "Santorini",
+        Country = "Grčka",
+        ResidenceTaxPerDay = 3.00m,
+        ResidenceTotal = 21m,
+        TravelInsuranceTotal = 25m,
+        TotalCountOfReservations = 65
+    },
+    new OfferDetails
+    {
+        OfferId = 3,
+        MinimalPrice = 350,
+        Description = "Istanbul je grad koji spaja Evropu i Aziju, nudeći jedinstveno kulturno iskustvo. Bogata istorija vidljiva je na svakom koraku kroz džamije, palate i bazare. Grad je poznat po živopisnoj atmosferi i gostoprimstvu. Šetnja Bosforom pruža nezaboravne poglede na grad. Turska kuhinja i tradicionalni čajevi dodatno oplemenjuju boravak. Istanbul je idealna destinacija za ljubitelje istorije i raznolikih kultura.",
+        City = "Istanbul",
+        Country = "Turska",
+        ResidenceTaxPerDay = 1.50m,
+        ResidenceTotal = 6m,
+        TravelInsuranceTotal = 12m,
+        TotalCountOfReservations = 53
+    },
+    new OfferDetails
+    {
+        OfferId = 4,
+        MinimalPrice = 750,
+        Description = "Barcelona je grad koji spaja umjetnost, arhitekturu i more u savršen sklad. Poznata je po djelima Antonija Gaudija i jedinstvenoj arhitekturi. Grad nudi živahne ulice, plaže i bogat noćni život. Posjetioci mogu uživati u tapasima i mediteranskoj kuhinji. Barcelona je savršena kombinacija odmora i urbanog doživljaja. Ova destinacija idealna je za sve generacije putnika.",
+        City = "Barcelona",
+        Country = "Španija",
+        ResidenceTaxPerDay = 3.50m,
+        ResidenceTotal = 21m,
+        TravelInsuranceTotal = 20m,
+        TotalCountOfReservations = 91
+    },
+    new OfferDetails
+    {
+        OfferId = 5,
+        MinimalPrice = 820,
+        Description = "Pariz je poznat kao grad ljubavi, umjetnosti i mode. Njegove znamenitosti poput Ajfelovog tornja i Luvra privlače milione turista. Grad odiše romantikom i elegancijom. Šetnje uz Seinu pružaju poseban doživljaj. Francuska kuhinja i slastičarstvo svjetski su poznati. Pariz je savršena destinacija za romantična i kulturna putovanja.",
+        City = "Pariz",
+        Country = "Francuska",
+        ResidenceTaxPerDay = 2.50m,
+        ResidenceTotal = 12.5m,
+        TravelInsuranceTotal = 18m,
+        TotalCountOfReservations = 140
+    },
+    new OfferDetails
+    {
+        OfferId = 6,
+        MinimalPrice = 390,
+        Description = "Prag je grad bogate istorije i prepoznatljive arhitekture. Njegovi mostovi, dvorci i stari trgovi očaravaju posjetioce. Grad nudi mirnu, ali živu atmosferu. Češka kuhinja i pivo poznati su širom svijeta. Prag je idealan za kraća gradska putovanja. Ova destinacija pruža savršen balans tradicije i modernog života.",
+        City = "Prag",
+        Country = "Češka",
+        ResidenceTaxPerDay = 1.20m,
+        ResidenceTotal = 4.8m,
+        TravelInsuranceTotal = 10m,
+        TotalCountOfReservations = 67
+    },
+    new OfferDetails
+    {
+        OfferId = 7,
+        MinimalPrice = 250,
+        Description = "Beč je grad muzike, kulture i carske istorije. Poznat je po operama, koncertima i muzejima. Grad odiše elegancijom i uređenim ambijentom. Šetnje bečkim ulicama pružaju osjećaj luksuza. Tradicionalne slastice poput Sacher torte su nezaobilazne. Beč je savršena destinacija za kulturni i opuštajući odmor.",
+        City = "Beč",
+        Country = "Austrija",
+        ResidenceTaxPerDay = 1.80m,
+        ResidenceTotal = 5.4m,
+        TravelInsuranceTotal = 10m,
+        TotalCountOfReservations = 102
+    },
+    new OfferDetails
+    {
+        OfferId = 8,
+        MinimalPrice = 860,
+        Description = "Amsterdam je poznat po svojim kanalima i jedinstvenoj gradskoj arhitekturi. Grad nudi opuštenu i kosmopolitsku atmosferu. Brojni muzeji i galerije privlače ljubitelje umjetnosti. Vožnja biciklom kroz grad je poseban doživljaj. Lokalna kuhinja i kafići doprinose ugodnom boravku. Amsterdam je idealan za urbani i alternativni odmor.",
+        City = "Amsterdam",
+        Country = "Nizozemska",
+        ResidenceTaxPerDay = 3.00m,
+        ResidenceTotal = 15m,
+        TravelInsuranceTotal = 22m,
+        TotalCountOfReservations = 119
+    },
+    new OfferDetails
+    {
+        OfferId = 9,
+        MinimalPrice = 950,
+        Description = "London je jedan od najpoznatijih svjetskih gradova sa bogatom istorijom. Grad nudi brojne znamenitosti poput Big Bena i Buckinghamske palate. Multikulturalnost Londona vidljiva je u svakodnevnom životu. Posjetioci mogu uživati u muzejima i pozorištima. Londonska kuhinja nudi raznovrsne ukuse iz cijelog svijeta. Ova destinacija savršena je za ljubitelje velikih gradova.",
+        City = "London",
+        Country = "Ujedinjeno Kraljevstvo",
+        ResidenceTaxPerDay = 3.20m,
+        ResidenceTotal = 19.2m,
+        TravelInsuranceTotal = 24m,
+        TotalCountOfReservations = 155
+    },
+    new OfferDetails
+    {
+        OfferId = 10,
+        MinimalPrice = 1300,
+        Description = "Dubai je simbol luksuza, modernog dizajna i futurističke arhitekture. Grad nudi spektakularne nebodere i tržne centre. Pustinjski safari pruža nezaboravno iskustvo avanture. Dubai je poznat po vrhunskom smještaju i uslugama. Posjetioci mogu uživati u kombinaciji tradicije i savremenog života. Ova destinacija idealna je za luksuzan i egzotičan odmor.",
+        City = "Dubai",
+        Country = "UAE",
+        ResidenceTaxPerDay = 5.00m,
+        ResidenceTotal = 35m,
+        TravelInsuranceTotal = 30m,
+        TotalCountOfReservations = 174
+    },
+    new OfferDetails
+    {
+        OfferId = 11,
+        MinimalPrice = 780,
+        Description = "Kairo je grad bogate istorije i drevnih civilizacija. Poznat je po piramidama i sfingi koje privlače turiste iz cijelog svijeta. Grad nudi autentičan uvid u egipatsku kulturu. Šetnje uz Nil pružaju poseban doživljaj. Lokalna kuhinja obiluje tradicionalnim jelima. Kairo je savršena destinacija za ljubitelje istorije.",
+        City = "Kairo",
+        Country = "Egipat",
+        ResidenceTaxPerDay = 2.20m,
+        ResidenceTotal = 11m,
+        TravelInsuranceTotal = 20m,
+        TotalCountOfReservations = 94
+    },
+    new OfferDetails
+    {
+        OfferId = 12,
+        MinimalPrice = 230,
+        Description = "Budimpešta je poznata po termalnim kupalištima i arhitekturi. Grad se prostire uz rijeku Dunav i nudi prekrasne poglede. Historijske građevine čine grad veoma atraktivnim. Termalne banje pružaju opuštanje tokom cijele godine. Mađarska kuhinja dodatno obogaćuje iskustvo. Budimpešta je idealna za relaksirajući gradski odmor.",
+        City = "Budimpešta",
+        Country = "Mađarska",
+        ResidenceTaxPerDay = 1.50m,
+        ResidenceTotal = 4.5m,
+        TravelInsuranceTotal = 9m,
+        TotalCountOfReservations = 88
+    },
+    new OfferDetails
+    {
+        OfferId = 13,
+        MinimalPrice = 310,
+        Description = "Krakow je jedan od najstarijih gradova u Poljskoj sa bogatom tradicijom. Njegova stara gradska jezgra je pod zaštitom UNESCO-a. Grad odiše srednjovjekovnim šarmom. Brojni muzeji i dvorci privlače posjetioce. Lokalna kultura i gastronomija su veoma autentični. Krakow je idealan za kulturna putovanja.",
+        City = "Krakow",
+        Country = "Poljska",
+        ResidenceTaxPerDay = 1.40m,
+        ResidenceTotal = 5.6m,
+        TravelInsuranceTotal = 11m,
+        TotalCountOfReservations = 73
+    },
+    new OfferDetails
+    {
+        OfferId = 14,
+        MinimalPrice = 1600,
+        Description = "Zanzibar je egzotična destinacija sa bijelim pješčanim plažama. Ostrvo nudi kristalno čisto more i tropsku klimu. Idealno je za odmor i bijeg od svakodnevnice. Lokalna kultura je spoj afričkih i arapskih uticaja. Posjetioci mogu uživati u ronjenju i izletima. Zanzibar je savršen izbor za luksuzan i opuštajući odmor.",
+        City = "Zanzibar",
+        Country = "Tanzanija",
+        ResidenceTaxPerDay = 4.00m,
+        ResidenceTotal = 32m,
+        TravelInsuranceTotal = 35m,
+        TotalCountOfReservations = 61
+    },
+    new OfferDetails
+    {
+        OfferId = 15,
+        MinimalPrice = 1100,
+        Description = "Hurgada je popularna destinacija na Crvenom moru. Poznata je po all inclusive resortima i sunčanim plažama. Kristalno more idealno je za ronjenje i snorkeling. Grad nudi brojne izlete i aktivnosti. Klima je povoljna tokom cijele godine. Hurgada je savršen izbor za porodični odmor.",
+        City = "Hurgada",
+        Country = "Egipat",
+        ResidenceTaxPerDay = 3.00m,
+        ResidenceTotal = 21m,
+        TravelInsuranceTotal = 25m,
+        TotalCountOfReservations = 108
+    },
+    new OfferDetails
+    {
+        OfferId = 16,
+        MinimalPrice = 780,
+        Description = "Lisabon je šarmantan grad sa bogatom pomorskom istorijom. Njegove ulice i tramvaji nude poseban ugođaj. Grad se nalazi na obali Atlantika sa prelijepim pogledima. Lokalna kuhinja je bogata morskim specijalitetima. Lisabon nudi opuštenu atmosferu. Idealna je destinacija za gradski i kulturni odmor.",
+        City = "Lisabon",
+        Country = "Portugal",
+        ResidenceTaxPerDay = 2.50m,
+        ResidenceTotal = 15m,
+        TravelInsuranceTotal = 22m,
+        TotalCountOfReservations = 97
+    },
+    new OfferDetails
+    {
+        OfferId = 17,
+        MinimalPrice = 520,
+        Description = "Atina je kolijevka zapadne civilizacije i demokratije. Grad je prepun antičkih spomenika i muzeja. Akropolj je nezaobilazna znamenitost. Grad nudi spoj istorije i modernog života. Grčka kuhinja je poznata i ukusna. Atina je savršena destinacija za ljubitelje istorije.",
+        City = "Atina",
+        Country = "Grčka",
+        ResidenceTaxPerDay = 2.00m,
+        ResidenceTotal = 10m,
+        TravelInsuranceTotal = 16m,
+        TotalCountOfReservations = 121
+    },
+    new OfferDetails
+    {
+        OfferId = 18,
+        MinimalPrice = 180,
+        Description = "Split je prelijep grad na jadranskoj obali. Poznat je po Dioklecijanovoj palati i staroj gradskoj jezgri. Grad nudi kristalno čisto more i plaže. Mediteranska klima čini boravak ugodnim. Lokalna kuhinja obiluje morskim specijalitetima. Split je idealna destinacija za ljetni odmor.",
+        City = "Split",
+        Country = "Hrvatska",
+        ResidenceTaxPerDay = 1.00m,
+        ResidenceTotal = 3m,
+        TravelInsuranceTotal = 8m,
+        TotalCountOfReservations = 112
+    }
+);
+
 
             builder.Entity<OfferImage>().HasData(
     // OFFER 1

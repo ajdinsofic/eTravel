@@ -215,6 +215,7 @@ class _UniversalofferpageState extends State<Universalofferpage> {
                     builder: (context, snapshot) {
                       return destinationContainers(
                         naziv: offer.title,
+                        opis: offer.description,
                         glavnaslikaPath: glavnaSlika,
                         slike: sporedneSlike,
                         cijena:
