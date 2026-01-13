@@ -27,6 +27,7 @@ class destinationPage extends StatefulWidget {
   final String naziv;
   final String cijena;
   final String? brojDana;
+  final String opis;
   final String glavnaSlikaPath;
   final int offerId;
   final List<String> slike;
@@ -36,6 +37,7 @@ class destinationPage extends StatefulWidget {
     super.key,
     required this.naziv,
     required this.cijena,
+    required this.opis,
     required this.brojDana,
     required this.glavnaSlikaPath,
     required this.slike,
@@ -331,7 +333,7 @@ class _DestinationPageState extends State<destinationPage> {
                       height: screenHeight * 0.4,
                       alignment: Alignment.center,
                       child: Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                        widget.opis,
                         style: TextStyle(
                           color: Color(0xFF67B1E5),
                           fontFamily: 'AROneSans',

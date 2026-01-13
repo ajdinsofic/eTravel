@@ -160,6 +160,7 @@ class _PopularDestinationsState extends State<PopularDestinations> {
                             naziv: offer.title,
                             cijena: cijena,
                             brojDana: brojDana,
+                            opis: offer.description,
                             glavnaSlikaPath: mainImage ?? "default.jpg",
                             slike: sporedneSlike,
                             datumi: datumi,

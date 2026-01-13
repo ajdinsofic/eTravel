@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 class destinationContainers extends StatefulWidget {
   final String naziv;
   final String glavnaslikaPath;
+  final String opis;
   final String cijena;
   final Map<String, String> detalji;
   final List<String> slike;
@@ -22,6 +23,7 @@ class destinationContainers extends StatefulWidget {
     super.key,
     required this.naziv,
     required this.glavnaslikaPath,
+    required this.opis,
     required this.cijena,
     required this.detalji,
     required this.slike,
@@ -58,6 +60,7 @@ class _SpecijalneDestinacijeKontejnerState
                 (context) => destinationPage(
                   naziv: widget.naziv,
                   cijena: widget.cijena,
+                  opis: widget.opis,
                   brojDana: widget.detalji["brojDana"],
                   glavnaSlikaPath: widget.glavnaslikaPath,
                   slike: widget.slike,
