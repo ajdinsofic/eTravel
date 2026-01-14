@@ -30,7 +30,7 @@ Za provjeru i pokretanje projekta potrebno je imati instalirano:
 
 Projekat se preuzima sa GitHub repozitorija pomoću sljedeće komande:
 
-```bash
+
 git clone <GITHUB_REPO_LINK>
 
 
@@ -58,7 +58,7 @@ konfiguracija-etravel.zip
 
 Kada je `.env` fajl pravilno postavljen, u terminalu (root folder projekta) pokrenuti:
 
-```bash
+
 docker compose up -d --build
 
 
@@ -92,7 +92,7 @@ Ovo je **najbrži način** za testiranje aplikacije bez dodatne konfiguracije.
 1. Otvoriti folder `etravel_desktop`
 2. U terminalu pokrenuti:
 
-```bash
+
 flutter run -d windows
 
 #### 📱 Mobilna aplikacija (Android)
@@ -101,7 +101,7 @@ flutter run -d windows
 2. Pokrenuti **Android Emulator** ili povezati fizički Android uređaj
 3. U terminalu pokrenuti:
 
-```bash
+
 flutter run
 
 
