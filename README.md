@@ -133,6 +133,21 @@ Za testiranje PayPal plaćanja koristiti sljedeći **sandbox nalog**:
 - **Email:** `TestniPrimjerPersonal@gmail.com`
 - **Password:** `Korisnik123!`
 
+## Email testiranje
+
+Za testiranje dolaska maila na email dummy korisnika
+"Edin Mešic" koristite:
+
+- **Email:** `edinmesic5566@gmail.com`
+- **Password:** `edinMesic123
+
+NAPOMENA 
+
+Molim Vas koristite ove podatke jer oporavak lozinke radi
+na principu pronalaska maila koji je u registrovanim korisnicima
+`
+
+
 
 
 
